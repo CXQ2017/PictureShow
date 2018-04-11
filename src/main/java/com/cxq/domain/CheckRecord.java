@@ -18,7 +18,7 @@ public class CheckRecord {
     private Integer id;
     //病案号
     private String card_medical;
-    //病程记录表的主键
+    //病程记录表的主键,可做外键关联
     private Integer bc_id;
     //查房时间
     private Date Patient_rounds_date;
