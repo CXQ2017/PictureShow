@@ -1,0 +1,196 @@
+package com.cxq.domain;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
+/**
+ * Created by Administrator on 2018/4/11/011.
+ */
+@Entity
+@Table(name = "discharge_record")
+public class DischargeRecord {
+    @Id
+    @GeneratedValue
+    private  Integer id;
+    //科室
+    private String department;
+    //床号
+    private String bed_no;
+    //记录日期
+    private Date record_date;
+    //病案号
+    private String card_medical;
+    //入院日期
+    private  Date admission_date;
+    //出院日期
+    private Date discharge_date;
+    //入院情况
+    private String admitting_situation;
+    //入院诊断
+    private String admitting_diagnosis;
+    //诊疗经过
+    private String treatment_process;
+    //出院诊断
+    private String discharge_diagnosis;
+    //出院情况
+    private String discharge_situation;
+    //出院医嘱
+    private String discharge_advice;
+    //医师签名
+    private String physician_signature;
+    //状态
+    private Integer status;
+    //创建日期
+    private Date create_date;
+
+
+    public DischargeRecord(Integer id, String department, String bed_no, Date record_date, String card_medical, Date admission_date, Date discharge_date, String admitting_situation, String admitting_diagnosis, String treatment_process, String discharge_diagnosis, String discharge_situation, String discharge_advice, String physician_signature, Integer status, Date create_date) {
+        this.id = id;
+        this.department = department;
+        this.bed_no = bed_no;
+        this.record_date = record_date;
+        this.card_medical = card_medical;
+        this.admission_date = admission_date;
+        this.discharge_date = discharge_date;
+        this.admitting_situation = admitting_situation;
+        this.admitting_diagnosis = admitting_diagnosis;
+        this.treatment_process = treatment_process;
+        this.discharge_diagnosis = discharge_diagnosis;
+        this.discharge_situation = discharge_situation;
+        this.discharge_advice = discharge_advice;
+        this.physician_signature = physician_signature;
+        this.status = status;
+        this.create_date = create_date;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getBed_no() {
+        return bed_no;
+    }
+
+    public void setBed_no(String bed_no) {
+        this.bed_no = bed_no;
+    }
+
+    public Date getRecord_date() {
+        return record_date;
+    }
+
+    public void setRecord_date(Date record_date) {
+        this.record_date = record_date;
+    }
+
+    public String getCard_medical() {
+        return card_medical;
+    }
+
+    public void setCard_medical(String card_medical) {
+        this.card_medical = card_medical;
+    }
+
+    public Date getAdmission_date() {
+        return admission_date;
+    }
+
+    public void setAdmission_date(Date admission_date) {
+        this.admission_date = admission_date;
+    }
+
+    public Date getDischarge_date() {
+        return discharge_date;
+    }
+
+    public void setDischarge_date(Date discharge_date) {
+        this.discharge_date = discharge_date;
+    }
+
+    public String getAdmitting_situation() {
+        return admitting_situation;
+    }
+
+    public void setAdmitting_situation(String admitting_situation) {
+        this.admitting_situation = admitting_situation;
+    }
+
+    public String getAdmitting_diagnosis() {
+        return admitting_diagnosis;
+    }
+
+    public void setAdmitting_diagnosis(String admitting_diagnosis) {
+        this.admitting_diagnosis = admitting_diagnosis;
+    }
+
+    public String getTreatment_process() {
+        return treatment_process;
+    }
+
+    public void setTreatment_process(String treatment_process) {
+        this.treatment_process = treatment_process;
+    }
+
+    public String getDischarge_diagnosis() {
+        return discharge_diagnosis;
+    }
+
+    public void setDischarge_diagnosis(String discharge_diagnosis) {
+        this.discharge_diagnosis = discharge_diagnosis;
+    }
+
+    public String getDischarge_situation() {
+        return discharge_situation;
+    }
+
+    public void setDischarge_situation(String discharge_situation) {
+        this.discharge_situation = discharge_situation;
+    }
+
+    public String getDischarge_advice() {
+        return discharge_advice;
+    }
+
+    public void setDischarge_advice(String discharge_advice) {
+        this.discharge_advice = discharge_advice;
+    }
+
+    public String getPhysician_signature() {
+        return physician_signature;
+    }
+
+    public void setPhysician_signature(String physician_signature) {
+        this.physician_signature = physician_signature;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
+    }
+}
