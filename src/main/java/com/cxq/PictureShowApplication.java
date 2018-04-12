@@ -35,19 +35,6 @@ public class PictureShowApplication {
 	private String picture_path;
 
 
-//	@RequestMapping(value = "/login")
-//	public Map<String, Object> authenticate(HttpServletRequest request){
-//
-//		Map<String, Object> model = new HashMap<String, Object>();
-//
-//		String username = request.getParameter("username");
-//		String password = request.getParameter("password");
-//		model.put("status", false);
-//		return model;
-//	}
-
-
-
 
     @RequestMapping("/refresh_picture")
     @ResponseBody
