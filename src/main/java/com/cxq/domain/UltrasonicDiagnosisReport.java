@@ -35,25 +35,7 @@ public class UltrasonicDiagnosisReport {
     private Date create_date;
 
 
-    public UltrasonicDiagnosisReport(String ultrasonic_number, String department, String card_medical, String bed_no,
-                                     String check_equipment, String inspection_area, String ultrasonic_content,
-                                     String ultrasonic_tip, String diagnosis_doctor,
-                                     String consultant_doctor, String report_date, String print_date, Integer status, Date create_date) {
-        this.ultrasonic_number = ultrasonic_number;
-        this.department = department;
-        this.card_medical = card_medical;
-        this.bed_no = bed_no;
-        this.check_equipment = check_equipment;
-        this.inspection_area = inspection_area;
-        this.ultrasonic_content = ultrasonic_content;
-        this.ultrasonic_tip = ultrasonic_tip;
-        this.diagnosis_doctor = diagnosis_doctor;
-        this.consultant_doctor = consultant_doctor;
-        this.report_date = report_date;
-        this.print_date = print_date;
-        this.status = status;
-        this.create_date = create_date;
-    }
+
 
 
     public Integer getId() {

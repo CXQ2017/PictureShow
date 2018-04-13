@@ -31,19 +31,7 @@ public class TranscranialDopplerReport {
     //创建日期
     private Date create_date;
 
-    public TranscranialDopplerReport(String department, String card_medical, String bed_no, Date check_time, String check_number,
-                                     String TCD_content, String TCD_conclusion, String physician_signature, Integer status, Date create_date) {
-        this.department = department;
-        this.card_medical = card_medical;
-        this.bed_no = bed_no;
-        this.check_time = check_time;
-        this.check_number = check_number;
-        this.TCD_content = TCD_content;
-        this.TCD_conclusion = TCD_conclusion;
-        this.physician_signature = physician_signature;
-        this.status = status;
-        this.create_date = create_date;
-    }
+
 
 
     public Integer getId() {

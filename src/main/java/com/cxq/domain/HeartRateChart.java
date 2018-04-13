@@ -32,21 +32,7 @@ public class HeartRateChart {
     private Date create_date;
 
 
-    public HeartRateChart(Integer id, String department, String card_medical, String bed_no, String ventricular_rate,
-                          String sinus_rhythm, String PR_interphase, String QRS_width, String QT, String p_R_T, Integer status, Date create_date) {
-        this.id = id;
-        this.department = department;
-        this.card_medical = card_medical;
-        this.bed_no = bed_no;
-        this.ventricular_rate = ventricular_rate;
-        this.sinus_rhythm = sinus_rhythm;
-        this.PR_interphase = PR_interphase;
-        this.QRS_width = QRS_width;
-        this.QT = QT;
-        P_R_T = p_R_T;
-        this.status = status;
-        this.create_date = create_date;
-    }
+
 
     public Integer getId() {
         return id;

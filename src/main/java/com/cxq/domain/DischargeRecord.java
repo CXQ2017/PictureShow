@@ -49,24 +49,6 @@ public class DischargeRecord {
     private Date create_date;
 
 
-    public DischargeRecord(Integer id, String department, String bed_no, Date record_date, String card_medical, Date admission_date, Date discharge_date, String admitting_situation, String admitting_diagnosis, String treatment_process, String discharge_diagnosis, String discharge_situation, String discharge_advice, String physician_signature, Integer status, Date create_date) {
-        this.id = id;
-        this.department = department;
-        this.bed_no = bed_no;
-        this.record_date = record_date;
-        this.card_medical = card_medical;
-        this.admission_date = admission_date;
-        this.discharge_date = discharge_date;
-        this.admitting_situation = admitting_situation;
-        this.admitting_diagnosis = admitting_diagnosis;
-        this.treatment_process = treatment_process;
-        this.discharge_diagnosis = discharge_diagnosis;
-        this.discharge_situation = discharge_situation;
-        this.discharge_advice = discharge_advice;
-        this.physician_signature = physician_signature;
-        this.status = status;
-        this.create_date = create_date;
-    }
 
     public Integer getId() {
         return id;

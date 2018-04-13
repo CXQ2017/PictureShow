@@ -34,28 +34,6 @@ public class VideoReport {
     private Integer status;
     private Date create_time;
 
-    public VideoReport(Integer vr_id, Date report_time, Integer patientId, String eclarationd_num,
-                       String card_medical, String department, String bed_no, String inspection_area,
-                       String video_content, String video_conclusion, String reported_doctor,
-                       String check_doctor, String final_check_doctor, Integer video_status,
-                       Integer status, Date create_time) {
-        this.vr_id = vr_id;
-        this.report_time = report_time;
-        this.patientId = patientId;
-        this.eclarationd_num = eclarationd_num;
-        this.card_medical = card_medical;
-        this.department = department;
-        this.bed_no = bed_no;
-        this.inspection_area = inspection_area;
-        this.video_content = video_content;
-        this.video_conclusion = video_conclusion;
-        this.reported_doctor = reported_doctor;
-        this.check_doctor = check_doctor;
-        this.final_check_doctor = final_check_doctor;
-        this.video_status = video_status;
-        this.status = status;
-        this.create_time = create_time;
-    }
 
 
     public Integer getVr_id() {

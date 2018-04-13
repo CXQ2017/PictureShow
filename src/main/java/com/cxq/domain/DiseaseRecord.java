@@ -49,28 +49,7 @@ public class DiseaseRecord {
     private String create_date;
 
 
-    public DiseaseRecord(String department, String bed_no, String card_medical, String first_disease_record, String first_disease_record_time, String case_trait, String istory_characteristics, String past_medical_history, String hospital_medical, String auxiliary_examination, String primary_diagnosis, String diagnostic_basis, String identify_diagnostic, String support_point, String not_supported, String conclusion,
-                         String diagnostic_plan, String status, String create_date) {
-        this.department = department;
-        this.bed_no = bed_no;
-        this.card_medical = card_medical;
-        this.first_disease_record = first_disease_record;
-        this.first_disease_record_time = first_disease_record_time;
-        this.case_trait = case_trait;
-        this.istory_characteristics = istory_characteristics;
-        this.past_medical_history = past_medical_history;
-        this.hospital_medical = hospital_medical;
-        this.auxiliary_examination = auxiliary_examination;
-        this.primary_diagnosis = primary_diagnosis;
-        this.diagnostic_basis = diagnostic_basis;
-        this.identify_diagnostic = identify_diagnostic;
-        this.support_point = support_point;
-        this.not_supported = not_supported;
-        this.conclusion = conclusion;
-        this.diagnostic_plan = diagnostic_plan;
-        this.status = status;
-        this.create_date = create_date;
-    }
+
 
     public Integer getBc_id() {
         return bc_id;

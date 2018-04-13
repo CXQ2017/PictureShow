@@ -1,9 +1,6 @@
 package com.cxq.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -16,7 +13,8 @@ import java.util.Date;
 public class CheckRecord {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)//根据数据库的Identity字段生成
+ // @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     //病案号
     private String card_medical;
@@ -35,16 +33,7 @@ public class CheckRecord {
     //创建时间
     private String create_date;
 
-    public CheckRecord(String card_medical, Integer bc_id, Date patient_rounds_date, String patient_rounds_doctor, String patient_rounds_details, String doctor_signature, String status, String create_date) {
-        this.card_medical = card_medical;
-        this.bc_id = bc_id;
-        Patient_rounds_date = patient_rounds_date;
-        Patient_rounds_doctor = patient_rounds_doctor;
-        Patient_rounds_details = patient_rounds_details;
-        this.doctor_signature = doctor_signature;
-        this.status = status;
-        this.create_date = create_date;
-    }
+
 
     public Integer getId() {
         return id;
