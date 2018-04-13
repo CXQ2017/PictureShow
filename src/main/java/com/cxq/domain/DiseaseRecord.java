@@ -7,6 +7,8 @@ import javax.persistence.Table;
 
 /**
  * Created by Administrator on 2018/4/11/011.
+ *
+ * 病程记录单
  */
 @Entity
 @Table(name="disease_record")
@@ -22,10 +24,23 @@ public class DiseaseRecord {
     private String bed_no;
     //病案号
     private String card_medical;
+    private String first_disease_record; //首次病程记录内容
+    private String first_disease_record_time;    //首次病程记录时间
     //病例特点
     private String case_trait;
+    private String istory_characteristics;   //病史特点
+    private String past_medical_history;     //既往史
+    private String hospital_medical;   //入园体检
+    private String auxiliary_examination;  //辅助检查
+
     //诊断、诊断依据及鉴别诊断
-    private String diagnostic_procedure;
+    //private String diagnostic_procedure;
+    private String primary_diagnosis;   //初步诊断
+    private String diagnostic_basis;    //诊断依据
+    private String identify_diagnostic;    //鉴别诊断
+    private String  support_point;   //支持点
+    private String not_supported;    //不支持点
+    private String conclusion;   //结论
     //诊疗计划
     private String diagnostic_plan;
     //状态
@@ -33,12 +48,25 @@ public class DiseaseRecord {
     //创建时间
     private String create_date;
 
-    public DiseaseRecord(String department, String bed_no, String card_medical, String case_trait, String diagnostic_procedure, String diagnostic_plan, String status, String create_date) {
+
+    public DiseaseRecord(String department, String bed_no, String card_medical, String first_disease_record, String first_disease_record_time, String case_trait, String istory_characteristics, String past_medical_history, String hospital_medical, String auxiliary_examination, String primary_diagnosis, String diagnostic_basis, String identify_diagnostic, String support_point, String not_supported, String conclusion,
+                         String diagnostic_plan, String status, String create_date) {
         this.department = department;
         this.bed_no = bed_no;
         this.card_medical = card_medical;
+        this.first_disease_record = first_disease_record;
+        this.first_disease_record_time = first_disease_record_time;
         this.case_trait = case_trait;
-        this.diagnostic_procedure = diagnostic_procedure;
+        this.istory_characteristics = istory_characteristics;
+        this.past_medical_history = past_medical_history;
+        this.hospital_medical = hospital_medical;
+        this.auxiliary_examination = auxiliary_examination;
+        this.primary_diagnosis = primary_diagnosis;
+        this.diagnostic_basis = diagnostic_basis;
+        this.identify_diagnostic = identify_diagnostic;
+        this.support_point = support_point;
+        this.not_supported = not_supported;
+        this.conclusion = conclusion;
         this.diagnostic_plan = diagnostic_plan;
         this.status = status;
         this.create_date = create_date;
@@ -76,6 +104,22 @@ public class DiseaseRecord {
         this.card_medical = card_medical;
     }
 
+    public String getFirst_disease_record() {
+        return first_disease_record;
+    }
+
+    public void setFirst_disease_record(String first_disease_record) {
+        this.first_disease_record = first_disease_record;
+    }
+
+    public String getFirst_disease_record_time() {
+        return first_disease_record_time;
+    }
+
+    public void setFirst_disease_record_time(String first_disease_record_time) {
+        this.first_disease_record_time = first_disease_record_time;
+    }
+
     public String getCase_trait() {
         return case_trait;
     }
@@ -84,12 +128,84 @@ public class DiseaseRecord {
         this.case_trait = case_trait;
     }
 
-    public String getDiagnostic_procedure() {
-        return diagnostic_procedure;
+    public String getIstory_characteristics() {
+        return istory_characteristics;
     }
 
-    public void setDiagnostic_procedure(String diagnostic_procedure) {
-        this.diagnostic_procedure = diagnostic_procedure;
+    public void setIstory_characteristics(String istory_characteristics) {
+        this.istory_characteristics = istory_characteristics;
+    }
+
+    public String getPast_medical_history() {
+        return past_medical_history;
+    }
+
+    public void setPast_medical_history(String past_medical_history) {
+        this.past_medical_history = past_medical_history;
+    }
+
+    public String getHospital_medical() {
+        return hospital_medical;
+    }
+
+    public void setHospital_medical(String hospital_medical) {
+        this.hospital_medical = hospital_medical;
+    }
+
+    public String getAuxiliary_examination() {
+        return auxiliary_examination;
+    }
+
+    public void setAuxiliary_examination(String auxiliary_examination) {
+        this.auxiliary_examination = auxiliary_examination;
+    }
+
+    public String getPrimary_diagnosis() {
+        return primary_diagnosis;
+    }
+
+    public void setPrimary_diagnosis(String primary_diagnosis) {
+        this.primary_diagnosis = primary_diagnosis;
+    }
+
+    public String getDiagnostic_basis() {
+        return diagnostic_basis;
+    }
+
+    public void setDiagnostic_basis(String diagnostic_basis) {
+        this.diagnostic_basis = diagnostic_basis;
+    }
+
+    public String getIdentify_diagnostic() {
+        return identify_diagnostic;
+    }
+
+    public void setIdentify_diagnostic(String identify_diagnostic) {
+        this.identify_diagnostic = identify_diagnostic;
+    }
+
+    public String getSupport_point() {
+        return support_point;
+    }
+
+    public void setSupport_point(String support_point) {
+        this.support_point = support_point;
+    }
+
+    public String getNot_supported() {
+        return not_supported;
+    }
+
+    public void setNot_supported(String not_supported) {
+        this.not_supported = not_supported;
+    }
+
+    public String getConclusion() {
+        return conclusion;
+    }
+
+    public void setConclusion(String conclusion) {
+        this.conclusion = conclusion;
     }
 
     public String getDiagnostic_plan() {
