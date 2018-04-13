@@ -49,39 +49,42 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<font size="6">病程记录</font><br /><br /><br /><br />
-				<form>
+				<font size="6">病程查房记录</font><br /><br /><br /><br />
+				<form id="form_b">
 					<div>
-						首次病程记录：<input type="text" class="a " style="width: 100px" />
-						日期：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly=""
+						查房人：<input type="text" class="a " style="width: 100px" />
+						查房时间：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly=""
 								  onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						病例特点：<input type="text" class="a " style="width: 100px" />
+						病案号：<input type="text" class="a " style="width: 100px" />
 					</div><br /><hr/><br /><br />
 					<div>
-						病史特点：<input type="text" class="a " style="width: 100px" />
+						查房人身份：<input type="text" class="a " style="width: 100px" />
 					</div><br /><hr/><br /><br />
 					<div>
-						既往史：<input type="text" class="a " style="width: 100px" />
+						查房记录：<input type="text" class="a " style="width: 100px" />
 					</div><br /><hr/><br /><br />
 					<div>
-						入院体检：<input type="text" class="a " style="width: 100px" />
-					</div><br /><hr/><br /><br />
-					<div>
-						辅助检查：<input type="text" class="a " style="width: 100px" />
-					</div><br /><hr/><br /><br />
-					<div>
-						诊疗计划：<input type="text" class="a " style="width: 100px" />
-					</div><br /><hr/><br /><br />
-					<div>
-						<input type="submit" class="a " style="width: 100px" value="提交"/>
+						<input type="submit" class="a " style="width: 100px" id="submit" value="提交"/>
 						<input type="submit" class="a " style="width: 100px" value="重置"/>
 					</div>
 				</form>
 			</div>
 		</div>
 	    <script type="text/javascript">
+			$("submit").onclick(function () {
+				jQuery.ajax({
+					url: '',
+					type: 'POST',
+					data: {ids:ids},
+					dataType: 'json',
+					success: function (r) {
+						
+					}
+				})
+			})
+
 		</script>
 	</body>
 </html>
