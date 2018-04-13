@@ -8,6 +8,8 @@ import java.util.Date;
 
 /**
  * Created by Administrator on 2018/4/11/011.
+ *
+ * 住院首页
  */
 @Entity
 @Table(name = "medical_record")

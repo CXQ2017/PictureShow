@@ -7,7 +7,9 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * Created by Administrator on 2018/4/11/011.
+ * Created by Administrator on 2018/4/11/011
+ *
+ * 病程记录中的医生查房记录
  */
 @Entity
 @Table(name = "check_record")
