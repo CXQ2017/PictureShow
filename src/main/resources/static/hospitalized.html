@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8" />
+	    <title>中大八院病历病案首页编辑</title>
+	   	<link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+	   	
+	   	<link rel="stylesheet" type="text/css" href="static/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/stylet.css" />
+		<script src="js/Ecalendar.jquery.min.js"></script>
+	   	
+	   	<script type="text/javascript" src="static/js/jquery.min.js"></script>
+	    <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="jeDate/jedate.js"></script>
+		<script type="text/javascript" src="jeDate/jedate1.js"></script>
+	    <style>
+	    	.a{
+	    		border-radius:5px;
+	    	}
+	    	.datainp{ width:150px; height:20px; border:1px #ccc solid;border-radius:5px;}
+			/*.datep{ margin-bottom:40px;}
+			.ECalendar{width:400px;height:30px;}*/
+			#tree{
+				top: 0px;
+				width: 300px;
+				height:1500px;
+				/*left: 1%;*/
+				position: absolute;
+				bottom: 200px;
+				background: blanchedalmond;
+			}
+			#list{
+				top: 10px;
+				width: 300px;
+				height:1500px;
+				left: 10%;
+				position: absolute;
+				bottom: 200px;
+				background: blanchedalmond;
+			}
+			#medical{
+				/*border: 1px solid black;*/
+				top: 0px;
+				width: 2000px;
+				height: 1500px;
+				position: absolute;
+				left: 16%;
+				bottom: 200px;
+				background: burlywood;
+			}
+			#mcont{
+				/*border: 1px solid black;*/
+				top: 0px;
+				width: 2000px;
+				height: 1500px;
+				position: absolute;
+				left: 8%;
+				bottom: 200px;
+				background: lavenderblush;
+			}
+			#in{
+				/*border: 1px solid black;*/
+				top: 0px;
+				width: 2000px;
+				height: 2100px;
+				position: absolute;
+				left: 8%;
+				bottom: 200px;
+				background: burlywood;
+			}
+			#bing{
+				/*border: 1px solid black;*/
+				top: 0px;
+				width: 2000px;
+				height: 1500px;
+				position: absolute;
+				left: 8%;
+				bottom: 200px;
+				background: burlywood;
+			}
+			#out{
+				/*border: 1px solid black;*/
+				top: 0px;
+				width: 2000px;
+				height: 1500px;
+				position: absolute;
+				left: 8%;
+				bottom: 200px;
+				background: burlywood;
+			}
+			#sub{
+				left: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="tree">
+			<div id="list">
+				<ul class="yiji">
+					<li>
+						<div onclick="medical()" href="">
+							<font size="4">病案首页</font>
+						</div>
+					</li><br /><br />
+					<li>
+						<div id="b" onclick="medical1()" href="">
+							<font size="4">入院记录</font>
+						</div>
+					</li><br /><br />
+					<li>
+						<div onclick="medical2()" href="">
+							<font size="4">病程记录</font>
+						</div>
+					</li><br /><br />
+					<li>
+						<div onclick="medical3()" href="">
+							<font size="4">出院记录</font>
+						</div>
+					</li><br /><br />
+				</ul>
+			</div>
+		</div>-->
+	    <div id="medical">
+			<div id="mcont">
+					<form action="/medical_record" method="post">
+						<div class="">
+							<div class="">
+								<br /><br />
+								健康卡号：<input type="text" class="a " style="width: 100px;border-radius:5px" name="" placeholder="健康卡号"/>
+								&nbsp;&nbsp;&nbsp;
+								第：<input type="text" class="a " style="width: 30px;border-radius:5px" maxlength="3"/>
+								次住院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								病案号：<input type="text" class="a " style="width: 100px;border-radius:5px" placeholder="病案号"/>
+							</div><br /><hr/><br /><br />
+							<div class="">
+								姓名：<input type="text" class="a " style="width: 100px" placeholder="姓名"/>
+								性别：<input type="text" class="a " style="width: 100px" placeholder="性别"/>
+								出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly=""
+											onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+								年龄：<input type="text" class="a " style="width: 30px"/>岁
+								国籍：<input type="text" class="a " style="width: 100px"  /><br /><br />
+								民族：<input type="text" class="a " style="width: 100px" />
+								出生体重：<input type="text" class="a " style="width: 100px" />
+								入院体重：<input type="text" class="a " style="width: 100px" />
+								出生地：<input type="text" class="a " style="width: 100px"  />
+								籍贯：<input type="text" class="a " style="width: 100px" />
+							</div><br />
+							<div class="">
+								身份证号：<input type="text" class="a " style="width: 100px" />
+								职业：<input type="text" class="a " style="width: 100px" />
+								婚姻：<select id="marry" name="hunyin" class="a " style="width: 60px">
+								<option>未婚</option>
+								<option>已婚</option>
+								<option>丧偶</option>
+								<option>离婚</option>
+								<option>其他</option>
+							</select>
+								现住址：<input type="text" class="a " style="width: 100px" />
+								电话：<input type="text" class="a " style="width: 100px" />
+								邮编：<input type="text" class="a " style="width: 100px" /><br /><br />
+								户口地址：<input type="text" class="a " style="width: 100px" />
+								邮编：<input type="text" class="a " style="width: 100px" />
+							</div><br /><hr/><br /><br />
+							<div>
+								工作单位及地址：<input type="text" class="a " style="width: 100px" />
+								单位电话：<input type="text" class="a " style="width: 100px" />
+								邮编：<input type="text" class="a " style="width: 100px" />
+								联系人电话：<input type="text" class="a " style="width: 100px" />
+								关系：<input type="text" class="a " style="width: 100px" /><br /><br />
+								地址：<input type="text" class="a " style="width: 100px" />
+								电话：<input type="text" class="a " style="width: 100px" />
+								入院途径：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>急诊</option>
+									<option>门诊</option>
+									<option>其他医疗机构转入</option>
+									<option>其他</option>
+								</select>
+								病人来源：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>急诊</option>
+									<option>门诊</option>
+									<option>其他医疗机构转入</option>
+									<option>其他</option>
+								</select>
+							</div><br /><hr/><br /><br />
+							<div>
+								入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"  readonly=""
+											onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+								入院科别：<input type="text" class="a " style="width: 100px" />
+								病房：<input type="text" class="a " style="width: 100px" />
+								转科：<input class="datainp" id="datebut4" type="text" placeholder="请选择"  readonly=""
+										  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+								转：<input type="text" class="a " style="width: 100px" /><br /><br />
+								出院日期：<input class="datainp" id="datebut3" type="text" placeholder="请选择"  readonly=""
+											onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+								出院科别：<input type="text" class="a " style="width: 100px" /><br /><br />
+								病房：<input type="text" class="a " style="width: 100px" />
+								实际住院：<input type="text" class="a " style="width: 100px" /><br /><br />
+								门（急）诊诊断：<input type="text" class="a " style="width: 100px" />
+								疾病编码：<input type="text" class="a " style="width: 100px" />
+								门（急）诊医生：<input type="text" class="a " style="width: 100px" />
+							</div><br /><hr/><br /><br />
+							<div>
+								主要诊断：<input type="text" class="a " style="width: 100px" />
+								诊断编码：<input type="text" class="a " style="width: 100px" />
+								入院病情：<input type="text" class="a " style="width: 100px" />
+								其他诊断：<input type="text" class="a " style="width: 100px" /><br /><br />
+								诊断编码：<input type="text" class="a " style="width: 100px" />
+								入院病情：<input type="text" class="a " style="width: 100px" />
+							</div><br /><hr/><br /><br />
+							<div>
+								病历分型：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>一般</option>
+									<option>急</option>
+									<option>疑难</option>
+									<option>危重</option>
+								</select>
+								临床路径病历：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>是</option>
+									<option>否</option>
+								</select>
+								抢救次数：<input type="text" class="a " style="width: 100px" />
+								成功次数：<input type="text" class="a " style="width: 100px" />
+							</div><br /><hr/><br /><br />
+							<div>
+								损伤、中毒的外部原因：<input type="text" class="a " style="width: 100px" />
+								疾病编码：<input type="text" class="a " style="width: 100px" />
+							</div><br />
+							<div>
+								病历诊断：<input type="text" class="a " style="width: 100px" />
+								病理号：<input type="text" class="a " style="width: 100px" />
+								疾病编码：<input type="text" class="a " style="width: 100px" />
+							</div><br /><hr/><br /><br />
+							<div>
+								诊断符合情况
+								1、门诊与出院：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>符合</option>
+									<option>不符合</option>
+									<option>不肯定</option>
+								</select>
+								2、临床与病理：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>符合</option>
+									<option>不符合</option>
+									<option>不肯定</option>
+								</select>
+							</div><br /><hr/><br /><br />
+							<div>
+								药物过敏：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>无</option>
+									<option>有</option>
+								</select>
+								过敏药物：<input type="text" class="a " style="width: 100px" />
+								死亡患者尸检：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>是</option>
+									<option>否</option>
+								</select>
+							</div><br /><hr/><br /><br />
+							<div>
+								血型：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>A</option>
+									<option>B</option>
+									<option>O</option>
+									<option>AB</option>
+									<option>不详</option>
+									<option>未查</option>
+								</select>
+								Rh：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>阴</option>
+									<option>阳</option>
+									<option>不详</option>
+									<option>未查</option>
+								</select>
+							</div><br /><hr/><br /><br />
+							<div>
+								科主任：<input type="text" class="a " style="width: 100px" />
+								主（主任）任医师：<input type="text" class="a " style="width: 100px" />
+								主治医师：<input type="text" class="a " style="width: 100px" />
+								住院医师：<input type="text" class="a " style="width: 100px" />
+							</div><br /><hr/><br /><br />
+							<div>
+								责任护士：<input type="text" class="a " style="width: 100px" />
+								进修医师：<input type="text" class="a " style="width: 100px" />
+								实习医师：<input type="text" class="a " style="width: 100px" />
+								编码员：<input type="text" class="a " style="width: 100px" />
+							</div><br /><hr/><br /><br />
+							<div>
+								病案质量：
+								<select name="hunyin" class="a " style="width: 100px">
+									<option>甲</option>
+									<option>乙</option>
+								</select>
+								质控医师：<input type="text" class="a " style="width: 100px" />
+								质控护士：<input type="text" class="a " style="width: 100px" />
+								质控日期：<input class="datainp" id="datebut2" type="text" placeholder="请选择"  readonly=""
+											onClick="jeDate({dateCell:'#datebut2',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+							</div><br /><br /><br />
+							<div id="sub">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="submit" value="提交"/>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="reset" value="重置"/>
+							</div>
+						</div>
+					</form>
+			</div>
+			<div id="in">
+				<p >入院记录</p>
+				<form action="" method="get" role="form">
+					<div>
+						病案号：<input type="text" class="a " style="width: 100px" />
+						记录日期：<input class="datainp" id="datebut9" type="text" placeholder="请选择"  readonly=""
+									onClick="jeDate({dateCell:'#datebut9',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+						病史陈诉者：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						主诉：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						现病史：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						既往史：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						个人史：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						婚育史：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						家族史：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						<p>体格检查</p>
+						体温：<input type="text" class="a " style="width: 100px" />
+						呼吸：<input type="text" class="a " style="width: 100px" />
+						脉搏：<input type="text" class="a " style="width: 100px" />
+						血压：<input type="text" class="a " style="width: 100px" />
+						体重：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						一般情况：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						皮肤黏膜：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						淋巴结：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						头部：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						颈部：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						胸部：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						腹部：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						肛门生殖器：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						脊柱四肢：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						神经生理反射：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						专科情况：<input type="text" class="a " style="width: 100px" />
+					</div><br /><hr/><br /><br />
+					<div>
+						<p>辅助检查</p><br /><br />
+						修正诊断：<input type="text" class="a " style="width: 100px" />
+						签名：<input type="text" class="a " style="width: 100px" />
+						日期：<input class="datainp" id="datebut5" type="text" placeholder="请选择"  readonly=""
+								  onClick="jeDate({dateCell:'#datebut5',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+					</div><br /><hr/><br /><br />
+					<div>
+						初步诊断：<input type="text" class="a " style="width: 100px" />
+						签名：<input type="text" class="a " style="width: 100px" />
+						日期：<input class="datainp" id="datebut6" type="text" placeholder="请选择"  readonly=""
+								  onClick="jeDate({dateCell:'#datebut6',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+					</div><br /><hr/><br /><br />
+					<div>
+						补充诊断：<input type="text" class="a " style="width: 100px" />
+						签名：<input type="text" class="a " style="width: 100px" />
+						日期：<input class="datainp" id="datebut7" type="text" placeholder="请选择"  readonly=""
+								  onClick="jeDate({dateCell:'#datebut7',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+					</div><br /><hr/><br /><br />
+					<div>
+						最后诊断：<input type="text" class="a " style="width: 100px" />
+						签名：<input type="text" class="a " style="width: 100px" />
+						日期：<input class="datainp" id="datebut8" type="text" placeholder="请选择"  readonly=""
+								  onClick="jeDate({dateCell:'#datebut8',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+					</div><br /><hr/><br /><br />
+					<div>
+						<input type="submit" class="a " style="width: 100px" value="提交"/>
+						<input type="submit" class="a " style="width: 100px" value="重置"/>
+					</div>
+				</form>
+			</div>
+			<div id="bing">
+				<p >病程记录</p>
+				<form>
+					<div>
+						首次病程记录：<input type="text" class="a " style="width: 100px" />
+						日期：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly=""
+							   onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+					</div>
+					<div>
+						病例特点：<input type="text" class="a " style="width: 100px" />
+					</div>
+					<div>
+						病史特点：<input type="text" class="a " style="width: 100px" />
+					</div>
+					<div>
+						既往史：<input type="text" class="a " style="width: 100px" />
+					</div>
+					<div>
+						入院体检：<input type="text" class="a " style="width: 100px" />
+					</div>
+					<div>
+						辅助检查：<input type="text" class="a " style="width: 100px" />
+					</div>
+					<div>
+						诊疗计划：<input type="text" class="a " style="width: 100px" />
+					</div>
+					<div>
+						<input type="submit" class="a " style="width: 100px" value="提交"/>
+						<input type="submit" class="a " style="width: 100px" value="重置"/>
+					</div>
+				</form>
+			</div>
+
+			<div id="out">
+				<p >出院记录</p>
+				<form>
+
+				</form>
+			</div>
+	    </div>
+	    <script type="text/javascript">
+			/*document.getElementById("in").style.display="none";
+			document.getElementById("bing").style.display="none";
+			document.getElementById("out").style.display="none";
+			function medical1(){
+				document.getElementById("mcont").style.display="none";
+				document.getElementById("in").style.display="";
+				document.getElementById("bing").style.display="none";
+				document.getElementById("out").style.display="none";
+			}
+			function medical2(){
+				document.getElementById("mcont").style.display="none";
+				document.getElementById("in").style.display="none";
+				document.getElementById("bing").style.display="";
+				document.getElementById("out").style.display="none";
+			}
+			function medical3(){
+				document.getElementById("mcont").style.display="none";
+				document.getElementById("in").style.display="none";
+				document.getElementById("bing").style.display="none";
+				document.getElementById("out").style.display="";
+			}
+			function medical(){
+				document.getElementById("mcont").style.display="";
+				document.getElementById("in").style.display="none";
+				document.getElementById("bing").style.display="none";
+				document.getElementById("out").style.display="none";
+			}*/
+			/*jeDate({
+				dateCell:"#indate",//isinitVal:true,
+				format:"YYYY-MM",
+				isTime:false, //isClear:false,
+				minDate:"2015-10-19 00:00:00",
+				maxDate:"2016-11-8 00:00:00"
+			})
+		    jeDate({
+				dateCell:"#dateinfo",
+				format:"YYYY年MM月DD日 hh:mm:ss",
+				isinitVal:true,
+				isTime:true, //isClear:false,
+				minDate:"2014-09-19 00:00:00",
+				okfun:function(val){alert(val)}
+			})*/
+			/*$(function(){
+				$("#ECalendar_case1").ECalendar({
+					type:"date",
+					skin:"#233",
+					offset:[0,2]
+				});
+				$("#ECalendar_case2").ECalendar({
+					type:"time",
+					offset:[0,2]
+				});
+				$("#ECalendar_case3").ECalendar({
+					type:"time",
+					stamp:false,
+					skin:5,
+					format:"yyyy年mm月dd日 hh时ii分",
+					callback:function(v,e)
+					{
+						$(".callback span").html(v)
+					}
+				});
+			})*/
+		</script>
+	</body>
+</html>
