@@ -8,6 +8,8 @@ import java.util.Date;
 
 /**
  * Created by Administrator on 2018/4/11 0011.
+ *
+ *
  */
 @Entity
 @Table(name = "hospitalized")

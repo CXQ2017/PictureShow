@@ -8,6 +8,8 @@ import java.util.Date;
 
 /**
  * Created by Administrator on 2018/4/11/011.
+ *
+ * 出院记录表
  */
 @Entity
 @Table(name = "discharge_record")
