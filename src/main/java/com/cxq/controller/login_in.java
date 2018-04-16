@@ -21,8 +21,7 @@ public class login_in {
     @Autowired
     private DiseaseRecordRepository diseaseRecordRepository;
 
-    @Autowired
-    private CheckRecordRepository checkRecordRepository;
+
     @Autowired
     private DischargeRecordRepository dischargeRecordRepository;
 
@@ -105,13 +104,7 @@ public class login_in {
     public String toCheck_record(){
         return "Check_record";
     }
-    //医师护理记录
-    @PostMapping("/addCheck_record")
-    public String  addCheckRecord(@ModelAttribute CheckRecord checkRecord) {
-        //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
-        checkRecordRepository.save(checkRecord);
-        return "chooseCaseInformationKinds";
-    }
+
 
     // 跳转到出院记录
     @RequestMapping("/toChoosecaseKinds/toleave_hospital")

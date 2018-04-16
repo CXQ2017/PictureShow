@@ -1,8 +1,11 @@
 package com.cxq;
 
+import com.cxq.domain.CheckRecord;
+import com.cxq.domain.CheckRecordRepository;
 import com.cxq.domain.PictureProperty;
 import com.cxq.domain.PicturePropertyRepository;
 import com.cxq.upload.UploadTool;
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -30,6 +30,9 @@ public class PictureShowApplication {
 
 	public static void main(String[] args) {SpringApplication.run(PictureShowApplication.class, args);}
 
+	@Autowired
+	private CheckRecordRepository checkRecordRepository;
+
     @Autowired
 	private PicturePropertyRepository picturePropertyRepository;
 
@@ -41,6 +44,7 @@ public class PictureShowApplication {
     public Map<String, Object> login(HttpServletRequest request){
         Map<String, Object> model = new HashMap<String, Object>();
         String username = request.getParameter("name");
+		model.put("data",true);
         return model;
     }
 
@@ -75,6 +79,14 @@ public class PictureShowApplication {
 	}
 
 
-
+	//医师护理录
+	@PostMapping("/addCheck_record")
+	public Map<String,Object> addCheckRecord(@ModelAttribute CheckRecord checkRecord) {
+		//4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
+		checkRecordRepository.save(checkRecord);
+		Map<String,Object> model=new HashedMap();
+		model.put("data",true);
+		return model;
+	}
 
 }
