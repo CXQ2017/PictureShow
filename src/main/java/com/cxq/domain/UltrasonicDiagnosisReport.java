@@ -1,5 +1,7 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,8 +28,10 @@ public class UltrasonicDiagnosisReport {
     private String ultrasonic_tip;  //超声提示
     private String diagnosis_doctor; //诊断医师
     private String  consultant_doctor;  //会诊医师
-    private String report_date;  //报告日期
-   private String print_date;  //打印日期
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private Date report_date;  //报告日期
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+   private Date print_date;  //打印日期
 
     //状态
     private Integer status;
@@ -35,7 +39,10 @@ public class UltrasonicDiagnosisReport {
     private Date create_date;
 
 
-
+    public UltrasonicDiagnosisReport(){
+        this.status=0;
+        this.create_date=new Date();
+    }
 
 
     public Integer getId() {
@@ -126,19 +133,19 @@ public class UltrasonicDiagnosisReport {
         this.consultant_doctor = consultant_doctor;
     }
 
-    public String getReport_date() {
+    public Date getReport_date() {
         return report_date;
     }
 
-    public void setReport_date(String report_date) {
+    public void setReport_date(Date report_date) {
         this.report_date = report_date;
     }
 
-    public String getPrint_date() {
+    public Date getPrint_date() {
         return print_date;
     }
 
-    public void setPrint_date(String print_date) {
+    public void setPrint_date(Date print_date) {
         this.print_date = print_date;
     }
 

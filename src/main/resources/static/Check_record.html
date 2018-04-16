@@ -3,14 +3,14 @@
 	<head>
 	    <meta charset="UTF-8" />
 	    <title>中大八院病历病案首页编辑</title>
-	   	<link rel="stylesheet" type="text/css" href="static/css/style.css"/>
+	   	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
 	   	
-	   	<link rel="stylesheet" type="text/css" href="static/css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="static/css/stylet.css" />
+	   	<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../css/stylet.css" />
 		<script src="js/Ecalendar.jquery.min.js"></script>
 	   	
-	   	<script type="text/javascript" src="static/js/jquery.min.js"></script>
-	    <script type="text/javascript" src="static/js/jquery-1.11.0.min.js"></script>
+	   	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	    <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="jeDate/jedate.js"></script>
 		<script type="text/javascript" src="jeDate/jedate1.js"></script>
 	    <style>
@@ -34,57 +34,65 @@
 				width: 2000px;
 				height: 1000px;
 				position: absolute;
-				left: 8%;
+				left: 38%;
 				bottom: 200px;
 				background: burlywood;
 			}
+			/*div{
+				margin-left: 800px;
+			}*/
+			hr{
+				width: 0%;
+			}
 		</style>
 	</head>
-	<body>
+	<body style="background-color:burlywood">
 		<div id="medical">
 			<div id="bing">
-				<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<font size="6">病程查房记录</font><br /><br /><br /><br />
-				<form id="form_b">
+				<br /><br /><br />
+				<li style="font-size: 50px;margin-left:0px">病程查房记录</li><br /><br /><br /><br />
+				<form id="form_b" onsubmit="return subs();" name="fo">
 					<div>
-						查房人：<input type="text" class="a " style="width: 100px" />
+						查房人：<input type="text" class="a " style="width: 100px" name="Patient_rounds_doctor"/>
 						查房时间：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly=""
-								  onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+									onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="Patient_rounds_date"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						病案号：<input type="text" class="a " style="width: 100px" />
+						外键ID：<input type="text" class="a " style="width: 100px" name="card_medical" name="bc_id"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						查房人身份：<input type="text" class="a " style="width: 100px" />
+						病案号：<input type="text" class="a " style="width: 100px" name="card_medical"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						查房记录：<input type="text" class="a " style="width: 100px" />
+						查房人签名：<input type="text" class="a " style="width: 100px" name="doctor_signature"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						<input type="submit" class="a " style="width: 100px" id="submit" value="提交"/>
-						<input type="submit" class="a " style="width: 100px" value="重置"/>
+						查房记录：<input type="text" class="a " style="width: 100px" name="Patient_rounds_details"/>
+					</div><br /><hr/><br /><br />
+					<div>
+						<input type="submit" class="a " style="width: 100px" id="submit" onclick="butt()" value="提交"/>
+						<input type="reset" class="a " style="width: 100px" value="重置"/>
 					</div>
 				</form>
 			</div>
 		</div>
 	    <script type="text/javascript">
-			$("submit").onclick(function () {
+			function subs() {
 				jQuery.ajax({
 					url: '',
 					type: 'POST',
-					data: {ids:ids},
+					data: $('#form_b').serialize(),
 					dataType: 'json',
 					success: function (r) {
-						
+						var answer = confirm("是否需要继续添加查房记录");
+						if(answer) {
+							window.location ="/";
+						 }else{
+							window.location ="/";
+						}
 					}
 				})
-			})
-
+			}
 		</script>
 	</body>
 </html>

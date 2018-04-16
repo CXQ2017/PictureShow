@@ -1,5 +1,7 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,6 +22,7 @@ public class TranscranialDopplerReport {
     private String department; //科室
     private String card_medical;  //病案号、住院号
     private String bed_no;    //床号
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date check_time;   //检查时间
     private String check_number;  //检查号
     private String TCD_content; //TCD描述
@@ -31,7 +34,10 @@ public class TranscranialDopplerReport {
     //创建日期
     private Date create_date;
 
-
+    public TranscranialDopplerReport(){
+        this.status=0;
+        this.create_date=new Date();
+    }
 
 
     public Integer getId() {

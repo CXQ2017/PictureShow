@@ -1,5 +1,8 @@
 package com.cxq.domain;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
@@ -21,7 +24,8 @@ public class MedicalRecord {
     private Integer id;
     private String name;
     private String sex;
-    private String birthday; //'出生日期',
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private Date birthday; //'出生日期',
     private Integer age; //'年龄',
     private String nationality; // '国籍',
     private String volk; // '民族',
@@ -50,13 +54,16 @@ public class MedicalRecord {
     private String linkman_phone; //`  '联系人电话',
     private String hospitalized_road; //` '入院途径',
     private String patient_source; //`  '病人来源',
-    private Date hospitalized_day; //` '入院日期',
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private Date hospitalized_day; //` '入院日期',                         //
     private String hospitalized_category; //` '入院科别',
     private String hospitalized_ward; //` '入院病房',
-    private Date change_time;    //'转科时间',
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private Date change_time;    //'转科时间',                              //
     private String change_ward;    // '转科科别',
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    private Date leave_hospital_day;  // '出院日期',
+
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private Date leave_hospital_day;  // '出院日期',                      //
     private String leave_hospital_category;   // '出院科别',
     private String leave_hospital_ward;   // '出院病房',
     private String real_hospitalization_day;   // '实际住院天数',
@@ -96,10 +103,17 @@ public class MedicalRecord {
     private String medical_record_quality;   //'病案质量',
     private String quality_control_physician;   // '质控医师',
     private String quality_control_nurse;  // '质控护士',
-    private Date quality_control_date;  // '质控日期',
-    private String statu; // '状态',
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private Date quality_control_date;  // '质控日期',              //
+    private Integer status; // '状态',
     private Date create_time; //'创建时间',
 
+
+
+    public MedicalRecord(){
+        this.status=0;
+        this.create_time=new Date();
+    }
 
     public Integer getId() {
         return id;
@@ -125,11 +139,11 @@ public class MedicalRecord {
         this.sex = sex;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -725,12 +739,12 @@ public class MedicalRecord {
         this.quality_control_date = quality_control_date;
     }
 
-    public String getStatu() {
-        return statu;
+    public Integer getStatu() {
+        return status;
     }
 
-    public void setStatu(String statu) {
-        this.statu = statu;
+    public void setStatu(Integer statu) {
+        this.status = statu;
     }
 
     public Date getCreate_time() {

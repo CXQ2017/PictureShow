@@ -1,5 +1,7 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,6 +23,7 @@ public class CheckRecord {
     //病程记录表的主键,可做外键关联
     private Integer bc_id;
     //查房时间
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date Patient_rounds_date;
     //查房医师
     private String Patient_rounds_doctor;
@@ -29,11 +32,14 @@ public class CheckRecord {
     //医师签名
     private String doctor_signature;
     //状态
-    private String status;
+    private Integer status;
     //创建时间
-    private String create_date;
+    private Date create_date;
 
-
+    public CheckRecord(){
+        this.status=0;
+        this.create_date=new Date();
+    }
 
     public Integer getId() {
         return id;
@@ -91,19 +97,19 @@ public class CheckRecord {
         this.doctor_signature = doctor_signature;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public String getCreate_date() {
+    public Date getCreate_date() {
         return create_date;
     }
 
-    public void setCreate_date(String create_date) {
+    public void setCreate_date(Date create_date) {
         this.create_date = create_date;
     }
 }

@@ -1,5 +1,7 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +20,7 @@ public class Hospitalized {
     @GeneratedValue
     private Integer id;
     private String card_medical;  //病案号
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date record_day;//记录日期
     private String history_statement;//病史陈述者
     private String main_suit;//入院主诉
@@ -45,18 +48,28 @@ public class Hospitalized {
     private String accessory;//辅助检查
     private String modified_diagnosis;//修正诊断
     private String modified_diagnosis_name;//修正诊断签名
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date modified_diagnosis_day;//修正诊断日期
     private String tentative_diagnosis;//初步诊断
     private String tentative_diagnosis_name;//初步诊断签名
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date tentative_diagnosis_day;//初步诊断日期
     private String supplementary_diagnosis;//补充诊断
     private String supplementary_diagnosis_name;//补充诊断签名
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date supplementary_diagnosis_day;//补充诊断日期
     private String final_diagnosis;//最后诊断
     private String final_diagnosis_name;//最后诊断签名
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date final_diagnosis_day;//最后诊断日期
-    private String status;//状态
+    private Integer status;//状态
     private Date create_time;//创建日期
+
+
+    public Hospitalized(){
+        this.status=0;
+        this.create_time=new Date();
+    }
 
     public Integer getId() {
         return id;
@@ -370,11 +383,11 @@ public class Hospitalized {
         this.final_diagnosis_day = final_diagnosis_day;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -383,100 +396,6 @@ public class Hospitalized {
     }
 
     public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
-    }
-
-    @Override
-    public String toString() {
-        return "Hospitalized{" +
-                "id=" + id +
-                ", card_medical='" + card_medical + '\'' +
-                ", record_day=" + record_day +
-                ", history_statement='" + history_statement + '\'' +
-                ", main_suit='" + main_suit + '\'' +
-                ", present_illness_history='" + present_illness_history + '\'' +
-                ", anamnesis='" + anamnesis + '\'' +
-                ", personal_history='" + personal_history + '\'' +
-                ", obsterical_history='" + obsterical_history + '\'' +
-                ", family_history='" + family_history + '\'' +
-                ", temperature='" + temperature + '\'' +
-                ", pulse='" + pulse + '\'' +
-                ", breathe='" + breathe + '\'' +
-                ", blood_pressure='" + blood_pressure + '\'' +
-                ", weight=" + weight +
-                ", general_condition='" + general_condition + '\'' +
-                ", skin_mucosa='" + skin_mucosa + '\'' +
-                ", lymphaden='" + lymphaden + '\'' +
-                ", head='" + head + '\'' +
-                ", neck='" + neck + '\'' +
-                ", chest='" + chest + '\'' +
-                ", belly='" + belly + '\'' +
-                ", anal_genitalia='" + anal_genitalia + '\'' +
-                ", spine='" + spine + '\'' +
-                ", reflex='" + reflex + '\'' +
-                ", special_case='" + special_case + '\'' +
-                ", accessory='" + accessory + '\'' +
-                ", modified_diagnosis='" + modified_diagnosis + '\'' +
-                ", modified_diagnosis_name='" + modified_diagnosis_name + '\'' +
-                ", modified_diagnosis_day=" + modified_diagnosis_day +
-                ", tentative_diagnosis='" + tentative_diagnosis + '\'' +
-                ", tentative_diagnosis_name='" + tentative_diagnosis_name + '\'' +
-                ", tentative_diagnosis_day=" + tentative_diagnosis_day +
-                ", supplementary_diagnosis='" + supplementary_diagnosis + '\'' +
-                ", supplementary_diagnosis_name='" + supplementary_diagnosis_name + '\'' +
-                ", supplementary_diagnosis_day=" + supplementary_diagnosis_day +
-                ", final_diagnosis='" + final_diagnosis + '\'' +
-                ", final_diagnosis_name='" + final_diagnosis_name + '\'' +
-                ", final_diagnosis_day=" + final_diagnosis_day +
-                ", status='" + status + '\'' +
-                ", create_time=" + create_time +
-                '}';
-    }
-
-    public Hospitalized() {
-        super();
-    }
-
-    public Hospitalized(String card_medical, Date record_day, String history_statement, String main_suit, String present_illness_history, String anamnesis, String personal_history, String obsterical_history, String family_history, String temperature, String pulse, String breathe, String blood_pressure, Double weight, String general_condition, String skin_mucosa, String lymphaden, String head, String neck, String chest, String belly, String anal_genitalia, String spine, String reflex, String special_case, String accessory, String modified_diagnosis, String modified_diagnosis_name, Date modified_diagnosis_day, String tentative_diagnosis, String tentative_diagnosis_name, Date tentative_diagnosis_day, String supplementary_diagnosis, String supplementary_diagnosis_name, Date supplementary_diagnosis_day, String final_diagnosis, String final_diagnosis_name, Date final_diagnosis_day, String status, Date create_time) {
-        this.card_medical = card_medical;
-        this.record_day = record_day;
-        this.history_statement = history_statement;
-        this.main_suit = main_suit;
-        this.present_illness_history = present_illness_history;
-        this.anamnesis = anamnesis;
-        this.personal_history = personal_history;
-        this.obsterical_history = obsterical_history;
-        this.family_history = family_history;
-        this.temperature = temperature;
-        this.pulse = pulse;
-        this.breathe = breathe;
-        this.blood_pressure = blood_pressure;
-        this.weight = weight;
-        this.general_condition = general_condition;
-        this.skin_mucosa = skin_mucosa;
-        this.lymphaden = lymphaden;
-        this.head = head;
-        this.neck = neck;
-        this.chest = chest;
-        this.belly = belly;
-        this.anal_genitalia = anal_genitalia;
-        this.spine = spine;
-        this.reflex = reflex;
-        this.special_case = special_case;
-        this.accessory = accessory;
-        this.modified_diagnosis = modified_diagnosis;
-        this.modified_diagnosis_name = modified_diagnosis_name;
-        this.modified_diagnosis_day = modified_diagnosis_day;
-        this.tentative_diagnosis = tentative_diagnosis;
-        this.tentative_diagnosis_name = tentative_diagnosis_name;
-        this.tentative_diagnosis_day = tentative_diagnosis_day;
-        this.supplementary_diagnosis = supplementary_diagnosis;
-        this.supplementary_diagnosis_name = supplementary_diagnosis_name;
-        this.supplementary_diagnosis_day = supplementary_diagnosis_day;
-        this.final_diagnosis = final_diagnosis;
-        this.final_diagnosis_name = final_diagnosis_name;
-        this.final_diagnosis_day = final_diagnosis_day;
-        this.status = status;
         this.create_time = create_time;
     }
 }

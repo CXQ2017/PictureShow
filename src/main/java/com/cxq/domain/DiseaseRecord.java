@@ -1,9 +1,12 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2018/4/11/011.
@@ -24,10 +27,11 @@ public class DiseaseRecord {
     //病案号
     private String card_medical;
     private String first_disease_record; //首次病程记录内容
-    private String first_disease_record_time;    //首次病程记录时间
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    private Date first_disease_record_time;    //首次病程记录时间
     //病例特点
     private String case_trait;
-    private String istory_characteristics;   //病史特点
+    private String history_characteristics;   //病史特点
     private String past_medical_history;     //既往史
     private String hospital_medical;   //入园体检
     private String auxiliary_examination;  //辅助检查
@@ -43,12 +47,15 @@ public class DiseaseRecord {
     //诊疗计划
     private String diagnostic_plan;
     //状态
-    private String status;
+    private Integer status;
     //创建时间
-    private String create_date;
+    private Date create_date;
 
 
-
+    public DiseaseRecord(){
+        this.status=0;
+        this.create_date=new Date();
+    }
 
     public Integer getBc_id() {
         return bc_id;
@@ -90,11 +97,11 @@ public class DiseaseRecord {
         this.first_disease_record = first_disease_record;
     }
 
-    public String getFirst_disease_record_time() {
+    public Date getFirst_disease_record_time() {
         return first_disease_record_time;
     }
 
-    public void setFirst_disease_record_time(String first_disease_record_time) {
+    public void setFirst_disease_record_time(Date first_disease_record_time) {
         this.first_disease_record_time = first_disease_record_time;
     }
 
@@ -106,12 +113,12 @@ public class DiseaseRecord {
         this.case_trait = case_trait;
     }
 
-    public String getIstory_characteristics() {
-        return istory_characteristics;
+    public String getHistory_characteristics() {
+        return history_characteristics;
     }
 
-    public void setIstory_characteristics(String istory_characteristics) {
-        this.istory_characteristics = istory_characteristics;
+    public void setHistory_characteristics(String history_characteristics) {
+        this.history_characteristics = history_characteristics;
     }
 
     public String getPast_medical_history() {
@@ -194,19 +201,19 @@ public class DiseaseRecord {
         this.diagnostic_plan = diagnostic_plan;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public String getCreate_date() {
+    public Date getCreate_date() {
         return create_date;
     }
 
-    public void setCreate_date(String create_date) {
+    public void setCreate_date(Date create_date) {
         this.create_date = create_date;
     }
 }
