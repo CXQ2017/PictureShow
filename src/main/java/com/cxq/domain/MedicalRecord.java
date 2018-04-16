@@ -1,6 +1,9 @@
 package com.cxq.domain;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -58,6 +61,7 @@ public class MedicalRecord {
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date change_time;    //'转科时间',                              //
     private String change_ward;    // '转科科别',
+
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date leave_hospital_day;  // '出院日期',                      //
     private String leave_hospital_category;   // '出院科别',

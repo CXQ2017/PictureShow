@@ -38,107 +38,107 @@
 			bottom: 200px;
 			background: burlywood;
 		}
+		hr{
+			width: 42%;
+		}
 	</style>
 </head>
 <body style="background: burlywood;">
 <div id="medical">
 	<div id="in">
-		<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<font size="6">入院记录</font><br /><br /><br /><br />
-		<form action="/addHospitalized" method="post" role="form">
+		<br /><br /><br />
+		<li style="font-size: 50px;margin-left:0px">入院记录</li><br /><br /><br /><br />
+		<form action="" method="get" role="form">
 			<div>
-				病案号：<input type="text" class="a " style="width: 100px" />
-				记录日期：<input class="datainp" id="datebut9" type="text" placeholder="请选择"  readonly=""
+				病案号：<input type="text" class="a " style="width: 100px" name="card_medical" />
+				记录日期：<input  name="record_day" class="datainp" id="datebut9" type="text" placeholder="请选择"  readonly=""
 							onClick="jeDate({dateCell:'#datebut9',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
-				病史陈诉者：<input type="text" class="a " style="width: 100px" />
+				病史陈诉者：<input  name="history_statement" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				主诉：<input type="text" class="a " style="width: 100px" />
+				主诉：<input  name="main_suit" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				现病史：<input type="text" class="a " style="width: 100px" />
+				现病史：<input  name="present_illness_history" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				既往史：<input type="text" class="a " style="width: 100px" />
+				既往史：<input  name="anamnesis" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				个人史：<input type="text" class="a " style="width: 100px" />
+				个人史：<input  name="personal_history" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				婚育史：<input type="text" class="a " style="width: 100px" />
+				婚育史：<input  name="obsterical_history" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				家族史：<input type="text" class="a " style="width: 100px" />
+				家族史：<input  name="family_history" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
 				<p>体格检查</p>
-				体温：<input type="text" class="a " style="width: 100px" />
-				呼吸：<input type="text" class="a " style="width: 100px" />
-				脉搏：<input type="text" class="a " style="width: 100px" />
-				血压：<input type="text" class="a " style="width: 100px" />
-				体重：<input type="text" class="a " style="width: 100px" />
+				体温：<input  name="temperature" type="text" class="a " style="width: 100px" />
+				呼吸：<input  name="pulse" ype="text" class="a " style="width: 100px" />
+				脉搏：<input  name="breathe" type="text" class="a " style="width: 100px" />
+				血压：<input  name="blood_pressure" type="text" class="a " style="width: 100px" />
+				体重：<input  name="weight" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				一般情况：<input type="text" class="a " style="width: 100px" />
+				一般情况：<input  name="general_condition" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				皮肤黏膜：<input type="text" class="a " style="width: 100px" />
+				皮肤黏膜：<input  name="skin_mucosa" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				淋巴结：<input type="text" class="a " style="width: 100px" />
+				淋巴结：<input  name="lymphaden" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				头部：<input type="text" class="a " style="width: 100px" />
+				头部：<input  name="head" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				颈部：<input type="text" class="a " style="width: 100px" />
+				颈部：<input  name="neck" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				胸部：<input type="text" class="a " style="width: 100px" />
+				胸部：<input  name="chest" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				腹部：<input type="text" class="a " style="width: 100px" />
+				腹部：<input  name="belly" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				肛门生殖器：<input type="text" class="a " style="width: 100px" />
+				肛门生殖器：<input  name="anal_genitalia" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				脊柱四肢：<input type="text" class="a " style="width: 100px" />
+				脊柱四肢：<input  name="spine" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				神经生理反射：<input type="text" class="a " style="width: 100px" />
+				神经生理反射：<input  name="reflex" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				专科情况：<input type="text" class="a " style="width: 100px" />
+				专科情况：<input  name="special_case" type="text" class="a " style="width: 100px" />
 			</div><br /><hr/><br /><br />
 			<div>
-				<p>辅助检查</p><br /><br />
-				修正诊断：<input type="text" class="a " style="width: 100px" />
-				签名：<input type="text" class="a " style="width: 100px" />
-				日期：<input class="datainp" id="datebut5" type="text" placeholder="请选择"  readonly=""
+				辅助检查：<input  name="accessory" type="text" class="a " style="width: 100px" />
+			</div><br /><hr/><br /><br />
+			<div>
+				修正诊断：<input  name="modified_diagnosis" type="text" class="a " style="width: 100px" />
+				签名：<input  name="modified_diagnosis_name" type="text" class="a " style="width: 100px" />
+				日期：<input  name="modified_diagnosis_day" class="datainp" id="datebut5" type="text" placeholder="请选择"  readonly=""
 						  onClick="jeDate({dateCell:'#datebut5',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
 			</div><br /><hr/><br /><br />
 			<div>
-				初步诊断：<input type="text" class="a " style="width: 100px" />
-				签名：<input type="text" class="a " style="width: 100px" />
-				日期：<input class="datainp" id="datebut6" type="text" placeholder="请选择"  readonly=""
+				初步诊断：<input  name="tentative_diagnosis" type="text" class="a " style="width: 100px" />
+				签名：<input  name="tentative_diagnosis_name" type="text" class="a " style="width: 100px" />
+				日期：<input  name="tentative_diagnosis_day" class="datainp" id="datebut6" type="text" placeholder="请选择"  readonly=""
 						  onClick="jeDate({dateCell:'#datebut6',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
 			</div><br /><hr/><br /><br />
 			<div>
-				补充诊断：<input type="text" class="a " style="width: 100px" />
-				签名：<input type="text" class="a " style="width: 100px" />
-				日期：<input class="datainp" id="datebut7" type="text" placeholder="请选择"  readonly=""
+				补充诊断：<input  name="supplementary_diagnosis" type="text" class="a " style="width: 100px" />
+				签名：<input  name="supplementary_diagnosis_name" type="text" class="a " style="width: 100px" />
+				日期：<input  name="supplementary_diagnosis_day" class="datainp" id="datebut7" type="text" placeholder="请选择"  readonly=""
 						  onClick="jeDate({dateCell:'#datebut7',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
 			</div><br /><hr/><br /><br />
 			<div>
-				最后诊断：<input type="text" class="a " style="width: 100px" />
-				签名：<input type="text" class="a " style="width: 100px" />
-				日期：<input class="datainp" id="datebut8" type="text" placeholder="请选择"  readonly=""
+				最后诊断：<input  name="final_diagnosis" type="text" class="a " style="width: 100px" />
+				签名：<input  name="final_diagnosis_name" type="text" class="a " style="width: 100px" />
+				日期：<input  name="final_diagnosis_day" class="datainp" id="datebut8" type="text" placeholder="请选择"  readonly=""
 						  onClick="jeDate({dateCell:'#datebut8',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
 			</div><br /><hr/><br /><br />
 			<div>

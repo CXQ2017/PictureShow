@@ -19,51 +19,52 @@ public class Hospitalized {
     @Id
     @GeneratedValue
     private Integer id;
-    private String card_medical;
+    private String card_medical;  //病案号
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
-    private Date record_day;
-    private String history_statement;
-    private String main_suit;
-    private String present_illness_history;
-    private String anamnesis;
-    private String personal_history;
-    private String obsterical_history;
-    private String family_history;
-    private String temperature;
-    private String pulse;
-    private String breathe;
-    private String blood_pressure;
-    private Double weight;
-    private String general_condition;
-    private String skin_mucosa;
-    private String lymphaden;
-    private String head;
-    private String neck;
-    private String chest;
-    private String belly;
-    private String anal_genitalia;
-    private String spine;
-    private String reflex;
-    private String special_case;
-    private String accessory;
-    private String modified_diagnosis;
-    private String modified_diagnosis_name;
+    private Date record_day;//记录日期
+    private String history_statement;//病史陈述者
+    private String main_suit;//入院主诉
+    private String present_illness_history;//现病史
+    private String anamnesis;//既往史
+    private String personal_history;//个人史
+    private String obsterical_history;//婚育史
+    private String family_history;//家族史
+    private String temperature;//体格检查体温
+    private String pulse;//脉搏
+    private String breathe;//呼吸
+    private String blood_pressure;//血压
+    private Double weight;//体重
+    private String general_condition;//一般情况
+    private String skin_mucosa;//皮肤黏膜
+    private String lymphaden;//淋巴结
+    private String head;//头部
+    private String neck;//颈部
+    private String chest;//胸部
+    private String belly;//腹部
+    private String anal_genitalia;//肛门生殖器
+    private String spine;//脊柱四肢
+    private String reflex;//神经生理行反射
+    private String special_case;//专科情况
+    private String accessory;//辅助检查
+    private String modified_diagnosis;//修正诊断
+    private String modified_diagnosis_name;//修正诊断签名
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
-    private Date modified_diagnosis_day;
-    private String tentative_diagnosis;
-    private String tentative_diagnosis_name;
+    private Date modified_diagnosis_day;//修正诊断日期
+    private String tentative_diagnosis;//初步诊断
+    private String tentative_diagnosis_name;//初步诊断签名
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
-    private Date tentative_diagnosis_day;
-    private String supplementary_diagnosis;
-    private String supplementary_diagnosis_name;
+    private Date tentative_diagnosis_day;//初步诊断日期
+    private String supplementary_diagnosis;//补充诊断
+    private String supplementary_diagnosis_name;//补充诊断签名
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
-    private Date supplementary_diagnosis_day;
-    private String final_diagnosis;
-    private String final_diagnosis_name;
+    private Date supplementary_diagnosis_day;//补充诊断日期
+    private String final_diagnosis;//最后诊断
+    private String final_diagnosis_name;//最后诊断签名
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
-    private Date final_diagnosis_day;
-    private Integer status;
-    private Date create_time;
+    private Date final_diagnosis_day;//最后诊断日期
+    private Integer status;//状态
+    private Date create_time;//创建日期
+
 
     public Hospitalized(){
         this.status=0;
@@ -397,52 +398,4 @@ public class Hospitalized {
     public void setCreate_time(Date create_time) {
         this.create_time = create_time;
     }
-
-    @Override
-    public String toString() {
-        return "Hospitalized{" +
-                "id=" + id +
-                ", card_medical='" + card_medical + '\'' +
-                ", record_day=" + record_day +
-                ", history_statement='" + history_statement + '\'' +
-                ", main_suit='" + main_suit + '\'' +
-                ", present_illness_history='" + present_illness_history + '\'' +
-                ", anamnesis='" + anamnesis + '\'' +
-                ", personal_history='" + personal_history + '\'' +
-                ", obsterical_history='" + obsterical_history + '\'' +
-                ", family_history='" + family_history + '\'' +
-                ", temperature='" + temperature + '\'' +
-                ", pulse='" + pulse + '\'' +
-                ", breathe='" + breathe + '\'' +
-                ", blood_pressure='" + blood_pressure + '\'' +
-                ", weight=" + weight +
-                ", general_condition='" + general_condition + '\'' +
-                ", skin_mucosa='" + skin_mucosa + '\'' +
-                ", lymphaden='" + lymphaden + '\'' +
-                ", head='" + head + '\'' +
-                ", neck='" + neck + '\'' +
-                ", chest='" + chest + '\'' +
-                ", belly='" + belly + '\'' +
-                ", anal_genitalia='" + anal_genitalia + '\'' +
-                ", spine='" + spine + '\'' +
-                ", reflex='" + reflex + '\'' +
-                ", special_case='" + special_case + '\'' +
-                ", accessory='" + accessory + '\'' +
-                ", modified_diagnosis='" + modified_diagnosis + '\'' +
-                ", modified_diagnosis_name='" + modified_diagnosis_name + '\'' +
-                ", modified_diagnosis_day=" + modified_diagnosis_day +
-                ", tentative_diagnosis='" + tentative_diagnosis + '\'' +
-                ", tentative_diagnosis_name='" + tentative_diagnosis_name + '\'' +
-                ", tentative_diagnosis_day=" + tentative_diagnosis_day +
-                ", supplementary_diagnosis='" + supplementary_diagnosis + '\'' +
-                ", supplementary_diagnosis_name='" + supplementary_diagnosis_name + '\'' +
-                ", supplementary_diagnosis_day=" + supplementary_diagnosis_day +
-                ", final_diagnosis='" + final_diagnosis + '\'' +
-                ", final_diagnosis_name='" + final_diagnosis_name + '\'' +
-                ", final_diagnosis_day=" + final_diagnosis_day +
-                ", status='" + status + '\'' +
-                ", create_time=" + create_time +
-                '}';
-    }
-
 }
