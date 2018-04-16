@@ -37,13 +37,13 @@ public class PictureShowApplication {
 	private String picture_path;
 
 
-	@RequestMapping(value = "/login" , method = RequestMethod.POST)
-	public Map<String, Object> login(HttpServletRequest request){
-		Map<String, Object> model = new HashMap<String, Object>();
-		String username = request.getParameter("name");
-		model.put("data", true);
-		return model;
-	}
+    @RequestMapping(value = "/login" , method = RequestMethod.POST)
+    public Map<String, Object> login(HttpServletRequest request){
+        Map<String, Object> model = new HashMap<String, Object>();
+        String username = request.getParameter("name");
+        return model;
+    }
+
 
     @RequestMapping("/refresh_picture")
     @ResponseBody
