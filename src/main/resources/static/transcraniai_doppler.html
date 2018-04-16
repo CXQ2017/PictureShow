@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>中大八院病历出院页编辑</title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+
+        <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../css/stylet.css" />
+        <script src="js/Ecalendar.jquery.min.js"></script>
+
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="../jeDate/jedate.js"></script>
+        <script type="text/javascript" src="../jeDate/jedate1.js"></script>
+        <style>
+            .a{
+                border-radius:5px;
+            }
+            .datainp{ width:150px; height:20px; border:1px #ccc solid;border-radius:5px;}
+            /*#medical{
+                !*border: 1px solid black;*!
+                top: 0px;
+                width: 2000px;
+                height: 1000px;
+                position: absolute;
+                !*left: 16%;*!
+                bottom: 200px;
+                background: burlywood;
+            }
+            #bing{
+                !*border: 1px solid black;*!
+                top: 0px;
+                width: 2000px;
+                height: 1000px;
+                position: absolute;
+                left: 8%;
+                bottom: 200px;
+                background: burlywood;
+            }*/
+            div{
+                margin-left: 800px;
+            }
+            hr{
+                width: 0%;
+            }
+        </style>
+    </head>
+    <body style="background-color: burlywood">
+        <!--<div id="medical">
+            <div id="bing">-->
+                <br /><br /><br />
+                <li style="font-size: 50px;margin-left:800px">各种影像检查报告</li><br /><br /><br /><br />
+                <form id="form_b" action="">
+                    <div>
+                        科室：<input type="text" class="a " style="width: 100px" name="department"/>
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        病案号：<input type="text" class="a " style="width: 100px" name="card_medical" />
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        床号：<input type="text" class="a " style="width: 100px" name="bed_no"/>
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        检查时间：<input  name="check_time" class="datainp" id="datebut17" type="text" placeholder="请选择"  readonly=""
+                                     onClick="jeDate({dateCell:'#datebut17',isTime:true,format:'YYYY-MM-DD'})" 	/>
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        检查号：<input type="text" class="a " style="width: 100px" name="check_number"/>
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        TCD描述：<input type="text" class="a " style="width: 100px" name="TCD_content"/>
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        QT：<input type="text" class="a " style="width: 100px" name="QT"/>
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        TCD结论：<input type="text" class="a " style="width: 100px" name="TCD_conclusion"/>
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        医师签名：<input type="text" class="a " style="width: 100px" name="physician_signature"/>
+                    </div><br /><hr/><br /><br />
+                    <div>
+                        <input type="submit" class="a " style="width: 100px" id="submit" value="提交"/>
+                        <input type="reset" class="a " style="width: 100px" value="重置"/>
+                    </div>
+                </form>
+            <!--</div>
+        </div>-->
+    </body>
+</html>
