@@ -1,5 +1,7 @@
 package com.cxq.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -53,6 +55,7 @@ public class MedicalRecord {
     private String hospitalized_ward; //` '入院病房',
     private Date change_time;    //'转科时间',
     private String change_ward;    // '转科科别',
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     private Date leave_hospital_day;  // '出院日期',
     private String leave_hospital_category;   // '出院科别',
     private String leave_hospital_ward;   // '出院病房',
