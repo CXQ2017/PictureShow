@@ -17,7 +17,6 @@ public class DiseaseRecord {
     @Id
     @GeneratedValue
     private Integer bc_id;
-
     //科室
     private String  department;
     //床号
