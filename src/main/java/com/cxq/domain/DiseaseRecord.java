@@ -2,10 +2,7 @@ package com.cxq.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -26,25 +23,38 @@ public class DiseaseRecord {
     private String bed_no;
     //病案号
     private String card_medical;
+    @Column(columnDefinition="TEXT")
     private String first_disease_record; //首次病程记录内容
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date first_disease_record_time;    //首次病程记录时间
     //病例特点
+    @Column(columnDefinition="TEXT")
     private String case_trait;
+    @Column(columnDefinition="TEXT")
     private String history_characteristics;   //病史特点
+    @Column(columnDefinition="TEXT")
     private String past_medical_history;     //既往史
+    @Column(columnDefinition="TEXT")
     private String hospital_medical;   //入园体检
+    @Column(columnDefinition="TEXT")
     private String auxiliary_examination;  //辅助检查
 
     //诊断、诊断依据及鉴别诊断
     //private String diagnostic_procedure;
+    @Column(columnDefinition="TEXT")
     private String primary_diagnosis;   //初步诊断
+    @Column(columnDefinition="TEXT")
     private String diagnostic_basis;    //诊断依据
+    @Column(columnDefinition="TEXT")
     private String identify_diagnostic;    //鉴别诊断
+    @Column(columnDefinition="TEXT")
     private String  support_point;   //支持点
+    @Column(columnDefinition="TEXT")
     private String not_supported;    //不支持点
+    @Column(columnDefinition="TEXT")
     private String conclusion;   //结论
     //诊疗计划
+    @Column(columnDefinition="TEXT")
     private String diagnostic_plan;
     //状态
     private Integer status;

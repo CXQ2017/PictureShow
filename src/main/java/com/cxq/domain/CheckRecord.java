@@ -27,7 +27,9 @@ public class CheckRecord {
     //查房医师
     private String Patient_rounds_doctor;
     //查房详情记录
+    @Column(columnDefinition="TEXT")
     private String Patient_rounds_details;
+
     //医师签名
     private String doctor_signature;
     //状态

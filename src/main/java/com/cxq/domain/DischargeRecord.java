@@ -2,10 +2,7 @@ package com.cxq.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -35,16 +32,22 @@ public class DischargeRecord {
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date discharge_date;
     //入院情况
+    @Column(columnDefinition="TEXT")
     private String admitting_situation;
     //入院诊断
+    @Column(columnDefinition="TEXT")
     private String admitting_diagnosis;
     //诊疗经过
+    @Column(columnDefinition="TEXT")
     private String treatment_process;
     //出院诊断
+    @Column(columnDefinition="TEXT")
     private String discharge_diagnosis;
     //出院情况
+    @Column(columnDefinition="TEXT")
     private String discharge_situation;
     //出院医嘱
+    @Column(columnDefinition="TEXT")
     private String discharge_advice;
     //医师签名
     private String physician_signature;
