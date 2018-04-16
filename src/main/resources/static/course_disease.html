@@ -34,63 +34,73 @@
 				width: 2000px;
 				height: 1000px;
 				position: absolute;
-				left: 30%;
+				left: 35%;
 				bottom: 200px;
 				background: burlywood;
 			}
+			/*div{
+				margin-left: 800px;
+			}*/
+			hr{
+				width: 0%;
+			}
 		</style>
 	</head>
-	<body>
+	<body style="background-color: burlywood">
 		<div id="medical">
 			<div id="bing">
-				<br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<font size="6">病程记录</font><br /><br /><br /><br />
+				<br /><br /><br />
+				<li style="font-size: 50px;margin-left:0px">病程记录</li><br /><br /><br /><br />
 				<form>
 					<div>
-						首次病程记录：<input type="text" class="a " style="width: 100px" />
+						首次病程记录：<input type="text" class="a " style="width: 100px" name="first_disease_record"/>
 						日期：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly=""
-								  onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+								  onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="first_disease_record_time"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						病例特点：<input type="text" class="a " style="width: 100px" />
+						病案号：<input type="text" class="a " style="width: 100px" name="card_medical"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						病史特点：<input type="text" class="a " style="width: 100px" />
+						床号：<input type="text" class="a " style="width: 100px" name="bed_no"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						既往史：<input type="text" class="a " style="width: 100px" />
+						科室：<input type="text" class="a " style="width: 100px" name="department"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						入院体检：<input type="text" class="a " style="width: 100px" />
+						病例特点：<input type="text" class="a " style="width: 100px" name="case_trait"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						辅助检查：<input type="text" class="a " style="width: 100px" />
+						病史特点：<input type="text" class="a " style="width: 100px" name="istory_characteristics"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						初步诊断：<input type="text" class="a " style="width: 100px" />
+						既往史：<input type="text" class="a " style="width: 100px" name="past_medical_history"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						诊断依据：<input type="text" class="a " style="width: 100px" />
+						入院体检：<input type="text" class="a " style="width: 100px" name="hospital_medical"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						诊断鉴别：<input type="text" class="a " style="width: 100px" />
+						辅助检查：<input type="text" class="a " style="width: 100px" name="auxiliary_examination"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						支持点：<input type="text" class="a " style="width: 100px" />
+						初步诊断：<input type="text" class="a " style="width: 100px" name="primary_diagnosis"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						不支持点：<input type="text" class="a " style="width: 100px" />
+						诊断依据：<input type="text" class="a " style="width: 100px" name="diagnostic_basis"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						结论：<input type="text" class="a " style="width: 100px" />
+						诊断鉴别：<input type="text" class="a " style="width: 100px" name="identify_diagnostic"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						诊疗计划：<textarea type="text" class="a " style="width: 100px"></textarea>
+						支持点：<input type="text" class="a " style="width: 100px" name="support_point"/>
+					</div><br /><hr/><br /><br />
+					<div>
+						不支持点：<input type="text" class="a " style="width: 100px" name="not_supported"/>
+					</div><br /><hr/><br /><br />
+					<div>
+						结论：<input type="text" class="a " style="width: 100px" name="conclusion"/>
+					</div><br /><hr/><br /><br />
+					<div>
+						诊疗计划：<textarea type="text" class="a " style="width: 100px" name="diagnostic_plan"></textarea>
 					</div><br /><hr/><br /><br />
 					<div>
 						<input type="submit" class="a " style="width: 100px" value="提交"/>
