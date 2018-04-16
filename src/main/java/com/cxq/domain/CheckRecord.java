@@ -15,8 +15,7 @@ import java.util.Date;
 public class CheckRecord {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)//根据数据库的Identity字段生成
- // @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue//根据数据库的Identity字段生成
     private Integer id;
     //病案号
     private String card_medical;

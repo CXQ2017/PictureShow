@@ -108,7 +108,6 @@ public class login_in {
     //医师护理记录
     @PostMapping("/addCheck_record")
     public String  addCheckRecord(@ModelAttribute CheckRecord checkRecord) {
-       // System.out.println("打印医师护理记录的ID："+checkRecord.getBc_id());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         checkRecordRepository.save(checkRecord);
         return "chooseCaseInformationKinds";
