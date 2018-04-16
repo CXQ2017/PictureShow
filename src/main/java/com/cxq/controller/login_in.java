@@ -100,11 +100,15 @@ public class login_in {
     }
 
 
-
+    // 跳转到医师护理
+    @RequestMapping("/toChoosecaseKinds/toCheck_record")
+    public String toCheck_record(){
+        return "Check_record";
+    }
     //医师护理记录
-    @PostMapping("/i1w11")
+    @PostMapping("/addCheck_record")
     public String  addCheckRecord(@ModelAttribute CheckRecord checkRecord) {
-        System.out.println("打印医师护理记录的ID："+checkRecord.getBc_id());
+       // System.out.println("打印医师护理记录的ID："+checkRecord.getBc_id());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         checkRecordRepository.save(checkRecord);
         return "chooseCaseInformationKinds";
@@ -119,42 +123,70 @@ public class login_in {
     //出院记录
     @PostMapping("/addleave_hospital")
     public String  addDischargeRecord(@ModelAttribute DischargeRecord dischargeRecord) {
-        System.out.println("打印出院记录的ID："+dischargeRecord.getId());
+       // System.out.println("打印出院记录的ID："+dischargeRecord.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         dischargeRecordRepository.save(dischargeRecord);
         return "chooseCaseInformationKinds";
     }
 
+    // 跳转到影像科记录
+    @RequestMapping("/toChoosecaseKinds/tovideo_report")
+    public String tovideo_report(){
+        return "video_report";
+    }
+
     //影像报告
-    @PostMapping("/i1www")
+    @PostMapping("/addvideo_report")
     public String  addVideoReport(@ModelAttribute VideoReport videoReport) {
-        System.out.println("打印影像报告的ID："+videoReport.getVr_id());
+       // System.out.println("打印影像报告的ID："+videoReport.getVr_id());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         videoReportRepository.save(videoReport);
         return "chooseCaseInformationKinds";
     }
 
+    // 跳转到超声波
+    @RequestMapping("/toChoosecaseKinds/toultrasonic_diagnosisReport")
+    public String toultrasonic_diagnosisReport(){
+        return "ultrasonic_diagnosisReport";
+    }
+
+
     //超声波报告
-    @PostMapping("/i1w22")
-    public String  addUltrasonicDiagnosisReport(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport) {
-        System.out.println("打印超声波报告的ID："+ultrasonicDiagnosisReport.getId());
+    @PostMapping("/addultrasonic_diagnosisReport")
+    public String  addultrasonic_diagnosisReport(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport) {
+       // System.out.println("打印超声波报告的ID："+ultrasonicDiagnosisReport.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
-        return "index";
+        return "chooseCaseInformationKinds";
+    }
+
+
+    // 跳转到经颅多普勒超声检查
+    @RequestMapping("/toChoosecaseKinds/toTranscranial_doppler_report")
+    public String toTranscranial_doppler_report(){
+        return "transcraniai_doppler";
     }
 
     //经颅多普勒超声检查报告
-    @PostMapping("/i1waa")
+    @PostMapping("/addTranscranial_doppler_report")
     public String  addTranscranialDopplerReport(@ModelAttribute TranscranialDopplerReport transcranialDopplerReport) {
-        System.out.println("打印经颅多普勒超声检查报告的ID："+transcranialDopplerReport.getId());
+      //  System.out.println("打印经颅多普勒超声检查报告的ID："+transcranialDopplerReport.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         transcranialDopplerReportRepository.save(transcranialDopplerReport);
         return "chooseCaseInformationKinds";
     }
+
+
+    // 跳转到心率图
+    @RequestMapping("/toChoosecaseKinds/toheart_rateChart")
+    public String toheart_rateChart(){
+        return "heart_rateChart";
+    }
+
     //心率图检查报告
-    @PostMapping("/i1wss")
+    @PostMapping("/addheart_rateChart")
     public String  addHeartRateChart(@ModelAttribute HeartRateChart heartRateChart) {
-        System.out.println("打印经颅多普勒超声检查报告的ID："+heartRateChart.getId());
+      //  System.out.println("打印经颅多普勒超声检查报告的ID："+heartRateChart.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         heartRateChartRepository.save(heartRateChart);
         return "chooseCaseInformationKinds";
