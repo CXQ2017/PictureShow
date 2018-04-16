@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Administrator on 2018/4/11.
@@ -45,6 +48,7 @@ public class login_in {
     }
 
 
+
     //跳转到病例信息录入
     @RequestMapping("/toChoosecaseKinds")
     public String tochooseCaseInformationKinds(){
@@ -61,37 +65,42 @@ public class login_in {
     //住院首页添加信息
     @PostMapping("/medical_record")
         public String addMedicalRecord(@ModelAttribute MedicalRecord medicalRecord) {
-
-        System.out.println("打印住院首页的ID：");
-//        //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
+        System.out.println("打印住院首页的住院号："+medicalRecord.getCard_medical());
       medicalRecordRepository.save(medicalRecord);
-
         return "chooseCaseInformationKinds";
     }
 
 
+      //跳转到入院记录
+    @RequestMapping("/toChoosecaseKinds/toHospitalized")
+    public String toHospitalized(){
+        return "hospitalized";
+    }
 
     //入院记录添加信息
-    @PostMapping("/i13")
+    @PostMapping("/addHospitalized")
     public String  addHospitalized(@ModelAttribute Hospitalized hospitalized) {
-
-
         System.out.println("打印入院记录的ID："+hospitalized.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         hospitalizedRepository.save(hospitalized);
-        return "index";
+        return "chooseCaseInformationKinds";
     }
+
+   // 跳转到病程记录
+   @RequestMapping("/toChoosecaseKinds/tocourse_disease")
+   public String tocourse_disease(){
+       return "course_disease";
+   }
 
     //病程记录
-    @PostMapping("/i1w1111")
+    @PostMapping("/addcourse_disease")
     public String  addDiseaseRecord(@ModelAttribute DiseaseRecord diseaseRecord) {
-
-
-        System.out.println("打印病程记录的ID："+diseaseRecord.getBc_id());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         diseaseRecordRepository.save(diseaseRecord);
-        return "index";
+        return "chooseCaseInformationKinds";
     }
+
+
 
     //医师护理记录
     @PostMapping("/i1w11")
