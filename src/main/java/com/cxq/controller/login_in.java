@@ -3,7 +3,6 @@ package com.cxq.controller;
 import com.cxq.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,14 +48,6 @@ public class login_in {
     }
 
 
-    @RequestMapping(value = "/login" , method = RequestMethod.POST)
-    public String login(Model model, HttpServletRequest request){
-//				String username = request.getParameter("username");
-//		String password = request.getParameter("password");
-   //     model.addAttribute("age","name");
-        System.out.println("登录用户名"+request.getParameter("name"));
-        return "tagged_pdf";
-    }
 
     //跳转到病例信息录入
     @RequestMapping("/toChoosecaseKinds")

@@ -11,9 +11,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +37,13 @@ public class PictureShowApplication {
 	private String picture_path;
 
 
+	@RequestMapping(value = "/login" , method = RequestMethod.POST)
+	public Map<String, Object> login(HttpServletRequest request){
+		Map<String, Object> model = new HashMap<String, Object>();
+		String username = request.getParameter("name");
+		model.put("data", true);
+		return model;
+	}
 
     @RequestMapping("/refresh_picture")
     @ResponseBody
