@@ -51,38 +51,37 @@
             <div id="bing">
                 <br /><br /><br />
                 <li style="font-size: 50px;margin-left:0px">经颅多普勒超声检查报告</li><br /><br /><br /><br />
-                <form id="form_b" action="/addTranscranial_doppler_report" method="post">
+                <br id="form_b" action="/addTranscranial_doppler_report" method="post">
+
+                        科室：<input type="text" class="a "  name="department" style="height:30px;width:240px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        病案号：<input type="text" class="a "  name="card_medical" style="height:30px;width:240px;"/>
+
                     <div>
-                        科室：<input type="text" class="a " style="width: 100px" name="department"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        病案号：<input type="text" class="a " style="width: 100px" name="card_medical" />
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        床号：<input type="text" class="a " style="width: 100px" name="bed_no"/>
-                    </div><br /><hr/><br /><br />
+                        <br />
+                        <br />
+                        床号：<input type="text" class="a "  name="bed_no"&nbsp; style="height:30px;width:240px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        检查号：<input type="text" class="a "  name="check_number" style="height:30px;width:240px;"/>
+                        <br />
+                        <br />
+                    </div>
                     <div>
                         检查时间：<input  name="check_time" class="datainp" id="datebut17" type="text" placeholder="请选择"  readonly=""
-                                     onClick="jeDate({dateCell:'#datebut17',isTime:true,format:'YYYY-MM-DD'})" 	/>
-                    </div><br /><hr/><br /><br />
+                                     onClick="jeDate({dateCell:'#datebut17',isTime:true,format:'YYYY-MM-DD'})"style="height:30px;width:100px;" 	/>
+                    </div>
                     <div>
-                        检查号：<input type="text" class="a " style="width: 100px" name="check_number"/>
-                    </div><br /><hr/><br /><br />
+                        <br /><br />
+                        TCD描述：<textarea type="text" class="a " style="height:100px;width:500px;" name="TCD_content"></textarea>
+                    </div><br /><br />
                     <div>
-                        TCD描述：<input type="text" class="a " style="width: 100px" name="TCD_content"/>
-                    </div><br /><hr/><br /><br />
+                        TCD结论：<textarea type="text" class="a " style="height:100px;width:500px;" name="TCD_conclusion"></textarea>
+                    </div><br /><br />
                     <div>
-                        QT：<input type="text" class="a " style="width: 100px" name="QT"/>
-                    </div><br /><hr/><br /><br />
+                        医师签名：<input type="text" class="a " style="height:30px;width:240px;" name="physician_signature"/>
+                    </div><br /><br />
                     <div>
-                        TCD结论：<input type="text" class="a " style="width: 100px" name="TCD_conclusion"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        医师签名：<input type="text" class="a " style="width: 100px" name="physician_signature"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        <input type="submit" class="a " style="width: 100px" id="submit" value="提交"/>
-                        <input type="reset" class="a " style="width: 100px" value="重置"/>
+                        <input type="submit" class="a " style="height:30px;width: 100px" id="submit" value="提交"/>
+                        <input type="reset" class="a " style="height:30px;width: 100px" value="重置"/>
                     </div>
                 </form>
             </div>
