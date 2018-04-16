@@ -107,16 +107,22 @@ public class login_in {
         System.out.println("打印医师护理记录的ID："+checkRecord.getBc_id());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         checkRecordRepository.save(checkRecord);
-        return "index";
+        return "chooseCaseInformationKinds";
+    }
+
+    // 跳转到出院记录
+    @RequestMapping("/toChoosecaseKinds/toleave_hospital")
+    public String toleave_hospital(){
+        return "leave_hospital";
     }
 
     //出院记录
-    @PostMapping("/i1w221")
+    @PostMapping("/addleave_hospital")
     public String  addDischargeRecord(@ModelAttribute DischargeRecord dischargeRecord) {
         System.out.println("打印出院记录的ID："+dischargeRecord.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         dischargeRecordRepository.save(dischargeRecord);
-        return "index";
+        return "chooseCaseInformationKinds";
     }
 
     //影像报告
@@ -125,7 +131,7 @@ public class login_in {
         System.out.println("打印影像报告的ID："+videoReport.getVr_id());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         videoReportRepository.save(videoReport);
-        return "index";
+        return "chooseCaseInformationKinds";
     }
 
     //超声波报告
@@ -143,14 +149,14 @@ public class login_in {
         System.out.println("打印经颅多普勒超声检查报告的ID："+transcranialDopplerReport.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         transcranialDopplerReportRepository.save(transcranialDopplerReport);
-        return "index";
+        return "chooseCaseInformationKinds";
     }
-    //经颅多普勒超声检查报告
+    //心率图检查报告
     @PostMapping("/i1wss")
     public String  addHeartRateChart(@ModelAttribute HeartRateChart heartRateChart) {
         System.out.println("打印经颅多普勒超声检查报告的ID："+heartRateChart.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         heartRateChartRepository.save(heartRateChart);
-        return "index";
+        return "chooseCaseInformationKinds";
     }
 }
