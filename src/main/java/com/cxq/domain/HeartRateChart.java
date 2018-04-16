@@ -32,7 +32,10 @@ public class HeartRateChart {
     private Date create_date;
 
 
-
+    public HeartRateChart(){
+        this.status=0;
+        this.create_date=new Date();
+    }
 
     public Integer getId() {
         return id;

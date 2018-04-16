@@ -1,5 +1,7 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +20,7 @@ public class Hospitalized {
     @GeneratedValue
     private Integer id;
     private String card_medical;
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date record_day;
     private String history_statement;
     private String main_suit;
@@ -45,18 +48,27 @@ public class Hospitalized {
     private String accessory;
     private String modified_diagnosis;
     private String modified_diagnosis_name;
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date modified_diagnosis_day;
     private String tentative_diagnosis;
     private String tentative_diagnosis_name;
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date tentative_diagnosis_day;
     private String supplementary_diagnosis;
     private String supplementary_diagnosis_name;
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date supplementary_diagnosis_day;
     private String final_diagnosis;
     private String final_diagnosis_name;
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date final_diagnosis_day;
-    private String status;
+    private Integer status;
     private Date create_time;
+
+    public Hospitalized(){
+        this.status=0;
+        this.create_time=new Date();
+    }
 
     public Integer getId() {
         return id;
@@ -370,11 +382,11 @@ public class Hospitalized {
         this.final_diagnosis_day = final_diagnosis_day;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -433,50 +445,4 @@ public class Hospitalized {
                 '}';
     }
 
-    public Hospitalized() {
-        super();
-    }
-
-    public Hospitalized(String card_medical, Date record_day, String history_statement, String main_suit, String present_illness_history, String anamnesis, String personal_history, String obsterical_history, String family_history, String temperature, String pulse, String breathe, String blood_pressure, Double weight, String general_condition, String skin_mucosa, String lymphaden, String head, String neck, String chest, String belly, String anal_genitalia, String spine, String reflex, String special_case, String accessory, String modified_diagnosis, String modified_diagnosis_name, Date modified_diagnosis_day, String tentative_diagnosis, String tentative_diagnosis_name, Date tentative_diagnosis_day, String supplementary_diagnosis, String supplementary_diagnosis_name, Date supplementary_diagnosis_day, String final_diagnosis, String final_diagnosis_name, Date final_diagnosis_day, String status, Date create_time) {
-        this.card_medical = card_medical;
-        this.record_day = record_day;
-        this.history_statement = history_statement;
-        this.main_suit = main_suit;
-        this.present_illness_history = present_illness_history;
-        this.anamnesis = anamnesis;
-        this.personal_history = personal_history;
-        this.obsterical_history = obsterical_history;
-        this.family_history = family_history;
-        this.temperature = temperature;
-        this.pulse = pulse;
-        this.breathe = breathe;
-        this.blood_pressure = blood_pressure;
-        this.weight = weight;
-        this.general_condition = general_condition;
-        this.skin_mucosa = skin_mucosa;
-        this.lymphaden = lymphaden;
-        this.head = head;
-        this.neck = neck;
-        this.chest = chest;
-        this.belly = belly;
-        this.anal_genitalia = anal_genitalia;
-        this.spine = spine;
-        this.reflex = reflex;
-        this.special_case = special_case;
-        this.accessory = accessory;
-        this.modified_diagnosis = modified_diagnosis;
-        this.modified_diagnosis_name = modified_diagnosis_name;
-        this.modified_diagnosis_day = modified_diagnosis_day;
-        this.tentative_diagnosis = tentative_diagnosis;
-        this.tentative_diagnosis_name = tentative_diagnosis_name;
-        this.tentative_diagnosis_day = tentative_diagnosis_day;
-        this.supplementary_diagnosis = supplementary_diagnosis;
-        this.supplementary_diagnosis_name = supplementary_diagnosis_name;
-        this.supplementary_diagnosis_day = supplementary_diagnosis_day;
-        this.final_diagnosis = final_diagnosis;
-        this.final_diagnosis_name = final_diagnosis_name;
-        this.final_diagnosis_day = final_diagnosis_day;
-        this.status = status;
-        this.create_time = create_time;
-    }
 }

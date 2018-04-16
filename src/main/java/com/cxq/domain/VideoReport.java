@@ -1,5 +1,7 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +19,7 @@ public class VideoReport {
     @Id
     @GeneratedValue
     private Integer vr_id; //主键ID
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date  report_time;   //报告日期
     private Integer patientId;  //病人id
     private String eclarationd_num; //申报单号
@@ -29,12 +32,15 @@ public class VideoReport {
     private String reported_doctor;   //报告医师
     private String check_doctor;   //审核医师
     private String final_check_doctor;  //终审医师
-    private Integer video_status;  //影像类别：1--影像科MR检查报告书; 2--影像科CT检查报告书；3--影像科X检查报告
+    private String video_status;  //影像类别：1--影像科MR检查报告书; 2--影像科CT检查报告书；3--影像科X检查报告
 
     private Integer status;
     private Date create_time;
 
-
+    public VideoReport(){
+        this.status=0;
+        this.create_time=new Date();
+    }
 
     public Integer getVr_id() {
         return vr_id;
@@ -140,11 +146,11 @@ public class VideoReport {
         this.final_check_doctor = final_check_doctor;
     }
 
-    public Integer getVideo_status() {
+    public String getVideo_status() {
         return video_status;
     }
 
-    public void setVideo_status(Integer video_status) {
+    public void setVideo_status(String video_status) {
         this.video_status = video_status;
     }
 

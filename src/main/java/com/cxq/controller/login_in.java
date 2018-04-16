@@ -6,9 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Administrator on 2018/4/11.
@@ -65,7 +62,8 @@ public class login_in {
     //住院首页添加信息
     @PostMapping("/medical_record")
         public String addMedicalRecord(@ModelAttribute MedicalRecord medicalRecord) {
-        System.out.println("打印住院首页的住院号："+medicalRecord.getCard_medical());
+        System.out.println("打印住院首页的住院号："+medicalRecord.getCard_medical()+"..."+medicalRecord.getBirthday());
+
       medicalRecordRepository.save(medicalRecord);
         return "chooseCaseInformationKinds";
     }
@@ -80,7 +78,7 @@ public class login_in {
     //入院记录添加信息
     @PostMapping("/addHospitalized")
     public String  addHospitalized(@ModelAttribute Hospitalized hospitalized) {
-        System.out.println("打印入院记录的ID："+hospitalized.getId());
+        System.out.println("打印入院记录的ID："+hospitalized.getCard_medical());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         hospitalizedRepository.save(hospitalized);
         return "chooseCaseInformationKinds";
@@ -96,6 +94,7 @@ public class login_in {
     @PostMapping("/addcourse_disease")
     public String  addDiseaseRecord(@ModelAttribute DiseaseRecord diseaseRecord) {
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
+        System.out.println("病程记录:既往史"+diseaseRecord.getHistory_characteristics());
         diseaseRecordRepository.save(diseaseRecord);
         return "chooseCaseInformationKinds";
     }

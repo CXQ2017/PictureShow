@@ -1,5 +1,7 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,12 +24,15 @@ public class DischargeRecord {
     //床号
     private String bed_no;
     //记录日期
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date record_date;
     //病案号
     private String card_medical;
     //入院日期
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private  Date admission_date;
     //出院日期
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date discharge_date;
     //入院情况
     private String admitting_situation;
@@ -48,7 +53,10 @@ public class DischargeRecord {
     //创建日期
     private Date create_date;
 
-
+    public DischargeRecord(){
+        this.status=0;
+        this.create_date=new Date();
+    }
 
     public Integer getId() {
         return id;

@@ -8,11 +8,11 @@
 	   	<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/stylet.css" />
 		<script src="js/Ecalendar.jquery.min.js"></script>
-	   	
+
 	   	<script type="text/javascript" src="js/jquery.min.js"></script>
 	    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript" src="jedate/jedate.js"></script>
-		<script type="text/javascript" src="jedate/jedate1.js"></script>
+		<script type="text/javascript" src="../jedate/jedate.js"></script>
+		<script type="text/javascript" src="../jedate/jedate1.js"></script>
 	    <style>
 	    	.a{
 	    		border-radius:5px;
@@ -58,58 +58,60 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<font size="6">病历首页</font>
 								<br /><br />
-								健康卡号：<input type="text" class="a " style="width: 100px;border-radius:5px" name="" placeholder="健康卡号"/>
+								健康卡号：<input type="text" class="a " style="width: 100px;border-radius:5px" name="card_health" placeholder="健康卡号"/>
 								&nbsp;&nbsp;&nbsp;
-								第：<input type="text" class="a " style="width: 30px;border-radius:5px" maxlength="3"/>
+								第：<input type="text" class="a " style="width: 30px;border-radius:5px" maxlength="3" name="times_hospitalized"/>
 								次住院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								病案号：<input type="text" class="a " style="width: 100px;border-radius:5px" placeholder="病案号"/>
+								病案号：<input type="text" class="a " style="width: 100px;border-radius:5px" placeholder="病案号" name="card_medical"/>
 							</div><br /><hr/><br /><br />
 							<div class="">
-								姓名：<input type="text" class="a " style="width: 100px" placeholder="姓名"/>
-								性别：<input type="text" class="a " style="width: 100px" placeholder="性别"/>
+								姓名：<input type="text" class="a " style="width: 100px" placeholder="姓名" name="name"/>
+								性别：<input type="text" class="a " style="width: 100px" placeholder="性别" name="sex"/>
 								出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
-								年龄：<input type="text" class="a " style="width: 30px"/>岁
-								国籍：<input type="text" class="a " style="width: 100px"  /><br /><br />
-								民族：<input type="text" class="a " style="width: 100px" />
-								出生体重：<input type="text" class="a " style="width: 100px" />
-								入院体重：<input type="text" class="a " style="width: 100px" />
-								出生地：<input type="text" class="a " style="width: 100px"  />
-								籍贯：<input type="text" class="a " style="width: 100px" />
+											onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="birthday"/>
+								年龄：<input type="text" class="a " style="width: 30px" name="age"/>岁
+								国籍：<input type="text" class="a " style="width: 100px"  name="nationality" /><br /><br />
+								民族：<input type="text" class="a " style="width: 100px" name="volk" />
+								出生体重：<input type="text" class="a " style="width: 100px" name=""/>
+								入院体重：<input type="text" class="a " style="width: 100px"name="" />
+								出生省：<input type="text" class="a " style="width: 100px"  name="homeplace_province"/>
+								出生市：<input type="text" class="a " style="width: 100px"  name="homeplace_city"/>
+								出生县：<input type="text" class="a " style="width: 100px"  name="homeplace_county"/>
+								籍贯：<input type="text" class="a " style="width: 100px" name="native_place"/>
 							</div><br />
 							<div class="">
-								身份证号：<input type="text" class="a " style="width: 100px" />
-								职业：<input type="text" class="a " style="width: 100px" />
-								婚姻：<select id="marry" name="hunyin" class="a " style="width: 60px">
+								身份证号：<input type="text" class="a " style="width: 100px" name="card_id"/>
+								职业：<input type="text" class="a " style="width: 100px" name="vocation"/>
+								婚姻：<select id="marry" name="marriage" class="a " style="width: 60px">
 								<option>未婚</option>
 								<option>已婚</option>
 								<option>丧偶</option>
 								<option>离婚</option>
 								<option>其他</option>
 							</select>
-								现住址：<input type="text" class="a " style="width: 100px" />
-								电话：<input type="text" class="a " style="width: 100px" />
-								邮编：<input type="text" class="a " style="width: 100px" /><br /><br />
-								户口地址：<input type="text" class="a " style="width: 100px" />
-								邮编：<input type="text" class="a " style="width: 100px" />
+								现住址：<input type="text" class="a " style="width: 100px" name="present_address"/>
+								电话：<input type="text" class="a " style="width: 100px" name="phone"/>
+								邮编：<input type="text" class="a " style="width: 100px"name="address_code" /><br /><br />
+								户口地址：<input type="text" class="a " style="width: 100px"name="residence" />
+								邮编：<input type="text" class="a " style="width: 100px"name="residence_code" />
 							</div><br /><hr/><br /><br />
 							<div>
-								工作单位及地址：<input type="text" class="a " style="width: 100px" />
-								单位电话：<input type="text" class="a " style="width: 100px" />
-								邮编：<input type="text" class="a " style="width: 100px" />
-								联系人电话：<input type="text" class="a " style="width: 100px" />
-								关系：<input type="text" class="a " style="width: 100px" /><br /><br />
-								地址：<input type="text" class="a " style="width: 100px" />
-								电话：<input type="text" class="a " style="width: 100px" />
+								工作单位及地址：<input type="text" class="a " style="width: 100px" name="work_unit_address"/>
+								单位电话：<input type="text" class="a " style="width: 100px" name="work_unit_phone"/>
+								邮编：<input type="text" class="a " style="width: 100px" name="work_unit_code"/>
+								联系人电话：<input type="text" class="a " style="width: 100px" name="linkman_name"/>
+								关系：<input type="text" class="a " style="width: 100px" name="linkman_relation"/><br /><br />
+								地址：<input type="text" class="a " style="width: 100px" name="linkman_address"/>
+								电话：<input type="text" class="a " style="width: 100px" name="linkman_phone"/>
 								入院途径：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="hospitalized_road" class="a " style="width: 100px">
 									<option>急诊</option>
 									<option>门诊</option>
 									<option>其他医疗机构转入</option>
 									<option>其他</option>
 								</select>
 								病人来源：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="patient_source" class="a " style="width: 100px">
 									<option>急诊</option>
 									<option>门诊</option>
 									<option>其他医疗机构转入</option>
@@ -118,64 +120,64 @@
 							</div><br /><hr/><br /><br />
 							<div>
 								入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
-								入院科别：<input type="text" class="a " style="width: 100px" />
-								病房：<input type="text" class="a " style="width: 100px" />
+											onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="hospitalized_day"/>
+								入院科别：<input type="text" class="a " style="width: 100px" name="hospitalized_category"/>
+								病房：<input type="text" class="a " style="width: 100px" name="hospitalized_ward"/>
 								转科：<input class="datainp" id="datebut4" type="text" placeholder="请选择"  readonly=""
-										  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
-								转：<input type="text" class="a " style="width: 100px" /><br /><br />
+										  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="change_time"/>
+								转：<input type="text" class="a " style="width: 100px" name="change_ward"/><br /><br />
 								出院日期：<input class="datainp" id="datebut3" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
-								出院科别：<input type="text" class="a " style="width: 100px" /><br /><br />
-								病房：<input type="text" class="a " style="width: 100px" />
-								实际住院：<input type="text" class="a " style="width: 100px" /><br /><br />
-								门（急）诊诊断：<input type="text" class="a " style="width: 100px" />
-								疾病编码：<input type="text" class="a " style="width: 100px" />
-								门（急）诊医生：<input type="text" class="a " style="width: 100px" />
+											onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="leave_hospital_day"/>
+								出院科别：<input type="text" class="a " style="width: 100px" name="leave_hospital_category"/><br /><br />
+								病房：<input type="text" class="a " style="width: 100px"name="leave_hospital_ward" />
+								实际住院：<input type="text" class="a " style="width: 100px" name="real_hospitalization_day"/><br /><br />
+								门（急）诊诊断：<input type="text" class="a " style="width: 100px"name="clinic_diagnosis" />
+								疾病编码：<input type="text" class="a " style="width: 100px" name="disease_coding"/>
+								门（急）诊医生：<input type="text" class="a " style="width: 100px"name="outpatient_doctor" />
 							</div><br /><hr/><br /><br />
 							<div>
-								主要诊断：<input type="text" class="a " style="width: 100px" />
-								诊断编码：<input type="text" class="a " style="width: 100px" />
-								入院病情：<input type="text" class="a " style="width: 100px" />
-								其他诊断：<input type="text" class="a " style="width: 100px" /><br /><br />
-								诊断编码：<input type="text" class="a " style="width: 100px" />
-								入院病情：<input type="text" class="a " style="width: 100px" />
+								主要诊断：<input type="text" class="a " style="width: 100px" name="main_diagnosis"/>
+								诊断编码：<input type="text" class="a " style="width: 100px" name="main_disease_coding"/>
+								入院病情：<input type="text" class="a " style="width: 100px" name="main_diagnosis_state"/>
+								其他诊断：<input type="text" class="a " style="width: 100px" name="other_diagnosis"/><br /><br />
+								诊断编码：<input type="text" class="a " style="width: 100px" name="other_diagnosis_coding"/>
+								入院病情：<input type="text" class="a " style="width: 100px" name="other_diagnosis_state" />
 							</div><br /><hr/><br /><br />
 							<div>
 								病历分型：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="case_classification" class="a " style="width: 100px">
 									<option>一般</option>
 									<option>急</option>
 									<option>疑难</option>
 									<option>危重</option>
 								</select>
 								临床路径病历：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="clinical_pathway_cases" class="a " style="width: 100px">
 									<option>是</option>
 									<option>否</option>
 								</select>
-								抢救次数：<input type="text" class="a " style="width: 100px" />
-								成功次数：<input type="text" class="a " style="width: 100px" />
+								抢救次数：<input type="text" class="a " style="width: 100px" name="rescue_times"/>
+								成功次数：<input type="text" class="a " style="width: 100px" name="success_times"/>
 							</div><br /><hr/><br /><br />
 							<div>
-								损伤、中毒的外部原因：<input type="text" class="a " style="width: 100px" />
-								疾病编码：<input type="text" class="a " style="width: 100px" />
+								损伤、中毒的外部原因：<input type="text" class="a " style="width: 100px" name="external_causes"/>
+								疾病编码：<input type="text" class="a " style="width: 100px" name="external_causes_coding"/>
 							</div><br />
 							<div>
-								病历诊断：<input type="text" class="a " style="width: 100px" />
-								病理号：<input type="text" class="a " style="width: 100px" />
-								疾病编码：<input type="text" class="a " style="width: 100px" />
+								病历诊断：<input type="text" class="a " style="width: 100px" name="pathologic_diagnosis"/>
+								病理号：<input type="text" class="a " style="width: 100px" name="pathological_number"/>
+								疾病编码：<input type="text" class="a " style="width: 100px" name="pathologic_diagnosis_coding"/>
 							</div><br /><hr/><br /><br />
 							<div>
 								诊断符合情况
 								1、门诊与出院：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="outpatient_discharge_accord" class="a " style="width: 100px">
 									<option>符合</option>
 									<option>不符合</option>
 									<option>不肯定</option>
 								</select>
 								2、临床与病理：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="clinical_pathological" class="a " style="width: 100px">
 									<option>符合</option>
 									<option>不符合</option>
 									<option>不肯定</option>
@@ -183,20 +185,20 @@
 							</div><br /><hr/><br /><br />
 							<div>
 								药物过敏：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="drug_allergy" class="a " style="width: 100px">
 									<option>无</option>
 									<option>有</option>
 								</select>
-								过敏药物：<input type="text" class="a " style="width: 100px" />
+								过敏药物：<input type="text" class="a " style="width: 100px" name="drug_allergy_name"/>
 								死亡患者尸检：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="autopsy" class="a " style="width: 100px">
 									<option>是</option>
 									<option>否</option>
 								</select>
 							</div><br /><hr/><br /><br />
 							<div>
 								血型：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="blood_type" class="a " style="width: 100px">
 									<option>A</option>
 									<option>B</option>
 									<option>O</option>
@@ -205,7 +207,7 @@
 									<option>未查</option>
 								</select>
 								Rh：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="Rh" class="a " style="width: 100px">
 									<option>阴</option>
 									<option>阳</option>
 									<option>不详</option>
@@ -213,27 +215,27 @@
 								</select>
 							</div><br /><hr/><br /><br />
 							<div>
-								科主任：<input type="text" class="a " style="width: 100px" />
-								主（主任）任医师：<input type="text" class="a " style="width: 100px" />
-								主治医师：<input type="text" class="a " style="width: 100px" />
-								住院医师：<input type="text" class="a " style="width: 100px" />
+								科主任：<input type="text" class="a " style="width: 100px" name="head_department"/>
+								主（主任）任医师：<input type="text" class="a " style="width: 100px" name="protomedicus"/>
+								主治医师：<input type="text" class="a " style="width: 100px" name="visiting_staff"/>
+								住院医师：<input type="text" class="a " style="width: 100px" name="resident"/>
 							</div><br /><hr/><br /><br />
 							<div>
-								责任护士：<input type="text" class="a " style="width: 100px" />
-								进修医师：<input type="text" class="a " style="width: 100px" />
-								实习医师：<input type="text" class="a " style="width: 100px" />
-								编码员：<input type="text" class="a " style="width: 100px" />
+								责任护士：<input type="text" class="a " style="width: 100px" name="primary_nurse"/>
+								进修医师：<input type="text" class="a " style="width: 100px" name="refresher_physician"/>
+								实习医师：<input type="text" class="a " style="width: 100px" name="intern"/>
+								编码员：<input type="text" class="a " style="width: 100px" name="coder"/>
 							</div><br /><hr/><br /><br />
 							<div>
 								病案质量：
-								<select name="hunyin" class="a " style="width: 100px">
+								<select name="medical_record_quality" class="a " style="width: 100px">
 									<option>甲</option>
 									<option>乙</option>
 								</select>
-								质控医师：<input type="text" class="a " style="width: 100px" />
-								质控护士：<input type="text" class="a " style="width: 100px" />
+								质控医师：<input type="text" class="a " style="width: 100px" name="quality_control_physician"/>
+								质控护士：<input type="text" class="a " style="width: 100px" name="quality_control_nurse"/>
 								质控日期：<input class="datainp" id="datebut2" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut2',isTime:true,format:'YYYY-MM-DD'})" name="shengri"/>
+											onClick="jeDate({dateCell:'#datebut2',isTime:true,format:'YYYY-MM-DD'})" name="quality_control_date"/>
 							</div><br /><br /><br />
 							<div id="sub">
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
