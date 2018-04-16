@@ -2,10 +2,7 @@ package com.cxq.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -24,7 +21,9 @@ public class UltrasonicDiagnosisReport {
     private String bed_no;    //床号
     private String check_equipment;  //检查设备
     private String inspection_area;  //检查部位
+    @Column(columnDefinition="TEXT")
     private String ultrasonic_content;  //超声所见
+    @Column(columnDefinition="TEXT")
     private String ultrasonic_tip;  //超声提示
     private String diagnosis_doctor; //诊断医师
     private String  consultant_doctor;  //会诊医师

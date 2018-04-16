@@ -2,10 +2,7 @@ package com.cxq.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -25,7 +22,9 @@ public class TranscranialDopplerReport {
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date check_time;   //检查时间
     private String check_number;  //检查号
+    @Column(columnDefinition="TEXT")
     private String TCD_content; //TCD描述
+    @Column(columnDefinition="TEXT")
     private String TCD_conclusion;   //TCD结论
     private String physician_signature;  //医师签名
 

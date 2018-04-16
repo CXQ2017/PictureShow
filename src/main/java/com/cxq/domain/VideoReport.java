@@ -2,10 +2,7 @@ package com.cxq.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -27,7 +24,9 @@ public class VideoReport {
     private String department; //科室
     private String bed_no;    //床号
     private String inspection_area;    //检查部位
+    @Column(columnDefinition="TEXT")
     private String video_content;    //影像学所见
+    @Column(columnDefinition="TEXT")
     private String video_conclusion;   //影像学意见
     private String reported_doctor;   //报告医师
     private String check_doctor;   //审核医师
