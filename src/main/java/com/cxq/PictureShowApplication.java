@@ -1,5 +1,6 @@
 package com.cxq;
 
+import com.cxq.base.CommUtil;
 import com.cxq.domain.CheckRecord;
 import com.cxq.domain.CheckRecordRepository;
 import com.cxq.domain.PictureProperty;
@@ -83,7 +84,10 @@ public class PictureShowApplication {
 	@RequestMapping(value = "/addCheck_record" , method = RequestMethod.POST)
 	public Map<String,Object> addCheckRecord(@ModelAttribute CheckRecord checkRecord, HttpServletRequest request) {
 		//4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
-		checkRecordRepository.save(checkRecord);
+		String ss = checkRecord.getCard_medical();
+		if(CommUtil.isBlank(ss)){
+			checkRecordRepository.save(checkRecord);
+		}
 		Map<String,Object> model=new HashedMap();
 		model.put("data",true);
 		return model;
