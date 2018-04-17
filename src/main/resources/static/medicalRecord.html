@@ -21,7 +21,7 @@
 			#medical{
 				/*border: 1px solid black;*/
 				top: 0px;
-				width: 2000px;
+				margin-left: 600px;
 				height: 1600px;
 				position: absolute;
 				/*left: 16%;*/
@@ -31,7 +31,7 @@
 			#mcont{
 				/*border: 1px solid black;*/
 				top: 0px;
-				width: 2000px;
+				width: 1200px;
 				height: 1500px;
 				position: absolute;
 				left: 30%;
@@ -53,23 +53,23 @@
 						<div class="">
 							<div class="">
 								<br /><br />
-								<li style="font-size: 50px;margin-left:0px">病历首页</li><br /><br /><br /><br />
+								<li style="font-size: 50px;margin-left:300px">病历首页</li><br /><br />
 								<br /><br />
-								健康卡号：<input type="text" class="a " style="width: 100px;border-radius:5px" name="card_health" placeholder="健康卡号"/>
+								健康卡号：<input type="text" class="a " style="width: 100px; height: 20px" name="card_health" placeholder="健康卡号"/>
 								&nbsp;&nbsp;&nbsp;
-								第：<input type="text" class="a " style="width: 30px;border-radius:5px" maxlength="3" name="times_hospitalized"/>
+								第：<input type="text" class="a " style="width: 50px; height: 20px" maxlength="3" name="times_hospitalized"/>
 								次住院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								病案号：<input type="text" class="a " style="width: 100px;border-radius:5px" placeholder="病案号" name="card_medical"/>
+								病案号：<input type="text" class="a " style="width: 100px; height: 20px" placeholder="病案号" name="card_medical"/>
 							</div><br /><hr/><br /><br />
 							<div class="">
-								姓名：<input type="text" class="a " style="width: 100px" placeholder="姓名" name="name"/>
-								性别：<input type="text" class="a " style="width: 100px" placeholder="性别" name="sex"/>
-								出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly=""
+								姓名：<input type="text" class="a " style="width: 100px; height: 20px" placeholder="姓名" name="name"/>
+								性别：<input type="text" class="a "style="width: 100px; height: 20px" placeholder="性别" name="sex"/>
+								出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly="" style="width: 100px; height: 20px"
 											onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="birthday"/>
-								年龄：<input type="text" class="a " style="width: 30px" name="age"/>岁
-								国籍：<input type="text" class="a " style="width: 100px"  name="nationality" /><br /><br />
-								民族：<input type="text" class="a " style="width: 100px" name="volk" />
-								出生体重：<input type="text" class="a " style="width: 100px" name=""/>
+								年龄：<input type="text" class="a " style="width: 100px; height: 20px" name="age"/>岁
+								国籍：<input type="text" class="a " style="width: 100px; height: 20px" name="nationality" /><br /><br />
+								民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" />
+								出生体重：<input type="text" class="a " style="width: 100px; height: 20px" name=""/>
 								入院体重：<input type="text" class="a " style="width: 100px"name="" />
 								出生省：<input type="text" class="a " style="width: 100px"  name="homeplace_province"/>
 								出生市：<input type="text" class="a " style="width: 100px"  name="homeplace_city"/>
@@ -233,13 +233,12 @@
 								质控护士：<input type="text" class="a " style="width: 100px" name="quality_control_nurse"/>
 								质控日期：<input class="datainp" id="datebut2" type="text" placeholder="请选择"  readonly=""
 											onClick="jeDate({dateCell:'#datebut2',isTime:true,format:'YYYY-MM-DD'})" name="quality_control_date"/>
-							</div><br /><br /><br />
+							</div><br /><br /><br /><br />
 							<div id="sub">
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="submit" value="提交"/>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="reset" value="重置"/>
-							</div>
+								<input type="submit" style="height:30px;width:50px; margin-left: 50px" value="提交"/>
+								<input type="reset" style="height:30px;width:50px; margin-left: 300px" value="重置"/>
+							</div><br /><br />
 						</div>
 					</form>
 			</div>
