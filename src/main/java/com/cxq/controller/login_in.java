@@ -169,7 +169,7 @@ public class login_in {
 
 
     //超声波报告
-    @PostMapping("/addultrasonic_diagnosisReport")
+    /*@PostMapping("/addultrasonic_diagnosisReport")
     public String  addultrasonic_diagnosisReport(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport) {
        // System.out.println("打印超声波报告的ID："+ultrasonicDiagnosisReport.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
@@ -180,7 +180,7 @@ public class login_in {
 
         return "chooseCaseInformationKinds";
 
-    }
+    }*/
 
 
     // 跳转到经颅多普勒超声检查
