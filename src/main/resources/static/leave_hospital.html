@@ -19,22 +19,23 @@
             }
             .datainp{ width:150px; height:20px; border:1px #ccc solid;border-radius:5px;}
            #medical{
-                /*border: 1px solid black;*/
+                border: 1px solid red;
                 top: 0px;
                 width: 2000px;
-                height: 1000px;
+                height: 1500px;
                 position: absolute;
-                left: 16%;
+                left: 0%;
                 bottom: 200px;
                 background: burlywood;
+               text-align: center;
             }
             #bing{
-                /*!*border: 1px solid black;*!*/
+              border: 1px solid black;
                 top: 0px;
                 width: 2000px;
-                height: 1000px;
+                height: 1500px;
                 position: absolute;
-                left: 25%;
+                left: 0%;
                 bottom: 200px;
                 background: burlywood;
             }
@@ -44,54 +45,52 @@
             hr{
                 width: 0%;
             }
+            .textarea_div{
+                margin-left: 685px;
+                width:600px;
+            }
         </style>
     </head>
     <body style="background-color: burlywood">
         <div id="medical">
             <div id="bing">
                 <br /><br /><br />
-                <li style="font-size: 50px;margin-left:0px">出院记录</li><br /><br /><br /><br />
+                <li style="font-size: 50px;">出院记录</li><br /><br /><br /><br />
                 <form id="form_b" action="/addleave_hospital" method="post">
                     <div>
-                        科室：<input type="text" class="a " style="width: 100px" name="department"/>
+                        科室：<input type="text" class="a " style="width: 150px;height:30px;" name="department"/>
+                        床号：<input type="text" class="a " style="width: 150px;height:30px;" name="bed_no"/>
+                        病案号：<input type="text" class="a " style="width: 150px;height:30px;" name="card_medical"/>
+                    </div><br /><br />
+                    <div>
                         记录日期：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly=""
-                                    onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="record_date"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        病案号：<input type="text" class="a " style="width: 100px" name="card_medical"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        床号：<input type="text" class="a " style="width: 100px" name="bed_no"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
+                                    onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="record_date" style="width: 125px;height:30px;"/>
                         入院日期：<input class="datainp" id="datebut11" type="text" placeholder="请选择"  readonly=""
-                                    onClick="jeDate({dateCell:'#datebut11',isTime:true,format:'YYYY-MM-DD'})" name="admission_date"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
+                                    onClick="jeDate({dateCell:'#datebut11',isTime:true,format:'YYYY-MM-DD'})" name="admission_date" style="width: 125px;height:30px;"/>
                         出院日期：<input class="datainp" id="datebut12" type="text" placeholder="请选择"  readonly=""
-                                    onClick="jeDate({dateCell:'#datebut12',isTime:true,format:'YYYY-MM-DD'})" name="discharge_date"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        入院情况：<input type="text" class="a " style="width: 100px" name="admitting_situation"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        入院诊断：<input type="text" class="a " style="width: 100px" name="admitting_diagnosis"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        诊疗经过：<input type="text" class="a " style="width: 100px" name="treatment_process"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        出院诊断：<input type="text" class="a " style="width: 100px" name="discharge_diagnosis"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        出院情况：<input type="text" class="a " style="width: 100px" name="discharge_situation"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        出院医嘱：<input type="text" class="a " style="width: 100px" name="discharge_advice"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        医师签名：<input type="text" class="a " style="width: 100px" name="physician_signature"/>
-                    </div><br /><hr/><br /><br />
+                                    onClick="jeDate({dateCell:'#datebut12',isTime:true,format:'YYYY-MM-DD'})" name="discharge_date" style="width: 125px;height:30px;"/>
+                    </div><br />
+                    <div class="textarea_div">
+                        入院情况：<textarea type="text" class="a " style="width: 510px;height:100px;" name="admitting_situation"></textarea>
+                    </div><br />
+                    <div class="textarea_div">
+                        入院诊断：<textarea type="text" class="a " style="width: 510px;height:100px;" name="admitting_diagnosis"></textarea>
+                    </div><br />
+                    <div class="textarea_div">
+                        诊疗经过：<input type="text" class="a " style="width: 510px;height:100px;" name="treatment_process"/>
+                    </div><br />
+                    <div class="textarea_div">
+                        出院诊断：<input type="text" class="a " style="width: 510px;height:100px;" name="discharge_diagnosis"/>
+                    </div><br />
+                    <div class="textarea_div">
+                        出院情况：<input type="text" class="a " style="width: 510px;height:100px;" name="discharge_situation"/>
+                    </div><br />
+                    <div class="textarea_div">
+                        出院医嘱：<input type="text" class="a " style="width: 510px;height:100px;" name="discharge_advice"/>
+                    </div><br />
+                    <div  style="margin-left: 685px; width: 100px;">
+                        医师签名：<input type="text" class="a " style="width:100px;height:30px;" name="physician_signature"/>
+                    </div><br />
                     <div>
                         <input type="submit" class="a " style="width: 100px" id="submit" value="提交"/>
                         <input type="reset" class="a " style="width: 100px" value="重置"/>
