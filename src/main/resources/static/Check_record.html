@@ -60,11 +60,11 @@
 					data: $('#form_b').serialize(),
 					success: function (data) {
 						var answer = confirm("是否需要继续添加查房记录");
-//						if(answer) {
-//							window.location ="/Check_record.html";
-//						}else{
-//							window.location ="/toChoosecaseKinds";
-//						}
+						if(answer) {
+							window.location ="/toChoosecaseKinds/toCheck_record";
+						}else{
+							window.location ="/toChoosecaseKinds";
+						}
 					}
 				})
 			}
