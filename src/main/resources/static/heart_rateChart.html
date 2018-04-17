@@ -21,7 +21,7 @@
             #medical{
                /* !*border: 1px solid black;*!*/
                 top: 0px;
-                width: 2000px;
+                margin-left:700px;
                 height: 1000px;
                 position: absolute;
                 /*!*left: 16%;*!*/
@@ -31,7 +31,7 @@
             #bing{
                 /*!*border: 1px solid black;*!*/
                 top: 0px;
-                width: 2000px;
+                width: 900px;
                 height: 1000px;
                 position: absolute;
                 left: 38%;
@@ -50,38 +50,29 @@
         <div id="medical">
             <div id="bing">
                 <br /><br /><br />
-                <li style="font-size: 50px;margin-left:0px">心电图记录报告</li><br /><br /><br /><br />
+                <li style="font-size: 50px;margin-left:100px">心电图记录报告</li><br /><br /><br /><br />
                 <form id="form_b" action="/addheart_rateChart" method="post">
                     <div>
-                        科室：<input type="text" class="a " style="width: 100px" name="department"/>
-                    </div><br /><hr/><br /><br />
+                        科室：<input type="text" class="a " style="height:25px;width:150px;" name="department"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        床号：<input type="text" class="a " style="height:25px;width:150px;" name="bed_no"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        病案号：<input type="text" class="a " style="height:25px;width:150px;" name="card_medical" />
+                    </div><br /><br /><br />
+
                     <div>
-                        病案号：<input type="text" class="a " style="width: 100px" name="card_medical" />
-                    </div><br /><hr/><br /><br />
+                        心率室：<input type="text" class="a " style="height:25px;width:150px;" name="ventricular_rate"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        窦性心率：<input type="text" class="a " style="height:25px;width:150px;" name="sinus_rhythm"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        Pr间期：<input type="text" class="a " style="height:25px;width:150px;" name="PR_interphase"/>
+                    </div><br /><br /><br />
+
+
                     <div>
-                        心率室：<input type="text" class="a " style="width: 100px" name="ventricular_rate"/>
-                    </div><br /><hr/><br /><br />
+                        QRS宽度：<input type="text" class="a " style="height:25px;width:150px;" name="QRS_width"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        QT：<input type="text" class="a " style="height:25px;width:150px;" name="QT"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        P_R_T轴：<input type="text" class="a " style="height:25px;width:150px;" name="P_R_T"/>
+                    </div><br /><hr/><br /><br /><br />
                     <div>
-                        床号：<input type="text" class="a " style="width: 100px" name="bed_no"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        窦性心率：<input type="text" class="a " style="width: 100px" name="sinus_rhythm"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        Pr间期：<input type="text" class="a " style="width: 100px" name="PR_interphase"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        QRS宽度：<input type="text" class="a " style="width: 100px" name="QRS_width"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        QT：<input type="text" class="a " style="width: 100px" name="QT"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        P_R_T轴：<input type="text" class="a " style="width: 100px" name="P_R_T"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        <input type="submit" class="a " style="width: 100px" id="submit" value="提交"/>
-                        <input type="reset" class="a " style="width: 100px" value="重置"/>
+                        <input type="submit" class="a " style="width: 100px; margin-left: 100px" id="submit" value="提交"/>
+                        <input type="reset" class="a " style="width: 100px;margin-left: 100px" value="重置"/>
                     </div>
                 </form>
             </div>
