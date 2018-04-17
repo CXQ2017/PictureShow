@@ -38,11 +38,11 @@ public class login_in {
     private HeartRateChartRepository heartRateChartRepository;
 
 
-    //跳转到登录
-    @RequestMapping("/tologin")
-    public String toLogin(){
-        return "home";
-    }
+//    //跳转到登录
+//    @RequestMapping("/tologin")
+//    public String toLogin(){
+//        return "home";
+//    }
 
 
 
