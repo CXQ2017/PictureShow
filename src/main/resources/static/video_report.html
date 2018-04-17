@@ -19,24 +19,25 @@
             }
             .datainp{ width:150px; height:20px; border:1px #ccc solid;border-radius:5px;}
             #medical{
-                /*border: 1px solid black;*/
+                /*border: 1px solid red;*/
                 top: 0px;
-                width: 2000px;
+                width: 1000px;
                 height: 1000px;
                 position: absolute;
-                /*left: 16%;*/
+                left: 25%;
                 bottom: 200px;
                 background: burlywood;
             }
             #bing{
                 /*border: 1px solid black;*/
                 top: 0px;
-                width: 2000px;
+                width: 1000px;
                 height: 1000px;
                 position: absolute;
-                left: 38%;
+                left: 0%;
                 bottom: 200px;
                 background: burlywood;
+                text-align: center;
             }
             /*div{
                 margin-left: 800px;
@@ -53,50 +54,41 @@
                 <li size="9" style="font-size: 50px;margin-left:0px ">各种影像检查报告</li><br /><br /><br /><br />
                 <form id="form_b" action="/addvideo_report" method="post">
                     <div>
-                        病人ID：<input type="text" class="a " style="width: 100px" name="patientId"/>
+                        病人ID：<input type="text" class="a " style="width: 150px;height:30px;" name="patientId"/>
+                        申报单号：<input type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num"/>
                         报告日期：<input class="datainp" id="datebut13" type="text" placeholder="请选择"  readonly=""
-                                    onClick="jeDate({dateCell:'#datebut13',isTime:true,format:'YYYY-MM-DD'})" name="report_time"/>
-                    </div><br /><hr/><br /><br />
+                                    onClick="jeDate({dateCell:'#datebut13',isTime:true,format:'YYYY-MM-DD'})"
+                                    name="report_time"style="width: 150px;height:30px;"/>
+                    </div><br />
                     <div>
-                        申报单号：<input type="text" class="a " style="width: 100px" name="eclarationd_num"/>
-                    </div><br /><hr/><br /><br />
+                        病案号：<input type="text" class="a " style="width: 155px;height:30px;" name="card_medical"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        科室：<input type="text" class="a " style="width: 155px;height:30px;" name="department"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        床号：<input type="text" class="a " style="width: 155px;height:30px;" name="bed_no"/>
+                    </div><br />
+                    <div style="margin-left: 70px; width: 400px;">
+                        检查部位：<input type="text" class="a " style="width: 155px;height:30px;" name="inspection_area"/>
+                    </div><br />
+                    <div style="margin-left: 100px; width: 700px;">
+                        影像学所见：<textarea type="text" class="a " style="width: 500px;height: 100px;" name="video_content"></textarea>
+                    </div><br />
+                    <div style="margin-left: 100px; width: 700px;">
+                        影像学意见：<textarea type="text" class="a " style="width: 500px;height: 100px;" name="video_conclusion"></textarea>
+                    </div> <br />
                     <div>
-                        病案号：<input type="text" class="a " style="width: 100px" name="card_medical"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        科室：<input type="text" class="a " style="width: 100px" name="department"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        床号：<input type="text" class="a " style="width: 100px" name="bed_no"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        检查部位：<input type="text" class="a " style="width: 100px" name="inspection_area"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        影像学所见：<input type="text" class="a " style="width: 100px" name="video_content"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        影像学意见：<input type="text" class="a " style="width: 100px" name="video_conclusion"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        报告医师：<input type="text" class="a " style="width: 100px" name="reported_doctor"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        审核医师：<input type="text" class="a " style="width: 100px" name="check_doctor"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        终审医师：<input type="text" class="a " style="width: 100px" name="final_check_doctor"/>
-                    </div><br /><hr/><br /><br />
-                    <div>
-                        影像类别：<select name="video_status" class="a " style="width: 100px" id="sdf">
+                        报告医师：<input type="text" class="a " style="width: 150px;height:30px;" name="reported_doctor"/>
+                        审核医师：<input type="text" class="a " style="width: 150px;height:30px;" name="check_doctor"/>
+                        终审医师：<input type="text" class="a " style="width: 150px;height:30px;" name="final_check_doctor"/>
+                    </div> <br />
+                    <div style="margin-left: 70px; width: 400px;">
+                        影像类别：<select name="video_status" class="a " style="width: 150px;height:30px;" id="sdf">
                         <option>影像科MR检查报告书</option>
                         <option>影像科CT检查报告书</option>
                         <option>影像科X检查报告</option>
                     </select>
-                    </div><br /><hr/><br /><br />
+                    </div><br />
                     <div>
-                        <input type="submit" class="a " style="width: 100px" id="submit" value="提交"/>
-                        <input type="reset" class="a " style="width: 100px" value="重置"/>
+                        <input type="submit" class="a " style="width: 150px;height:30px;" id="submit" value="提交"/>
+                        <input type="reset" class="a " style="width: 150px;height:30px;" value="重置"/>
                     </div>
                 </form>
             </div>
