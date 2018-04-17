@@ -80,8 +80,8 @@ public class PictureShowApplication {
 
 
 	//医师护理录
-	@PostMapping("/addCheck_record")
-	public Map<String,Object> addCheckRecord(@ModelAttribute CheckRecord checkRecord) {
+	@RequestMapping(value = "/addCheck_record" , method = RequestMethod.POST)
+	public Map<String,Object> addCheckRecord(@ModelAttribute CheckRecord checkRecord, HttpServletRequest request) {
 		//4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
 		checkRecordRepository.save(checkRecord);
 		Map<String,Object> model=new HashedMap();
