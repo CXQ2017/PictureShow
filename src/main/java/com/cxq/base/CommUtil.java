@@ -170,7 +170,7 @@ public class CommUtil {
      * 判断字符串为null或空
      */
     public static boolean isBlank(String str) {
-        if ((str == null) || ("".equals(str.trim())) || ("null".equals(str.trim()))) {
+        if ((str == null) || ("".equals(str.trim())) || ("null".equals(str.trim()))||(" ".equals(str.trim()))) {
             return true;
         }
         return false;

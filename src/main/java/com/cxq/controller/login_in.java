@@ -63,8 +63,12 @@ public class login_in {
     @PostMapping("/medical_record")
         public String addMedicalRecord(@ModelAttribute MedicalRecord medicalRecord) {
         System.out.println("打印住院首页的住院号："+medicalRecord.getCard_medical()+"..."+medicalRecord.getBirthday());
+        String ss = medicalRecord.getCard_medical();
+        // System.out.println("住院号ss："+ss);
+        if (!CommUtil.isBlank(ss)){
+            medicalRecordRepository.save(medicalRecord);
+        }
 
-      medicalRecordRepository.save(medicalRecord);
         return "chooseCaseInformationKinds";
     }
 
@@ -80,7 +84,12 @@ public class login_in {
     public String  addHospitalized(@ModelAttribute Hospitalized hospitalized) {
         System.out.println("打印入院记录的ID："+hospitalized.getCard_medical());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
-        hospitalizedRepository.save(hospitalized);
+        String ss = hospitalized.getCard_medical();
+        // System.out.println("住院号ss："+ss);
+        if (!CommUtil.isBlank(ss)){
+            hospitalizedRepository.save(hospitalized);
+        }
+
         return "chooseCaseInformationKinds";
     }
 
@@ -94,8 +103,13 @@ public class login_in {
     @PostMapping("/addcourse_disease")
     public String  addDiseaseRecord(@ModelAttribute DiseaseRecord diseaseRecord) {
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
-        System.out.println("病程记录:既往史"+diseaseRecord.getHistory_characteristics());
-        diseaseRecordRepository.save(diseaseRecord);
+       // System.out.println("病程记录:既往史"+diseaseRecord.getHistory_characteristics());
+        String ss = diseaseRecord.getCard_medical();
+        // System.out.println("住院号ss："+ss);
+        if (!CommUtil.isBlank(ss)){
+            diseaseRecordRepository.save(diseaseRecord);
+        }
+
         return "chooseCaseInformationKinds";
     }
 
@@ -118,7 +132,12 @@ public class login_in {
     public String  addDischargeRecord(@ModelAttribute DischargeRecord dischargeRecord) {
        // System.out.println("打印出院记录的ID："+dischargeRecord.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
-        dischargeRecordRepository.save(dischargeRecord);
+        String ss = dischargeRecord.getCard_medical();
+        // System.out.println("住院号ss："+ss);
+        if (!CommUtil.isBlank(ss)){
+            dischargeRecordRepository.save(dischargeRecord);
+        }
+
         return "chooseCaseInformationKinds";
     }
 
@@ -134,7 +153,8 @@ public class login_in {
        // System.out.println("打印影像报告的ID："+videoReport.getVr_id());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         String ss = videoReport.getCard_medical();
-        if (CommUtil.isBlank(ss)){
+       // System.out.println("住院号ss："+ss);
+        if (!CommUtil.isBlank(ss)){
             videoReportRepository.save(videoReport);
         }
 
@@ -154,7 +174,7 @@ public class login_in {
        // System.out.println("打印超声波报告的ID："+ultrasonicDiagnosisReport.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         String ss = ultrasonicDiagnosisReport.getCard_medical();
-        if (CommUtil.isBlank(ss)){
+        if (!CommUtil.isBlank(ss)){
             ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
         }
 
@@ -174,7 +194,7 @@ public class login_in {
       //  System.out.println("打印经颅多普勒超声检查报告的ID："+transcranialDopplerReport.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         String ss = transcranialDopplerReport.getCard_medical();
-        if (CommUtil.isBlank(ss)){
+        if (!CommUtil.isBlank(ss)){
             transcranialDopplerReportRepository.save(transcranialDopplerReport);
         }
 
@@ -194,7 +214,7 @@ public class login_in {
       //  System.out.println("打印经颅多普勒超声检查报告的ID："+heartRateChart.getId());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         String ss = heartRateChart.getCard_medical();
-        if (CommUtil.isBlank(ss)){
+        if (!CommUtil.isBlank(ss)){
             heartRateChartRepository.save(heartRateChart);
         }
 
