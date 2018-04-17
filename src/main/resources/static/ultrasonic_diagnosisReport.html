@@ -45,13 +45,31 @@
                 height: 30px;
             }
         </style>
+        <script type="text/javascript">
+            function subs() {
+                $.ajax({
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/addultrasonic_diagnosisReport",
+                    type: "POST",//方法类型
+                    data: $('#form_b').serialize(),
+                    success: function (data) {
+                        var answer = confirm("是否需要继续添加超声波报告记录");
+                        if(answer) {
+                            window.location ="/toChoosecaseKinds/toultrasonic_diagnosisReport";
+                        }else{
+                            window.location ="/toChoosecaseKinds";
+                        }
+                    }
+                })
+            }
+        </script>
     </head>
     <body style="background-color: burlywood">
         <div id="medical">
             <div id="bing">
                 <br /><br /><br />
                 <li style="font-size: 50px;margin-left:0px">超声波检查报告</li><br /><br /><br /><br />
-                <form id="form_b" action="/addultrasonic_diagnosisReport" method="post">
+                <form id="form_b" action="" method="post">
                     <div>
                         超声波号：<input type="text" class="a " style="width: 100px" name="ultrasonic_number"/>
                     <!--</div><br /><hr/><br /><br />
@@ -91,8 +109,8 @@
                                     onClick="jeDate({dateCell:'#datebut15',isTime:true,format:'YYYY-MM-DD'})" name="print_date"/>
                     </div><br /><hr/><br /><br />
                     <div>
-                        <input type="submit" class="a " style="width: 100px" id="submit" value="提交"/>
-                        <input type="reset" class="a " style="width: 100px" value="重置"/>
+                        <button onclick="subs()" class="btn btn-primary" id="button" style="margin-left: 60px;width: 70px">提交</button>
+                        <button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button>
                     </div>
                 </form>
             </div>

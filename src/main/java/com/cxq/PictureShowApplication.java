@@ -1,10 +1,7 @@
 package com.cxq;
 
 import com.cxq.base.CommUtil;
-import com.cxq.domain.CheckRecord;
-import com.cxq.domain.CheckRecordRepository;
-import com.cxq.domain.PictureProperty;
-import com.cxq.domain.PicturePropertyRepository;
+import com.cxq.domain.*;
 import com.cxq.upload.UploadTool;
 import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
@@ -40,6 +37,8 @@ public class PictureShowApplication {
     @Value("${picture_path}")
 	private String picture_path;
 
+	@Autowired
+	private UltrasonicDiagnosisReportRepository ultrasonicDiagnosisReportRepository;
 
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
     public Map<String, Object> login(HttpServletRequest request){
@@ -85,12 +84,23 @@ public class PictureShowApplication {
 	public Map<String,Object> addCheckRecord(@ModelAttribute CheckRecord checkRecord, HttpServletRequest request) {
 		//4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
 		String ss = checkRecord.getCard_medical();
-		if(CommUtil.isBlank(ss)){
+		if(!CommUtil.isBlank(ss)){
 			checkRecordRepository.save(checkRecord);
 		}
 		Map<String,Object> model=new HashedMap();
 		model.put("data",true);
 		return model;
+	}
+	//超声波报告
+	@RequestMapping(value = "/addultrasonic_diagnosisReport" , method = RequestMethod.POST)
+	public Map<String,Object> addultrasonic_diagnosisReport(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport) {
+		String ss1 = ultrasonicDiagnosisReport.getCard_medical();
+		if (!CommUtil.isBlank(ss1)){
+			ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
+		}
+		Map<String,Object> model1=new HashedMap();
+		model1.put("data",true);
+		return model1;
 	}
 
 }
