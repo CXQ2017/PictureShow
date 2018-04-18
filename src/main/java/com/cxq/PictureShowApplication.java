@@ -41,11 +41,12 @@ public class PictureShowApplication {
 	private UltrasonicDiagnosisReportRepository ultrasonicDiagnosisReportRepository;
 
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
-    public Map<String, Object> login(HttpServletRequest request){
+	@ResponseBody
+    public void login(@RequestBody HttpServletRequest request){
         Map<String, Object> model = new HashMap<String, Object>();
         String username = request.getParameter("name");
 		model.put("data",true);
-        return model;
+        
     }
 
 
@@ -86,6 +87,7 @@ public class PictureShowApplication {
 		String ss = checkRecord.getCard_medical();
 		if(!CommUtil.isBlank(ss)){
 			checkRecordRepository.save(checkRecord);
+		}else {
 		}
 		Map<String,Object> model=new HashedMap();
 		model.put("data",true);
@@ -94,11 +96,14 @@ public class PictureShowApplication {
 	//超声波报告
 	@RequestMapping(value = "/addultrasonic_diagnosisReport" , method = RequestMethod.POST)
 	public Map<String,Object> addultrasonic_diagnosisReport(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport) {
+		Map<String,Object> model1=new HashedMap();
 		String ss1 = ultrasonicDiagnosisReport.getCard_medical();
 		if (!CommUtil.isBlank(ss1)){
 			ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
+		}else {
+
 		}
-		Map<String,Object> model1=new HashedMap();
+
 		model1.put("data",true);
 		return model1;
 	}
