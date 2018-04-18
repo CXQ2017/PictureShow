@@ -24,7 +24,7 @@
         function login() {
             $.ajax({
                 //几个参数需要注意一下
-                type: "POST",//方法类型
+                type: "get",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
                 url: "/login" ,//url
                 async: true, // 使用异步方式
@@ -95,7 +95,7 @@
 <div id="content_id">
     <div class="form-group" id="title_id"><span class="glyphicon " style="color: rgb(124, 175, 251); font-size: 50px;">深圳市第四人民医院（福田医院）</span></div>
     <div class="form-group" id="title_id2"><span class="glyphicon " style="color: rgb(124, 175, 251); font-size: 50px;">病案查阅系统</span></div>
-    <form class="form-horizontal" role="form"  method="post" id="form1">
+    <form class="form-horizontal" role="form"  method="get" id="form1">
         <div class="form_class">
             <label for="name" class="col-sm-2 control-label">登录权限：</label>
             <select name="permissions" style="height: 30px;">
@@ -117,7 +117,8 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onclick="login()" class="btn btn-primary" id="button">登录</button>
+                        <!--<button onclick="login()" class="btn btn-primary" id="button">登录</button>-->
+                        <button ><a  class="btn btn-primary"  href="/tagged_pdf.html">登录</a></button>
                     </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label>
                         <button  type="reset" class="btn btn-primary">重置</button>
