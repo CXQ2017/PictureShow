@@ -192,7 +192,7 @@ public class login_in {
     //经颅多普勒超声检查报告
     @PostMapping("/addTranscranial_doppler_report")
     public String  addTranscranialDopplerReport(@ModelAttribute TranscranialDopplerReport transcranialDopplerReport) {
-      //  System.out.println("打印经颅多普勒超声检查报告的ID："+transcranialDopplerReport.getId());
+         System.out.println("打印经颅多普勒超声检查报告的ID："+transcranialDopplerReport.getCard_medical());
         //4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
         String ss = transcranialDopplerReport.getCard_medical();
         if (!CommUtil.isBlank(ss)){

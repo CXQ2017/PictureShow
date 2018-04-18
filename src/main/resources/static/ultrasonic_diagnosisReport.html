@@ -54,6 +54,7 @@
                     data: $('#form_b').serialize(),
                     success: function (data) {
                         var answer = confirm("是否需要继续添加超声波报告记录");
+                        alert(answer);
                         if(answer) {
                             window.location ="/toChoosecaseKinds/toultrasonic_diagnosisReport";
                         }else{
