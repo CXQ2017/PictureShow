@@ -51,31 +51,31 @@
 				width: 0%;
 			}
 		</style>
-		<script type="text/javascript">
-			function subs() {
-				$.ajax({
-					dataType: "json",//预期服务器返回的数据类型
-					url: "/addCheck_record",
-					type: "POST",//方法类型
-					data: $('#form_b').serialize(),
-					success: function (data) {
-						var answer = confirm("是否需要继续添加查房记录");
-						if(answer) {
-							window.location ="/toChoosecaseKinds/toCheck_record";
-						}else{
-							window.location ="/toChoosecaseKinds";
-						}
-					}
-				})
-			}
-		</script>
+		<!--<script type="text/javascript">-->
+			<!--function subs() {-->
+				<!--$.ajax({-->
+					<!--dataType: "json",//预期服务器返回的数据类型-->
+					<!--url: "/addCheck_record",-->
+					<!--type: "POST",//方法类型-->
+					<!--data: $('#form_b').serialize(),-->
+					<!--success: function (data) {-->
+						<!--var answer = confirm("是否需要继续添加查房记录");-->
+						<!--if(answer) {-->
+							<!--window.location ="/toChoosecaseKinds/toCheck_record";-->
+						<!--}else{-->
+							<!--window.location ="/toChoosecaseKinds";-->
+						<!--}-->
+					<!--}-->
+				<!--})-->
+			<!--}-->
+		<!--</script>-->
 	</head>
 	<body style="background-color:burlywood">
 		<div id="medical">
 			<div id="bing">
 				<br /><br /><br />
 				<li style="font-size: 50px;margin-left:0px">病程查房记录</li><br /><br /><br /><br />
-				<form  method="post" id="form_b" >
+				<form  method="post" id="form_b" action="/addCheck_record">
 					<div>
 						查房人：<input type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						查房时间：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
@@ -91,7 +91,8 @@
 						查房记录：<textarea type="text" class="a " style="width: 360px; height: 60px" name="Patient_rounds_details"></textarea>
 					</div><br /><hr/><br /><br />
 					<div>
-						<button onclick="subs()" class="btn btn-primary" id="button" style="margin-left: 60px;width: 70px">提交</button>
+						<!--<button onclick="subs()" class="btn btn-primary" id="button" style="margin-left: 60px;width: 70px">提交</button>-->
+						<button  type="submit" class="btn btn-primary" id="button" style="margin-left: 60px;width: 70px">提交</button>
 						<button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button>
 					</div>
 				</form>

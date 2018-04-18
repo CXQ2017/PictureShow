@@ -31,12 +31,12 @@
                 data: $('#form1').serialize(),
                 success: function(data) {  //成功
                     if (data.data==true) {
-                    alert("登录成功" + data.data);  //就将返回的数据显示出来
-                    window.location.href="/tagged_pdf.html"
-                }else{
-                    alert("用户名或密码错误！"+data.data);
+                        alert("登录成功" + data.data);  //就将返回的数据显示出来
+                        window.location.href="/tagged_pdf.html"
+                    }else{
+                        alert("用户名或密码错误！"+data.data);
                         window.location.href="/"
-                }
+                    }
                 },
                 error : function() {
                     alert("用户名或密码错误！");
@@ -102,12 +102,12 @@
                 <option>系统管理员</option>
                 <option>普通用户</option>
             </select>
-            </div>
-            <div class="form_class">
+        </div>
+        <div class="form_class">
             <label for="name" class="col-sm-2 control-label" style="width: auto">用户名：</label>
             <input type="text" class="form-control" id="name" name="name"
                    placeholder="请输入名用户名" style="height: 30px;" />
-            </div>
+        </div>
         <div class="form_class">
             <label for="password" class="col-sm-2 control-label" style="width: auto">密码&nbsp;&nbsp;&nbsp;：</label>
             <input type="text" class="form-control" id="password" name="password"
