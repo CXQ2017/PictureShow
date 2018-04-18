@@ -40,6 +40,7 @@ public class PictureShowApplication {
 	@Autowired
 	private UltrasonicDiagnosisReportRepository ultrasonicDiagnosisReportRepository;
 
+
     @RequestMapping(value= "/login" , method = RequestMethod.POST)
 	@ResponseBody
     public Map<String, Object> login(HttpServletRequest request){
@@ -56,6 +57,8 @@ public class PictureShowApplication {
 //                  return model;
 //		}
 		return model;
+
+
     }
 
 
@@ -95,7 +98,9 @@ public class PictureShowApplication {
 		//4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
 		String ss = checkRecord.getCard_medical();
 		if(!CommUtil.isBlank(ss)){
+
 		 	checkRecordRepository.save(checkRecord);
+
 		}
 		Map<String,Object> model=new HashedMap();
 		model.put("data",true);
@@ -106,11 +111,12 @@ public class PictureShowApplication {
 	//超声波报告
 	@RequestMapping(value = "/addultrasonic_diagnosisReport" , method = RequestMethod.POST)
 	public Map<String,Object> addultrasonic_diagnosisReport(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport) {
-		String ss1 = ultrasonicDiagnosisReport.getCard_medical();
 		Map<String,Object> model1=new HashedMap();
+		String ss1 = ultrasonicDiagnosisReport.getCard_medical();
 		if (!CommUtil.isBlank(ss1)){
 			ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
 			model1.put("data",true);
+
 		}
 
 		model1.put("data",true);
