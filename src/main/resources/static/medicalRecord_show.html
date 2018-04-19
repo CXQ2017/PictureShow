@@ -230,7 +230,7 @@
 			<div id="hosp" class="sty ">
 				<br /><br /><br />
 				<li style="font-size: 50px;margin-left:150px">入院记录</li><br /><br /><br /><br />
-				<form action="/addHospitalized" method="post" role="form">
+				<form action="/addHospitalized" method="post" role="form" id="form_b">
 					<div>
 						病案号：<input type="text" class="a " style="width: 100px; height: 20px" name="card_medical" th:value="${datahosp.card_medical}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						记录日期：<input  name="record_day" class="datainp" id="datebut9" type="text" placeholder="请选择"  readonly="" style="width: 100px; height: 20px"
@@ -411,7 +411,7 @@
 			<div class="sty ">
 				<br /><br /><br />
 				<li style="font-size: 50px;">出院记录</li><br /><br /><br /><br />
-				<form id="form_b" action="/addleave_hospital" method="post">
+				<form id="form_d" action="/addleave_hospital" method="post">
 						<div>
 							科室：<input type="text" class="a " style="width: 150px;height:30px;" name="department" th:value="${dataleav.department}"/>
 							床号：<input type="text" class="a " style="width: 150px;height:30px;" name="bed_no" th:value="${dataleav.bed_no}"/>
@@ -455,7 +455,7 @@
 			<div class="sty ">
 				<br /><br /><br />
 				<li size="9" style="font-size: 50px;margin-left:0px ">各种影像检查报告</li><br /><br /><br /><br />
-				<form id="form_d" action="/addvideo_report" method="post">
+				<form id="form_e" action="/addvideo_report" method="post">
 					<div>
 						病人ID：<input type="text" class="a " style="width: 150px;height:30px;" name="patientId" th:value="${datavideo.patientId}"/>
 						申报单号：<input type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num" th:value="${datavideo.eclarationd_num}"/>
@@ -499,7 +499,7 @@
 				<br /><br /><br />
 				<li style="font-size: 50px;margin-left:0px">超声波检查报告</li><br /><br /><br /><br />
 				<div th:each="ultr:${dataurtl}">
-					<form id="form_e" action="" method="post">
+					<form id="form_f" action="" method="post">
 						<div>
 							超声波号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="ultrasonic_number" th:value="${ultr.ultrasonic_number}"/>
 							<!--</div><br /><hr/><br /><br />
@@ -608,13 +608,48 @@
 			</div>
 		</div>
 	    <script type="text/javascript">
-			jQuery.ajax({
+			$("#form_a").ajax({
+				dataType: "json",//预期服务器返回的数据类型
+				url: "/",
+				type: "POST",//方法类型
+				data: $('#form_a').serialize(),
+				success:function (r) {
+					if(r){
+						alert("修改成功");
+					}
+				}
+			})
+			$("#form_b").ajax({
+				dataType: "json",//预期服务器返回的数据类型
+				url: "/",
+				type: "POST",//方法类型
+				data: $('#form_b').serialize(),
+				success:function (r) {
+					if(r){
+						alert("修改成功");
+					}
+				}
+			})
+			$("#form_c").ajax({
 				dataType: "json",//预期服务器返回的数据类型
 				url: "/",
 				type: "POST",//方法类型
 				data: $('#form_c').serialize(),
 				success:function (r) {
-
+					if(r){
+						alert("修改成功");
+					}
+				}
+			})
+			$("#form_d").ajax({
+				dataType: "json",//预期服务器返回的数据类型
+				url: "/",
+				type: "POST",//方法类型
+				data: $('#form_d').serialize(),
+				success:function (r) {
+					if(r){
+						alert("修改成功");
+					}
 				}
 			})
 			/*$().ready(function () {
