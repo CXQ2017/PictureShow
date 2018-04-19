@@ -1,9 +1,6 @@
 package com.cxq.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -17,6 +14,7 @@ public class HeartRateChart {
     @GeneratedValue
     private Integer id;
     private String department; //科室
+    @JoinColumn(name = "card_medical")
     private String card_medical;  //病案号、住院号
     private String bed_no;    //床号
     private String ventricular_rate; //心室率

@@ -16,6 +16,7 @@ public class Hospitalized {
     @Id
     @GeneratedValue
     private Integer id;
+    @JoinColumn(name = "card_medical")
     private String card_medical;  //病案号
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date record_day;//记录日期

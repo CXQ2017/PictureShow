@@ -3,10 +3,7 @@ package com.cxq.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -33,6 +30,7 @@ public class MedicalRecord {
     private String pay_way; // '付费方式',
     private String card_health; // '健康卡号',
     private Integer times_hospitalized; // '住院次数',
+    @JoinColumn(name = "card_medical")
     private String card_medical; // '病案号',
     private String native_place;// '籍贯',
     private String card_id; // '身份证号',
