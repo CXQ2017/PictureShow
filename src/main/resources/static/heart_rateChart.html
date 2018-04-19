@@ -45,6 +45,25 @@
                 width: 0%;
             }
         </style>
+        <script type="text/javascript">
+            function handleEnter (field, event) {
+                var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+                if (keyCode == 13) {
+                    var i;
+                    for (i = 0; i < field.form.elements.length; i++)
+                        if (field == field.form.elements[i])
+                            break;
+                    do{
+                        i = (i + 1) % field.form.elements.length;
+                    }while(field.form.elements[i].type != 'text' )  //可扩展到其他比如select 值了，避开label
+                    field.form.elements[i].focus();
+                    //window.event.keyCode=9
+                    return false;
+                }
+                else
+                    return true;
+            }
+        </script>
     </head>
     <body style="background-color: burlywood">
         <div id="medical">
@@ -53,9 +72,9 @@
                 <li style="font-size: 50px;margin-left:100px">心电图记录报告</li><br /><br /><br /><br />
                 <form id="form_b" action="/addheart_rateChart" method="post">
                     <div>
-                        科室：<input type="text" class="a " style="height:25px;width:150px;" name="department"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                        床号：<input type="text" class="a " style="height:25px;width:150px;" name="bed_no"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                        病案号：<input type="text" class="a " style="height:25px;width:150px;" name="card_medical" />
+                        科室：<input type="text" class="a " style="height:25px;width:150px;" name="department" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        床号：<input type="text" class="a " style="height:25px;width:150px;" name="bed_no" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        病案号：<input type="text" class="a " style="height:25px;width:150px;" name="card_medical" onkeypress="return handleEnter(this, event)"/>
                     </div><br /><br /><br />
 
                     <div>

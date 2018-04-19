@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface MedicalRecordRepository extends JpaRepository<MedicalRecord,Long>{
 
-//    @Query("")
+//     @Query("select m from MedicalRecord m where m.card_medical=?1")
 //    public int addFirstpageData();
+
 }
