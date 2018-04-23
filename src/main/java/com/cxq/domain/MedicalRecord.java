@@ -27,7 +27,7 @@ public class MedicalRecord {
     private Integer age; //'年龄',
     private String nationality; // '国籍',
     private String volk; // '民族',
-    private String homeplace_province; // '出生省',
+    private String homeplace_province; // '出生省' 备注：出生省改为出生地，存放出生地信息，出生市和出生县弃用。
     private String homeplace_city; // '出生市',
     private String homeplace_county;// '出生县',
     private String pay_way; // '付费方式',
