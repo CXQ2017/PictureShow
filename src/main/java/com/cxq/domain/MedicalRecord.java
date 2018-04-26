@@ -3,10 +3,7 @@ package com.cxq.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -71,6 +68,7 @@ public class MedicalRecord {
     private String main_diagnosis;   // '出院主要诊断',
     private String main_disease_coding;       //'主要诊断疾病编码',
     private String main_diagnosis_state;   // '入院主要诊断病情',
+    @Column(columnDefinition="TEXT")
     private String other_diagnosis;   // '其他出院诊断',
     private String other_diagnosis_coding;   // '其他诊断疾病编码',
     private String other_diagnosis_state;      // '其它诊断入院情况',
