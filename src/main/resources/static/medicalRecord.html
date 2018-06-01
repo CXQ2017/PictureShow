@@ -18,23 +18,23 @@
 	    		border-radius:5px;
 	    	}
 	    	.datainp{ width:150px; height:20px; border:1px #ccc solid;border-radius:5px;}
-			#medical{
-				/*border: 1px solid black;*/
+			/*#medical{
+				!*border: 1px solid black;*!
 				top: 0px;
 				margin-left: 600px;
 				height: 1600px;
 				position: absolute;
-				/*left: 16%;*/
+				!*left: 16%;*!
 				bottom: 200px;
 				background: burlywood;
-			}
+			}*/
 			#mcont{
 				/*border: 1px solid black;*/
 				top: 0px;
 				width: 1200px;
 				height: 1500px;
 				position: absolute;
-				left: 30%;
+				left: 25%;
 				bottom: 200px;
 				/*background: burlywood;*/
 			}
@@ -92,15 +92,15 @@
 								性别：<input type="text" class="a "style="width: 100px; height: 20px" placeholder="性别" name="sex" onkeypress="return handleEnter(this, event)"/>
 								出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly="" style="width: 100px; height: 20px"
 											onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="birthday"/>
-								年龄：<input type="text" class="a " style="width: 100px; height: 20px" name="age" onkeypress="return handleEnter(this, event)"/>岁
-								国籍：<input type="text" class="a " style="width: 100px; height: 20px" name="nationality" onkeypress="return handleEnter(this, event)"/><br /><br />
+								年龄：<input type="text" class="a " style="width: 100px; height: 20px" name="age" onkeypress="return handleEnter(this, event)"/>岁<br /><br />
+								国籍：<input type="text" class="a " style="width: 100px; height: 20px" name="nationality" onkeypress="return handleEnter(this, event)"/>
 								民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" onkeypress="return handleEnter(this, event)" />
 								出生体重：<input type="text" class="a " style="width: 100px; height: 20px" name="" onkeypress="return handleEnter(this, event)"/>
-								入院体重：<input type="text" class="a " style="width: 100px"name=""  onkeypress="return handleEnter(this, event)"/>
-								出生地：<input type="text" class="a " style="width: 100px"  name="homeplace_province"onkeypress="return handleEnter(this, event)"/>
+								入院体重：<input type="text" class="a " style="width: 100px"name=""  onkeypress="return handleEnter(this, event)"/><br /><br />
+								出生地：<textarea type="text" class="a " style="width: 300px; height: 20px" name="homeplace_province"onkeypress="return handleEnter(this, event)"></textarea>
 								<!--出生市：<input type="text" class="a " style="width: 100px"  name="homeplace_city"onkeypress="return handleEnter(this, event)"/>
 								出生县：<input type="text" class="a " style="width: 100px"  name="homeplace_county"onkeypress="return handleEnter(this, event)"/>-->
-								籍贯：<input type="text" class="a " style="width: 100px" name="native_place"onkeypress="return handleEnter(this, event)"/>
+								籍贯：<textarea type="text" class="a " style="width: 200px; height: 20px" name="native_place"onkeypress="return handleEnter(this, event)"></textarea>
 							</div><br />
 							<div class="">
 								身份证号：<input type="text" class="a " style="width: 100px" name="card_id"onkeypress="return handleEnter(this, event)"/>
@@ -111,21 +111,21 @@
 								<option>丧偶</option>
 								<option>离婚</option>
 								<option>其他</option>
-							</select>
-								现住址：<input type="text" class="a " style="width: 100px" name="present_address"onkeypress="return handleEnter(this, event)"/>
+							</select><br /><br />
+								现住址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="present_address"onkeypress="return handleEnter(this, event)"></textarea>
 								电话：<input type="text" class="a " style="width: 100px" name="phone"onkeypress="return handleEnter(this, event)"/>
 								邮编：<input type="text" class="a " style="width: 100px"name="address_code" onkeypress="return handleEnter(this, event)"/><br /><br />
-								户口地址：<input type="text" class="a " style="width: 100px"name="residence" onkeypress="return handleEnter(this, event)"/>
+								户口地址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="residence" onkeypress="return handleEnter(this, event)"></textarea>
 								邮编：<input type="text" class="a " style="width: 100px"name="residence_code" onkeypress="return handleEnter(this, event)"/>
 							</div><br /><hr/><br /><br />
 							<div>
-								工作单位及地址：<input type="text" class="a " style="width: 100px" name="work_unit_address"onkeypress="return handleEnter(this, event)"/>
+								工作单位及地址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="work_unit_address"onkeypress="return handleEnter(this, event)"></textarea>
 								单位电话：<input type="text" class="a " style="width: 100px" name="work_unit_phone"onkeypress="return handleEnter(this, event)"/>
-								邮编：<input type="text" class="a " style="width: 100px" name="work_unit_code"onkeypress="return handleEnter(this, event)"/>
+								邮编：<input type="text" class="a " style="width: 100px" name="work_unit_code"onkeypress="return handleEnter(this, event)"/><br /><br />
 								联系人姓名：<input type="text" class="a " style="width: 100px" name="linkman_name"onkeypress="return handleEnter(this, event)"/>
-								关系：<input type="text" class="a " style="width: 100px" name="linkman_relation"onkeypress="return handleEnter(this, event)"/><br /><br />
+								关系：<input type="text" class="a " style="width: 100px" name="linkman_relation"onkeypress="return handleEnter(this, event)"/>
 								地址：<input type="text" class="a " style="width: 100px" name="linkman_address"onkeypress="return handleEnter(this, event)"/>
-								电话：<input type="text" class="a " style="width: 100px" name="linkman_phone"onkeypress="return handleEnter(this, event)"/>
+								电话：<input type="text" class="a " style="width: 100px" name="linkman_phone"onkeypress="return handleEnter(this, event)"/><br /><br />
 								入院途径：
 								<select name="hospitalized_road" class="a " style="width: 100px">
 									<option></option>
@@ -149,13 +149,13 @@
 								入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"  readonly=""
 											onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="hospitalized_day"/>
 								入院科别：<input type="text" class="a " style="width: 100px" name="hospitalized_category" onkeypress="return handleEnter(this, event)"/>
-								病房：<input type="text" class="a " style="width: 100px" name="hospitalized_ward" onkeypress="return handleEnter(this, event)"/>
+								病房：<input type="text" class="a " style="width: 100px" name="hospitalized_ward" onkeypress="return handleEnter(this, event)"/><br /><br />
 								转科：<input class="datainp" id="datebut4" type="text" placeholder="请选择"  readonly=""
 										  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="change_time"/>
 								转：<input type="text" class="a " style="width: 100px" name="change_ward" onkeypress="return handleEnter(this, event)"/><br /><br />
 								出院日期：<input class="datainp" id="datebut3" type="text" placeholder="请选择"  readonly=""
 											onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="leave_hospital_day"/>
-								出院科别：<input type="text" class="a " style="width: 100px" name="leave_hospital_category" onkeypress="return handleEnter(this, event)"/><br /><br />
+								出院科别：<input type="text" class="a " style="width: 100px" name="leave_hospital_category" onkeypress="return handleEnter(this, event)"/>
 								病房：<input type="text" class="a " style="width: 100px"name="leave_hospital_ward" onkeypress="return handleEnter(this, event)"/>
 								实际住院：<input type="text" class="a " style="width: 100px" name="real_hospitalization_day" onkeypress="return handleEnter(this, event)"/><br /><br />
 								门（急）诊诊断：<input type="text" class="a " style="width: 100px"name="clinic_diagnosis" onkeypress="return handleEnter(this, event)"/>
