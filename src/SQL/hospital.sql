@@ -16,11 +16,11 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`hospital` /*!40100 DEFAULT CHARACTER SE
 
 USE `hospital`;
 
-/*Table structure for table `bingchengjilu` */
+/*Table structure for table `disease_record` */
+/*病程记录 */;
+DROP TABLE IF EXISTS `disease_record`;
 
-DROP TABLE IF EXISTS `bingchengjilu`;
-
-CREATE TABLE `bingchengjilu` (
+CREATE TABLE `disease_record` (
   `bc_id` int(11) NOT NULL COMMENT '主键',
   `department` varchar(50) DEFAULT NULL COMMENT '科室',
   `bed_no` varchar(50) DEFAULT NULL COMMENT '床号',
@@ -33,13 +33,13 @@ CREATE TABLE `bingchengjilu` (
   PRIMARY KEY (`bc_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `bingchengjilu` */
+/*Data for the table `disease_record` */
 
-/*Table structure for table `chafangjilu` */
+/*Table structure for table `check_record` */
 
-DROP TABLE IF EXISTS `chafangjilu`;
-
-CREATE TABLE `chafangjilu` (
+DROP TABLE IF EXISTS `check_record`;
+/*查房记录 */;
+CREATE TABLE `check_record` (
   `id` int(11) NOT NULL COMMENT '主键',
   `card_medical` varchar(50) DEFAULT NULL COMMENT '住院号/病案号',
   `bc_id` int(11) DEFAULT NULL COMMENT '病程记录表的主键',
@@ -52,13 +52,13 @@ CREATE TABLE `chafangjilu` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `chafangjilu` */
+/*Data for the table `check_record` */
 
-/*Table structure for table `dischargerecord` */
+/*Table structure for table `discharge_record` */
+/*出院记录 */
+DROP TABLE IF EXISTS `discharge_record`;
 
-DROP TABLE IF EXISTS `dischargerecord`;
-
-CREATE TABLE `dischargerecord` (
+CREATE TABLE `discharge_record` (
   `id` int(11) DEFAULT NULL COMMENT '主键',
   `department` varchar(50) DEFAULT NULL COMMENT '科室',
   `bed_no` varchar(50) DEFAULT NULL COMMENT '床号',
@@ -77,7 +77,7 @@ CREATE TABLE `dischargerecord` (
   `create_date` date DEFAULT NULL COMMENT '创建时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `dischargerecord` */
+/*Data for the table `discharge_record` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
