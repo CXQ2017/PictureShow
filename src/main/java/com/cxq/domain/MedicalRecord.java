@@ -104,11 +104,28 @@ public class MedicalRecord {
     private Integer status; // '状态',
     private Date create_time; //'创建时间',
 
-
+    //唯一标识
+    private String keyword;
 
     public MedicalRecord(){
         this.status=0;
         this.create_time=new Date();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 
     public Integer getId() {

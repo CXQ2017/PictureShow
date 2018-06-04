@@ -76,10 +76,20 @@ public class Hospitalized {
     private Integer status;//状态
     private Date create_time;//创建日期
 
+    //唯一标识
+    private String keyword;
 
     public Hospitalized(){
         this.status=0;
         this.create_time=new Date();
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 
     public Integer getId() {

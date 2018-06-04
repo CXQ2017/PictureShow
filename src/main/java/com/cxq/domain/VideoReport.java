@@ -36,9 +36,20 @@ public class VideoReport {
     private Integer status;
     private Date create_time;
 
+    //唯一标识
+    private String keyword;
+
     public VideoReport(){
         this.status=0;
         this.create_time=new Date();
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 
     public Integer getVr_id() {
