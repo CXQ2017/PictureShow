@@ -18,25 +18,25 @@
                 border-radius:5px;
             }
             .datainp{ width:150px; height:20px; border:1px #ccc solid;border-radius:5px;}
-            #medical{
-               /* !*border: 1px solid black;*!*/
-                top: 0px;
-                margin-left:700px;
-                height: 1000px;
-                position: absolute;
-                /*!*left: 16%;*!*/
-                bottom: 200px;
-                background: burlywood;
-            }
+            /*#medical{*/
+               /*!* !*border: 1px solid black;*!*!*/
+                /*top: 0px;*/
+                /*margin-left:700px;*/
+                /*height: 1000px;*/
+                /*position: absolute;*/
+                /*!*!*left: 16%;*!*!*/
+                /*bottom: 200px;*/
+                /*background: #ADD8E6;*/
+            /*}*/
             #bing{
                 /*!*border: 1px solid black;*!*/
                 top: 0px;
                 width: 900px;
                 height: 1000px;
                 position: absolute;
-                left: 38%;
+                left: 33%;
                 bottom: 200px;
-                background: burlywood;
+                background: #ADD8E6;
             }
             /*div{
                 margin-left: 800px;
@@ -44,7 +44,17 @@
             hr{
                 width: 0%;
             }
+            input{
+                background:  #ADD8E6;
+            }
+            textarea{
+                background:  #ADD8E6;
+            }
         </style>
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         <script type="text/javascript">
             function handleEnter (field, event) {
                 var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
@@ -65,7 +75,7 @@
             }
         </script>
     </head>
-    <body style="background-color: burlywood">
+    <body style="background-color: #ADD8E6">
         <div id="medical">
             <div id="bing">
                 <br /><br /><br />
@@ -78,16 +88,16 @@
                     </div><br /><br /><br />
 
                     <div>
-                        心率室：<input type="text" class="a " style="height:25px;width:150px;" name="ventricular_rate"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                        窦性心率：<input type="text" class="a " style="height:25px;width:150px;" name="sinus_rhythm"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                        Pr间期：<input type="text" class="a " style="height:25px;width:150px;" name="PR_interphase"/>
+                        心率室：<input type="text" class="a " style="height:25px;width:150px;" name="ventricular_rate" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        窦性心率：<input type="text" class="a " style="height:25px;width:150px;" name="sinus_rhythm" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        Pr间期：<input type="text" class="a " style="height:25px;width:150px;" name="PR_interphase" onkeypress="return handleEnter(this, event)"/>
                     </div><br /><br /><br />
 
 
                     <div>
-                        QRS宽度：<input type="text" class="a " style="height:25px;width:150px;" name="QRS_width"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                        QT：<input type="text" class="a " style="height:25px;width:150px;" name="QT"/>&nbsp;&nbsp;&nbsp;&nbsp;
-                        P_R_T轴：<input type="text" class="a " style="height:25px;width:150px;" name="P_R_T"/>
+                        QRS宽度：<input type="text" class="a " style="height:25px;width:150px;" name="QRS_width" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        QT：<input type="text" class="a " style="height:25px;width:150px;" name="QT" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                        P_R_T轴：<input type="text" class="a " style="height:25px;width:150px;" name="P_R_T" onkeypress="return handleEnter(this, event)"/>
                     </div><br /><hr/><br /><br /><br />
                     <div>
                         <input type="submit" class="a " style="width: 100px; margin-left: 100px" id="submit" value="提交"/>

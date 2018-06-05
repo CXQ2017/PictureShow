@@ -37,12 +37,21 @@ public class UltrasonicDiagnosisReport {
     //创建日期
     private Date create_date;
 
+    //唯一标识
+    private String keyword;
 
     public UltrasonicDiagnosisReport(){
         this.status=0;
         this.create_date=new Date();
     }
 
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
 
     public Integer getId() {
         return id;

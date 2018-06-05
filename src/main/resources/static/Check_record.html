@@ -24,25 +24,28 @@
 	    		border-radius:5px;
 	    	}
 	    	.datainp{ width:150px; height:20px; border:1px #ccc solid;border-radius:5px;}
-			#medical{
-				/*border: 1px solid black;*/
-				top: 0px;
+			/*#medical{
+				border: 1px solid black;
 				margin-left:800px;
+
+				top: 0px;
 				height: 1000px;
+
 				position: absolute;
-				/*left: 16%;*/
+
 				bottom: 200px;
-				background: burlywood;
+				background:  #ADD8E6;
 			}
+			*/
 			#bing{
-				/*border: 1px solid black;*/
+				/* border: 1px solid black;*/
 				top: 0px;
 				width: 900px;
 				height: 1000px;
 				position: absolute;
 				left: 38%;
 				bottom: 200px;
-				background: burlywood;
+				background:  #ADD8E6;
 			}
 			/*div{
 				margin-left: 800px;
@@ -50,7 +53,29 @@
 			hr{
 				width: 0%;
 			}
+			input{
+				background:  #ADD8E6;
+			}
 		</style>
+		<script type="text/javascript">
+			function handleEnter (field, event) {
+				var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+				if (keyCode == 13) {
+					var i;
+					for (i = 0; i < field.form.elements.length; i++)
+						if (field == field.form.elements[i])
+							break;
+					do{
+						i = (i + 1) % field.form.elements.length;
+					}while(field.form.elements[i].type != 'text' )  //可扩展到其他比如select 值了，避开label
+					field.form.elements[i].focus();
+					//window.event.keyCode=9
+					return false;
+				}
+				else
+					return true;
+			}
+		</script>
 		<!--<script type="text/javascript">-->
 			<!--function subs() {-->
 				<!--$.ajax({-->
@@ -70,22 +95,22 @@
 			<!--}-->
 		<!--</script>-->
 	</head>
-	<body style="background-color:burlywood">
+	<body style="background-color: #ADD8E6">
 		<div id="medical">
 			<div id="bing">
 				<br /><br /><br />
 				<li style="font-size: 50px;margin-left:0px">病程查房记录</li><br /><br /><br /><br />
 				<form  method="post" id="form_b" action="/addCheck_record">
 					<div>
-						查房人：<input type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						查房人：<input type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						查房时间：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
 									onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="Patient_rounds_date"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						病案号：<input type="text" class="a " style="height:30px;width:150px;" name="card_medical"/>
+						病案号：<input type="text" class="a " style="height:30px;width:150px;" name="card_medical" onkeypress="return handleEnter(this, event)"/>
 					</div><br /><hr/><br /><br />
 					<div>
-						查房人签名：<input type="text" class="a " style="height:30px;width:150px;" name="doctor_signature"/>
+						查房人签名：<input type="text" class="a " style="height:30px;width:150px;" name="doctor_signature" onkeypress="return handleEnter(this, event)"/>
 					</div><br /><hr/><br /><br />
 					<div>
 						查房记录：<textarea type="text" class="a " style="width: 360px; height: 60px" name="Patient_rounds_details"></textarea>

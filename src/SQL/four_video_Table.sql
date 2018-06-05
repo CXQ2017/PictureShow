@@ -19,7 +19,7 @@ USE `hospital`;
 /*Table structure for table `heart_rate_chart` */
 
 DROP TABLE IF EXISTS `heart_rate_chart`;
-
+/*心电图 */;
 CREATE TABLE `heart_rate_chart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pr_interphase` varchar(255) DEFAULT NULL COMMENT 'PR间期',
@@ -41,7 +41,7 @@ CREATE TABLE `heart_rate_chart` (
 /*Table structure for table `transcranial_doppler_report` */
 
 DROP TABLE IF EXISTS `transcranial_doppler_report`;
-
+/*经颅多普勒 */;
 CREATE TABLE `transcranial_doppler_report` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `tcd_conclusion` varchar(255) DEFAULT NULL COMMENT 'TCD结论',
@@ -62,7 +62,7 @@ CREATE TABLE `transcranial_doppler_report` (
 /*Table structure for table `ultrasonic_diagnosis_report` */
 
 DROP TABLE IF EXISTS `ultrasonic_diagnosis_report`;
-
+/*超声波 */;
 CREATE TABLE `ultrasonic_diagnosis_report` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `bed_no` varchar(255) DEFAULT NULL COMMENT '床号',
@@ -87,7 +87,7 @@ CREATE TABLE `ultrasonic_diagnosis_report` (
 /*Table structure for table `video_report` */
 
 DROP TABLE IF EXISTS `video_report`;
-
+/*CT  MR  X影像记录 */;
 CREATE TABLE `video_report` (
   `vr_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `bed_no` varchar(255) DEFAULT NULL COMMENT '床号',
