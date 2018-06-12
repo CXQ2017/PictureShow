@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>中大八院病历病案首页编辑</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/stylet.css" />
+    <link href="bootstrap-3.3.7/docs/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="bootstrap-3.3.7/docs/examples/signin/signin.css" rel="stylesheet">
+    <script src="bootstrap-3.3.7/docs/assets/js/ie8-responsive-file-warning.js"></script>
+    <script src="bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/bootstrap-progressbar.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-progressbar-3.3.4.css">
+    <script type="text/javascript" src="assets/js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-table.js"></script>
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
+
+    //分页
+    <script src="/js/jquery.min.js" ></script>
+    <script src="/js/jquery.page.js" ></script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/Ecalendar.jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>-->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        #head{
+            /*border: 1px solid black;*/
+            height: 12%;
+            width: 100%;
+            background: #dad55e;
+            position:absolute;
+            top:0;
+        }
+        #tabs{
+            top: 12%;
+            margin-left:0%;
+            height: 88%;
+            width: 278px;
+            /*border: 1px solid black;*/
+            float:left;
+            position: absolute;
+        }
+        #mains{
+            top: 12%;
+            margin-left: 301px;
+            width: 800px;
+            height: 88%;
+            /*border: 1px solid black;*/
+            float:left;
+            position: absolute;
+            /*background:  #0275d8;*/
+        }
+       #tabs ul li:nth-child(odd){
+            background:blanchedalmond;
+            list-style:none;
+        }
+       #tabs ul li:nth-child(even){
+            background:orange;
+            list-style:none;
+        }
+        .nav {
+            background-color: #F5F5DC;
+        }
+        .nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            line-height: 5em;
+        }
+
+        .nav a {
+            display: block;
+            width: 11.15em;
+            text-align: center;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background-color: #3dc7ab;
+        }
+       #tabs li{
+            font-size:25px;
+        }
+
+        hr{
+            width: 0%;
+        }
+        input{
+            background:  #ADD8E6;
+        }
+        textarea{
+            background:  #ADD8E6;
+        }
+        #opin{
+            left:20%;
+            width: 60%;
+            height: 10%;
+            top: 30%;
+            position:absolute;
+
+        }
+
+         #mains div{
+            /*border: 1px red solid;*/
+            width: 100%;
+            margin-left: 10%;
+        }
+        #disease_title{
+            /*border: 1px black solid;*/
+            height: 7%;
+            width: 100%;
+        }
+        #all_disease_contents{
+            height: 70%;
+            width: 100%;
+        }
+        #onpass_contents{
+            height: 70%;
+            width: 100%;
+        }
+
+        #disease_title label{
+            font-size: 15px;
+            width:19%;
+            height: 50%;
+            margin-top:2%;
+            text-align: center;
+            background-color: #66afe9;
+        }
+        #all_disease_contents .disease_congtents{
+            width: 100%;
+            margin-left: 0%;
+            /*background-color:#9acfea;*/
+        }
+
+        #onpass_contents .disease_congtents{
+            width: 100%;
+            margin-left: 0%;
+        }
+
+        .disease_congtents{
+            margin-top: 2%;
+        }
+
+        .disease_congtents label{
+            font-size: 15px;
+            width:19%;
+            height: 75%;
+            text-align: center;
+            background-color:#9acfea;
+        }
+       #all_disease_contents label p{
+            height: 5%;
+        }
+        #page_id{
+            border: 1px blue solid;
+            width: 30%;
+            height: 5%;
+        }
+        #page_id ul{
+            /*margin: 20px 0;*/
+            padding-left: 0;
+            list-style: none;
+            text-align: center;
+        }
+        #page_id li{
+            display: inline;
+        }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+</head>
+
+<body style="background-color: #ADD8E6">
+<div id="head">
+    <!-- 确认是否通过审核 -->
+    <div id="opin">
+        <form id="form1" action="#" method="post">
+          病案号：  <label> <input class="newfile" id="1" type="text" name="card_medical"></label>
+           姓名： <label> <input class="newfile" id="2" type="text" name="name"></label>
+          住院次数：  <label> <input class="newfile" id="3" type="text" name="times_hospitalized"></label>
+            <!--<label> <input class="newfile" id="4" type="text" name="main_diagnosis"></label>-->
+            <label> <input  id="newfile_btn" type="button" value="新建病例"></label>
+        </form>
+    </div>
+</div>
+
+
+<!-- 导航栏区 -->
+<div id="tabs" class="nav">
+    <ul id="myTab">
+        <li class="active">
+        <li><a href="#all" id="btn_all" data-toggle="tab">所有</a></li>
+        <li><a href="#nopass" id="btn_nopass" data-toggle="tab">未通过</a></li>
+
+    </ul>
+</div>
+
+<!--  内容区   -->
+<div id="mains">
+    <div id="disease_title">
+        <!-- 病例条目title-->
+        <label>病案号</label>
+        <label>姓名</label>
+        <label>住院次数</label>
+        <!--<label>主要诊断</label>-->
+        <label>状态</label>
+        <label>操作</label>
+    </div>
+
+    <!--所有病例条目-->
+    <div  id="all_disease_contents">
+        <div class="disease_congtents" th:if="${not #lists.isEmpty(list)}" th:each="data:${list}">
+            <label th:text="${data.card_medical}"></label>
+            <label th:text="${data.name}"></label>
+            <label th:text="${data.times_hospitalized}"></label>
+            <!--<label>主要诊断1</label>-->
+            <!--th:if="${data.status}==0"-->
+            <!--<label th:text="${data.status}"></label>-->
+            <!--<label th:text="${data.status}"></label>-->
+            <label th:switch="${data.status}">
+                <p th:case="0">未完成</p>
+                <p th:case="1">审核通过</p>
+                <p th:case="3">待审核</p>
+                <p th:case="2">审核未通过</p>
+            </label>
+            <!--<label th:if="${data.status}>=1 " th:text="不可编辑"><a href="/edit/${data.keyword}" id="#">编辑</a></label>-->
+            <!--<label th:if="${data.status}>=1 " th:text="不可编辑" th:uless="">编辑</label>-->
+            <label th:switch="${data.status}">
+                <p th:case="0"><a href="/edit/${data.keyword}">编辑</a></p>
+                <p th:case="1">不可编辑</p>
+                <p th:case="3">不可编辑</p>
+                <p th:case="2">不可编辑</p>
+            </label>
+  </div>
+    </div>
+
+    <!--审核未通过的病例条目-->
+    <div id="onpass_contents" style="display: none;">
+        <!--<div class="disease_congtents">-->
+            <!--<label>病案号2</label>-->
+            <!--<label>姓名2</label>-->
+            <!--<label>住院次数2</label>-->
+            <!--&lt;!&ndash;<label>主要诊断2</label>&ndash;&gt;-->
+            <!--<label>状态2</label>-->
+            <!--<label>编辑</label>-->
+        <!--</div>-->
+    </div>
+
+    <!--分页-->
+<!--<div id="page_id">-->
+    <!--<ul>-->
+        <!--<li><a href="###" id="firstPage">首页</a></li>-->
+        <!--<li><a href="###" id="prePage">上一页</a></li>-->
+        <!--<li><a href="###" id="nextPage">下一页</a></li>-->
+        <!--<li><a href="###" id="lastPage">尾页</a></li>-->
+    <!--</ul>-->
+<!--</div>-->
+</div>
+
+<script th:inline="javascript">
+$(function () {
+//    var list=[[${list}]];
+//    var count=list.length;  //数据总条数
+//    var pagesize=20;        //设置每页显示数目
+//    var pagecount=Math.ceil(count/pagesize);  //计算总页数
+//
+//    var currentPage=1;//当前页。默认1
+//$("#all_disease_contents").empty().append(head);
+//    for(var i=(currentPage-1)*pagesize;i<pagesize;i++){
+//        $("#all_disease_contents").append(list[i]);
+//    }
+//$("#all_disease_contents").append(end);
+//
+//    //显示选择页的内容
+//    $("#page_id a").click(function () {
+//        var selectPage=$(this).attr('selectPage');
+//        $('#all_disease_contents').html('');
+//        $('#all_disease_contents').append(head);
+//        for(i=(selectPage-1)*pagesize;i<pagesize*selectPage;i++){
+//            $('#all_disease_contents').append(list[i]);
+//        }
+//        $('#all_disease_contents').append(end);
+//    });
+//});
+
+//    var list=[[${list}]];
+//    for(var i=0;i<list.length;i++){
+//     //   alert(list[i].status);
+//        if(list[i].status==0){ $("#status").html("待审核")}
+//        else if(list[i].status==1){$("#status").html("审核通过")}
+//         else if(list[i].status==2){$("#status").html("审核未通过")}
+//    }
+
+//    var status=$("#status").html();
+//    if(status==0){$("#status").html("待审核")}
+//    else if(status==1){$("#status").html("审核通过")}
+//    else {$("#status").html("审核未通过")}
+
+
+    $("#btn_all").click(function () {
+        $("#onpass_contents").hide();
+        $("#all_disease_contents").show();
+    });
+
+    $("#btn_nopass").click(function () {
+        $("#all_disease_contents").hide();
+        $("#onpass_contents").show();
+    })
+
+
+
+    //ajax请求
+   $( function () {
+
+  //新建病例
+$("#newfile_btn").click(function () {
+    $("#all_disease_contents").html("");
+    $.ajax({
+        url:"/newfiled",
+        type:"post",
+        data:$("#form1").serialize(),
+        dataType: "json",//预期服务器返回的数据类型
+        async: true,
+        success:function (data) {
+            location.reload();
+       // var str="";
+
+          //  $("#all_disease_contents").append(str);
+         //   alert("SUCCESS");
+
+        },
+        error:function () {
+            alert("FAILED");
+        }
+    });
+});
+         //未通过
+       $("#btn_nopass").click(function () {
+           $("#onpass_contents").html("");
+           $.getJSON("/nopass",function (data) {
+               for(var i=0;i<data.length;i++){
+                  // alert(data[i].card_medical);
+                          var card_medical=data[i].card_medical;
+                          var name=data[i].name;
+                          var times_hospitalized=data[i].times_hospitalized;
+                          if(data[i].status==2){
+                              var status="审核未通过";
+                          }
+                          var str="<div class='disease_congtents'><label>"+card_medical+"</label><label>"+data[i].name+"</label><label>"+times_hospitalized+"</label><label>"+status+"</label><label>不可编辑</label></div>";
+                      $("#onpass_contents").append(str);
+               }
+           });
+       });
+      
+
+    });
+})
+</script>
+
+</body>
+</html>

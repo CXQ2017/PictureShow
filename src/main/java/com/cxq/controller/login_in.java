@@ -36,8 +36,12 @@ public class login_in {
 
     @Autowired
     private TranscranialDopplerReportRepository transcranialDopplerReportRepository;
+
     @Autowired
     private HeartRateChartRepository heartRateChartRepository;
+
+//    @Autowired
+//    private MedicalRecord medicalRecord;
 
 
 //    //跳转到登录
@@ -45,14 +49,6 @@ public class login_in {
 //    public String toLogin(){
 //        return "home";
 //    }
-
-
-
-    //跳转到病例信息录入
-    @RequestMapping("/toChoosecaseKinds")
-    public String tochooseCaseInformationKinds(){
-        return "chooseCaseInformationKinds";
-    }
 
      //跳转到住院首页medicalRecord
      @RequestMapping("/toChoosecaseKinds/tomedicalRecord")
@@ -236,4 +232,11 @@ public class login_in {
 
         return "chooseCaseInformationKinds";
     }
+
+    //查询数据库病历信息
+    public String query_message(){
+
+        return "";
+    }
+
 }

@@ -29,6 +29,7 @@ public class MedicalRecord {
     private String homeplace_county;// '出生县',
     private String pay_way; // '付费方式',
     private String card_health; // '健康卡号',
+
     private Integer times_hospitalized; // '住院次数',
     @JoinColumn(name = "card_medical")
     private String card_medical; // '病案号',
@@ -101,8 +102,9 @@ public class MedicalRecord {
     private String quality_control_physician;   // '质控医师',
     private String quality_control_nurse;  // '质控护士',
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
-    private Date quality_control_date;  // '质控日期',              //
-    private Integer status; // '状态',
+    private Date quality_control_date;  // '质控日期',
+
+    private Integer status; // '状态',0---未完成（默认），1---审核通过，2---审核未通过，3----待审核
     private Date create_time; //'创建时间',
 
     //唯一标识
