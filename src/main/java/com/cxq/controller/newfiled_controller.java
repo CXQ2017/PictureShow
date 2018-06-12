@@ -1,10 +1,8 @@
 package com.cxq.controller;
 
-import com.cxq.base.StatusUtile;
 import com.cxq.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,7 +46,7 @@ public class newfiled_controller {
 
     //跳转到病例信息录入
     @RequestMapping("/toChoosecaseKinds")
-    public String tochooseCaseInformationKinds(Model model){
+    public String tochooseCaseInformationKinds(){
         // <h2 th:text="${diseaseRecord.Card_medical}"></h2>
 //          DiseaseRecord diseaseRecord= diseaseRecordRepository.find_one("274318");
 //        System.out.println("病程记录274318的记录："+diseaseRecord.getCard_medical());
@@ -57,7 +55,7 @@ public class newfiled_controller {
         // diseaseRecord=diseaseRecordRepository.save();
         // return "chooseCaseInformationKinds";
 
-        List<MedicalRecord> list=medicalRecordRepository.find_allmsg();
+//        List<MedicalRecord> list=medicalRecordRepository.find_allmsg();
         //  List<String> status=new ArrayList<>();
 //        for (MedicalRecord data:list) {
 //            if(data.getStatu()==0){
@@ -71,13 +69,13 @@ public class newfiled_controller {
 //        }
         //  JSONArray jsonArray=new JSONArray();
 
-        model.addAttribute("sta", StatusUtile.mapStatus);
-        model.addAttribute("list",list);
+//        model.addAttribute("sta", StatusUtile.mapStatus);
+//        model.addAttribute("list",list);
 //        model.addAttribute("status",status);
         //  jsonArray.add(list);
         //  jsonArray.add(status);
         //     model.addAttribute("jsonArray",jsonArray);
-        return "newfile_built";
+        return "test";
     }
 
     //新建病例档案
@@ -168,4 +166,6 @@ public class newfiled_controller {
         System.out.println(keyword);
         return "index";
     }
+
+
 }

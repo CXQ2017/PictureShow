@@ -172,7 +172,7 @@
                 $("#all_disease_contents").hide();
                 $("#onpass_contents").show();
             });
-
+        });
 
 //            $("#newfile_btn").click(function () {
 //                $("#all_disease_contents").html("");
@@ -224,9 +224,12 @@
                         "orderable": false,
                         "data": "upload",
                         "render": function ( data, type, full, meta,row ) {
-                            if(row.status==0){return '<a href="/edit?keyword='+data+'">编辑</a>'}
-                            else {return "不可编辑"}
-
+//                            alert(row.status);
+                             value = row.status;
+                            alert(value);
+                            if(value == 0){return "wei审核通过"}
+                            else {return "审核通过"}
+//                            return '<a href="/edit?keyword='+data+'">编辑</a>';
                         }
                     },
                 ],

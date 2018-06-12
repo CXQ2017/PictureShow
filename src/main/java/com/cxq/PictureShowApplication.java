@@ -2,6 +2,7 @@ package com.cxq;
 
 import com.cxq.domain.*;
 import com.cxq.upload.UploadTool;
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -136,5 +137,13 @@ public class PictureShowApplication {
 //		model1.put("data",true);
 //		return model1;
 //	}
+	@RequestMapping("/first_findall")
+	public Map<String,Object> first_findall(){
+		List <MedicalRecord> list=medicalRecordRepository.findAll();
+		Map<String ,Object> map1=new HashedMap();
+		map1.put("data",list);
+
+		return map1;
+	}
 
 }
