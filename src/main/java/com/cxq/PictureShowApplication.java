@@ -1,10 +1,8 @@
 package com.cxq;
 
-import com.cxq.domain.CheckRecordRepository;
-import com.cxq.domain.PictureProperty;
-import com.cxq.domain.PicturePropertyRepository;
-import com.cxq.domain.UltrasonicDiagnosisReportRepository;
+import com.cxq.domain.*;
 import com.cxq.upload.UploadTool;
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +10,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -46,26 +44,29 @@ public class PictureShowApplication {
 	@Autowired
 	private UltrasonicDiagnosisReportRepository ultrasonicDiagnosisReportRepository;
 
+	@Autowired
+	private MedicalRecordRepository medicalRecordRepository;
 
-    @RequestMapping(value= "/login" )
-	@ResponseBody
-    public Map<String, Object> login(HttpServletRequest request){
-		Map<String, Object> map = new HashMap<>();
 
-        String username = request.getParameter("name");
-		String password=request.getParameter("password");
-		if(username.equals("cc")&&password.equals("123")){
-			//登陆成功
-		  map.put("data",true);
-		}else{
-			//登陆失败
-			map.put("data",false);
-
-		}
+//    @RequestMapping(value= "/login" )
+//	@ResponseBody
+//    public Map<String, Object> login(HttpServletRequest request){
+//		Map<String, Object> map = new HashMap<>();
+//
+//        String username = request.getParameter("name");
+//		String password=request.getParameter("password");
+//		if(username.equals("cc")&&password.equals("123")){
+//			//登陆成功
+//		  map.put("data",true);
+//		}else{
+//			//登陆失败
+//			map.put("data",false);
+//
+//		}
+////		return map;
+//		System.out.println("#"+username+"#"+password);
 //		return map;
-		System.out.println("#"+username+"#"+password);
-		return map;
-    }
+//    }
 
 
     @RequestMapping("/refresh_picture")
@@ -98,6 +99,14 @@ public class PictureShowApplication {
 	}
 
 
+	@RequestMapping(value = "/audit_list" ,method = RequestMethod.POST)
+	public Map<String, Object> auditList(){
+		Map<String,Object> map = new HashedMap();
+		List<MedicalRecord> list = medicalRecordRepository.findAll();
+
+		map.put("data",list);
+		return map;
+	}
 	//医师护理录
 //	@RequestMapping(value = "/addCheck_record" , method = RequestMethod.POST)
 //	public Map<String,Object> addCheckRecord(@ModelAttribute CheckRecord checkRecord, HttpServletRequest request) {

@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface MedicalRecordRepository extends JpaRepository<MedicalRecord,Long>{
 
-//     @Query("select m from MedicalRecord m where m.card_medical=?1")
-//    public int addFirstpageData();
+     @Query("select  m.name, m.sex, m.card_id, m.main_diagnosis from MedicalRecord m ")
+    List<MedicalRecord> findAduit();
 
 //    @Query("select m.card_medical,m.name,m.times_hospitalized from MedicalRecord m ")
 //    public List<Object> findPart();
