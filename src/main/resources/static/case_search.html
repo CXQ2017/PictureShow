@@ -30,7 +30,7 @@
 //                    { data: 'age' },
                     { data: 'card_id' },
                     { data: 'main_diagnosis' },
-                    { data: 'kkkkk' },
+                    { data: 'keyword' },
                 ],
                 columnDefs: [
 //                    {
@@ -47,7 +47,7 @@
                         "data": "upload",
                         "render": function ( data, type, full, meta,row ) {
 //                            return data = '<button class="btn btn-info btn-sm" data-id=' + data + '><i class="fa fa-pencil"></i>Edit</button>'
-                            return '<a href="/ShowAudit?id="+data+"">查看详情</a>';
+                            return '<a href="/ShowAudit?id='+data+'">查看详情</a>';
                         }
                     },
                 ],

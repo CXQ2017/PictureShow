@@ -2,7 +2,6 @@ package com.cxq;
 
 import com.cxq.domain.*;
 import com.cxq.upload.UploadTool;
-import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,9 +100,9 @@ public class PictureShowApplication {
 
 	@RequestMapping(value = "/audit_list" ,method = RequestMethod.POST)
 	public Map<String, Object> auditList(){
-		Map<String,Object> map = new HashedMap();
+		Map<String,Object> map = new HashMap();
 		List<MedicalRecord> list = medicalRecordRepository.findAll();
-
+		System.out.println(list);
 		map.put("data",list);
 		return map;
 	}

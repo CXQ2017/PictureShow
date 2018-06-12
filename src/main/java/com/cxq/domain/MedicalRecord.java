@@ -1,6 +1,7 @@
 package com.cxq.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class MedicalRecord {
     private String name;
     private String sex;
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date birthday; //'出生日期',
     private Integer age; //'年龄',
     private String nationality; // '国籍',
@@ -51,14 +53,16 @@ public class MedicalRecord {
     private String linkman_phone; //`  '联系人电话',
     private String hospitalized_road; //` '入院途径',
     private String patient_source; //`  '病人来源',
+    @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date hospitalized_day; //` '入院日期',                         //
     private String hospitalized_category; //` '入院科别',
     private String hospitalized_ward; //` '入院病房',
+    @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date change_time;    //'转科时间',                              //
     private String change_ward;    // '转科科别',
-
+    @JsonFormat(pattern="yyyy-MM-dd")
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date leave_hospital_day;  // '出院日期',                      //
     private String leave_hospital_category;   // '出院科别',
@@ -102,6 +106,7 @@ public class MedicalRecord {
     private String quality_control_physician;   // '质控医师',
     private String quality_control_nurse;  // '质控护士',
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date quality_control_date;  // '质控日期',
 
     private Integer status; // '状态',0---未完成（默认），1---审核通过，2---审核未通过，3----待审核

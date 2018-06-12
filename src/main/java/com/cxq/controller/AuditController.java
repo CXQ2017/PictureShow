@@ -3,6 +3,8 @@ package com.cxq.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Administrator on 2018/6/12.
  */
@@ -17,9 +19,10 @@ public class AuditController {
     }
 
     @RequestMapping("/ShowAudit")
-    public String ShowAudit(){
+    public String ShowAudit(HttpServletRequest request){
 
-
-        return "check_all";
+       String s = request.getParameter("id");
+        System.out.println(s);
+        return "check_verify";
     }
 }

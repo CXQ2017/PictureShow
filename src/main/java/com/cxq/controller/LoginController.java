@@ -1,10 +1,14 @@
 package com.cxq.controller;
 
+import com.cxq.domain.User;
+import com.cxq.domain.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,6 +18,9 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
+    @Autowired
+    private UserRepository userRepository;
+
     @RequestMapping(value= "/login_in" )
     public String login(HttpServletRequest request){
 
@@ -22,11 +29,13 @@ public class LoginController {
         String username = request.getParameter("username");
         String password=request.getParameter("password");
         System.out.println("#"+username+"#"+password);
-        if(username.equals("000000")&&password.equals("000000")){
-            //登陆成功
-            return "tagged_pdf";
-        }
 
-        return "index";
+        List<User> list = userRepository.finduser(username,password);
+
+        if(list.isEmpty()){
+            return "index";
+        }
+        return "tagged_pdf";
+
     }
 }
