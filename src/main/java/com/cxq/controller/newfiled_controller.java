@@ -1,6 +1,7 @@
 package com.cxq.controller;
 
 import com.cxq.domain.*;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/6/12/012.
@@ -75,7 +77,7 @@ public class newfiled_controller {
         //  jsonArray.add(list);
         //  jsonArray.add(status);
         //     model.addAttribute("jsonArray",jsonArray);
-        return "test";
+        return "newCreatedCase";
     }
 
     //新建病例档案
@@ -153,11 +155,13 @@ public class newfiled_controller {
 
     @ResponseBody
     @RequestMapping("/nopass")
-    public List<MedicalRecord> nopass(){
+    public Map<String,Object> nopass(){
         List<MedicalRecord> list=new ArrayList<>();
         //status=2,表示审核不通过
         list=medicalRecordRepository.find_one();
-        return list;
+        Map<String,Object> map2=new HashedMap();
+        map2.put("data",list);
+        return map2;
     }
 
     //点击编辑

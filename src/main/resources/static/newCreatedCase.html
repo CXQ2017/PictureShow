@@ -176,9 +176,9 @@
                 $("#onpass_contents").show();
             });
 
-             //新建病例
+            //新建病例
             $("#newfile_btn").click(function () {
-               // $("#all_disease_contents").html("");
+                // $("#all_disease_contents").html("");
                 $.ajax({
                     url: "/newfiled",
                     type: "post",
@@ -225,7 +225,7 @@
                             "orderable": false,
                             "data": 'status',
                             "render": function ( data, nRow ,meta,full) {
-                                    return '不可编辑'
+                                return '不可编辑'
                             }
                         },
                     ],
@@ -289,50 +289,50 @@
 </head>
 
 <body>
-    <div id="head">
-        <!-- 确认是否通过审核 -->
-        <div id="opin">
-            <form id="form1" action="#" method="post">
-                病案号：  <label> <input class="newfile" id="1" type="text" name="card_medical"></label>
-                姓名： <label> <input class="newfile" id="2" type="text" name="name"></label>
-                住院次数：  <label> <input class="newfile" id="3" type="text" name="times_hospitalized"></label>
-                <!--<label> <input class="newfile" id="4" type="text" name="main_diagnosis"></label>-->
-                <label> <input  id="newfile_btn" type="button" value="新建病例"></label>
-            </form>
-        </div>
+<div id="head">
+    <!-- 确认是否通过审核 -->
+    <div id="opin">
+        <form id="form1" action="#" method="post">
+            病案号：  <label> <input class="newfile" id="1" type="text" name="card_medical"></label>
+            姓名： <label> <input class="newfile" id="2" type="text" name="name"></label>
+            住院次数：  <label> <input class="newfile" id="3" type="text" name="times_hospitalized"></label>
+            <!--<label> <input class="newfile" id="4" type="text" name="main_diagnosis"></label>-->
+            <label> <input  id="newfile_btn" type="button" value="新建病例"></label>
+        </form>
     </div>
+</div>
 
 
-    <!-- 导航栏区 -->
-    <div id="tabs" class="nav">
-        <ul id="myTab">
-            <li class="active">
-            <li><a href="#all" id="btn_all" data-toggle="tab">所有</a></li>
-            <li><a href="#nopass" id="btn_nopass" data-toggle="tab">未通过</a></li>
+<!-- 导航栏区 -->
+<div id="tabs" class="nav">
+    <ul id="myTab">
+        <li class="active">
+        <li><a href="#all" id="btn_all" data-toggle="tab">所有</a></li>
+        <li><a href="#nopass" id="btn_nopass" data-toggle="tab">未通过</a></li>
 
-        </ul>
-    </div>
+    </ul>
+</div>
 
-    <!--  内容区   -->
-    <div id="mains">
-        <!--所有-->
-        <div class="table-responsive" id="all_disease_contents">
+<!--  内容区   -->
+<div id="mains">
+    <!--所有-->
+    <div class="table-responsive" id="all_disease_contents">
         <table id="ssss" class="table table-striped table-condensed display">
-        <thead>
-        <tr>
-        <th>病案号</th>
-        <th>姓名</th>
-        <th>住院次数</th>
-        <th>状态</th>
-        <th>操作</th>
-        </tr>
-        </thead>
+            <thead>
+            <tr>
+                <th>病案号</th>
+                <th>姓名</th>
+                <th>住院次数</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
 
         </table>
-        </div>
+    </div>
 
 
-<!--未通过的-->
+    <!--未通过的-->
     <div class="table-responsive" id="onpass_contents" style="display: none;">
         <table id="ssss2" class="table table-striped table-condensed display">
             <thead>
@@ -348,7 +348,7 @@
         </table>
     </div>
 
-    </div>
+</div>
 
 </body>
 </html>
