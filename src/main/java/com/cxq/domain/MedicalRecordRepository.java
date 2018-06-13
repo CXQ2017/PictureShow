@@ -20,4 +20,6 @@ List<MedicalRecord> find_one();
 
     @Query("select p from MedicalRecord p order by p.create_time desc")
     List<MedicalRecord> find_allmsg();
+
+    List<MedicalRecord> findByKeyword(String keyword);
 }
