@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/dataTables.bootstrap.css">
+    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/dataTables.responsive.min.js"></script>
+
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/bootstrap-table.js"></script>
     <!-- DataTables -->
@@ -193,7 +200,10 @@
 //        });
 
         $(document).ready(function() {
+
+            var ss ;
             var table = $('#ssss').DataTable({
+
                 ajax: {
                     dataType: 'json',
                     type: "POST",
@@ -204,14 +214,15 @@
                     { data: 'name'},
                     { data: 'times_hospitalized' },
                     { data: 'status' },
-                    { data: 'keyword' },
+                    { data: 'keyword'},
                 ],
                 columnDefs: [
                     {
                         "targets": 3,
                         "orderable": false,
                         "data": "upload",
-                        "render": function ( data, type, full, meta,row ) {
+                        "render": function ( data, type, full ) {
+                            ss= data;
                             if(data==0){return "未完成"}
                             else if(data==1){return "审核通过"}
                             else if(data==2){return "审核未通过"}
@@ -222,14 +233,14 @@
                     {
                         "targets": 4,
                         "orderable": false,
-                        "data": "upload",
-                        "render": function ( data, type, full, meta,row ) {
-//                            alert(row.status);
-                             value = row.status;
-                            alert(value);
-                            if(value == 0){return "wei审核通过"}
-                            else {return "审核通过"}
-//                            return '<a href="/edit?keyword='+data+'">编辑</a>';
+                        "data": 'status',
+                        "render": function ( data, nRow ,meta,full,val) {
+                            if(ss == 0){
+                                return '<a href="/edit?keyword='+data+'">编辑</a>'
+                            }else{
+                                return '不可编辑'
+                            }
+
                         }
                     },
                 ],
