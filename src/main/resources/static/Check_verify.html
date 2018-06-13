@@ -795,8 +795,8 @@
 						<br /><br /><br />
 						<li style="font-size: 50px;margin-left:0px">超声波检查报告</li><br /><br /><br /><br />
 						<!-- 遍历该报告 -->
-						<div th:each="mapS:${map}">
-							<form method="post">
+						<div th:each="csb:${map}">
+							<form method="post" id="csb_">
 								<div>
 									超声波号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="ultrasonic_number" onkeypress="return handleEnter(this, event)"/>
 									<!--</div><br /><hr/><br /><br />
@@ -919,9 +919,10 @@
 					}
 				});
 			})
-			/* 超声波 */
+			/* 超声波报告 */
 
 
+			/* 各影像报告 */
 
 
 			/* 其它各模块ajax提交 */
