@@ -4,7 +4,6 @@ import com.cxq.domain.*;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -165,10 +164,11 @@ public class newfiled_controller {
     }
 
     //点击编辑
-    @RequestMapping("/edit/{keyword}")
-    public String edit(@PathVariable("keyword")String keyword){
+    @RequestMapping("/edit")
+    public String edit(HttpServletRequest request){
+        String keyword=request.getParameter("keyword");
         System.out.println(keyword);
-        return "index";
+        return "Check_verify";
     }
 
 

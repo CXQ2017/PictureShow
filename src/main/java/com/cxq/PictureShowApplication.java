@@ -139,7 +139,7 @@ public class PictureShowApplication {
 //	}
 	@RequestMapping("/first_findall")
 	public Map<String,Object> first_findall(){
-		List <MedicalRecord> list=medicalRecordRepository.findAll();
+		List <MedicalRecord> list=medicalRecordRepository.find_allmsg();
 		Map<String ,Object> map1=new HashedMap();
 		map1.put("data",list);
 
