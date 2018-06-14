@@ -193,14 +193,14 @@ public class newfiled_controller {
             model.addAttribute("listtran",listTran.get(0));
         }
         model.addAttribute("listmedi",listMedi.get(0));  //病案首页
-        model.addAttribute("listhosp",listHosp.get(0));  //入院记录
-        model.addAttribute("listcour",listDise.get(0));  //病程记录
-        model.addAttribute("listchec",listChec.get(0));  //查房记录
-        model.addAttribute("listleav",listDisc.get(0));   //出院记录
-        model.addAttribute("video",listVide);             //各种影像
-        model.addAttribute("listultr",listUltr.get(0));  //超声波
+        model.addAttribute("listhosp",listHosp.get(0));
+        model.addAttribute("listcour",listDise.get(0));
+        model.addAttribute("listchec",listChec.get(0));
+        model.addAttribute("listleav",listDisc.get(0));
+        model.addAttribute("video",listVide);
+        model.addAttribute("listultr",listUltr.get(0));
 
-       return "Check_verify";   //测试
+       return "Check_insert";
     }
 
     //病例数据录入
