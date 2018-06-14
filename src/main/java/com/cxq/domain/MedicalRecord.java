@@ -1,6 +1,7 @@
 package com.cxq.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -105,6 +106,8 @@ public class MedicalRecord {
     private Date quality_control_date;  // '质控日期',
 
     private Integer status; // '状态',0---未完成（默认），1---审核通过，2---审核未通过，3----待审核
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat( pattern = "yyyy-MM-dd HH:mm:ss" )
     private Date create_time; //'创建时间',
 
     //唯一标识
