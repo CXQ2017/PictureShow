@@ -9,6 +9,8 @@ import java.util.Date;
  * Created by Administrator on 2018/4/11/011.
  *
  * 病程记录单
+ *
+ *    需要增加   转出和转入记录
  */
 @Entity
 @Table(name="disease_record")

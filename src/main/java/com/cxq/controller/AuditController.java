@@ -77,9 +77,13 @@ public class AuditController {
         model.addAttribute("listmedi",listMedi.get(0));
         model.addAttribute("listhosp",listHosp.get(0));
         model.addAttribute("listcour",listDise.get(0));
-        model.addAttribute("listleav",listChec);
+        model.addAttribute("listchec",listChec);
+//        for (CheckRecord c:listChec
+//             ) {
+//            System.out.println("dddddddddd"+c.getCard_medical());
+//        }
         model.addAttribute("listleav",listDisc.get(0));
-        model.addAttribute("video",listVide);
+        model.addAttribute("listvide",listVide);
         model.addAttribute("listultr",listUltr);
 
 

@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by Administrator on 2018/4/11/011.
  *
- * 住院首页
+ * 住院首页  uniqueConstraints = {@UniqueConstraint(columnNames="keyword")}
  */
 @Entity
 @Table(name = "medical_record")
@@ -108,6 +108,7 @@ public class MedicalRecord {
     private Date create_time; //'创建时间',
 
     //唯一标识
+
     private String keyword;
 
     public MedicalRecord(){

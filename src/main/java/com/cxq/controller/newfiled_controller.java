@@ -4,6 +4,8 @@ import com.cxq.domain.*;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -165,11 +167,82 @@ public class newfiled_controller {
 
     //点击编辑
     @RequestMapping("/edit")
-    public String edit(HttpServletRequest request){
+    public String edit(HttpServletRequest request, Model model){
         String keyword=request.getParameter("keyword");
         System.out.println(keyword);
-        return "Check_verify";
+
+        List<MedicalRecord> listMedi = medicalRecordRepository.findByKeyword(keyword); //病案首页
+        List<Hospitalized> listHosp = hospitalizedRepository.findByKeyword(keyword);   //入院记录
+        List<DiseaseRecord> listDise = diseaseRecordRepository.findByKeyword(keyword);   //病程记录
+        List<CheckRecord> listChec = checkRecordRepository.findByKeyword(keyword);         //查房记录
+        List<DischargeRecord> listDisc = dischargeRecordRepository.findByKeyword(keyword);      //出院记录
+        List<VideoReport> listVide = videoReportRepository.findByKeyword(keyword);          //各种影像
+        List<UltrasonicDiagnosisReport> listUltr = ultrasonicDiagnosisReportRepository.findByKeyword(keyword); //超声波
+        List<TranscranialDopplerReport> listTran = transcranialDopplerReportRepository.findByKeyword(keyword);   //多普勒
+
+
+        if(listMedi.isEmpty()){
+            System.out.println("keyword = "+keyword+"查找为空");
+            return "case_search";
+        }
+        if(listTran.isEmpty()){
+            System.out.println("listTran= "+keyword+"查找为空");
+            model.addAttribute("listtran",null);
+//            return "case_search";
+        }else {
+            model.addAttribute("listtran",listTran.get(0));
+        }
+        model.addAttribute("listmedi",listMedi.get(0));  //病案首页
+        model.addAttribute("listhosp",listHosp.get(0));  //入院记录
+        model.addAttribute("listcour",listDise.get(0));  //病程记录
+        model.addAttribute("listchec",listChec.get(0));  //查房记录
+        model.addAttribute("listleav",listDisc.get(0));   //出院记录
+        model.addAttribute("video",listVide);             //各种影像
+        model.addAttribute("listultr",listUltr.get(0));  //超声波
+
+       return "Check_verify";   //测试
     }
 
+    //病例数据录入
+    //病案首页,点击保存
+    @RequestMapping("/update_medicalRecord")
+    public Integer update_medicalRecord(@ModelAttribute MedicalRecord medicalRecord){
+        System.out.println("dddddddddddd");
+         Integer i=0;
+        System.out.println("dddddddddddd"+medicalRecord.getKeyword());
+          medicalRecordRepository.save(medicalRecord);
+        return i;
+    }
 
+    //更新住院记录
+    @RequestMapping("/update_hospitalized")
+    public Integer update_hospitalized(@ModelAttribute Hospitalized hospitalized){
+        Integer i=0;
+
+        return i;
+    }
+
+    //更新病程记录
+    @RequestMapping("/update_diseaseRecord")
+    public Integer update_diseaseRecord(@ModelAttribute DiseaseRecord diseaseRecord){
+        Integer i=0;
+
+        return i;
+    }
+
+    //更新查房（首次）记录
+    @RequestMapping("/update_checkRecord")
+    public Integer update_checkRecord(@ModelAttribute CheckRecord checkRecord){
+        Integer i=0;
+
+        return i;
+    }
+
+    //插入查房（新建查房记录后）记录
+    @RequestMapping("/add_checkRecord")
+    public Integer add_checkRecord(@ModelAttribute CheckRecord checkRecord){
+        Integer i=0;
+         checkRecordRepository.save(checkRecord);
+        return i;
+    }
 }

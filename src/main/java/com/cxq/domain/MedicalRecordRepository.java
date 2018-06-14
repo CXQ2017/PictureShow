@@ -22,4 +22,6 @@ List<MedicalRecord> find_one();
     List<MedicalRecord> find_allmsg();
 
     List<MedicalRecord> findByKeyword(String keyword);
+
+//    Integer updateByKeyword(String keyword);
 }
