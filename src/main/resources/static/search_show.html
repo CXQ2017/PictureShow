@@ -209,16 +209,16 @@
 				var table = $('#ssss').DataTable({
 //                ajax: "http://localhost:8080/audit_list",
 					ajax: {
-						dataType: 'json',
+//						dataType: 'json',
 						type: "POST",
-						url: "http://localhost:8080/audit_list",
+						url: "http://localhost:8080/ShowAudit",
 					},
 					columns:[
 						{ data: 'card_medical'},
-						{ data: 'name'},
-						{ data: 'sex' },
-						{ data: 'card_id' },
-						{ data: 'main_diagnosis' },
+						{ data: 'Patient_rounds_date'},
+						{ data: 'Patient_rounds_doctor' },
+						{ data: 'Patient_rounds_details' },
+						{ data: 'keyword'}
 					],
 					columnDefs: [
 //                    {
@@ -230,7 +230,7 @@
 //                        }
 //                    },
 						{
-							"targets": 5,
+							"targets": 4,
 							"orderable": false,
 							"data": "upload",
 							"render": function ( data, type, full, meta,row ) {
@@ -698,10 +698,9 @@
 									<thead>
 									<tr>
 										<th>病案号</th>
-										<th>姓名</th>
-										<th>性别</th>
-										<th>身份证号</th>
-										<th>查房记录</th>
+										<th>查房时间</th>
+										<th>查房医师</th>
+										<th>查房详情记录</th>
 										<th>操作</th>
 									</tr>
 									</thead>
