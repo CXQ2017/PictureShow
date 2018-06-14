@@ -111,41 +111,49 @@ public class newfiled_controller {
         medicalRecordRepository.save(medicalRecord);
 
         hospitalized.setKeyword(keyword);
+        hospitalized.setCard_medical(card_medical);
         hospitalized.setStatus(0);
         hospitalized.setCreate_time(new Date());
         hospitalizedRepository.save(hospitalized);
 
         diseaseRecord.setKeyword(keyword);
-        dischargeRecord.setStatus(0);
+        diseaseRecord.setCard_medical(card_medical);
+        diseaseRecord.setStatus(0);
         diseaseRecord.setCreate_date(new Date());
         diseaseRecordRepository.save(diseaseRecord);
 
         dischargeRecord.setKeyword(keyword);
+        dischargeRecord.setCard_medical(card_medical);
         dischargeRecord.setStatus(0);
         dischargeRecord.setCreate_date(new Date());
         dischargeRecordRepository.save(dischargeRecord);
 
         checkRecord.setKeyword(keyword);
+        checkRecord.setCard_medical(card_medical);
         checkRecord.setStatus(0);
         checkRecord.setCreate_date(new Date());
         checkRecordRepository.save(checkRecord);
 
         heartRateChart.setKeyword(keyword);
+        heartRateChart.setCard_medical(card_medical);
         heartRateChart.setStatus(0);
         heartRateChart.setCreate_date(new Date());
         heartRateChartRepository.save(heartRateChart);
 
         transcranialDopplerReport.setKeyword(keyword);
+        transcranialDopplerReport.setCard_medical(card_medical);
         transcranialDopplerReport.setStatus(0);
         transcranialDopplerReport.setCreate_date(new Date());
         transcranialDopplerReportRepository.save(transcranialDopplerReport);
 
         ultrasonicDiagnosisReport.setKeyword(keyword);
+        ultrasonicDiagnosisReport.setCard_medical(card_medical);
         ultrasonicDiagnosisReport.setStatus(0);
         ultrasonicDiagnosisReport.setCreate_date(new Date());
         ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
 
         videoReport.setKeyword(keyword);
+        videoReport.setCard_medical(card_medical);
         videoReport.setStatus(0);
         videoReport.setCreate_time(new Date());
         videoReportRepository.save(videoReport);
@@ -170,11 +178,11 @@ public class newfiled_controller {
         return map2;
     }
 
-    //点击编辑
+    //点击编辑,跳转录入页面
     @RequestMapping("/edit")
     public String edit(HttpServletRequest request, Model model){
         String keyword=request.getParameter("keyword");
-        System.out.println(keyword);
+//        System.out.println(keyword);
 
         List<MedicalRecord> listMedi = medicalRecordRepository.findByKeyword(keyword); //病案首页
         List<Hospitalized> listHosp = hospitalizedRepository.findByKeyword(keyword);   //入院记录
@@ -195,15 +203,15 @@ public class newfiled_controller {
             model.addAttribute("listtran",null);
 //            return "case_search";
         }else {
-            model.addAttribute("listtran",listTran.get(0));
+            model.addAttribute("listtran",listTran.get(0));  //多普勒
         }
         model.addAttribute("listmedi",listMedi.get(0));  //病案首页
-        model.addAttribute("listhosp",listHosp.get(0));
-        model.addAttribute("listcour",listDise.get(0));
-        model.addAttribute("listchec",listChec.get(0));
-        model.addAttribute("listleav",listDisc.get(0));
-        model.addAttribute("video",listVide);
-        model.addAttribute("listultr",listUltr.get(0));
+        model.addAttribute("listhosp",listHosp.get(0));//入院记录
+        model.addAttribute("listcour",listDise.get(0));  //病程记录
+        model.addAttribute("listleav",listDisc.get(0)); //出院记录
+        model.addAttribute("listcheck",listChec); //查房记录
+        model.addAttribute("listvide",listVide);       //各种影像
+        model.addAttribute("listultr",listUltr);   //超声波
 
        return "Check_insert";
     }
@@ -211,18 +219,23 @@ public class newfiled_controller {
     //病例数据录入
     //病案首页,点击保存
     @RequestMapping("/update_medicalRecord")
+    @ResponseBody
     public Integer update_medicalRecord(@ModelAttribute MedicalRecord medicalRecord){
+
+        //int id=Integer.parseInt(medicalRecord.getId());
         System.out.println("dddddddddddd");
+
          Integer i=0;
         System.out.println("dddddddddddd"+medicalRecord.getKeyword());
-          medicalRecordRepository.save(medicalRecord);
+          medicalRecordRepository.saveAndFlush(medicalRecord);
+
         return i;
     }
 
     //更新住院记录
     @RequestMapping("/update_hospitalized")
-    public Integer update_hospitalized(@ModelAttribute Hospitalized hospitalized){
-        Integer i=0;
+    public int  update_hospitalized(@ModelAttribute Hospitalized hospitalized){
+        int i=0;
 
         return i;
     }
