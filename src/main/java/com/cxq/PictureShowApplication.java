@@ -68,7 +68,7 @@ public class PictureShowApplication {
 //		return map;
 //    }
 
-
+    //PDF标记
     @RequestMapping("/refresh_picture")
     @ResponseBody
 	public Map<String,Object> refresh_picture(String file_path, String name, Integer gender, Integer id_card,
@@ -137,6 +137,8 @@ public class PictureShowApplication {
 //		model1.put("data",true);
 //		return model1;
 //	}
+
+
 	@RequestMapping("/first_findall")
 	public Map<String,Object> first_findall(){
 		List <MedicalRecord> list=medicalRecordRepository.find_allmsg();

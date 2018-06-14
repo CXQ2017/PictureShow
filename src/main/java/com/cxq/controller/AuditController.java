@@ -44,13 +44,23 @@ public class AuditController {
     private TranscranialDopplerReportRepository transcranialDopplerReportRepository;
 
 
+    //跳转查询列表
     @RequestMapping("/to_case_search")
-    public String AuditList(){
+    public String SearchList(){
 
         return "case_search";
     }
 
-    @RequestMapping("/ShowAudit")
+
+    //审核跳转列表
+    @RequestMapping("/to_case_audit")
+    public String ChekList(){
+
+        return "case_audit";
+    }
+
+    //查看审核详情
+    @RequestMapping("/ShowSearch")
     public String ShowAudit(HttpServletRequest request, Model model){
 
 
@@ -87,8 +97,47 @@ public class AuditController {
         model.addAttribute("listvide",listVide);
         model.addAttribute("listultr",listUltr);
 
-
         return "search_show";
+    }
+
+    //查看查询详情
+    @RequestMapping("/ShowAudit")
+    public String ShowSearch(HttpServletRequest request, Model model){
+
+
+        Map<String,Object> map = new HashedMap();
+
+        String keyword = request.getParameter("id");
+        System.out.println("keyword = "+keyword);
+        List<MedicalRecord> listMedi = medicalRecordRepository.findByKeyword(keyword);
+        List<Hospitalized> listHosp = hospitalizedRepository.findByKeyword(keyword);
+        List<DiseaseRecord> listDise = diseaseRecordRepository.findByKeyword(keyword);
+        List<CheckRecord> listChec = checkRecordRepository.findByKeyword(keyword);
+        List<DischargeRecord> listDisc = dischargeRecordRepository.findByKeyword(keyword);
+        List<VideoReport> listVide = videoReportRepository.findByKeyword(keyword);
+        List<UltrasonicDiagnosisReport> listUltr = ultrasonicDiagnosisReportRepository.findByKeyword(keyword);
+        List<TranscranialDopplerReport> listTran = transcranialDopplerReportRepository.findByKeyword(keyword);
+
+
+        if(listMedi.isEmpty()){
+            System.out.println("keyword = "+keyword+"查找为空");
+            return "case_search";
+        }
+        if(listTran.isEmpty()){
+            System.out.println("listTran= "+keyword+"查找为空");
+            model.addAttribute("listtran",null);
+//            return "case_search";
+        }else {
+            model.addAttribute("listtran",listTran.get(0));
+        }
+        model.addAttribute("listmedi",listMedi.get(0));
+        model.addAttribute("listhosp",listHosp.get(0));
+        model.addAttribute("listcour",listDise.get(0));
+        model.addAttribute("listchec",listChec);
+        model.addAttribute("listleav",listDisc.get(0));
+        model.addAttribute("listvide",listVide);
+        model.addAttribute("listultr",listUltr);
+        return "Check_verify";
     }
 
 }
