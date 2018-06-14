@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -157,10 +157,15 @@ public class newfiled_controller {
     @ResponseBody
     @RequestMapping("/nopass")
     public Map<String,Object> nopass(){
-        List<MedicalRecord> list=new ArrayList<>();
-        //status=2,表示审核不通过
-        list=medicalRecordRepository.find_one();
+
+        List<MedicalRecord> list= medicalRecordRepository.find_one();
         Map<String,Object> map2=new HashedMap();
+        //status=2,表示审核不通过
+
+        if(list.isEmpty()){
+            list = new LinkedList<>();
+            map2.put("data",list);
+        }
         map2.put("data",list);
         return map2;
     }

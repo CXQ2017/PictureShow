@@ -15,8 +15,8 @@ public interface MedicalRecordRepository extends JpaRepository<MedicalRecord,Lon
 
 //    @Query("select m.card_medical,m.name,m.times_hospitalized from MedicalRecord m ")
 //    public List<Object> findPart();
-@Query("select p from MedicalRecord p where p.status=2 order by p.create_time desc")
-List<MedicalRecord> find_one();
+    @Query("select p from MedicalRecord p where p.status=2 ")
+    List<MedicalRecord> find_one();
 
     @Query("select p from MedicalRecord p order by p.create_time desc")
     List<MedicalRecord> find_allmsg();
