@@ -1,5 +1,6 @@
 package com.cxq.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -75,6 +76,9 @@ public class Hospitalized {
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date final_diagnosis_day;//最后诊断日期
     private Integer status;//状态
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat( pattern = "yyyy-MM-dd HH:mm:ss" )
     private Date create_time;//创建日期
 
     //唯一标识

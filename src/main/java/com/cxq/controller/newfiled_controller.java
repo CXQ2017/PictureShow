@@ -209,11 +209,11 @@ public class newfiled_controller {
         model.addAttribute("listhosp",listHosp.get(0));//入院记录
         model.addAttribute("listcour",listDise.get(0));  //病程记录
         model.addAttribute("listleav",listDisc.get(0)); //出院记录
-        model.addAttribute("listcheck",listChec); //查房记录
+        model.addAttribute("listchec",listChec); //查房记录
         model.addAttribute("listvide",listVide);       //各种影像
         model.addAttribute("listultr",listUltr);   //超声波
 
-       return "Check_insert";
+       return "Test_insert";
     }
 
     //病例数据录入
@@ -223,10 +223,8 @@ public class newfiled_controller {
     public Integer update_medicalRecord(@ModelAttribute MedicalRecord medicalRecord){
 
         //int id=Integer.parseInt(medicalRecord.getId());
-        System.out.println("dddddddddddd");
-
          Integer i=0;
-        System.out.println("dddddddddddd"+medicalRecord.getKeyword());
+//        System.out.println("dddddddddddd"+medicalRecord.getKeyword());
           medicalRecordRepository.saveAndFlush(medicalRecord);
 
         return i;
@@ -234,25 +232,28 @@ public class newfiled_controller {
 
     //更新住院记录
     @RequestMapping("/update_hospitalized")
+    @ResponseBody
     public int  update_hospitalized(@ModelAttribute Hospitalized hospitalized){
         int i=0;
-
+   hospitalizedRepository.saveAndFlush(hospitalized);
         return i;
     }
 
     //更新病程记录
     @RequestMapping("/update_diseaseRecord")
+    @ResponseBody
     public Integer update_diseaseRecord(@ModelAttribute DiseaseRecord diseaseRecord){
         Integer i=0;
-
+     diseaseRecordRepository.saveAndFlush(diseaseRecord);
         return i;
     }
 
     //更新查房（首次）记录
     @RequestMapping("/update_checkRecord")
+    @ResponseBody
     public Integer update_checkRecord(@ModelAttribute CheckRecord checkRecord){
         Integer i=0;
-
+checkRecordRepository.saveAndFlush(checkRecord);
         return i;
     }
 
@@ -261,6 +262,61 @@ public class newfiled_controller {
     public Integer add_checkRecord(@ModelAttribute CheckRecord checkRecord){
         Integer i=0;
          checkRecordRepository.save(checkRecord);
+        return i;
+    }
+    //更新出院记录
+    @RequestMapping("/update_dischargeRecord")
+    @ResponseBody
+    public Integer update_dischargeRecord(@ModelAttribute DischargeRecord dischargeRecord){
+        Integer i=0;
+        dischargeRecordRepository.saveAndFlush(dischargeRecord);
+        return i;
+    }
+
+    //更新各种影像记录
+    @RequestMapping("/update_videoRecord")
+    @ResponseBody
+    public Integer update_videoRecord(@ModelAttribute VideoReport videoReport){
+        Integer i=0;
+         videoReportRepository.saveAndFlush(videoReport);
+        return i;
+    }
+
+
+    //插入各种影像记录（新建查房记录后）记录
+    @RequestMapping("/add_videoRecord")
+    public Integer add_videoRecord(@ModelAttribute VideoReport videoReport){
+        Integer i=0;
+        videoReportRepository.save(videoReport);
+        return i;
+    }
+
+
+    //更新超声波记录
+    @RequestMapping("/update_ultrasoniciagnDosisRecord")
+    @ResponseBody
+    public Integer update_ultrasoniciagnDosisRecord(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport){
+        Integer i=0;
+        ultrasonicDiagnosisReportRepository.saveAndFlush(ultrasonicDiagnosisReport);
+        return i;
+    }
+
+    //插入超声波记录
+    @RequestMapping("/add_ultrasoniciagnDosisRecord")
+    @ResponseBody
+    public Integer add_ultrasoniciagnDosisRecord(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport){
+        Integer i=0;
+        ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
+        return i;
+    }
+
+
+    //更新多普勒记录
+    @RequestMapping("/update_transcranialDopplerRecord")
+    @ResponseBody
+    public Integer update_transcranialDopplerRecord(@ModelAttribute TranscranialDopplerReport transcranialDopplerReport){
+        Integer i=0;
+        transcranialDopplerReportRepository.saveAndFlush(transcranialDopplerReport);
         return i;
     }
 }

@@ -1,5 +1,6 @@
 package com.cxq.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -34,6 +35,8 @@ public class VideoReport {
     private String video_status;  //影像类别：1--影像科MR检查报告书; 2--影像科CT检查报告书；3--影像科X检查报告
 
     private Integer status;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat( pattern = "yyyy-MM-dd HH:mm:ss" )
     private Date create_time;
 
     //唯一标识

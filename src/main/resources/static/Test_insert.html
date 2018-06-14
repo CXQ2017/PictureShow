@@ -246,7 +246,12 @@
 		<div class="tab-pane fade in active" id="tabs-0">
 			<div id="mcont">
 				<form id="disea_one" method="post">
-					<div hidden="hidden"><input name="keyword" th:value="${listmedi.keyword}"/></div>
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listmedi.keyword}"/>
+						<input name="id"     th:value="${listmedi.id}"/>
+						<input name="status" th:value="${listmedi.status}"/>
+						<input name="create_time" th:value="${listmedi.create_time}"/>
+					</div>
 					<div class="">
 						<div class="">
 							<br />
@@ -449,12 +454,18 @@
 				</form>
 			</div>
 		</div>
+
 		<div class="tab-pane fade" id="tabs-1">
 			<div id="in">
 				<br /><br /><br />
 				<li style="font-size: 50px;margin-left:150px">入院记录</li><br /><br /><br /><br />
 				<form method="post" id="disea_two">
-					<div hidden="hidden"><input name="keyword" th:value="${listhosp.keyword}"/></div>
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listhosp.keyword}"/>
+						<input name="id" th:value="${listhosp.id}"/>
+						<input name="status" th:value="${listhosp.status}"/>
+						<input name="create_time" th:value="${listhosp.create_time}"/>
+					</div>
 					<div>
 						病案号：<input type="text" class="a " style="width: 100px; height: 20px" name="card_medical" th:value="${listhosp.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						记录日期：<input  name="record_day" th:value="${listhosp.record_day}" class="datainp" id="datebut9" type="text" placeholder="请选择"  readonly="" style="width: 100px; height: 20px"
@@ -552,7 +563,12 @@
 				<br /><br /><br />
 				<li style="font-size: 50px;margin-left:150px">病程记录</li><br /><br /><br /><br />
 				<form method="post" id="disea_three">
-					<div hidden="hidden"><input name="keyword" th:value="${listcour.keyword}"/></div>
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listcour.keyword}"/>
+						<input name="bc_id" th:value="${listcour.bc_id}"/>
+						<input name="status" th:value="${listcour.status}"/>
+						<input name="create_date" th:value="${listcour.create_date}"/>
+					</div>
 					<div>
 						病案号：<input type="text" class="a " style="height:30px;width:150px;" name="card_medical" th:value="${listcour.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
 						床号：<input type="text" class="a " style="height:30px;width:150px;" name="bed_no" th:value="${listcour.bed_no}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -608,7 +624,12 @@
 				<br /><br /><br />
 				<li style="font-size: 50px;">出院记录</li><br /><br /><br /><br />
 				<form id="disea_four" method="post">
-					<div hidden="hidden"><input name="keyword" th:value="${listleav.keyword}"/></div>
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listleav.keyword}"/>
+						<input name="id"     th:value="${listleav.id}"/>
+						<input name="status" th:value="${listleav.status}"/>
+						<input name="create_date" th:value="${listleav.create_date}"/>
+					</div>
 					<div>
 						科室：<input type="text" class="a " style="width: 150px;height:30px;" name="department" th:value="${listleav.department}" onkeypress="return handleEnter(this, event)"/>
 						床号：<input type="text" class="a " style="width: 150px;height:30px;" name="bed_no" th:value="${listleav.bed_no}" onkeypress="return handleEnter(this, event)"/>
@@ -650,6 +671,7 @@
 				</form>
 			</div>
 		</div>
+
 		<div class="tab-pane fade" id="tabs-4">
 			<div class="addroom" style="left: 90%;top:20%;position: fixed;">
                 <input id="addroom" type="submit" value="新增"/><br>
@@ -661,7 +683,12 @@
 				<!-- 加遍历方法，遍历以下信息 -->
 				<div th:if="${not #lists.isEmpty(listchec)}" th:each="listchec:${listchec}">
 					<form  method="post" th:id="${listchec.keyword}">
-						<div hidden="hidden"><input name="keyword" th:value="${listchec.keyword}"/></div>
+						<div hidden="hidden">
+							<input name="keyword" th:value="${listchec.keyword}"/>
+							<input name="id"     th:value="${listchec.id}"/>
+							<input name="status" th:value="${listchec.status}"/>
+							<input name="create_date" th:value="${listchec.create_date}"/>
+						</div>
 						<div>
 							查房人：<input type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor" th:value="${listchec.Patient_rounds_doctor}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							查房时间：<input class="datainp" id="datebut101" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
@@ -697,7 +724,12 @@
 				<!-- 遍历该报告 -->
 				<div th:each="video:${listvide}">
 					<form th:id="${video.keyword}" method="post">
-						<div hidden="hidden"><input name="keyword" th:value="${video.keyword}"/></div>
+						<div hidden="hidden">
+							<input name="keyword" th:value="${video.keyword}"/>
+							<input name="vr_id"     th:value="${video.vr_id}"/>
+							<input name="status" th:value="${video.status}"/>
+							<input name="create_time" th:value="${video.create_time}"/>
+						</div>
 						<div>
 							病人ID：<input type="text" class="a " style="width: 150px;height:30px;" name="patientId" th:value="${video.patientId}" onkeypress="return handleEnter(this, event)"/>
 							申报单号：<input type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num" th:value="${video.eclarationd_num}" onkeypress="return handleEnter(this, event)"/>
@@ -743,6 +775,7 @@
 				<!-- 遍历该报告 -->
 			</div>
 		</div>
+
 		<div class="tab-pane fade" id="tabs-6">
 			<div class="addroom" style="left: 90%;top:20%;position: fixed;">
 				<label><input id="addultr" type="submit" value="新增"></label><br>
@@ -753,7 +786,12 @@
 				<!-- 遍历该报告 -->
 				<div th:if="${not #lists.isEmpty(listultr)}" th:each="csb:${listultr}">
 					<form method="post" th:id="${csb.keyword}">
-						<div hidden="hidden"><input name="keyword" th:value="${csb.keyword}"/></div>
+						<div hidden="hidden">
+							<input name="keyword" th:value="${csb.keyword}"/>
+							<input name="id"     th:value="${csb.id}"/>
+							<input name="status" th:value="${csb.status}"/>
+							<input name="create_date" th:value="${csb.create_date}"/>
+						</div>
 						<div>
 							超声波号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="ultrasonic_number" th:value="${csb.ultrasonic_number}" onkeypress="return handleEnter(this, event)"/>
 							<!--</div><br /><hr/><br /><br />
@@ -809,6 +847,13 @@
 				<br /><br /><br />
 				<li style="font-size: 50px;margin-left:0px">经颅多普勒超声检查报告</li><br /><br /><br /><br />
 				<form id="disea_five" method="post">
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listtran.keyword}"/>
+						<input name="id"     th:value="${listtran.id}"/>
+						<input name="status" th:value="${listtran.status}"/>
+						<input name="create_date" th:value="${listtran.create_date}"/>
+					</div>
+
 					科室：<input type="text" class="a "  name="department" th:value="${listtran.department}" style="height:30px;width:240px;" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					病案号：<input type="text" class="a "  name="card_medical" th:value="${listtran.card_medical}" style="height:30px;width:240px;" onkeypress="return handleEnter(this, event)"/>
 					<div>
@@ -862,7 +907,7 @@
 		 +"<div>病案号：<input type=\"text\" class=\"a \" style=\"height:30px;width:150px;\" name=\"card_medical\" onkeypress=\"return handleEnter(this, event)\"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 		 +"查房人签名：<input type=\"text\" class=\"a \" style=\"height:30px;width:150px;\" name=\"doctor_signature\" onkeypress=\"return handleEnter(this, event)\"/> </div><br />"
 		 +"<div>查房记录：<textarea type=\"text\" class=\"a \" style=\"width: 360px; height: 60px\" name=\"Patient_rounds_details\"></textarea> </div>"
-		 +"<div><button  type=\"submit\" class=\"btn btn-primary\" id=\"button\" style=\"margin-left: 60px;width: 70px\" onclick=\"edit_room(this)\"><div hidden='hidden'>"+key+"</div>保存</button>"
+		 +"<div><button  type=\"submit\" class=\"btn btn-primary\" id=\"button\" style=\"margin-left: 60px;width: 70px\" onclick=\"add_room(this)\"><div hidden='hidden'>"+key+"</div>保存</button>"
 		 +"<button  type=\"reset\" class=\"btn btn-primary\" style=\"margin-left: 200px;width: 70px\">重置</button> </div>"
 		 +"</form>"
 		 );
@@ -873,7 +918,7 @@
 		var keyword = $checkroom.children().eq(0).text();
 		$.ajax({
 			type:'post',
-			url:'',
+			url:'/update_checkRecord',
 			data:$(""+keyword).serialize(),
 			cache:false,
 			dataType:'json',
@@ -883,12 +928,12 @@
 		});
 	}
 	//添加
-	function edit_room(key){
+	function add_room(key){
 		$key = $(key);
 		var keyword = $key.children().eq(0).text();
 		$.ajax({
 			type:'post',
-			url:'FormServlet',
+			url:'/add_checkRecord',
 			data:$(""+keyword).serialize(),
 			cache:false,
 			dataType:'json',
@@ -934,7 +979,7 @@
 		var keyword = $key.children().eq(0).text();
 		$.ajax({
 			type:'post',
-			url:'FormServlet',
+			url:'/add_ultrasoniciagnDosisRecord',
 			data:$(""+keyword).serialize(),
 			cache:false,
 			dataType:'json',
@@ -950,7 +995,7 @@
 		var keyword = $video.children().eq(0).text();
 		$.ajax({
 			type:'post',
-			url:'',
+			url:'/update_ultrasoniciagnDosisRecord',
 			data:$(""+keyword).serialize(),
 			cache:false,
 			dataType:'json',
@@ -1005,7 +1050,7 @@
 		var keyword = $video.children().eq(0).text();
 		$.ajax({
 			type:'post',
-			url:'',
+			url:'/update_videoRecord',
 			data:$(""+keyword).serialize(),
 			cache:false,
 			dataType:'json',
@@ -1020,7 +1065,7 @@
 		var keyword = $key.children().eq(0).text();
 		$.ajax({
 			type:'post',
-			url:'FormServlet',
+			url:'/add_videoRecord',
 			data:$(""+keyword).serialize(),
 			cache:false,
 			dataType:'json',
@@ -1035,7 +1080,7 @@
 	$("#sub_one").click(function () {
 		$.ajax({
 			type:'post',
-			url:'',
+			url:'/update_medicalRecord',
 			data:$("#disea_one").serialize(),
 			cache:false,
 			dataType:'json',
@@ -1048,7 +1093,7 @@
 	$("#sub_two").click(function () {
 		$.ajax({
 			type:'post',
-			url:'',
+			url:'/update_hospitalized',
 			data:$("#disea_two").serialize(),
 			cache:false,
 			dataType:'json',
@@ -1061,7 +1106,7 @@
 	$("#sub_three").click(function () {
 		$.ajax({
 			type:'post',
-			url:'',
+			url:'/update_diseaseRecord',
 			data:$("#disea_three").serialize(),
 			cache:false,
 			dataType:'json',
@@ -1074,7 +1119,7 @@
 	$("#sub_four").click(function () {
 		$.ajax({
 			type:'post',
-			url:'',
+			url:'/update_dischargeRecord',
 			data:$("#disea_four").serialize(),
 			cache:false,
 			dataType:'json',
@@ -1087,7 +1132,7 @@
 	$("#sub_five").click(function () {
 		$.ajax({
 			type:'post',
-			url:'',
+			url:'/update_transcranialDopplerRecord',
 			data:$("#disea_five").serialize(),
 			cache:false,
 			dataType:'json',
