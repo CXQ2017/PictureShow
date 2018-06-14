@@ -1,6 +1,7 @@
 package com.cxq.controller;
 
 import com.cxq.domain.*;
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2018/6/12.
@@ -51,6 +53,9 @@ public class AuditController {
     @RequestMapping("/ShowAudit")
     public String ShowAudit(HttpServletRequest request, Model model){
 
+
+        Map<String,Object> map = new HashedMap();
+
        String keyword = request.getParameter("id");
         System.out.println("keyword = "+keyword);
         List<MedicalRecord> listMedi = medicalRecordRepository.findByKeyword(keyword);
@@ -78,10 +83,6 @@ public class AuditController {
         model.addAttribute("listhosp",listHosp.get(0));
         model.addAttribute("listcour",listDise.get(0));
         model.addAttribute("listchec",listChec);
-//        for (CheckRecord c:listChec
-//             ) {
-//            System.out.println("dddddddddd"+c.getCard_medical());
-//        }
         model.addAttribute("listleav",listDisc.get(0));
         model.addAttribute("listvide",listVide);
         model.addAttribute("listultr",listUltr);
@@ -89,4 +90,5 @@ public class AuditController {
 
         return "search_show";
     }
+
 }
