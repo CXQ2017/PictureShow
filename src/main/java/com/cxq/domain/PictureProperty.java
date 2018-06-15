@@ -1,9 +1,12 @@
 package com.cxq.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2018/3/2.
@@ -32,11 +35,42 @@ public class PictureProperty {
     //主要诊断
     private String principal_diagnosis;
 
-    //模块
+    //模块标记
     private Long  case_module;
 
     //图片地址
     private String picture_path;
+
+    private Date creatTime;
+
+    private String status;
+
+    private String keyword;
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    @DateTimeFormat( pattern = "yyyy-MM-dd" )
+    public Date getCreatTime() {
+        return creatTime;
+    }
+
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 
     public PictureProperty(){super();}

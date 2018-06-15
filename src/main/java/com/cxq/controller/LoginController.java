@@ -35,6 +35,8 @@ public class LoginController {
         if(list.isEmpty()){
             return "index";
         }
+        request.getSession().setAttribute("username",username);
+        request.getSession().setAttribute("password",password);
         return "tagged_pdf";
 
     }

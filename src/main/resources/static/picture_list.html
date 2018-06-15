@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <title>Title</title>
     <meta charset="UTF-8">
@@ -35,7 +35,7 @@
             top: 12%;
             margin-left:0%;
             height: 88%;
-            width: 278px;
+            width: 30%;
             /*border: 1px solid black;*/
             float:left;
             position: absolute;
@@ -99,24 +99,24 @@
 
         }
 
-        #mains div{
-            /*border: 1px red solid;*/
-            width: 100%;
-            margin-left: 5%;
-        }
-        #disease_title{
-            /*border: 1px black solid;*/
-            height: 7%;
-            width: 100%;
-        }
-        #all_disease_contents{
-            height: 70%;
-            width: 100%;
-        }
-        #onpass_contents{
-            height: 70%;
-            width: 100%;
-        }
+        /*#mains div{*/
+            /*!*border: 1px red solid;*!*/
+            /*width: 100%;*/
+            /*margin-left: 5%;*/
+        /*}*/
+        /*#disease_title{*/
+            /*!*border: 1px black solid;*!*/
+            /*height: 7%;*/
+            /*width: 100%;*/
+        /*}*/
+        /*#all_disease_contents{*/
+            /*height: 70%;*/
+            /*width: 100%;*/
+        /*}*/
+        /*#onpass_contents{*/
+            /*height: 70%;*/
+            /*width: 100%;*/
+        /*}*/
 
         #disease_title label{
             font-size: 15px;
@@ -164,99 +164,6 @@
     </style>
 
     <script type="text/javascript">
-
-        $(function () {
-//            $("#btn_all").click(function () {
-//                $("#onpass_contents").hide();
-//                $("#all_disease_contents").show();
-//            });
-//
-//            $("#btn_nopass").click(function () {
-//                $("#all_disease_contents").hide();
-//                $("#onpass_contents").show();
-//            });
-
-            //新建病例
-            $("#newfile_btn").click(function () {
-                // $("#all_disease_contents").html("");
-                $.ajax({
-                    url: "/newfiled",
-                    type: "post",
-                    data: $("#form1").serialize(),
-                    dataType: "json",//预期服务器返回的数据类型
-                    async: true,
-                    success: function (data) {
-                        location.reload();
-                    },
-                    error: function () {
-                        alert("FAILED");
-                    }
-                });
-            });
-
-            //点击未通过
-//            $("#btn_nopass").click(function () {
-//                var table=$("#ssss2").DataTable({
-//                    ajax: {
-//                        dataType: 'json',
-//                        type: "POST",
-//                        url: "http://localhost:8080/nopass",
-//                    },
-//                    columns:[
-////                        { data: 'create_time'},
-//                        { data: 'card_medical',orderable: false},
-//                        { data: 'name',orderable: false},
-//                        { data: 'times_hospitalized' ,orderable: false},
-//                        { data: 'status' },
-//                        { data: 'keyword'},
-//                    ],
-//                    order: [ 0, 'desc' ],
-//                    columnDefs: [
-////                        {
-////                            "targets": 0,
-////                            "orderable": true,
-////                            "visible": false,
-////                            "data": "upload",
-////                            "order": "desc",
-//////                        "render": function ( data, nRow ,meta,full,val) {
-//////                            return data;
-//////                        }
-////
-////                        },
-//
-//                        {
-//                            "targets": 3,
-//                            "orderable": false,// 禁用排序
-//                            "data": "upload",
-//                            "render": function ( data, type, full ) {
-//                                ss= data;
-//                                if(data==0){return "未完成"}
-//                                else if(data==1){return "审核通过"}
-//                                else if(data==2){return "审核未通过"}
-//                                else if(data==3){return "待审核"}
-//
-//                            }
-//                        },
-//                        {
-//                            "targets": 4,
-//                            "orderable": false,
-//                            "data": 'status',
-//                            "render": function ( data, nRow ,meta,full,val) {
-//                                if(ss == 0){
-//                                    return '<a href="/edit?keyword='+data+'">编辑</a>'
-//                                }else{
-//                                    return '不可编辑'
-//                                }
-//
-//                            }
-//                        },
-//                    ],
-//                })
-//            });
-
-
-        })
-
         $(document).ready(function() {
             var ss ;
             var table = $('#ssss').DataTable({
@@ -265,14 +172,14 @@
                 ajax: {
                     dataType: 'json',
                     type: "POST",
-                    url: "http://localhost:8080/first_findall",
+                    url: "http://localhost:8080/pdf_list",
                 },
                 columns:[
-                    { data: 'create_time'},
-                    { data: 'card_medical',orderable: false},
+                    { data: 'creatTime'},
+                    { data: 'only_id',orderable: false},
                     { data: 'name',orderable: false},
-                    { data: 'times_hospitalized' ,orderable: false},
-                    { data: 'status' },
+                    { data: 'gender' ,orderable: false},
+                    { data: 'principal_diagnosis' },
                     { data: 'keyword'},
                 ],
                 order: [ 0, 'desc' ],
@@ -288,20 +195,19 @@
 //                        }
 
                     },
-
-                    {
-                        "targets": 4,
-                        "orderable": false,// 禁用排序
-                        "data": "upload",
-                        "render": function ( data, type, full ) {
-                            ss= data;
-                            if(data==0){return "未完成"}
-                            else if(data==1){return "审核通过"}
-                            else if(data==2){return "审核未通过"}
-                            else if(data==3){return "待审核"}
-
-                        }
-                    },
+//                    {
+//                        "targets": 4,
+//                        "orderable": false,// 禁用排序
+//                        "data": "upload",
+//                        "render": function ( data, type, full ) {
+//                            ss= data;
+//                            if(data==0){return "未完成"}
+//                            else if(data==1){return "审核通过"}
+//                            else if(data==2){return "审核未通过"}
+//                            else if(data==3){return "待审核"}
+//
+//                        }
+//                    },
                     {
                         "targets": 5,
                         "orderable": false,
@@ -329,29 +235,27 @@
 <div id="head">
     <!-- 确认是否通过审核 -->
     <div id="opin">
-        <form id="form1" action="#" method="post">
-            病案号：  <label> <input class="newfile" id="1" type="text" name="card_medical"></label>
-            姓名： <label> <input class="newfile" id="2" type="text" name="name"></label>
-            住院次数：  <label> <input class="newfile" id="3" type="text" name="times_hospitalized"></label>
-
-            <label> <input  id="newfile_btn" type="button" value="新建病例"></label>
-        </form>
+            <h4><input type="button" name="user_name" th:value="${listuser.user_name}" style="background-color:#dad55e" />&nbsp;你好，欢迎进入PDF病例查询系统</h4>
     </div>
 </div>
 
 
-<!-- 导航栏区 -->
-<!--<div id="tabs" class="nav">-->
+<!--  -->
+<div id="tabs" class="nav">
     <!--<ul id="myTab">-->
         <!--<li class="active">-->
-        <!--<li><a href="#all" id="btn_all" data-toggle="tab">所有</a></li>-->
-        <!--<li><a href="#nopass" id="btn_nopass" data-toggle="tab">未通过</a></li>-->
-
+                <form id="form1" action="#" method="post">
+                    病案号：  <label> <input class="newfile" id="1" type="text" name="card_medical"></label>
+                    姓名： <label> <input class="newfile" id="2" type="text" name="name"></label>
+                    住院次数：  <label> <input class="newfile" id="3" type="text" name="times_hospitalized"></label>
+                    <!--<label> <input class="newfile" id="4" type="text" name="main_diagnosis"></label>-->
+                    <label> <input  id="newfile_btn" type="button" value="新建病例"></label>
+                </form>
     <!--</ul>-->
-<!--</div>-->
+</div>
 
 <!--  内容区   -->
-<div id="mains" style="margin-top:3%">
+<div id="mains" style="margin-top:3%; margin-left: 37%">
     <!--所有-->
     <!--<div class="table-responsive" id="all_disease_contents" style="width: 120%">-->
         <table id="ssss" class="table table-striped table-condensed display" >
@@ -360,8 +264,8 @@
                 <th style="display: none;">创建时间</th>
                 <th>病案号</th>
                 <th>姓名</th>
-                <th>住院次数</th>
-                <th>状态</th>
+                <th>性别</th>
+                <th>主要诊断</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -371,7 +275,6 @@
 
 
 </div>
-
 </body>
 </html>
 

@@ -21,11 +21,6 @@ import java.util.Map;
 
 @SpringBootApplication
 @RestController
-//@Controller
-//@EnableRedisHttpSession
-//@ComponentScan( basePackages = "com.cxq.*")
-//@ServletComponentScan( basePackages = "com.cxq.*")
-//@EnableAutoConfiguration
 public class PictureShowApplication {
 
 	private Logger logger = LoggerFactory.getLogger(PictureShowApplication.class);
@@ -46,27 +41,6 @@ public class PictureShowApplication {
 
 	@Autowired
 	private MedicalRecordRepository medicalRecordRepository;
-
-
-//    @RequestMapping(value= "/login" )
-//	@ResponseBody
-//    public Map<String, Object> login(HttpServletRequest request){
-//		Map<String, Object> map = new HashMap<>();
-//
-//        String username = request.getParameter("name");
-//		String password=request.getParameter("password");
-//		if(username.equals("cc")&&password.equals("123")){
-//			//登陆成功
-//		  map.put("data",true);
-//		}else{
-//			//登陆失败
-//			map.put("data",false);
-//
-//		}
-////		return map;
-//		System.out.println("#"+username+"#"+password);
-//		return map;
-//    }
 
     //PDF标记
     @RequestMapping("/refresh_picture")
