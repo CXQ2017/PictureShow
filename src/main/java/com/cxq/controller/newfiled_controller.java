@@ -259,6 +259,7 @@ checkRecordRepository.saveAndFlush(checkRecord);
 
     //插入查房（新建查房记录后）记录
     @RequestMapping("/add_checkRecord")
+    @ResponseBody
     public Integer add_checkRecord(@ModelAttribute CheckRecord checkRecord){
         Integer i=0;
          checkRecordRepository.save(checkRecord);
@@ -285,6 +286,7 @@ checkRecordRepository.saveAndFlush(checkRecord);
 
     //插入各种影像记录（新建查房记录后）记录
     @RequestMapping("/add_videoRecord")
+    @ResponseBody
     public Integer add_videoRecord(@ModelAttribute VideoReport videoReport){
         Integer i=0;
         videoReportRepository.save(videoReport);
