@@ -339,5 +339,17 @@ checkRecordRepository.saveAndFlush(checkRecord);
           medicalRecordRepository.setStatusAndRemarks(status,remarks,keyword);
         return "newCreatedCase";
     }
-
+       //审核
+        @RequestMapping("/check_verify")
+    public String check_verify(HttpServletRequest request){
+      //1--代表通过， 0----代表未通过  ，备注
+            int status= Integer.parseInt(request.getParameter("Fruit"));
+            if(status==0){
+                status=2; // '状态',0---未完成（默认），1---审核通过，2---审核未通过，3----待审核
+            }
+            String remarks=request.getParameter("remarks");
+            String keyword=request.getParameter("keyword");
+            medicalRecordRepository.setStatusAndRemarks(status,remarks,keyword);
+            return "case_audit";
+        }
 }

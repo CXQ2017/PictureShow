@@ -255,11 +255,14 @@
 		</h4>
 	</div>
 	<div id="opin">
-		<form action="" method="get">
-			<label><input name="Fruit" type="radio" value="in_by" />审核通过</label>
-			<label><input name="Fruit" type="radio" value="no_by" />未通过</label>
+		<form action="/check_verify" method="post">
+			<div hidden="hidden">
+				<input name="keyword" th:value="${listmedi.keyword}"/>
+			</div>
+			<label><input name="Fruit" type="radio" value="1" />审核通过</label>
+			<label><input name="Fruit" type="radio" value="0" />未通过</label>
 			<label> <input id="button_sure"type="submit" value="提交"></label><br>
-			<textarea type="text" name="opinion" placeholder="审核意见" style="width: 200px;height: 30px;background-color: #00CC00;border-radius: 5px;"></textarea>
+			<textarea type="text" name="remarks" placeholder="审核意见" style="width: 200px;height: 30px;background-color: #00CC00;border-radius: 5px;"></textarea>
 		</form>
 	</div>
 </div>
