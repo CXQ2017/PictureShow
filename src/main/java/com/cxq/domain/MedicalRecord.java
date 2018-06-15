@@ -110,13 +110,23 @@ public class MedicalRecord {
     @DateTimeFormat( pattern = "yyyy-MM-dd HH:mm:ss" )
     private Date create_time; //'创建时间',
 
+    //备注
+    @Column(columnDefinition="TEXT")
+    private String remarks;
     //唯一标识
-
     private String keyword;
 
     public MedicalRecord(){
         this.status=0;
         this.create_time=new Date();
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     public Integer getStatus() {

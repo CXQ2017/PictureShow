@@ -216,11 +216,11 @@
 	</div>
 	<!-- 确认是否通过审核 -->
 	<div id="opin">
-		<form action="" method="get">
-			<label><input name="Fruit" type="radio" value="in_by" />审核通过</label>
-			<label><input name="Fruit" type="radio" value="no_by" />未通过</label>
+		<form action="/insert_submit" method="get">
+			<label><input name="Fruit" type="radio" value="1" />完成</label>
+			<label><input name="Fruit" type="radio" value="0" />未完成</label>
 			<label> <input id="button_sure"type="submit" value="提交"></label><br>
-			<textarea type="text" name="opinion" placeholder="审核意见" style="width: 200px;height: 30px;background-color: #00CC00;border-radius: 5px;"></textarea>
+			<textarea type="text" name="remarks" placeholder="备注" style="width: 200px;height: 30px;background-color: #00CC00;border-radius: 5px;"></textarea>
 		</form>
 	</div>
 </div>
@@ -922,7 +922,7 @@
 	/* 查房记录修改编辑 */
 	function edit_room(id){
 
-		alert(id);
+		//alert(id);
 		//alert($checkroom.children().eq(0).text());
 	   //	$checkroom = $(checkroom);
     	//var keyword = $checkroom.children().eq(0).text();

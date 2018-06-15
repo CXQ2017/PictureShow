@@ -213,7 +213,7 @@ public class newfiled_controller {
         model.addAttribute("listvide",listVide);       //各种影像
         model.addAttribute("listultr",listUltr);   //超声波
 
-       return "Test_insert";
+       return "Check_insert";
     }
 
     //病例数据录入
@@ -321,4 +321,23 @@ checkRecordRepository.saveAndFlush(checkRecord);
         transcranialDopplerReportRepository.saveAndFlush(transcranialDopplerReport);
         return i;
     }
+
+
+    //录入后，点击提交
+    @RequestMapping("/insert_submit")
+    public String insert_submit(HttpServletRequest request){
+        int status= Integer.parseInt(request.getParameter("Fruit"));
+        if(status==1){
+            //录入完成，状态直接变成待审核,不可编辑
+            status=3;
+        }
+            //录入未完成，仍可编辑status=0;
+
+        String remarks=request.getParameter("remarks");
+        String keyword=request.getParameter("keyword");
+//        System.out.println(status+","+remarks);
+          medicalRecordRepository.setStatusAndRemarks(status,remarks,keyword);
+        return "newCreatedCase";
+    }
+
 }

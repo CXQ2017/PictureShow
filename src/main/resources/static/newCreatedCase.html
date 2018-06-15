@@ -208,6 +208,7 @@
                         { data: 'name',orderable: false},
                         { data: 'times_hospitalized' ,orderable: false},
                         { data: 'status' },
+                        { data: 'remarks' },
                         { data: 'keyword'},
                     ],
                     order: [ 0, 'desc' ],
@@ -238,7 +239,7 @@
                             }
                         },
                         {
-                            "targets": 4,
+                            "targets": 5,
                             "orderable": false,
                             "data": 'status',
                             "render": function ( data, nRow ,meta,full,val) {
@@ -273,6 +274,7 @@
                     { data: 'name',orderable: false},
                     { data: 'times_hospitalized' ,orderable: false},
                     { data: 'status' },
+                    { data: 'remarks' },
                     { data: 'keyword'},
                 ],
                 order: [ 0, 'desc' ],
@@ -303,7 +305,7 @@
                         }
                     },
                     {
-                        "targets": 5,
+                        "targets": 6,
                         "orderable": false,
                         "data": 'status',
                         "render": function ( data, nRow ,meta,full,val) {
@@ -362,6 +364,7 @@
                 <th>姓名</th>
                 <th>住院次数</th>
                 <th>状态</th>
+                <th>备注</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -380,6 +383,7 @@
                 <th>姓名</th>
                 <th>住院次数</th>
                 <th>状态</th>
+                <th>备注</th>
                 <th>操作</th>
             </tr>
             </thead>
