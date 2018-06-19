@@ -140,4 +140,22 @@ public class AuditController {
         return "Check_verify";
     }
 
+    //审核后，点击提交
+    @RequestMapping("/search_submit")
+    public String search_submit(HttpServletRequest request){
+        int status= Integer.parseInt(request.getParameter("Fruit"));
+
+        if(status==1){
+            //审核通过，状态变为1
+        }else {
+            status =2;
+        }
+        //审核未通过，状态为2
+
+        String remarks=request.getParameter("remarks");
+        String keyword=request.getParameter("keyword");
+        medicalRecordRepository.setStatusAndRemarks(status,remarks,keyword);
+        return "case_audit";
+    }
+
 }

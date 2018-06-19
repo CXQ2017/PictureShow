@@ -13,4 +13,7 @@ public interface PicturePropertyRepository extends JpaRepository<PictureProperty
 
     @Query("select p from PictureProperty p where p.picture_path =?1")
      List<PictureProperty> findByPath (String path);
+
+    @Query("select p from PictureProperty p GROUP BY p.keyword")
+    List<PictureProperty> findListKeyword();
 }

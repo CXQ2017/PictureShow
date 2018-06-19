@@ -332,7 +332,6 @@ checkRecordRepository.saveAndFlush(checkRecord);
             status=3;
         }
             //录入未完成，仍可编辑status=0;
-
         String remarks=request.getParameter("remarks");
         String keyword=request.getParameter("keyword");
 //        System.out.println(status+","+remarks);

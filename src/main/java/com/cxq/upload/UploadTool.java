@@ -31,8 +31,8 @@ public class UploadTool implements UploadInterface{
             return false;
     }
 
-    public static List<PictureProperty> getPictureProperty(String path, String name, Integer gender,
-                                                           Integer id_card, String principal_diagnosis, Long only_id){
+    public static List<PictureProperty> getPictureProperty(String path, String name, String gender,
+                                                           String id_card, String principal_diagnosis, String only_id){
 
         List<PictureProperty> ls = new ArrayList<>();
         File root = new File(path);

@@ -27,7 +27,7 @@ public class PictureController {
     @Autowired
     private PicturePropertyRepository picturePropertyRepository;
 
-
+    //跳转pdf查询展示页面
     @RequestMapping("/pictrue_list")
     public String PictrueList(HttpServletRequest request, Model model){
 
@@ -40,13 +40,20 @@ public class PictureController {
         return "picture_list";
     }
 
-    @RequestMapping("/pdf_list")
-    public Map<String, Object> PDFList(){
 
-        HashMap<String,Object> map = new HashMap<>();
-        List<PictureProperty> list = picturePropertyRepository.findAll();
-        map.put("data",list);
-        return map;
+
+
+    //跳转pdf标记页面
+
+    @RequestMapping("/pictrue_mark")
+    public String PictrueMark(HttpServletRequest request, Model model){
+
+        String username = request.getSession().getAttribute("username").toString();
+        String password = request.getSession().getAttribute("password").toString();
+        System.out.println("username = "+username);
+        List<User> listuser = userRepository.finduser(username,password);
+        model.addAttribute("listuser",listuser.get(0));
+
+        return "picture_mark";
     }
-
 }

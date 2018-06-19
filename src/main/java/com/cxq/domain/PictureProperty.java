@@ -21,22 +21,22 @@ public class PictureProperty {
     private Long id;
 
     //唯一id
-    private Long only_id;
+    private String only_id;
 
     //姓名
     private String name;
 
     //性别
-    private Integer gender;  // 1、男   2、女
+    private String gender;  // 1、男   2、女
 
     //身份证
-    private Integer identity_card;
+    private String identity_card;
 
     //主要诊断
     private String principal_diagnosis;
 
     //模块标记
-    private Long  case_module;
+    private String  case_module;
 
     //图片地址
     private String picture_path;
@@ -75,7 +75,7 @@ public class PictureProperty {
 
     public PictureProperty(){super();}
 
-    public PictureProperty(Long only_id, String name, Integer gender, Integer identity_card, String principal_diagnosis, Long case_module, String picture_path) {
+    public PictureProperty(String only_id, String name, String gender, String identity_card, String principal_diagnosis, String case_module, String picture_path) {
         this.only_id = only_id;
         this.name = name;
         this.gender = gender;
@@ -101,11 +101,11 @@ public class PictureProperty {
         this.id = id;
     }
 
-    public Long getOnly_id() {
+    public String getOnly_id() {
         return only_id;
     }
 
-    public void setOnly_id(Long only_id) {
+    public void setOnly_id(String only_id) {
         this.only_id = only_id;
     }
 
@@ -117,19 +117,19 @@ public class PictureProperty {
         this.name = name;
     }
 
-    public Integer getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Integer gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public Integer getIdentity_card() {
+    public String getIdentity_card() {
         return identity_card;
     }
 
-    public void setIdentity_card(Integer identity_card) {
+    public void setIdentity_card(String identity_card) {
         this.identity_card = identity_card;
     }
 
@@ -141,11 +141,11 @@ public class PictureProperty {
         this.principal_diagnosis = principal_diagnosis;
     }
 
-    public Long getCase_module() {
+    public String getCase_module() {
         return case_module;
     }
 
-    public void setCase_module(Long case_module) {
+    public void setCase_module(String case_module) {
         this.case_module = case_module;
     }
 }

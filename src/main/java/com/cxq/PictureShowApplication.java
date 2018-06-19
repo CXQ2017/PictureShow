@@ -45,8 +45,8 @@ public class PictureShowApplication {
     //PDF标记
     @RequestMapping("/refresh_picture")
     @ResponseBody
-	public Map<String,Object> refresh_picture(String file_path, String name, Integer gender, Integer id_card,
-											  String principal_diagnosis, Long only_id){
+	public Map<String,Object> refresh_picture(String file_path, String name, String gender, String id_card,
+											  String principal_diagnosis, String only_id){
 
 		Map<String, Object> map = new HashMap<>();
 
@@ -72,45 +72,37 @@ public class PictureShowApplication {
 		return map;
 	}
 
-
+	//获取审核列表请求
 	@RequestMapping(value = "/audit_list" ,method = RequestMethod.POST)
 	public Map<String, Object> auditList(){
 		Map<String,Object> map = new HashMap();
-		List<MedicalRecord> list = medicalRecordRepository.findAll();
+		List<MedicalRecord> list = medicalRecordRepository.find_audit();
 		System.out.println(list);
 		map.put("data",list);
 		return map;
 	}
-	//医师护理录
-//	@RequestMapping(value = "/addCheck_record" , method = RequestMethod.POST)
-//	public Map<String,Object> addCheckRecord(@ModelAttribute CheckRecord checkRecord, HttpServletRequest request) {
-//		//4.处理数据,并返回实体给用户,页面通过第一步的"greeting"参数来展示数据
-//		String ss = checkRecord.getCard_medical();
-//		if(!CommUtil.isBlank(ss)){
-//
-//		 	checkRecordRepository.save(checkRecord);
-//
-//		}
-//		Map<String,Object> model=new HashedMap();
-//		model.put("data",true);
-//		return model;
-//	}
 
+	//获取查询列表请求
+	@RequestMapping(value = "/search_list" ,method = RequestMethod.POST)
+	public Map<String, Object> searchList() {
+		Map<String, Object> map = new HashMap();
+		List<MedicalRecord> list = medicalRecordRepository.find_search();
+		System.out.println(list);
+		map.put("data", list);
+		return map;
+	}
 
-	//超声波报告
-//	@RequestMapping(value = "/addultrasonic_diagnosisReport" , method = RequestMethod.POST)
-//	public Map<String,Object> addultrasonic_diagnosisReport(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport) {
-//		Map<String,Object> model1=new HashedMap();
-//		String ss1 = ultrasonicDiagnosisReport.getCard_medical();
-//		if (!CommUtil.isBlank(ss1)){
-//			ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
-//			model1.put("data",true);
-//
-//		}
-//
-//		model1.put("data",true);
-//		return model1;
-//	}
+	//获取pdf列表请求
+	@RequestMapping("/pdf_list")
+	public Map<String, Object> PDFList(){
+		HashMap<String,Object> map = new HashMap<>();
+        List<PictureProperty> list = picturePropertyRepository.findListKeyword();
+		if(list.isEmpty()){
+			list.add(new PictureProperty());
+		}
+		map.put("data",list);
+		return map;
+	}
 
 
 	@RequestMapping("/first_findall")

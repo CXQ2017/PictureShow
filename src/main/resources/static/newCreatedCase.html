@@ -212,6 +212,8 @@
                         { data: 'keyword'},
                     ],
                     order: [ 0, 'desc' ],
+                    searching:false, //去掉搜索框
+                    destroy:true, //Cannot reinitialise DataTable,解决重新加载表格内容问题
                     columnDefs: [
 //                        {
 //                            "targets": 0,
@@ -278,6 +280,8 @@
                     { data: 'keyword'},
                 ],
                 order: [ 0, 'desc' ],
+                searching:false, //去掉搜索框
+                destroy:true, //Cannot reinitialise DataTable,解决重新加载表格内容问题
                 columnDefs: [
                     {
                         "targets": 0,

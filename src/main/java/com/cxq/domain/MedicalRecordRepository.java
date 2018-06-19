@@ -31,4 +31,10 @@ public interface MedicalRecordRepository extends JpaRepository<MedicalRecord,Lon
     @Transactional
     @Query("update MedicalRecord m set m.status=?1,m.remarks=?2 where m.keyword=?3")
     int setStatusAndRemarks(int Status,String remarks,String keyword);
+
+    @Query("select p from MedicalRecord p where p.status=3 ")
+    List<MedicalRecord> find_audit();
+
+    @Query("select p from MedicalRecord p where p.status=1 ")
+    List<MedicalRecord> find_search();
 }
