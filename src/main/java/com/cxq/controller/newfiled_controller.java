@@ -1,6 +1,7 @@
 package com.cxq.controller;
 
 import com.cxq.domain.*;
+import net.sf.json.JSONObject;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -220,106 +221,123 @@ public class newfiled_controller {
     //病案首页,点击保存
     @RequestMapping("/update_medicalRecord")
     @ResponseBody
-    public Integer update_medicalRecord(@ModelAttribute MedicalRecord medicalRecord){
+    public JSONObject update_medicalRecord(@ModelAttribute MedicalRecord medicalRecord){
 
         //int id=Integer.parseInt(medicalRecord.getId());
          Integer i=0;
+        JSONObject jsonObject=new JSONObject();
 //        System.out.println("dddddddddddd"+medicalRecord.getKeyword());
           medicalRecordRepository.saveAndFlush(medicalRecord);
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
 
-        return i;
     }
 
-    //更新住院记录
+    //更新入院记录
     @RequestMapping("/update_hospitalized")
     @ResponseBody
-    public int  update_hospitalized(@ModelAttribute Hospitalized hospitalized){
-        int i=0;
+    public JSONObject update_hospitalized(@ModelAttribute Hospitalized hospitalized){
+      //  int i=0;
+        JSONObject jsonObject=new JSONObject();
    hospitalizedRepository.saveAndFlush(hospitalized);
-        return i;
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
     //更新病程记录
     @RequestMapping("/update_diseaseRecord")
     @ResponseBody
-    public Integer update_diseaseRecord(@ModelAttribute DiseaseRecord diseaseRecord){
-        Integer i=0;
+    public JSONObject update_diseaseRecord(@ModelAttribute DiseaseRecord diseaseRecord){
+
      diseaseRecordRepository.saveAndFlush(diseaseRecord);
-        return i;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
     //更新查房（首次）记录
     @RequestMapping("/update_checkRecord")
     @ResponseBody
-    public Integer update_checkRecord(@ModelAttribute CheckRecord checkRecord){
-        Integer i=0;
-checkRecordRepository.saveAndFlush(checkRecord);
-        return i;
+    public JSONObject update_checkRecord(@ModelAttribute CheckRecord checkRecord){
+        System.out.println("跟新查房记录");
+        checkRecordRepository.saveAndFlush(checkRecord);
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
     //插入查房（新建查房记录后）记录
     @RequestMapping("/add_checkRecord")
     @ResponseBody
-    public Integer add_checkRecord(@ModelAttribute CheckRecord checkRecord){
-        Integer i=0;
+    public JSONObject add_checkRecord(@ModelAttribute CheckRecord checkRecord){
          checkRecordRepository.save(checkRecord);
-        return i;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
     //更新出院记录
     @RequestMapping("/update_dischargeRecord")
     @ResponseBody
-    public Integer update_dischargeRecord(@ModelAttribute DischargeRecord dischargeRecord){
-        Integer i=0;
+    public JSONObject update_dischargeRecord(@ModelAttribute DischargeRecord dischargeRecord){
         dischargeRecordRepository.saveAndFlush(dischargeRecord);
-        return i;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
     //更新各种影像记录
     @RequestMapping("/update_videoRecord")
     @ResponseBody
-    public Integer update_videoRecord(@ModelAttribute VideoReport videoReport){
-        Integer i=0;
+    public JSONObject update_videoRecord(@ModelAttribute VideoReport videoReport){
          videoReportRepository.saveAndFlush(videoReport);
-        return i;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
 
     //插入各种影像记录（新建查房记录后）记录
     @RequestMapping("/add_videoRecord")
     @ResponseBody
-    public Integer add_videoRecord(@ModelAttribute VideoReport videoReport){
+    public JSONObject add_videoRecord(@ModelAttribute VideoReport videoReport){
         Integer i=0;
         videoReportRepository.save(videoReport);
-        return i;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
 
     //更新超声波记录
     @RequestMapping("/update_ultrasoniciagnDosisRecord")
     @ResponseBody
-    public Integer update_ultrasoniciagnDosisRecord(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport){
+    public JSONObject update_ultrasoniciagnDosisRecord(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport){
         Integer i=0;
         ultrasonicDiagnosisReportRepository.saveAndFlush(ultrasonicDiagnosisReport);
-        return i;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
     //插入超声波记录
     @RequestMapping("/add_ultrasoniciagnDosisRecord")
     @ResponseBody
-    public Integer add_ultrasoniciagnDosisRecord(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport){
-        Integer i=0;
+    public JSONObject add_ultrasoniciagnDosisRecord(@ModelAttribute UltrasonicDiagnosisReport ultrasonicDiagnosisReport){
         ultrasonicDiagnosisReportRepository.save(ultrasonicDiagnosisReport);
-        return i;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
 
     //更新多普勒记录
     @RequestMapping("/update_transcranialDopplerRecord")
     @ResponseBody
-    public Integer update_transcranialDopplerRecord(@ModelAttribute TranscranialDopplerReport transcranialDopplerReport){
-        Integer i=0;
+    public JSONObject update_transcranialDopplerRecord(@ModelAttribute TranscranialDopplerReport transcranialDopplerReport){
         transcranialDopplerReportRepository.saveAndFlush(transcranialDopplerReport);
-        return i;
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("SUCCESS","更新成功");
+        return jsonObject;
     }
 
 
