@@ -16,11 +16,12 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#ssss').DataTable({
-//                ajax: "http://localhost:8080/audit_list",
+
                 ajax: {
                     dataType: 'json',
                     type: "POST",
-                    url: "http://localhost:8080/audit_list",
+//                    url: "http://localhost:8080/audit_list",
+                    url: "http://10.2.5.158:9921/audit_list",
                 },
                 columns:[
 //                    { data: 'upload'},
