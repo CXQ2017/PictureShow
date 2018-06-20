@@ -24,26 +24,29 @@
                     url: "http://10.2.5.158:9921/search_list",
                 },
                 columns:[
-//                    { data: 'upload'},
-                    { data: 'card_medical'},
-                    { data: 'name'},
-                    { data: 'sex' },
-//                    { data: 'age' },
-                    { data: 'card_id' },
-                    { data: 'main_diagnosis' },
+                    { data: 'create_time'},
+                    { data: 'card_medical',orderable: false},
+                    { data: 'name',orderable: false},
+                    { data: 'sex' ,orderable: false},
+                    { data: 'card_id' ,orderable: false},
+                    { data: 'main_diagnosis' ,orderable: false},
                     { data: 'keyword' },
                 ],
+                order: [ 0, 'desc' ],
                 columnDefs: [
-//                    {
-//                        "targets": 0,
-//                        "orderable": false,
-//                        "data": "upload",
-//                        "render": function ( data, type, full, meta ) {
-//                            return '<input id="checkItem" type="checkbox" name="checkItem"  value=data>';
-//                        }
-//                    },
                     {
-                        "targets": 5,
+                        "targets": 0,
+                        "orderable": true,
+                        "visible": false,
+                        "data": "upload",
+                        "order": "desc",
+//                        "render": function ( data, nRow ,meta,full,val) {
+//                            return data;
+//                        }
+
+                    },
+                    {
+                        "targets": 6,
                         "orderable": false,
                         "data": "upload",
                         "render": function ( data, type, full, meta,row ) {
@@ -76,7 +79,7 @@
         <table id="ssss" class="table table-striped table-condensed display">
             <thead>
             <tr>
-                <!--<th><input type="checkbox" id="checkAll" class="checkAll"/></th>-->
+                <th style="display: none;">创建时间</th>
                 <th>病案号</th>
                 <th>姓名</th>
                 <th>性别</th>
