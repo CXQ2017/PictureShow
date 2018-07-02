@@ -31,12 +31,15 @@ public class LoginController {
         System.out.println("#"+username+"#"+password);
 
         List<User> list = userRepository.finduser(username,password);
-
-        if(list.isEmpty()){
-            return "index";
-        }
         request.getSession().setAttribute("username",username);
         request.getSession().setAttribute("password",password);
+        if(list.isEmpty()){
+            return "index";
+        } else if (list.get(0).getStatus().equals(0)) {
+
+                return "Access_management";
+            }
+
         return "tagged_pdf";
 
     }
