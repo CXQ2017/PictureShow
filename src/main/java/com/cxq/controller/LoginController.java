@@ -33,9 +33,11 @@ public class LoginController {
         List<User> list = userRepository.finduser(username,password);
         request.getSession().setAttribute("username",username);
         request.getSession().setAttribute("password",password);
+        System.out.println("#"+list.get(0).getStatus());
+       Integer status = Integer.valueOf(list.get(0).getStatus()) ;
         if(list.isEmpty()){
             return "index";
-        } else if (list.get(0).getStatus().equals(0)) {
+        } else if (status==0) {
 
                 return "Access_management";
             }
