@@ -168,19 +168,20 @@
             var ss ;
             var table = $('#ssss').DataTable({
 
-
+                "searching" : false,
                 ajax: {
                     dataType: 'json',
                     type: "POST",
-                    url: "/pdf_list",
+                    url: "/mark_picture",
                 },
                 columns:[
                     { data: 'creatTime'},
-                    { data: 'only_id',orderable: false},
+                    { data: 'card_medical',orderable: false},
                     { data: 'name',orderable: false},
                     { data: 'gender' ,orderable: false},
                     { data: 'principal_diagnosis' },
-                    { data: 'keyword'},
+                    { data: 'case_module'},
+                    { data: 'picture_path'},
                 ],
                 order: [ 0, 'desc' ],
                 columnDefs: [
@@ -209,15 +210,33 @@
 //                        }
 //                    },
                     {
+
                         "targets": 5,
+                        "orderable": true,
+                        "data": "case_module",
+                        "render": function ( data, type, full, meta) {
+                            return '<select class="form-control" name="case_module" id="case_module"> \
+                                <option value="0" >病案首页</option> \
+                                <option value="1">入院记录</option> \
+                                <option value="2">病程记录</option> \
+                                <option value="3">查房记录</option> \
+                                <option value="4">出院记录</option> \
+                                <option value="5">MR检查报告</option> \
+                                <option value="5">CT检查报告</option> \
+                                <option value="5">X检查报告</option> \
+                                <option value="5">冠状动脉CTA成像</option> \
+                                <option value="5">超声波影像</option> \
+                                <option value="5">多普勒影像</option> \
+                                </select>';
+                        }
+                    },
+                    {
+                        "targets": 6,
                         "orderable": false,
                         "data": 'status',
                         "render": function ( data, nRow ,meta,full,val) {
-                            if(ss == 0){
-                                return '<a href="/edit?keyword='+data+'">编辑</a>'
-                            }else{
-                                return '不可编辑'
-                            }
+
+                                return '<a href=data>查看<img src=data></a>'
 
                         }
                     },
@@ -226,7 +245,6 @@
             });
 
         })
-
 
     </script>
 
@@ -244,19 +262,24 @@
 <!--  -->
 <div id="tabs" class="nav">
 
-    <form id="form1" action="#" method="post">
+    <form id="form1" action="" method="post" enctype="multipart/form-data">
         <div style="margin-left: 15%; margin-top: 15%">
-            <div>病案号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input class="newfile" id="1" type="text" name="card_medical"></label></div>
-            <div style="margin-top: 2%">姓名： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input class="newfile" id="2" type="text" name="name"></label></div>
-            <div style="margin-top: 2%"> 住院次数：  <label> <input class="newfile" id="3" type="text" name="times_hospitalized"></label></div>
+            <div>病案号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input class="newfile" id="card_medical" type="text" name="card_medical"></label></div>
+            <div style="margin-top: 2%">姓名： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input class="newfile" id="name" type="text" name="name"></label></div>
+            <div style="margin-top: 2%"> 性别： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input class="newfile" id="gender" type="text" name="gender"></label></div>
+            <div style="margin-top: 2%"> 住院次数：  <label> <input class="newfile" id="times_hospitalized" type="text" name="times_hospitalized"></label></div>
+            <div style="margin-top: 2%"> 主要诊断：  <label> <input class="newfile" id="principal_diagnosis" type="text" name="principal_diagnosis"></label></div>
 
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">请选择PDF文件</h4>
             </div>
+
             <div class="modal-body">
-                <input type="file" name="txt_file" id="txt_file" multiple class="file-loading" />
+                <input type="file" name="folder" id="folder" multiple webkitdirectory />
             </div>
-            <label style="margin-top: 2%"> <input  id="newfile_btn" type="button" value="导入"></label>
+            <div style="text-align: center">
+            <label style="margin-top: 2%;"> <input  id="newfile_btn" type="button" value="导入"></label>
+            </div>
         </div>
     </form>
 
@@ -275,6 +298,7 @@
             <th>姓名</th>
             <th>性别</th>
             <th>主要诊断</th>
+            <th>模块选择</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -284,6 +308,42 @@
 
 
 </div>
+
+<script  >
+    $(function () {
+
+
+        $("#newfile_btn").click(function () {
+            var formData = new FormData($("#form1")[0]);
+//            formData.append("txt_file", $('#txt_file')[0].files[0]);
+            $.ajax({
+                type: 'post',
+                url: '/uploadFolder',
+//                data: $("#form1").serialize(),
+                data: formData,
+                enctype:'multipart/form-data',
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+//                dataType: 'json',
+//                fileElementId:'txt_file',
+                success: function (data) {
+                    alert("添加成功！");
+                    location.reload();
+                },
+                error: function () {
+                    alert("FAILED");
+                }
+
+            })
+
+                }
+        )
+
+
+    })
+</script>
 </body>
 </html>
 

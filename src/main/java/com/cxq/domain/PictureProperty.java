@@ -1,5 +1,6 @@
 package com.cxq.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
@@ -21,11 +22,15 @@ public class PictureProperty {
     private Long id;
 
     //唯一id
-    private String only_id;
+    @NotEmpty(message="病案号不能为空")
+    private String card_medical;
 
     //姓名
+    @NotEmpty(message="姓名不能为空")
     private String name;
 
+    //出院次数
+    private String times_hospitalized;
     //性别
     private String gender;  // 1、男   2、女
 
@@ -41,10 +46,14 @@ public class PictureProperty {
     //图片地址
     private String picture_path;
 
+    //创建时间
+    @DateTimeFormat( pattern = "yyyy-MM-dd HH:mm:ss" )
     private Date creatTime;
 
-    private String status;
+    //导入后的status默认为0，标记后为1
+    private int status;
 
+    //唯一id
     private String keyword;
 
     public String getKeyword() {
@@ -64,25 +73,29 @@ public class PictureProperty {
         this.creatTime = creatTime;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-
     public PictureProperty(){super();}
 
-    public PictureProperty(String only_id, String name, String gender, String identity_card, String principal_diagnosis, String case_module, String picture_path) {
-        this.only_id = only_id;
+
+    public PictureProperty(String card_medical, String name, String times_hospitalized, String gender, String identity_card, String principal_diagnosis, String case_module, String picture_path, Date creatTime, int status, String keyword) {
+        this.card_medical = card_medical;
         this.name = name;
+        this.times_hospitalized = times_hospitalized;
         this.gender = gender;
         this.identity_card = identity_card;
         this.principal_diagnosis = principal_diagnosis;
         this.case_module = case_module;
         this.picture_path = picture_path;
+        this.creatTime = creatTime;
+        this.status = status;
+        this.keyword = keyword;
     }
 
     public String getPicture_path() {
@@ -101,12 +114,12 @@ public class PictureProperty {
         this.id = id;
     }
 
-    public String getOnly_id() {
-        return only_id;
+    public String getCard_medical() {
+        return card_medical;
     }
 
-    public void setOnly_id(String only_id) {
-        this.only_id = only_id;
+    public void setCard_medical(String card_medical) {
+        this.card_medical = card_medical;
     }
 
     public String getName() {
@@ -115,6 +128,14 @@ public class PictureProperty {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTimes_hospitalized() {
+        return times_hospitalized;
+    }
+
+    public void setTimes_hospitalized(String times_hospitalized) {
+        this.times_hospitalized = times_hospitalized;
     }
 
     public String getGender() {

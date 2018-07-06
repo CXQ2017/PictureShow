@@ -16,4 +16,9 @@ public interface PicturePropertyRepository extends JpaRepository<PictureProperty
 
     @Query("select p from PictureProperty p GROUP BY p.keyword")
     List<PictureProperty> findListKeyword();
+
+    @Query("select p from PictureProperty p where p.status = 0")
+    List<PictureProperty> findNoMark();
+
+
 }

@@ -48,7 +48,7 @@ public class UploadTool implements UploadInterface{
                 pictureProperty.setGender(gender);
                 pictureProperty.setIdentity_card(id_card);
                 pictureProperty.setPrincipal_diagnosis(principal_diagnosis);
-                pictureProperty.setOnly_id(only_id);
+                pictureProperty.setCard_medical(id_card);
                 pictureProperty.setCreatTime(new Date());
                 pictureProperty.setKeyword(id_card+"_"+only_id);
                 ls.add(pictureProperty);
