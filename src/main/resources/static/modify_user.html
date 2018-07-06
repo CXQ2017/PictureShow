@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户修改编辑</title>
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap-table.js"></script>
+
+    <style>
+        #div_1{
+            position: absolute;
+            /*border: 1px red solid;*/
+            width:500px;
+            height: 500px;
+           margin-left: 35%;
+            margin-top: 10%;
+        }
+        .newfile{
+            width: 90%;
+        }
+        input{
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<h2><a href="/return_access">返回</a></h2>
+<div id="div_1">
+    <div id="div_2">
+        <form id="form1" action="/modify_user" method="post" onsubmit="return check_edit()">
+            <div style="display: none;">
+                <input name="id" th:value="${user.id}">
+                <input name="creat_data" th:value="${user.creat_data}">
+                </div>
+            <div style="margin-left: 5%; margin-top: 10%">
+                <div style="margin-bottom: 3%;">用户名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input class="newfile" id="1" type="text" name="user_name" th:value="${user.user_name}"></label></div>
+                <div style="margin-top: 3%">密码： &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> <input class="newfile" id="2" type="text" name="password" th:value="${user.password}"></label></div>
+                <div style="margin-top: 3%">权限：<select id="select_id" name="status" class="a " style="width: 180px;height:30px;">
+                    <option value="-1">请选择</option>
+                    <option value="0">管理员</option>
+                    <option value="1">审核员</option>
+                    <option value="2">录入员</option>
+                    <option value="3">普通用户</option>
+                </select>
+                </div>
+                <div style="margin-top: 3%"><label> <input id="btn_sure" class="newfile"  type="submit" name="add_user" value="提交" /></label>
+                    <!--<label> <input id="btn_cancel" class="newfile1"  type="reset"  value="取消"/></label>-->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+//    $(function () {
+//        $("#btn_cancel").click(function(){
+//            $(".newfile").val("");
+//        })
+//    })
+
+    function check_edit(){
+        var s=$("#select_id").val();
+        if(s=="-1"){
+            alert("请选择权限类型！")
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

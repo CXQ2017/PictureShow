@@ -1,5 +1,8 @@
 package com.cxq.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,21 +19,28 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Integer id ;
+    private Long id ;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat( pattern = "yyyy-MM-dd HH:mm:ss" )
     private Date  creat_data;
 
-    private String status;
+    private int  status;//0--管理员，1---审核人员，2---录入员，3---普通用户
 
     private String user_name;
 
     private String password;
 
-    public Integer getId() {
+
+
+    public User(){
+        this.creat_data=new Date();
+    }
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,11 +52,11 @@ public class User {
         this.creat_data = creat_data;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
