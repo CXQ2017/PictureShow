@@ -22,13 +22,18 @@
 
     <link href="bootstrap-3.3.7/docs/examples/jumbotron/jumbotron.css" rel="stylesheet">
 
+    <!--<style type="text/css">-->
+        <!--body {background-image:url(\PictureShow\1.jpg);}-->
+    <!--</style>-->
+    <style type="text/css">
 
-    <style>
         body{
             /*margin-left:auto;*/
             /*margin-right:auto;*/
             /*margin-TOP:200PX;*/
             /*width:20em;*/
+            /*background-image:url("\PictureShow\1.jpg");*/
+
         }
         #content_id{
             margin-top: 6%;
@@ -69,11 +74,10 @@
     </style>
 </head>
 
-<body ng-app="hello" ng-cloak class="ng-cloak" style="background: burlywood;">
+<body ng-app="hello" ng-cloak class="ng-cloak" style=" background-color: #87CEEB">
 <div id="content_id" class="container">
     <div class="form-group" id="title_id"><span class="glyphicon " style="color: rgb(124, 175, 251); font-size: 50px;">深圳市第四人民医院（福田医院）</span></div>
     <div class="form-group" id="title_id2"><span class="glyphicon " style="color: rgb(124, 175, 251); font-size: 50px;">病案查阅系统</span></div>
-
         <form id="defaultForm" method="post" class="form-horizontal" action="/login_in">
         <!--<div class="form_class">-->
             <!--<label for="name" class="col-sm-2 control-label">登录权限：</label>-->
@@ -83,7 +87,7 @@
             <!--</select>-->
         <!--</div>-->
         <div class="form-group" style="margin-top: 50px">
-            <label class="col-lg-3 control-label">用户名</label>
+            <label class="col-lg-3 control-label" ><span style="font-size: 19px">用户名</span></label>
             <div class="col-lg-5">
                 <input type="text" class="form-control" name="username" />
             </div>
@@ -94,7 +98,7 @@
                    <!--placeholder="请输入名用户名" style="height: 30px;" />-->
         <!--</div>-->
         <div class="form-group" style="margin-top: 50px">
-            <label class="col-lg-3 control-label">密码</label>
+            <label class="col-lg-3 control-label"><span style="font-size: 19px">密码</span></label>
             <div class="col-lg-5">
                 <input type="password" class="form-control" name="password" />
             </div>

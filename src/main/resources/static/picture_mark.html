@@ -27,7 +27,7 @@
             /*border: 1px solid black;*/
             height: 12%;
             width: 100%;
-            background: #0d8ddb;
+            background: #87CEEB;
             position:absolute;
             top:0;
         }
@@ -233,7 +233,7 @@
                     {
                         "targets": 6,
                         "orderable": false,
-                        "data": 'status',
+                        "data": 'picture_path',
                         "render": function ( data, nRow ,meta,full,val) {
 
                                 return '<a href=data>查看<img src=data></a>'
@@ -254,7 +254,7 @@
 <div id="head">
     <!-- 确认是否通过审核 -->
     <div id="opin">
-        <h3><input type="button" name="user_name" th:value="${listuser.user_name}" style="background-color:#0d8ddb" />&nbsp;你好，欢迎进入PDF病例查询系统</h3>
+        <h3><input type="button" name="user_name" th:value="${listuser.user_name}" style="background-color:#87CEEB" />&nbsp;你好，欢迎进入PDF病例查询系统</h3>
     </div>
 </div>
 
