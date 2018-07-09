@@ -11,11 +11,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.MultipartConfigElement;
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class PictureShowApplication {
 		return factory.createMultipartConfig();
 	}
 
-    //PDF标记
+    //PDF标记加载图片
 	@RequestMapping("/mark_picture")
 	public Map<String, Object> PDFMark(){
 		HashMap<String,Object> map = new HashMap<>();
@@ -62,6 +62,28 @@ public class PictureShowApplication {
 			list.add(new PictureProperty());
 		}
 		map.put("data",list);
+		return map;
+	}
+
+	@RequestMapping("/upload_picture")
+	@ResponseBody
+	public Map<String,Object> PDFUpload(@RequestBody PictureProperty pictureProperty,HttpServletRequest request){
+		HashMap<String,Object> map = new HashMap<>();
+		if(pictureProperty == null){
+			map.put("status",false);
+			return map;
+		}
+		List<PictureProperty> list = new ArrayList<>();
+		list.add(pictureProperty);
+		System.out.println("list = "+ list.size());
+		for (PictureProperty ll: list){
+			ll.setStatus(1);
+			picturePropertyRepository.save(ll);
+
+		}
+
+		map.put("status",true);
+
 		return map;
 	}
 
