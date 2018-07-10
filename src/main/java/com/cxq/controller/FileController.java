@@ -9,6 +9,7 @@ import com.cxq.domain.PictureProperty;
 import com.cxq.domain.PicturePropertyRepository;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +27,14 @@ public class FileController {
     @Autowired
     private PicturePropertyRepository picturePropertyRepository;
 
+    @Value("${configure.upload.local_path}")
+    String upload_local_path;
+
     @RequestMapping(value = "/uploadFolder", method = RequestMethod.POST)
 
     public JSONObject uploadFolder(String card_medical, String name, String times_hospitalized,String principal_diagnosis,String gender, MultipartFile[] folder) {
         JSONObject jsonObject=new JSONObject();
-        List<String> list = FileUtil.saveMultiFile("D:/upload", folder);
+        List<String> list = FileUtil.saveMultiFile(upload_local_path, folder);
         System.out.println(list.size());
         for (int i = 0; i < list.size(); i++) {
 
