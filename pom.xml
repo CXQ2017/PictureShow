@@ -81,7 +81,6 @@
 			<classifier>jdk15</classifier>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -92,6 +91,14 @@
 			<artifactId>spring-boot-devtools</artifactId><!--热部署工具-->
 			<optional>true</optional>
 		</dependency>
+
+
+		<!--<dependency>-->
+		<!--<groupId>org.apache.pdfbox</groupId>-->
+		<!--<artifactId>pdfbox</artifactId>-->
+		<!--<version>2.0.7</version>-->
+	<!--</dependency>-->
+
 
 	</dependencies>
 
