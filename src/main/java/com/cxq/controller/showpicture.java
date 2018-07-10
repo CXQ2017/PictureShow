@@ -21,7 +21,9 @@ public class showpicture {
     @RequestMapping("/pdf_show")
     public String pdf_show (HttpServletRequest request, Model model){
         String keyword=request.getParameter("keyword");
-        List <PictureProperty> list1=picturePropertyRepository.findByKeyAcase(keyword,"病案首页");
+        //1==病案首页,2==入院记录,3==病程记录,4==查房记录,5==出院记录,
+        // 6==MR检查报告,7==CT检查报告,8==X检查报告,9==冠状动脉CTA成像,10==超声波影像,11==多普勒影像
+        List <PictureProperty> list1=picturePropertyRepository.findByKeyAcase(keyword,"1");
       System.out.println(list1.get(0).getPicture_path());
         model.addAttribute("home_page",list1.get(0));
         return "picture_details";
