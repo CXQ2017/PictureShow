@@ -188,12 +188,6 @@
             margin-left: -446.5px;
             z-index: 9;
         }
-        /*#test1{*/
-            /*border: 1px red solid;*/
-            /*margin-top: 3%;*/
-            /*width:500px;*/
-            /*height: 400px;*/
-        /*}*/
     </style>
     <script type="text/javascript">
         function handleEnter (field, event) {
@@ -220,46 +214,6 @@
                 }
             });
         });
-    </script>
-    <!-- 列表展示 -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var table = $('#ssss').DataTable({
-//                ajax: "http://localhost:8080/audit_list",
-                ajax: {
-//						dataType: 'json',
-                    type: "POST",
-                    url: "/ShowAudit",
-                },
-                columns:[
-                    { data: 'card_medical'},
-                    { data: 'Patient_rounds_date'},
-                    { data: 'Patient_rounds_doctor' },
-                    { data: 'Patient_rounds_details' },
-                    { data: 'keyword'}
-                ],
-                columnDefs: [
-//                    {
-//                        "targets": 0,
-//                        "orderable": false,
-//                        "data": "upload",
-//                        "render": function ( data, type, full, meta ) {
-//                            return '<input id="checkItem" type="checkbox" name="checkItem"  value=data>';
-//                        }
-//                    },
-                    {
-                        "targets": 4,
-                        "orderable": false,
-                        "data": "upload",
-                        "render": function ( data, type, full, meta,row ) {
-                            return data = '<button class="btn btn-info btn-sm" data-id=' + data + '><i class="fa fa-pencil"></i>Edit</button>'
-                            //return '<a href="/ShowAudit?id="+data+"">查看详情</a>';
-                        }
-                    },
-                ],
-            });
-        })
-
     </script>
 </head>
 <body style="background-color: #ADD8E6">
@@ -293,10 +247,7 @@
     </ul>
 </div>
 <div id="mains">
-    <!--<div id="test1">-->
-        <!--&lt;!&ndash;<iframe src="/PictureShow/页面 1.pdf" width="800" height="600"></iframe>&ndash;&gt;-->
-        <!--<iframe th:src="${home_page.picture_path}" width="800" height="600"></iframe>-->
-    <!--</div>-->
+        <iframe th:src="${home_page.picture_path}" width="800" height="600"></iframe>
     <div id="test2">
     <ul>
         <li><a th:href="${home_page.picture_path}" target="pdfContainer" onclick="showPdf(true)">0001_pdf</a></li>
