@@ -1,8 +1,172 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style type="text/css">
+    <meta charset="UTF-8" />
+    <title>中大八院病历病案首页编辑</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/stylet.css" />
+    <link href="bootstrap-3.3.7/docs/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="bootstrap-3.3.7/docs/examples/signin/signin.css" rel="stylesheet">
+    <script src="bootstrap-3.3.7/docs/assets/js/ie8-responsive-file-warning.js"></script>
+    <script src="bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/Ecalendar.jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>-->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- 列表展示 -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    <script type="text/javascript" src="js/bootstrap-table.js"></script>
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
+    <link href="minimal/minimal.css" rel="stylesheet">
+    <script src="js/icheck.js"></script>
+
+    <style>
+        #head{
+            /*border: 1px solid black;*/
+            height: 12%;
+            width: 100%;
+            background: #87CEEB;
+            position:fixed;
+            top:0;
+            z-index: 999999;
+            -webkit-transition: .5s ease-in-out;
+            -moz-transition: .5s ease-in-out;
+            -o-transition: .5s ease-in-out;
+        }
+        #tabs{
+            top: 12%;
+            margin-left:0%;
+            height: 88%;
+            width: 278px;
+            /*border: 1px solid black;*/
+            float:left;
+            position: absolute;
+        }
+        #mains{
+            top: 12%;
+            margin-left: 301px;
+            width: 80%;
+            height: 88%;
+            /*border: 1px solid black;*/
+            float:left;
+            position: absolute;
+            /*background:  #0275d8;*/
+        }
+        ul li:nth-child(odd){
+            background:#87CEEB;
+            list-style:none;
+        }
+        ul li:nth-child(even){
+            background:#87CEEB;
+            list-style:none;
+        }
+        .nav {
+            /*background-color: #F5F5DC;*/
+        }
+        .nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            line-height: 5em;
+        }
+
+        .nav a {
+            display: block;
+            width: 11.15em;
+            text-align: center;
+            text-decoration: none;
+            /*background-color: #CCCCCC;*/
+        }
+        .nav a:hover {
+            background-color: #3dc7ab;
+        }
+        li{
+            font-size:25px;
+        }
+        /*入院记录样式修改*/
+        .datainp{ width:150px; height:20px; border:1px #ccc solid;border-radius:5px;}
+        hr{
+            width: 0%;
+        }
+        input{
+            background:  #ADD8E6;
+        }
+        textarea{
+            background:  #ADD8E6;
+        }
+        #opin{
+            left: 70%;
+            float:left;
+            width: 40%;
+            top: 10px;
+            position:absolute;
+            /*border: 1px solid black;*/
+        }
+        #yetou{
+            float:left;
+            left: 10%;
+            width: 60%;
+            /*border: 1px solid black;*/
+        }
+        #button_sure{
+            background-color: #00A1CB;
+            border: none;
+            color: white;
+            text-decoration: none;
+            /*display: inline-block;*/
+            margin: 4px 4px;
+            padding: 4px 15px;
+            border-radius: 4px;
+        }
+        #addroom{
+            background-color: #00A1CB;
+            border: none;
+            color: white;
+            text-decoration: none;
+            /*display: inline-block;*/
+            margin: 4px 4px;
+            padding: 4px 15px;
+            border-radius: 4px;
+        }
+        ul.nav-tabs{
+            /*width: 140px;*/
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+        ul.nav-tabs li{
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+        ul.nav-tabs li:first-child{
+            border-top: none;
+        }
+        ul.nav-tabs li a{
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+        ul.nav-tabs li:first-child a{
+            border-radius: 4px 4px 0 0;
+        }
+        ul.nav-tabs li:last-child a{
+            border-radius: 0 0 4px 4px;
+        }
+        ul.nav-tabs.affix{
+            top: 30px; /* Set the top position of pinned element */
+        }
+
         .lightbox{
             position: fixed;
             top: 0px;
@@ -24,51 +188,152 @@
             margin-left: -446.5px;
             z-index: 9;
         }
+        /*#test1{*/
+            /*border: 1px red solid;*/
+            /*margin-top: 3%;*/
+            /*width:500px;*/
+            /*height: 400px;*/
+        /*}*/
     </style>
-    <script src="js/pdf.js" type="text/javascript"></script>
-
     <script type="text/javascript">
-        function showPdf(isShow) {
-            var state = "";
-            if (isShow) {
-                state = "block";
-            } else {
-                state = "none";
+        function handleEnter (field, event) {
+            var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+            if (keyCode == 13) {
+                var i;
+                for (i = 0; i < field.form.elements.length; i++)
+                    if (field == field.form.elements[i])
+                        break;
+                do{
+                    i = (i + 1) % field.form.elements.length;
+                }while(field.form.elements[i].type != 'text' )  //可扩展到其他比如select 值了，避开label
+                field.form.elements[i].focus();
+                //window.event.keyCode=9
+                return false;
             }
-            var pop = document.getElementById("pop");
-            pop.style.display = state;
-            var lightbox = document.getElementById("lightbox");
-            lightbox.style.display = state;
+            else
+                return true;
         }
-        function close() {
-            showPdf(false);
-        }
+        $(document).ready(function(){
+            $("#myTab").affix({
+                offset: {
+                    top: 125
+                }
+            });
+        });
+    </script>
+    <!-- 列表展示 -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#ssss').DataTable({
+//                ajax: "http://localhost:8080/audit_list",
+                ajax: {
+//						dataType: 'json',
+                    type: "POST",
+                    url: "/ShowAudit",
+                },
+                columns:[
+                    { data: 'card_medical'},
+                    { data: 'Patient_rounds_date'},
+                    { data: 'Patient_rounds_doctor' },
+                    { data: 'Patient_rounds_details' },
+                    { data: 'keyword'}
+                ],
+                columnDefs: [
+//                    {
+//                        "targets": 0,
+//                        "orderable": false,
+//                        "data": "upload",
+//                        "render": function ( data, type, full, meta ) {
+//                            return '<input id="checkItem" type="checkbox" name="checkItem"  value=data>';
+//                        }
+//                    },
+                    {
+                        "targets": 4,
+                        "orderable": false,
+                        "data": "upload",
+                        "render": function ( data, type, full, meta,row ) {
+                            return data = '<button class="btn btn-info btn-sm" data-id=' + data + '><i class="fa fa-pencil"></i>Edit</button>'
+                            //return '<a href="/ShowAudit?id="+data+"">查看详情</a>';
+                        }
+                    },
+                ],
+            });
+        })
+
     </script>
 </head>
-<body>
+<body style="background-color: #ADD8E6">
+<div id="head">
+    <br />
+    <!-- 页头 -->
+    <div id="yetou">
+        <h4>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            你好：赵钱孙李（先生/女士）
+        </h4>
+    </div>
 
-   <!--<div th:if="${not #lists.isEmpty(home_page)}" th:each="home_page:${home_page}">-->
-       <!--<embed width="800" height="600" th:src="${home_page.picture_path}"></embed>-->
-   <div>
-       <!--<iframe src="/PictureShow/页面 1.pdf" width="800" height="600"></iframe>-->
-       <iframe th:src="${home_page.picture_path}" width="800" height="600"></iframe>
-   </div>
-
-<ul>
-    <li><a th:href="${home_page.picture_path}" target="pdfContainer" onclick="showPdf(true)">0001_pdf</a></li>
-</ul>
-<div class="lightbox" id="lightbox"></div>
-<div id="pop" class="pop" style="display: none;">
-    <a href="javascript:close()" style="
+</div>
+<div id="cent" style="width: 100%;top: 11%;height: 30px;background-color:#c4e3f3;position:fixed;">
+</div>
+<div id="tabs" class="nav">
+    <!-- 导航栏区 -->
+    <ul id="myTab" class="nav nav-tabs nav-stacked">
+        <li class="active"><a href="#tabs-0" data-toggle="tab">病案首页</a></li>
+        <li><a href="#tabs-1" data-toggle="tab">入院记录</a></li>
+        <li><a href="#tabs-2" data-toggle="tab">病程记录</a></li>
+        <li class="checkR"><a href="#tabs-4" data-toggle="tab">查房记录</a></li>
+        <li><a href="#tabs-3" data-toggle="tab">出院记录</a></li>
+        <li><a href="#tabs-5" data-toggle="tab">X</a></li>
+        <li><a href="#tabs-5" data-toggle="tab">CT</a></li>
+        <li><a href="#tabs-5" data-toggle="tab">RM</a></li>
+        <li><a href="#tabs-5" data-toggle="tab">冠状动脉CTA成像</a></li>
+        <li><a href="#tabs-6" data-toggle="tab">超声波</a></li>
+        <li><a href="#tabs-7" data-toggle="tab">多普勒</a></li>
+    </ul>
+</div>
+<div id="mains">
+    <!--<div id="test1">-->
+        <!--&lt;!&ndash;<iframe src="/PictureShow/页面 1.pdf" width="800" height="600"></iframe>&ndash;&gt;-->
+        <!--<iframe th:src="${home_page.picture_path}" width="800" height="600"></iframe>-->
+    <!--</div>-->
+    <div id="test2">
+    <ul>
+        <li><a th:href="${home_page.picture_path}" target="pdfContainer" onclick="showPdf(true)">0001_pdf</a></li>
+    </ul>
+    <div class="lightbox" id="lightbox"></div>
+    <div id="pop" class="pop" style="display: none;">
+        <a href="javascript:close()" style="
             position: absolute;
             right: -90px;
             display: inline-block;
             width: 80px;
             height: 30px;
         " id="close">关闭</a>
-    <iframe src="" frameborder="0" id="pdfContainer" name="pdfContainer"></iframe>
+        <iframe src="" frameborder="0" id="pdfContainer" name="pdfContainer"></iframe>
+    </div>
 </div>
+    </div>
+<script>
+    $(function () {
+        $('#myTab li:eq(0) a').tab('show');
+    });
 
-
+    function showPdf(isShow) {
+        var state = "";
+        if (isShow) {
+            state = "block";
+        } else {
+            state = "none";
+        }
+        var pop = document.getElementById("pop");
+        pop.style.display = state;
+        var lightbox = document.getElementById("lightbox");
+        lightbox.style.display = state;
+    }
+    function close() {
+        showPdf(false);
+    }
+</script>
 </body>
 </html>
