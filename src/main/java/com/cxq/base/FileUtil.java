@@ -30,7 +30,9 @@ public class FileUtil {
         }
 
         for (MultipartFile file : files) {
-            String filePath = basePath + File.separator + file.getOriginalFilename();
+            String fileName = file.getOriginalFilename().replace("/",File.separator);
+
+            String filePath = basePath + File.separator + fileName;
             list.add(filePath);
             makeDir(filePath);
             File dest = new File(filePath);
