@@ -16,7 +16,7 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry){
 //        registry.addResourceHandler("/myresource/**").addResourceLocations("classpath:/myresource/");
 //        registry.addResourceHandler("//image/**").addResourceLocations("file:E:/program/picture123/");
-        registry.addResourceHandler("//image/**").addResourceLocations("/home/cxq/program/picture/");
+        registry.addResourceHandler("//image/**").addResourceLocations("file:/home/cxq/program/picture/");
         super.addResourceHandlers(registry);
     }
 
