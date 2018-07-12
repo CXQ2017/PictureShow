@@ -26,6 +26,7 @@ public class showpicture {
         List <PictureProperty> list1=picturePropertyRepository.findByKeyAcase(keyword,"1");
       System.out.println(list1.get(0).getPicture_path());
         model.addAttribute("home_page",list1.get(0));
-        return "picture_details";
+         return "picture_details";
+//        return "b";
     }
 }
