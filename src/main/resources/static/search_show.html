@@ -113,9 +113,17 @@
 			}
 			input{
 				background:  #ADD8E6;
+				border-bottom: 1px solid #2b2b2b;
+				border-top:0px;
+				border-left:0px;
+				border-right:0px;
 			}
 			textarea{
 				background:  #ADD8E6;
+				border-bottom: 1px solid #2b2b2b;
+				border-top:0px;
+				border-left:0px;
+				border-right:0px;
 			}
 			#opin{
 				left: 70%;
@@ -288,11 +296,11 @@
 								民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" th:value="${listmedi.volk}" onkeypress="return handleEnter(this, event)" />
 								出生体重：<input type="text" class="a " style="width: 100px; height: 20px" name="" onkeypress="return handleEnter(this, event)"/>
 								入院体重：<input type="text" class="a " style="width: 112px"name=""  onkeypress="return handleEnter(this, event)"/><br /><br />
-								出生地：<textarea type="text" class="a " style="width: 300px; height: 20px" name="homeplace_province" th:text="${listmedi.homeplace_province}" onkeypress="return handleEnter(this, event)"></textarea>
+								出生地：<textarea type="text" class="a " style="width: 300px; height: 24px" name="homeplace_province" th:text="${listmedi.homeplace_province}" onkeypress="return handleEnter(this, event)"></textarea>
 								<!--出生市：<input type="text" class="a " style="width: 100px"  name="homeplace_city"onkeypress="return handleEnter(this, event)"/>
 								出生县：<input type="text" class="a " style="width: 100px"  name="homeplace_county"onkeypress="return handleEnter(this, event)"/>-->
 								&nbsp;&nbsp;
-								籍贯：<textarea type="text" class="a " style="width: 236px; height: 20px" name="native_place" th:value="${listmedi.native_place}" onkeypress="return handleEnter(this, event)"></textarea>
+								籍贯：<textarea type="text" class="a " style="width: 236px; height: 24px" name="native_place" th:value="${listmedi.native_place}" onkeypress="return handleEnter(this, event)"></textarea>
 							</div><br />
 							<div class="">
 								身份证号：<input type="text" class="a " style="width: 200px" name="card_id" th:value="${listmedi.card_id}"onkeypress="return handleEnter(this, event)"/>
@@ -306,20 +314,20 @@
 								<option>离婚</option>
 								<option>其他</option>
 							</select><br /><br />
-								现住址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="present_address" th:text="${listmedi.present_address}" onkeypress="return handleEnter(this, event)"></textarea>
+								现住址：<textarea type="text" class="a " style="width: 300px; height: 24px" name="present_address" th:text="${listmedi.present_address}" onkeypress="return handleEnter(this, event)"></textarea>
 								电话：<input type="text" class="a " style="width: 100px" name="phone" th:value="${listmedi.phone}" onkeypress="return handleEnter(this, event)"/>
 								邮编：<input type="text" class="a " style="width: 100px"name="address_code" th:value="${listmedi.address_code}" onkeypress="return handleEnter(this, event)"/><br /><br />
-								户口地址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="residence" th:text="${listmedi.residence}" onkeypress="return handleEnter(this, event)"></textarea>
+								户口地址：<textarea type="text" class="a " style="width: 300px; height: 24px" name="residence" th:text="${listmedi.residence}" onkeypress="return handleEnter(this, event)"></textarea>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								邮编：<input type="text" class="a " style="width: 190px;" name="residence_code" th:value="${listmedi.residence_code}" onkeypress="return handleEnter(this, event)"/>
 							</div><br /><hr/>
 							<div>
-								工作单位及地址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="work_unit_address" th:text="${listmedi.work_unit_address}" onkeypress="return handleEnter(this, event)"></textarea>
+								工作单位及地址：<textarea type="text" class="a " style="width: 300px; height: 24px" name="work_unit_address" th:text="${listmedi.work_unit_address}" onkeypress="return handleEnter(this, event)"></textarea>
 								单位电话：<input type="text" class="a " style="width: 100px" name="work_unit_phone" th:value="${listmedi.work_unit_phone}" onkeypress="return handleEnter(this, event)"/>
 								邮编：<input type="text" class="a " style="width: 80px" name="work_unit_code" th:value="${listmedi.work_unit_code}"onkeypress="return handleEnter(this, event)"/><br /><br />
 								联系人姓名：<input type="text" class="a " style="width: 100px" name="linkman_name" th:value="${listmedi.linkman_name}"onkeypress="return handleEnter(this, event)"/>
 								关系：<input type="text" class="a " style="width: 30px" name="linkman_relation" th:value="${listmedi.linkman_relation}"onkeypress="return handleEnter(this, event)"/>
-								地址：<textarea type="text" class="a " style="width: 250px;height: 20px" name="linkman_address" th:value="${listmedi.linkman_address}"onkeypress="return handleEnter(this, event)"></textarea>
+								地址：<textarea type="text" class="a " style="width: 250px;height: 24px" name="linkman_address" th:value="${listmedi.linkman_address}"onkeypress="return handleEnter(this, event)"></textarea>
 								电话：<input type="text" class="a " style="width: 110px" name="linkman_phone" th:value="${listmedi.linkman_phone}"onkeypress="return handleEnter(this, event)"/><br /><br />
 								入院途径：
 								<select name="hospitalized_road" th:value="${listmedi.hospitalized_road}" class="a " style="width: 200px">
