@@ -5,6 +5,10 @@
 	<title>中大八院病历病案首页编辑</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
 
+	<script type="text/javascript" src="jedate/jedate.min.js"></script>
+	<script type="text/javascript" src="jedate/jedate1.js"></script>
+	<script type="text/javascript" src="jedate/jedate.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="../css/reset.css" />
 	<link rel="stylesheet" type="text/css" href="../css/stylet.css" />
 	<link href="bootstrap-3.3.7/docs/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +34,7 @@
 			/*border: 1px solid black;*/
 			height: 12%;
 			width: 100%;
-			background: #87CEEB;
+			background-color:#87CEEB;
 			position:fixed;
 			top:0;
 			z-index: 999999;
@@ -50,12 +54,16 @@
 		#mains{
 			top: 12%;
 			margin-left: 301px;
-			width: 80%;
+			width: 1300px;
 			height: 88%;
 			/*border: 1px solid black;*/
 			float:left;
 			position: absolute;
 			/*background:  #0275d8;*/
+		}
+		#myTabContent{
+			margin-left: 30%;
+			/*background:  #78BA32;*/
 		}
 		ul li:nth-child(odd){
 			background:#87CEEB;
@@ -203,46 +211,6 @@
 			});
 		});
 	</script>
-	<!-- 列表展示 -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var table = $('#ssss').DataTable({
-//                ajax: "http://localhost:8080/audit_list",
-				ajax: {
-//						dataType: 'json',
-					type: "POST",
-					url: "/ShowAudit",
-				},
-				columns:[
-					{ data: 'card_medical'},
-					{ data: 'Patient_rounds_date'},
-					{ data: 'Patient_rounds_doctor' },
-					{ data: 'Patient_rounds_details' },
-					{ data: 'keyword'}
-				],
-				columnDefs: [
-//                    {
-//                        "targets": 0,
-//                        "orderable": false,
-//                        "data": "upload",
-//                        "render": function ( data, type, full, meta ) {
-//                            return '<input id="checkItem" type="checkbox" name="checkItem"  value=data>';
-//                        }
-//                    },
-					{
-						"targets": 4,
-						"orderable": false,
-						"data": "upload",
-						"render": function ( data, type, full, meta,row ) {
-							return data = '<button class="btn btn-info btn-sm" data-id=' + data + '><i class="fa fa-pencil"></i>Edit</button>'
-							//return '<a href="/ShowAudit?id="+data+"">查看详情</a>';
-						}
-					},
-				],
-			});
-		})
-
-	</script>
 </head>
 <body style="background-color: #ADD8E6">
 <div id="head">
@@ -251,9 +219,11 @@
 	<div id="yetou">
 		<h4>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			你好：赵钱孙李（先生/女士）
+			你好：<label></label>（先生/女士）
+			<a href="/" style="color: #2b542c">退出登录</a>
 		</h4>
 	</div>
+	<!-- 确认是否通过审核 -->
 	<div id="opin">
 		<form action="/search_submit" method="post">
 			<div hidden="hidden">
@@ -266,7 +236,7 @@
 		</form>
 	</div>
 </div>
-<div id="cent" style="width: 100%;top: 11%;height: 30px;background-color:#c4e3f3;position:fixed;">
+<div id="cent" style="width: 100%;top: 12%;height: 25px;background-color:#c4e3f3;position:fixed;">
 </div>
 <div id="tabs" class="nav">
 	<!-- 导航栏区 -->
@@ -284,258 +254,281 @@
 <div id="mains">
 	<!-- 内容工作区 -->
 	<div id="myTabContent" class="tab-content">
+		<div hidden="hidden">
+			<input name="keyword" id="all_keyword" th:value="${listmedi.keyword}"/>
+			<input name="keyword" id="card_medical" th:value="${listmedi.card_medical}"/>
+		</div>
 		<div class="tab-pane fade in active" id="tabs-0">
-			<h1 class="sub-header" style="text-align: center">病案首页</h1><br />
-			<div id="mcont" style="width: 65%;margin-left: 20%;height: 25%;background-color:#ADD8E6;">
-				<!--<form id="disea_one" method="post">-->
-				<!--<div class="">-->
-
-				<div class="">
-					健康卡号：<input type="text" class="a " style="width: 100px; height: 20px" name="card_health" th:value="${listmedi.card_health}" placeholder="健康卡号"onkeypress="return handleEnter(this, event)"/>
-					&nbsp;&nbsp;&nbsp;
-					第：<input type="text" class="a " style="width: 50px; height: 20px" maxlength="3" th:value="${listmedi.times_hospitalized}" name="times_hospitalized"onkeypress="return handleEnter(this, event)"/>
-					次住院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					病案号：<input type="text" class="a " style="width: 100px; height: 20px" placeholder="病案号" th:value="${listmedi.card_medical}" name="card_medical"onkeypress="return handleEnter(this, event)"/>
-				</div><br /><br /><br />
-				<div class="">
-					姓名：<input type="text" class="a " style="width: 100px; height: 20px" placeholder="姓名" name="name" th:value="${listmedi.name}" onkeypress="return handleEnter(this, event)"/>
-					性别：<input type="text" class="a "style="width: 100px; height: 20px" placeholder="性别" name="sex" th:value="${listmedi.sex}" onkeypress="return handleEnter(this, event)"/>
-					出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly="" style="width: 100px; height: 20px"
-								onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="birthday" th:value="${listmedi.birthday}"/>
-					年龄：<input type="text" class="a " style="width: 100px; height: 20px" name="age" th:value="${listmedi.age}" onkeypress="return handleEnter(this, event)"/>岁<br /><br />
-					国籍：<input type="text" class="a " style="width: 100px; height: 20px" name="nationality" th:value="${listmedi.nationality}" onkeypress="return handleEnter(this, event)"/>
-					民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" th:value="${listmedi.volk}" onkeypress="return handleEnter(this, event)" />
-					出生体重：<input type="text" class="a " style="width: 100px; height: 20px" name="" onkeypress="return handleEnter(this, event)"/>
-					入院体重：<input type="text" class="a " style="width: 100px"name=""  onkeypress="return handleEnter(this, event)"/><br /><br />
-					出生地：<textarea type="text" class="a " style="width: 300px; height: 20px" name="homeplace_province" th:text="${listmedi.homeplace_province}" onkeypress="return handleEnter(this, event)"></textarea>
-					<!--出生市：<input type="text" class="a " style="width: 100px"  name="homeplace_city"onkeypress="return handleEnter(this, event)"/>
-                    出生县：<input type="text" class="a " style="width: 100px"  name="homeplace_county"onkeypress="return handleEnter(this, event)"/>-->
-					籍贯：<textarea type="text" class="a " style="width: 200px; height: 20px" name="native_place" th:text="${listmedi.native_place}" onkeypress="return handleEnter(this, event)"></textarea>
-				</div><br />
-				<div class="">
-					身份证号：<input type="text" class="a " style="width: 100px" name="card_id" th:value="${listmedi.card_id}"onkeypress="return handleEnter(this, event)"/>
-					职业：<input type="text" class="a " style="width: 100px" name="vocation" th:value="${listmedi.vocation}"onkeypress="return handleEnter(this, event)"/>
-					婚姻：<select id="marry" name="marriage" th:value="${listmedi.marriage}" class="a " style="width: 60px">
-					<option>未婚</option>
-					<option>已婚</option>
-					<option>丧偶</option>
-					<option>离婚</option>
-					<option>其他</option>
-				</select><br /><br />
-					现住址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="present_address" th:text="${listmedi.present_address}" onkeypress="return handleEnter(this, event)"></textarea>
-					电话：<input type="text" class="a " style="width: 100px" name="phone" th:value="${listmedi.phone}" onkeypress="return handleEnter(this, event)"/>
-					邮编：<input type="text" class="a " style="width: 100px"name="address_code" th:value="${listmedi.address_code}" onkeypress="return handleEnter(this, event)"/><br /><br />
-					户口地址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="residence" th:text="${listmedi.residence}" onkeypress="return handleEnter(this, event)"></textarea>
-					邮编：<input type="text" class="a " style="width: 100px"name="residence_code" th:value="${listmedi.residence_code}" onkeypress="return handleEnter(this, event)"/>
-				</div><br /><br /><br />
-				<div>
-					工作单位及地址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="work_unit_address" th:text="${listmedi.work_unit_address}" onkeypress="return handleEnter(this, event)"></textarea>
-					单位电话：<input type="text" class="a " style="width: 100px" name="work_unit_phone" th:value="${listmedi.work_unit_phone}" onkeypress="return handleEnter(this, event)"/>
-					邮编：<input type="text" class="a " style="width: 100px" name="work_unit_code" th:value="${listmedi.work_unit_code}"onkeypress="return handleEnter(this, event)"/><br /><br />
-					联系人姓名：<input type="text" class="a " style="width: 100px" name="linkman_name" th:value="${listmedi.linkman_name}"onkeypress="return handleEnter(this, event)"/>
-					关系：<input type="text" class="a " style="width: 100px" name="linkman_relation" th:value="${listmedi.linkman_relation}"onkeypress="return handleEnter(this, event)"/>
-					地址：<input type="text" class="a " style="width: 100px" name="linkman_address" th:value="${listmedi.linkman_address}"onkeypress="return handleEnter(this, event)"/>
-					电话：<input type="text" class="a " style="width: 100px" name="linkman_phone" th:value="${listmedi.linkman_phone}"onkeypress="return handleEnter(this, event)"/><br /><br />
-					入院途径：
-					<select name="hospitalized_road" th:value="${listmedi.hospitalized_road}" class="a " style="width: 100px">
-						<option></option>
-						<option>急诊</option>
-						<option>门诊</option>
-						<option>其他医疗机构转入</option>
-						<option>其他</option>
-					</select>
-					病人来源：
-					<select name="patient_source" th:value="${listmedi.patient_source}" class="a " style="width: 100px">
-						<option></option>
-						<option>医院所在县区</option>
-						<option>本市其他县区</option>
-						<option>本省其他市</option>
-						<option>外省市</option>
-						<option>港澳台地区</option>
-						<option>外国</option>
-					</select>
-				</div><br /><br /><br />
-				<div>
-					入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"  readonly=""
-								onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="hospitalized_day" th:value="${listmedi.hospitalized_day}"/>
-					入院科别：<input type="text" class="a " style="width: 100px" name="hospitalized_category" th:value="${listmedi.hospitalized_category}" onkeypress="return handleEnter(this, event)"/>
-					病房：<input type="text" class="a " style="width: 100px" name="hospitalized_ward" th:value="${listmedi.hospitalized_ward}" onkeypress="return handleEnter(this, event)"/><br /><br />
-					转科：<input class="datainp" id="datebut4" type="text" placeholder="请选择"  readonly=""
-							  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="change_time" th:value="${listmedi.change_time}"/>
-					转：<input type="text" class="a " style="width: 100px" name="change_ward" th:value="${listmedi.change_ward}" onkeypress="return handleEnter(this, event)"/><br /><br />
-					出院日期：<input class="datainp" id="datebut3" type="text" placeholder="请选择"  readonly=""
-								onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="leave_hospital_day" th:value="${listmedi.leave_hospital_day}"/>
-					出院科别：<input type="text" class="a " style="width: 100px" name="leave_hospital_category" th:value="${listmedi.leave_hospital_category}" onkeypress="return handleEnter(this, event)"/>
-					病房：<input type="text" class="a " style="width: 100px"name="leave_hospital_ward" th:value="${listmedi.leave_hospital_ward}" onkeypress="return handleEnter(this, event)"/>
-					实际住院：<input type="text" class="a " style="width: 100px" name="real_hospitalization_day" th:value="${listmedi.real_hospitalization_day}" onkeypress="return handleEnter(this, event)"/><br /><br />
-					门（急）诊诊断：<input type="text" class="a " style="width: 100px"name="clinic_diagnosis" th:value="${listmedi.clinic_diagnosis}" onkeypress="return handleEnter(this, event)"/>
-					疾病编码：<input type="text" class="a " style="width: 100px" name="disease_coding" th:value="${listmedi.disease_coding}" onkeypress="return handleEnter(this, event)"/>
-					门（急）诊医生：<input type="text" class="a " style="width: 100px"name="outpatient_doctor" th:value="${listmedi.outpatient_doctor}" onkeypress="return handleEnter(this, event)"/>
-				</div><br /><br /><br />
-				<div>
-					主要诊断：<input type="text" class="a " style="width: 100px" name="main_diagnosis" th:value="${listmedi.main_diagnosis}" onkeypress="return handleEnter(this, event)"/>
-					诊断编码：<input type="text" class="a " style="width: 100px" name="main_disease_coding" th:value="${listmedi.main_disease_coding}" onkeypress="return handleEnter(this, event)"/>
-					入院病情：<input type="text" class="a " style="width: 100px" name="main_diagnosis_state" th:value="${listmedi.main_diagnosis_state}" onkeypress="return handleEnter(this, event)"/><br /><br />
-					其他诊断：<textarea type="text" class="a " style="width: 500px;height: 40px" name="other_diagnosis" th:text="${listmedi.other_diagnosis}"></textarea><br /><br />
-				</div><br /><br /><br />
-				<div>
-					病例分型：
-					<select name="case_classification" th:value="${listmedi.case_classification}" class="a " style="width: 100px">
-						<option></option>
-						<option>一般</option>
-						<option>急</option>
-						<option>疑难</option>
-						<option>危重</option>
-					</select>
-					临床路径病历：
-					<select name="clinical_pathway_cases" th:value="${listmedi.clinical_pathway_cases}" class="a " style="width: 100px">
-						<option></option>
-						<option>是</option>
-						<option>否</option>
-					</select>
-					抢救次数：<input type="text" class="a " style="width: 100px" name="rescue_times" th:value="${listmedi.rescue_times}" onkeypress="return handleEnter(this, event)"/>
-					成功次数：<input type="text" class="a " style="width: 100px" name="success_times" th:value="${listmedi.success_times}" onkeypress="return handleEnter(this, event)"/>
-				</div><br /><br /><br />
-				<div>
-					损伤、中毒的外部原因：<input type="text" class="a " style="width: 100px" name="external_causes" th:value="${listmedi.external_causes}" onkeypress="return handleEnter(this, event)"/>
-					疾病编码：<input type="text" class="a " style="width: 100px" name="external_causes_coding" th:value="${listmedi.external_causes_coding}" onkeypress="return handleEnter(this, event)"/>
-				</div><br />
-				<div>
-					病历诊断：<input type="text" class="a " style="width: 100px" name="pathologic_diagnosis" th:value="${listmedi.pathologic_diagnosis}" onkeypress="return handleEnter(this, event)"/>
-					病理号：<input type="text" class="a " style="width: 100px" name="pathological_number" th:value="${listmedi.pathological_number}" onkeypress="return handleEnter(this, event)"/>
-					疾病编码：<input type="text" class="a " style="width: 100px" name="pathologic_diagnosis_coding" th:value="${listmedi.pathologic_diagnosis_coding}" onkeypress="return handleEnter(this, event)"/>
-				</div><br /><br /><br />
-				<div>
-					诊断符合情况
-					1、门诊与出院：
-					<select name="outpatient_discharge_accord" th:value="${listmedi.outpatient_discharge_accord}" class="a " style="width: 100px">
-						<option></option>
-						<option>符合</option>
-						<option>不符合</option>
-						<option>不肯定</option>
-					</select>
-					2、临床与病理：
-					<select name="clinical_pathological" th:value="${listmedi.clinical_pathological}" class="a " style="width: 100px">
-						<option></option>
-						<option>符合</option>
-						<option>不符合</option>
-						<option>不肯定</option>
-					</select>
-				</div><br /><br /><br />
-				<div>
-					药物过敏：
-					<select name="drug_allergy" th:value="${listmedi.drug_allergy}" class="a " style="width: 100px">
-						<option></option>
-						<option>无</option>
-						<option>有</option>
-					</select>
-					过敏药物：<input type="text" class="a " style="width: 100px" name="drug_allergy_name" th:value="${listmedi.drug_allergy_name}" onkeypress="return handleEnter(this, event)"/>
-					死亡患者尸检：
-					<select name="autopsy" th:value="${listmedi.autopsy}" class="a " style="width: 100px">
-						<option></option>
-						<option>是</option>
-						<option>否</option>
-					</select>
-				</div><br /><br /><br />
-				<div>
-					血型：
-					<select name="blood_type" th:value="${listmedi.blood_type}" class="a " style="width: 100px">
-						<option>未查</option>
-						<option>A</option>
-						<option>B</option>
-						<option>O</option>
-						<option>AB</option>
-						<option>不详</option>
-					</select>
-					Rh：
-					<select name="Rh" th:value="${listmedi.Rh}" class="a " style="width: 100px">
-						<option>未查</option>
-						<option>阴</option>
-						<option>阳</option>
-						<option>不详</option>
-					</select>
-				</div><br /><br /><br />
-				<div>
-					科主任：<input type="text" class="a " style="width: 100px" name="head_department" th:value="${listmedi.head_department}" onkeypress="return handleEnter(this, event)"/>
-					主（主任）任医师：<input type="text" class="a " style="width: 100px" name="protomedicus" th:value="${listmedi.protomedicus}" onkeypress="return handleEnter(this, event)"/>
-					主治医师：<input type="text" class="a " style="width: 100px" name="visiting_staff" th:value="${listmedi.visiting_staff}" onkeypress="return handleEnter(this, event)"/>
-					住院医师：<input type="text" class="a " style="width: 100px" name="resident" th:value="${listmedi.resident}" onkeypress="return handleEnter(this, event)"/>
-				</div><br /><br /><br />
-				<div>
-					责任护士：<input type="text" class="a " style="width: 100px" name="primary_nurse" th:value="${listmedi.primary_nurse}" onkeypress="return handleEnter(this, event)"/>
-					进修医师：<input type="text" class="a " style="width: 100px" name="refresher_physician" th:value="${listmedi.refresher_physician}" onkeypress="return handleEnter(this, event)"/>
-					实习医师：<input type="text" class="a " style="width: 100px" name="intern" th:value="${listmedi.intern}" onkeypress="return handleEnter(this, event)"/>
-					编码员：<input type="text" class="a " style="width: 100px" name="coder" th:value="${listmedi.coder}" onkeypress="return handleEnter(this, event)"/>
-				</div><br /><br /><br />
-				<div>
-					病案质量：
-					<select name="medical_record_quality" th:value="${listmedi.medical_record_quality}" class="a " style="width: 100px">
-						<option></option>
-						<option>甲</option>
-						<option>乙</option>
-					</select>
-					质控医师：<input type="text" class="a " style="width: 100px" name="quality_control_physician" th:value="${listmedi.quality_control_physician}" onkeypress="return handleEnter(this, event)"/>
-					质控护士：<input type="text" class="a " style="width: 100px" name="quality_control_nurse" th:value="${listmedi.quality_control_nurse}" onkeypress="return handleEnter(this, event)"/>
-					质控日期：<input class="datainp" id="datebut2" type="text" placeholder="请选择"  readonly=""
-								onClick="jeDate({dateCell:'#datebut2',isTime:true,format:'YYYY-MM-DD'})" name="quality_control_date" th:value="${listmedi.quality_control_date}"/>
-				</div><br /><br /><br />
-				<!--<div id="sub">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" style="height:30px;width:50px; margin-left: 50px" id="sub_one" value="保存"/>
-                    <input type="reset" style="height:30px;width:50px; margin-left: 300px" value="重置"/>
-                </div><br /><br />-->
-				<!--</div>-->
-				<!--</form>-->
+			<div id="mcont">
+				<form id="disea_one" method="post">
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listmedi.keyword}"/>
+						<input name="id"     th:value="${listmedi.id}"/>
+						<input name="status" th:value="${listmedi.status}"/>
+						<input name="create_time" th:value="${listmedi.create_time}"/>
+					</div>
+					<div class="">
+						<div class="">
+							<br />
+							<li style="font-size: 50px;margin-left:200px">病历首页</li><br />
+							<br />
+							健康卡号：<input type="text" class="a " style="width: 200px; height: 20px" name="card_health" th:value="${listmedi.card_health}" placeholder="健康卡号"onkeypress="return handleEnter(this, event)"/>
+							&nbsp;&nbsp;&nbsp;
+							第：<input type="text" class="a " style="width: 50px; height: 20px" maxlength="3" th:value="${listmedi.times_hospitalized}" name="times_hospitalized"onkeypress="return handleEnter(this, event)"/>
+							次住院 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							病案号：<input type="text" class="a " style="width: 130px; height: 20px" placeholder="病案号" th:value="${listmedi.card_medical}" name="card_medical"onkeypress="return handleEnter(this, event)"/>
+						</div><br /><hr>
+						<div class="">
+							姓名：<input type="text" class="a " style="width: 100px; height: 20px" placeholder="姓名" name="name" th:value="${listmedi.name}" onkeypress="return handleEnter(this, event)"/>
+							性别：<input type="text" class="a "style="width: 100px; height: 20px" placeholder="性别" name="sex" th:value="${listmedi.sex}" onkeypress="return handleEnter(this, event)"/>
+							出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly="" style="width: 150px; height: 20px"
+										onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="birthday" th:value="${listmedi.birthday}"/>
+							年龄（岁）：<input type="text" class="a " style="width: 50px; height: 20px" name="age" th:value="${listmedi.age}" onkeypress="return handleEnter(this, event)"/><br /><br />
+							国籍：<input type="text" class="a " style="width: 100px; height: 20px" name="nationality" th:value="${listmedi.nationality}" onkeypress="return handleEnter(this, event)"/>
+							民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" th:value="${listmedi.volk}" onkeypress="return handleEnter(this, event)" />
+							出生体重：<input type="text" class="a " style="width: 100px; height: 20px" name="" onkeypress="return handleEnter(this, event)"/>
+							入院体重：<input type="text" class="a " style="width: 112px"name=""  onkeypress="return handleEnter(this, event)"/><br /><br />
+							出生地：<textarea type="text" class="a " style="width: 300px; height: 20px" name="homeplace_province" th:text="${listmedi.homeplace_province}" onkeypress="return handleEnter(this, event)"></textarea>
+							<!--出生市：<input type="text" class="a " style="width: 100px"  name="homeplace_city"onkeypress="return handleEnter(this, event)"/>
+                            出生县：<input type="text" class="a " style="width: 100px"  name="homeplace_county"onkeypress="return handleEnter(this, event)"/>-->
+							&nbsp;&nbsp;
+							籍贯：<textarea type="text" class="a " style="width: 236px; height: 20px" name="native_place" th:value="${listmedi.native_place}" onkeypress="return handleEnter(this, event)"></textarea>
+						</div><br />
+						<div class="">
+							身份证号：<input type="text" class="a " style="width: 200px" name="card_id" th:value="${listmedi.card_id}"onkeypress="return handleEnter(this, event)"/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							职业：<input type="text" class="a " style="width: 150px" name="vocation" th:value="${listmedi.vocation}"onkeypress="return handleEnter(this, event)"/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							婚姻：<select id="marry" name="marriage" th:value="${listmedi.marriage}" class="a " style="width: 66px">
+							<option>未婚</option>
+							<option>已婚</option>
+							<option>丧偶</option>
+							<option>离婚</option>
+							<option>其他</option>
+						</select><br /><br />
+							现住址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="present_address" th:text="${listmedi.present_address}" onkeypress="return handleEnter(this, event)"></textarea>
+							电话：<input type="text" class="a " style="width: 100px" name="phone" th:value="${listmedi.phone}" onkeypress="return handleEnter(this, event)"/>
+							邮编：<input type="text" class="a " style="width: 100px"name="address_code" th:value="${listmedi.address_code}" onkeypress="return handleEnter(this, event)"/><br /><br />
+							户口地址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="residence" th:text="${listmedi.residence}" onkeypress="return handleEnter(this, event)"></textarea>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							邮编：<input type="text" class="a " style="width: 190px;" name="residence_code" th:value="${listmedi.residence_code}" onkeypress="return handleEnter(this, event)"/>
+						</div><br /><hr/>
+						<div>
+							工作单位及地址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="work_unit_address" th:text="${listmedi.work_unit_address}" onkeypress="return handleEnter(this, event)"></textarea>
+							单位电话：<input type="text" class="a " style="width: 100px" name="work_unit_phone" th:value="${listmedi.work_unit_phone}" onkeypress="return handleEnter(this, event)"/>
+							邮编：<input type="text" class="a " style="width: 80px" name="work_unit_code" th:value="${listmedi.work_unit_code}"onkeypress="return handleEnter(this, event)"/><br /><br />
+							联系人姓名：<input type="text" class="a " style="width: 100px" name="linkman_name" th:value="${listmedi.linkman_name}"onkeypress="return handleEnter(this, event)"/>
+							关系：<input type="text" class="a " style="width: 30px" name="linkman_relation" th:value="${listmedi.linkman_relation}"onkeypress="return handleEnter(this, event)"/>
+							地址：<textarea type="text" class="a " style="width: 250px;height: 20px" name="linkman_address" th:value="${listmedi.linkman_address}"onkeypress="return handleEnter(this, event)"></textarea>
+							电话：<input type="text" class="a " style="width: 110px" name="linkman_phone" th:value="${listmedi.linkman_phone}"onkeypress="return handleEnter(this, event)"/><br /><br />
+							入院途径：
+							<select name="hospitalized_road" th:value="${listmedi.hospitalized_road}" class="a " style="width: 200px">
+								<option></option>
+								<option>急诊</option>
+								<option>门诊</option>
+								<option>其他医疗机构转入</option>
+								<option>其他</option>
+							</select>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							病人来源：
+							<select name="patient_source" th:value="${listmedi.patient_source}" class="a " style="width: 200px">
+								<option></option>
+								<option>医院所在县区</option>
+								<option>本市其他县区</option>
+								<option>本省其他市</option>
+								<option>外省市</option>
+								<option>港澳台地区</option>
+								<option>外国</option>
+							</select>
+						</div><br /><hr/>
+						<div>
+							入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"  readonly=""
+										onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="hospitalized_day" th:value="${listmedi.hospitalized_day}"/>
+							入院科别：<input type="text" class="a " style="width: 184px" name="hospitalized_category" th:value="${listmedi.hospitalized_category}" onkeypress="return handleEnter(this, event)"/>
+							病房：<input type="text" class="a " style="width: 100px" name="hospitalized_ward" th:value="${listmedi.hospitalized_ward}" onkeypress="return handleEnter(this, event)"/><br /><br />
+							转科：<input class="datainp" id="datebut4" type="text" placeholder="请选择"  readonly=""
+									  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="change_time" th:value="${listmedi.change_time}"/>
+							转：<input type="text" class="a " style="width: 200px" name="change_ward" th:value="${listmedi.change_ward}" onkeypress="return handleEnter(this, event)"/><br /><br />
+							出院日期：<input class="datainp" id="datebut3" type="text" placeholder="请选择"  readonly=""
+										onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="leave_hospital_day" th:value="${listmedi.leave_hospital_day}"/>
+							出院科别：<input type="text" class="a " style="width: 100px" name="leave_hospital_category" th:value="${listmedi.leave_hospital_category}" onkeypress="return handleEnter(this, event)"/>
+							病房：<input type="text" class="a " style="width: 100px"name="leave_hospital_ward" th:value="${listmedi.leave_hospital_ward}" onkeypress="return handleEnter(this, event)"/>
+							实际住院：<input type="text" class="a " style="width: 100px" name="real_hospitalization_day" th:value="${listmedi.real_hospitalization_day}" onkeypress="return handleEnter(this, event)"/><br /><br />
+							门（急）诊诊断：<input type="text" class="a " style="width: 210px"name="clinic_diagnosis" th:value="${listmedi.clinic_diagnosis}" onkeypress="return handleEnter(this, event)"/>
+							疾病编码：<input type="text" class="a " style="width: 100px" name="disease_coding" th:value="${listmedi.disease_coding}" onkeypress="return handleEnter(this, event)"/>
+							门（急）诊医生：<input type="text" class="a " style="width: 100px"name="outpatient_doctor" th:value="${listmedi.outpatient_doctor}" onkeypress="return handleEnter(this, event)"/>
+						</div><br /><hr/>
+						<div>
+							主要诊断：<input type="text" class="a " style="width: 245px" name="main_diagnosis" th:value="${listmedi.main_diagnosis}" onkeypress="return handleEnter(this, event)"/>
+							诊断编码：<input type="text" class="a " style="width: 100px" name="main_disease_coding" th:value="${listmedi.main_disease_coding}" onkeypress="return handleEnter(this, event)"/>
+							入院病情：<input type="text" class="a " style="width: 150px" name="main_diagnosis_state" th:value="${listmedi.main_diagnosis_state}" onkeypress="return handleEnter(this, event)"/><br /><br />
+							其他诊断：<textarea type="text" class="a " style="width: 645px;height: 40px" name="other_diagnosis" th:text="${listmedi.other_diagnosis}"></textarea><br /><br />
+						</div><br /><hr/>
+						<div>
+							病例分型：
+							<select name="case_classification" th:value="${listmedi.case_classification}" class="a " style="width: 100px">
+								<option></option>
+								<option>一般</option>
+								<option>急</option>
+								<option>疑难</option>
+								<option>危重</option>
+							</select>
+							临床路径病历：
+							<select name="clinical_pathway_cases" th:value="${listmedi.clinical_pathway_cases}" class="a " style="width: 100px">
+								<option></option>
+								<option>是</option>
+								<option>否</option>
+							</select>
+							抢救次数：<input type="text" class="a " style="width: 93px" name="rescue_times" th:value="${listmedi.rescue_times}" onkeypress="return handleEnter(this, event)"/>
+							成功次数：<input type="text" class="a " style="width: 93px" name="success_times" th:value="${listmedi.success_times}" onkeypress="return handleEnter(this, event)"/>
+						</div><br /><hr/>
+						<div>
+							损伤、中毒的外部原因：<input type="text" class="a " style="width: 290px" name="external_causes" th:value="${listmedi.external_causes}" onkeypress="return handleEnter(this, event)"/>
+							疾病编码：<input type="text" class="a " style="width: 200px" name="external_causes_coding" th:value="${listmedi.external_causes_coding}" onkeypress="return handleEnter(this, event)"/>
+						</div><br />
+						<div>
+							病历诊断：<input type="text" class="a " style="width: 300px" name="pathologic_diagnosis" th:value="${listmedi.pathologic_diagnosis}" onkeypress="return handleEnter(this, event)"/>
+							病理号：<input type="text" class="a " style="width: 100px" name="pathological_number" th:value="${listmedi.pathological_number}" onkeypress="return handleEnter(this, event)"/>
+							疾病编码：<input type="text" class="a " style="width: 115px" name="pathologic_diagnosis_coding" th:value="${listmedi.pathologic_diagnosis_coding}" onkeypress="return handleEnter(this, event)"/>
+						</div><br /><hr/>
+						<div>
+							诊断符合情况
+							1、门诊与出院：
+							<select name="outpatient_discharge_accord" th:value="${listmedi.outpatient_discharge_accord}" class="a " style="width: 120px">
+								<option></option>
+								<option>符合</option>
+								<option>不符合</option>
+								<option>不肯定</option>
+							</select>
+							2、临床与病理：
+							<select name="clinical_pathological" th:value="${listmedi.clinical_pathological}" class="a " style="width: 120px">
+								<option></option>
+								<option>符合</option>
+								<option>不符合</option>
+								<option>不肯定</option>
+							</select>
+						</div><br /><hr/>
+						<div>
+							药物过敏：
+							<select name="drug_allergy" th:value="${listmedi.drug_allergy}" class="a " style="width: 100px">
+								<option></option>
+								<option>无</option>
+								<option>有</option>
+							</select>
+							过敏药物：<input type="text" class="a " style="width: 100px" name="drug_allergy_name" th:value="${listmedi.drug_allergy_name}" onkeypress="return handleEnter(this, event)"/>
+							死亡患者尸检：
+							<select name="autopsy" th:value="${listmedi.autopsy}" class="a " style="width: 100px">
+								<option></option>
+								<option>是</option>
+								<option>否</option>
+							</select>
+						</div><br /><hr/>
+						<div>
+							血型：
+							<select name="blood_type" th:value="${listmedi.blood_type}" class="a " style="width: 100px">
+								<option>未查</option>
+								<option>A</option>
+								<option>B</option>
+								<option>O</option>
+								<option>AB</option>
+								<option>不详</option>
+							</select>
+							Rh：
+							<select name="Rh" th:value="${listmedi.Rh}" class="a " style="width: 100px">
+								<option>未查</option>
+								<option>阴</option>
+								<option>阳</option>
+								<option>不详</option>
+							</select>
+						</div><br /><hr/>
+						<div>
+							科主任：<input type="text" class="a " style="width: 100px" name="head_department" th:value="${listmedi.head_department}" onkeypress="return handleEnter(this, event)"/>
+							主（主任）任医师：<input type="text" class="a " style="width: 100px" name="protomedicus" th:value="${listmedi.protomedicus}" onkeypress="return handleEnter(this, event)"/>
+							主治医师：<input type="text" class="a " style="width: 100px" name="visiting_staff" th:value="${listmedi.visiting_staff}" onkeypress="return handleEnter(this, event)"/>
+							住院医师：<input type="text" class="a " style="width: 100px" name="resident" th:value="${listmedi.resident}" onkeypress="return handleEnter(this, event)"/>
+						</div><br /><hr/>
+						<div>
+							责任护士：<input type="text" class="a " style="width: 115px" name="primary_nurse" th:value="${listmedi.primary_nurse}" onkeypress="return handleEnter(this, event)"/>
+							进修医师：<input type="text" class="a " style="width: 115px" name="refresher_physician" th:value="${listmedi.refresher_physician}" onkeypress="return handleEnter(this, event)"/>
+							实习医师：<input type="text" class="a " style="width: 115px" name="intern" th:value="${listmedi.intern}" onkeypress="return handleEnter(this, event)"/>
+							编码员：<input type="text" class="a " style="width: 115px" name="coder" th:value="${listmedi.coder}" onkeypress="return handleEnter(this, event)"/>
+						</div><br /><hr/>
+						<div>
+							病案质量：
+							<select name="medical_record_quality" th:value="${listmedi.medical_record_quality}" class="a " style="width: 100px">
+								<option></option>
+								<option>甲</option>
+								<option>乙</option>
+							</select>
+							质控医师：<input type="text" class="a " style="width: 100px" name="quality_control_physician" th:value="${listmedi.quality_control_physician}" onkeypress="return handleEnter(this, event)"/>
+							质控护士：<input type="text" class="a " style="width: 100px" name="quality_control_nurse" th:value="${listmedi.quality_control_nurse}" onkeypress="return handleEnter(this, event)"/>
+							质控日期：<input class="datainp" id="datebut2" type="text" placeholder="请选择"  readonly=""
+										onClick="jeDate({dateCell:'#datebut2',isTime:true,format:'YYYY-MM-DD'})" name="quality_control_date" th:value="${listmedi.quality_control_date}"/>
+						</div><br /><br />
+						<div id="sub">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<!--<input type="button" style="height:30px;width:50px; margin-left: 50px" id="sub_one" class="btn btn-primary" value="保存"/>
+							<input type="reset" style="height:30px;width:50px; margin-left: 300px" class="btn btn-primary" value="重置"/>-->
+						</div><br /><br />
+					</div>
+				</form>
 			</div>
 		</div>
+		<!-- 入院记录 -->
 		<div class="tab-pane fade" id="tabs-1">
 			<div id="in">
-				<h1 class="sub-header" style="text-align: center">入院记录</h1><br />
-				<div id="mcont1" style="width: 65%;margin-left: 20%;height: 25%;background-color:#ADD8E6;">
-					<!--<form method="post" id="disea_two">-->
+				<br /><br /><br />
+				<li style="font-size: 50px;margin-left:200px">入院记录</li><br /><br /><br /><br />
+				<form method="post" id="disea_two">
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listhosp.keyword}"/>
+						<input name="id" th:value="${listhosp.id}"/>
+						<input name="status" th:value="${listhosp.status}"/>
+						<input name="create_time" th:value="${listhosp.create_time}"/>
+					</div>
 					<div>
-						病案号：<input type="text" class="a " style="width: 100px; height: 20px" name="card_medical" th:value="${listhosp.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						病案号：<input type="text" class="a " style="width: 120px; height: 20px" name="card_medical" th:value="${listhosp.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						记录日期：<input  name="record_day" th:value="${listhosp.record_day}" class="datainp" id="datebut9" type="text" placeholder="请选择"  readonly="" style="width: 100px; height: 20px"
 									 onClick="jeDate({dateCell:'#datebut9',isTime:true,format:'YYYY-MM-DD'})" 	/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						病史陈诉者：<input  name="history_statement" th:value="${listhosp.history_statement}" type="text" class="a " style="width: 100px; height: 20px" onkeypress="return handleEnter(this, event)"/>
 					</div><br /><br />
 					<div>
-						主诉：<textarea  name="main_suit" th:text="${listhosp.main_suit}" type="text" class="a " style="height:50px; width: 350px" ></textarea>
+						主&nbsp;&nbsp;&nbsp;&nbsp;诉：<textarea  name="main_suit" th:text="${listhosp.main_suit}" type="text" class="a " style="height:50px; width: 520px" ></textarea>
 					</div><br /><br />
 					<div>
-						现病史：<textarea  name="present_illness_history" th:text="${listhosp.present_illness_history}" type="text" class="a " style="height:50px; width: 350px" ></textarea>
+						现病史：<textarea  name="present_illness_history" th:text="${listhosp.present_illness_history}" type="text" class="a " style="height:50px; width: 520px" ></textarea>
 					</div><br /><br />
 					<div>
-						既往史：<textarea  name="anamnesis" th:text="${listhosp.anamnesis}" type="text" class="a " style="height:50px; width: 350px" ></textarea>
+						既往史：<textarea  name="anamnesis" th:text="${listhosp.anamnesis}" type="text" class="a " style="height:50px; width: 520px" ></textarea>
 					</div><br /><br />
 					<div>
-						个人史：<textarea  name="personal_history" th:text="${listhosp.personal_history}" type="text" class="a " style="height:50px; width: 350px" ></textarea>
+						个人史：<textarea  name="personal_history" th:text="${listhosp.personal_history}" type="text" class="a " style="height:50px; width: 520px" ></textarea>
 					</div><br /><br />
 					<div>
-						婚育史：<textarea  name="obsterical_history" th:text="${listhosp.obsterical_history}" type="text" class="a " style="height:50px; width: 350px" ></textarea>
+						婚育史：<textarea  name="obsterical_history" th:text="${listhosp.obsterical_history}" type="text" class="a " style="height:50px; width: 520px" ></textarea>
 					</div><br /><br />
 					<div>
-						家族史：<textarea  name="family_history" th:text="${listhosp.family_history}" type="text" class="a " style="height:50px; width: 350px" ></textarea>
+						家族史：<textarea  name="family_history" th:text="${listhosp.family_history}" type="text" class="a " style="height:50px; width: 520px" ></textarea>
 					</div><br /><br />
 					<p style="margin-left: 250px">体格检查</p><br /><br />
 					<div>
 						体温：<input  name="temperature" th:value="${listhosp.temperature}" type="text" class="a " style="width: 100px; height: 20px" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;°C&nbsp;&nbsp;
-						呼吸：<input  name="pulse" th:value="${listhosp.pulse}" type="text" class="a " style="width: 100px; height: 20px" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;次/分&nbsp;&nbsp;
+						呼吸：<input  name="pulse" th:value="${listhosp.pulse}" ype="text" class="a " style="width: 100px; height: 20px" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;次/分&nbsp;&nbsp;
 						脉搏：<input  name="breathe" th:value="${listhosp.breathe}" type="text" class="a " style="width: 100px; height: 20px" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;次/分<br /><br />
 						血压：<input  name="blood_pressure" th:value="${listhosp.blood_pressure}" type="text" class="a " style="width: 100px; height: 20px" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;mmHg&nbsp;&nbsp;
 						体重：<input  name="weight" th:value="${listhosp.weight}" type="text" class="a " style="width: 60px; height: 20px" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;Kg
-					</div><br /><hr/><br /><br />
+					</div><br /><hr/>
 					<div>
 						一般情况：<textarea  name="general_condition" th:text="${listhosp.general_condition}" type="text" class="a " style="height:56px; width: 250px; margin-right: 50px" ></textarea>
 						皮肤黏膜：<textarea  name="skin_mucosa" th:text="${listhosp.skin_mucosa}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 					</div><br /><br />
 					<div>&nbsp;&nbsp;&nbsp;
 						淋巴结：<textarea  name="lymphaden" th:text="${listhosp.lymphaden}" type="text" class="a " style="height:56px; width: 250px; margin-right: 70px" ></textarea>
-						头部：<textarea  name="head" th:text="${listhosp.head}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
+						头部：<textarea  name="head" th:text="${listhosp.head}" type="text" class="a " style="height:56px; width: 260px" ></textarea>
 					</div><br /><br />
 					<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						颈部：<textarea  name="neck" th:text="${listhosp.neck}" type="text" class="a " style="height:56px; width: 250px; margin-right: 70px;" ></textarea>
-						胸部：<textarea  name="chest" th:text="${listhosp.chest}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
+						胸部：<textarea  name="chest" th:text="${listhosp.chest}" type="text" class="a " style="height:56px; width: 260px" ></textarea>
 					</div><br /><br />
 					<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						腹部：<textarea  name="belly" th:text="${listhosp.belly}" type="text" class="a " style="height:56px; width: 250px; margin-right: 40px" ></textarea>
@@ -547,349 +540,698 @@
 					</div><br /><br />
 					<p style="margin-left: 250px">专科情况</p><br />
 					<div>
-						<textarea  name="special_case" th:text="${listhosp.special_case}" type="text" class="a " style="height:70px; width: 500px" ></textarea>
+						<textarea  name="special_case" th:text="${listhosp.special_case}" type="text" class="a " style="height:70px; width: 600px" ></textarea>
 					</div><br /><br />
 					<p style="margin-left: 250px">辅助检查</p><br />
 					<div>
-						<textarea  name="accessory" th:text="${listhosp.accessory}" type="text" class="a " style="height:70px; width: 500px" ></textarea>
+						<textarea  name="accessory" th:text="${listhosp.accessory}" type="text" class="a " style="height:70px; width: 600px" ></textarea>
 					</div><br /><br />
 					<div>
 						修正诊断：<textarea  name="modified_diagnosis" th:text="${listhosp.modified_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 						签名：<input  name="modified_diagnosis_name" th:value="${listhosp.modified_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
 						日期：<input  name="modified_diagnosis_day" th:value="${listhosp.modified_diagnosis_day}" class="datainp" id="datebut5" type="text" placeholder="请选择"  readonly=""
 								   onClick="jeDate({dateCell:'#datebut5',isTime:true,format:'YYYY-MM-DD'})" >
-					</div><br /><hr/><br /><br />
+					</div><br /><hr/>
 					<div>
 						初步诊断：<textarea  name="tentative_diagnosis" th:text="${listhosp.tentative_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 						签名：<input  name="tentative_diagnosis_name" th:value="${listhosp.tentative_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
 						日期：<input  name="tentative_diagnosis_day" th:value="${listhosp.tentative_diagnosis_day}" class="datainp" id="datebut6" type="text" placeholder="请选择"  readonly=""
 								   onClick="jeDate({dateCell:'#datebut6',isTime:true,format:'YYYY-MM-DD'})" />
-					</div><br /><hr/><br /><br />
+					</div><br /><hr/>
 					<div>
 						补充诊断：<textarea  name="supplementary_diagnosis" th:text="${listhosp.supplementary_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 						签名：<input  name="supplementary_diagnosis_name" th:value="${listhosp.supplementary_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
 						日期：<input  name="supplementary_diagnosis_day" th:value="${listhosp.supplementary_diagnosis_day}" class="datainp" id="datebut7" type="text" placeholder="请选择"  readonly=""
 								   onClick="jeDate({dateCell:'#datebut7',isTime:true,format:'YYYY-MM-DD'})" />
-					</div><br /><hr/><br /><br />
+					</div><br /><hr/>
 					<div>
 						最后诊断：<textarea  name="final_diagnosis" th:text="${listhosp.final_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 						签名：<input  name="final_diagnosis_name" th:value="${listhosp.final_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
 						日期：<input  name="final_diagnosis_day" th:value="${listhosp.final_diagnosis_day}" class="datainp" id="datebut8" type="text" placeholder="请选择"  readonly=""
 								   onClick="jeDate({dateCell:'#datebut8',isTime:true,format:'YYYY-MM-DD'})" />
 					</div><br /><hr/>
-					<!--<div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="submit" style="height:30px;width:50px; margin-left: 50px" id="sub_two" value="保存"/>
-                        <input type="reset" style="height:30px;width:50px; margin-left: 300px" value="重置"/>
-                    </div>-->
-				</div>
-				<!--</form>-->
+					<div>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<!--<input type="button" style="height:30px;width:50px; margin-left: 50px" id="sub_two" class="btn btn-primary" value="保存"/>
+						<input type="reset" style="height:30px;width:50px; margin-left: 300px" class="btn btn-primary" value="重置"/><br /><br />-->
+					</div>
+				</form>
 			</div>
 		</div>
 		<div class="tab-pane fade" id="tabs-2">
 			<div id="bing">
-				<h1 class="sub-header" style="text-align: center">病程记录</h1><br />
-				<!--<form method="post" id="disea_three">-->
-				<div style="width: 65%;margin-left: 20%;height: 25%;background-color:#ADD8E6;">
+				<br /><br /><br />
+				<li style="font-size: 50px;margin-left:200px">病程记录</li><br /><br /><br /><br />
+				<form method="post" id="disea_three">
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listcour.keyword}"/>
+						<input name="bc_id" th:value="${listcour.bc_id}"/>
+						<input name="status" th:value="${listcour.status}"/>
+						<input name="create_date" th:value="${listcour.create_date}"/>
+					</div>
 					<div>
 						病案号：<input type="text" class="a " style="height:30px;width:150px;" name="card_medical" th:value="${listcour.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
 						床号：<input type="text" class="a " style="height:30px;width:150px;" name="bed_no" th:value="${listcour.bed_no}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;
 						科室：<input type="text" class="a " style="height:30px;width:150px;" name="department" th:value="${listcour.department}" onkeypress="return handleEnter(this, event)"/>
-					</div><br />
+					</div><br /><hr/>
 					<div>
-						首次病程记录：<textarea type="text" class="a " style="width: 300px; height: 35px" name="first_disease_record" th:text="${listcour.first_disease_record}"></textarea>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						日期：<input class="datainp" id="datebut0" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
-								  onClick="jeDate({dateCell:'#datebut0',isTime:true,format:'YYYY-MM-DD'})" name="first_disease_record_time" th:value="${listcour.first_disease_record_time}"/>
-					</div><br />
-					<div>
-						（一）病例特点
-					</div><br />
-					<div>
-						<div>病例特点：<textarea type="text" class="a " style="width: 92%;height:100%;" name="case_trait" th:text="${listcour.case_trait}"></textarea></div>
-						<div>病史特点：<textarea type="text" class="a " style="width: 92%;height:100%;" name="history_characteristics" th:text="${listcour.history_characteristics}"></textarea></div>
-						<div>既往史：&nbsp;&nbsp;&nbsp;<textarea type="text" class="a " style="width: 92%;height:100%;" name="past_medical_history" th:text="${listcour.past_medical_history}"></textarea></div>
-						<div>入院体检：<textarea type="text" class="a " style="width: 92%;height:100%;" name="hospital_medical" th:text="${listcour.hospital_medical}"></textarea></div>
-						<div>辅助检查：<textarea type="text" class="a " style="width: 92%;height:100%;" name="auxiliary_examination" th:text="${listcour.auxiliary_examination}"></textarea></div>
-
-
-
-
-
-					</div><br />
+						<div>
+							首次病程记录：<textarea type="text" class="a " style="width: 300px; height: 35px" name="first_disease_record" th:text="${listcour.first_disease_record}"></textarea>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							日期：<input class="datainp" id="datebut0" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
+									  onClick="jeDate({dateCell:'#datebut0',isTime:true,format:'YYYY-MM-DD'})" name="first_disease_record_time" th:value="${listcour.first_disease_record_time}"/>
+						</div><br /><br />
+						<div>
+							（一）病例特点
+						</div><br /><br />
+						病例特点：<textarea type="text" class="a " style="width: 585px; height: 35px" name="case_trait" th:text="${listcour.case_trait}"></textarea><br /><br />
+						病史特点：<textarea type="text" class="a " style="width: 585px; height: 35px" name="history_characteristics" th:text="${listcour.history_characteristics}"></textarea><br /><br />
+						既&nbsp;&nbsp;往&nbsp;&nbsp;史：<textarea type="text" class="a " style="width: 585px; height: 35px" name="past_medical_history" th:text="${listcour.past_medical_history}"></textarea><br /><br />
+						入院体检：<textarea type="text" class="a " style="width: 585px; height: 35px" name="hospital_medical" th:text="${listcour.hospital_medical}"></textarea><br /><br />
+						辅助检查：<textarea type="text" class="a " style="width: 585px; height: 35px" name="auxiliary_examination" th:text="${listcour.auxiliary_examination}"></textarea>
+					</div><br /><br />
 					<div>
 						（二）诊断、诊断依据及鉴别诊断
-					</div><br />
+					</div><br /><br />
 					<div>
-						初步诊断：<textarea type="text" class="a " style="width: 150px; height: 35px" name="primary_diagnosis" th:text="${listcour.primary_diagnosis}"></textarea>
-						诊断依据：<textarea type="text" class="a " style="width: 150px; height: 35px" name="diagnostic_basis" th:text="${listcour.diagnostic_basis}"></textarea>
-						诊断鉴别：<textarea type="text" class="a " style="width: 150px; height: 35px" name="identify_diagnostic" th:text="${listcour.identify_diagnostic}"></textarea>
-					</div><br />
-					<div>
+						初步诊断：<textarea type="text" class="a " style="width: 585px; height: 35px" name="primary_diagnosis" th:text="${listcour.primary_diagnosis}"></textarea><br /><br />
+						诊断依据：<textarea type="text" class="a " style="width: 585px; height: 35px" name="diagnostic_basis" th:text="${listcour.diagnostic_basis}"></textarea><br /><br />
+						诊断鉴别：<textarea type="text" class="a " style="width: 585px; height: 35px" name="identify_diagnostic" th:text="${listcour.identify_diagnostic}"></textarea><br /><br />
+
 						支持点：<textarea type="text" class="a " style="width: 150px; height: 35px" name="support_point" th:text="${listcour.support_point}"></textarea>
 						不支持点：<textarea type="text" class="a " style="width: 150px; height: 35px" name="not_supported" th:text="${listcour.not_supported}"></textarea>
-						结论：<textarea type="text" class="a " style="width: 150px; height: 35px" name="conclusion" th:text="${listcour.conclusion}"></textarea>
-					</div><br />
+						结论：<textarea type="text" class="a " style="width: 180px; height: 35px" name="conclusion" th:text="${listcour.conclusion}"></textarea>
+					</div><br /><br />
 					<div>
 						（三）诊疗计划
-					</div><br />
+					</div><br /><br />
 					<div>
-						诊疗计划：<textarea type="text" class="a " style="width: 300px; height: 35px" name="diagnostic_plan" th:text="${listcour.diagnostic_plan}"></textarea>
-					</div>
-					<!--<div>
-                        <input type="submit" class="a " style="width: 100px" id="sub_three" value="保存"/>
-                        <input type="submit" class="a " style="width: 100px;margin-left: 50px" value="重置"/>
-                    </div><br /><br /><br /><br /><br />-->
-				</div>
-				<!--</form>-->
-
+						诊疗计划：<textarea type="text" class="a " style="width: 585px; height: 35px" name="diagnostic_plan" th:text="${listcour.diagnostic_plan}"></textarea>
+					</div><br /><hr/>
+					<div>
+						<!--<input type="button" class="btn btn-primary" style="width: 100px" id="sub_three" value="保存"/>
+						<input type="reset" class="btn btn-primary" style="width: 100px;margin-left: 200px" value="重置"/>-->
+					</div><br /><br /><br />
+				</form>
 			</div>
 		</div>
 		<div class="tab-pane fade" id="tabs-3">
 			<div id="leave">
-				<h1 class="sub-header" style="text-align: center">出院记录</h1><br /><br />
-				<!--<form id="disea_four" method="post">-->
-				<div style="width: 65%;margin-left: 20%;height: 25%;background-color:#ADD8E6;">
+				<br /><br /><br />
+				<li style="font-size: 50px;margin-left:200px">出院记录</li><br /><br /><br /><br />
+				<form id="disea_four" method="post">
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listleav.keyword}"/>
+						<input name="id"     th:value="${listleav.id}"/>
+						<input name="status" th:value="${listleav.status}"/>
+						<input name="create_date" th:value="${listleav.create_date}"/>
+					</div>
 					<div>
-						科室：<input type="text" class="a " style="width: 150px;height:30px; margin-top: 3%; margin-right: 2%" name="department" th:value="${listleav.department}" onkeypress="return handleEnter(this, event)"/>
-						床号：<input type="text" class="a " style="width: 150px;height:30px;margin-right: 2%" name="bed_no" th:value="${listleav.bed_no}" onkeypress="return handleEnter(this, event)"/>
-						病案号：<input type="text" class="a " style="width: 150px;height:30px;margin-right: 2%" name="card_medical" th:value="${listleav.card_medical}" onkeypress="return handleEnter(this, event)"/>
-						记录日期：<input  id="datebut10" type="text" onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="record_date" th:value="${listleav.record_date}" style="width: 125px;height:30px;"/>
-
+						科室：<input type="text" class="a " style="width: 150px;height:30px;" name="department" th:value="${listleav.department}" onkeypress="return handleEnter(this, event)"/>
+						床号：<input type="text" class="a " style="width: 150px;height:30px;" name="bed_no" th:value="${listleav.bed_no}" onkeypress="return handleEnter(this, event)"/>
+						病案号：<input type="text" class="a " style="width: 150px;height:30px;" name="card_medical" th:value="${listleav.card_medical}" onkeypress="return handleEnter(this, event)"/>
 					</div><br /><br />
 					<div>
-						入院日期：<input  id="datebut11" type="text"   readonly=""
-									 onClick="jeDate({dateCell:'#datebut11',isTime:true,format:'YYYY-MM-DD'})" name="admission_date" th:value="${listleav.admission_date}" style="width: 125px;height:30px;margin-right: 2%"/>
-						出院日期：<input  id="datebut12" type="text"   readonly=""
-									 onClick="jeDate({dateCell:'#datebut12',isTime:true,format:'YYYY-MM-DD'})" name="discharge_date" th:value="${listleav.discharge_date}" style="width: 125px;height:30px;"/>
+						记录日期：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly=""
+									onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="record_date" th:value="${listleav.record_date}" style="width: 125px;height:30px;"/>
+						入院日期：<input class="datainp" id="datebut11" type="text" placeholder="请选择"  readonly=""
+									onClick="jeDate({dateCell:'#datebut11',isTime:true,format:'YYYY-MM-DD'})" name="admission_date" th:value="${listleav.admission_date}" style="width: 125px;height:30px;"/>
+						出院日期：<input class="datainp" id="datebut12" type="text" placeholder="请选择"  readonly=""
+									onClick="jeDate({dateCell:'#datebut12',isTime:true,format:'YYYY-MM-DD'})" name="discharge_date" th:value="${listleav.discharge_date}" style="width: 125px;height:30px;"/>
 					</div><br />
 					<div class="textarea_div">
-						入院情况：<textarea type="text" class="a " style="width: 80%;height:100%;" name="admitting_situation" th:text="${listleav.admitting_situation}"></textarea>
+						入院情况：<textarea type="text" class="a " style="width: 510px;height:100px;" name="admitting_situation" th:text="${listleav.admitting_situation}"></textarea>
 					</div><br />
 					<div class="textarea_div">
-						入院诊断：<textarea type="text" class="a " style="width: 80%;height:100%;" name="admitting_diagnosis" th:text="${listleav.admitting_diagnosis}"></textarea>
+						入院诊断：<textarea type="text" class="a " style="width: 510px;height:100px;" name="admitting_diagnosis" th:text="${listleav.admitting_diagnosis}"></textarea>
 					</div><br />
 					<div class="textarea_div">
-						诊疗经过：<textarea type="text" class="a " style="width: 80%;height:100%;" name="treatment_process" th:text="${listleav.treatment_process}"></textarea>
+						诊疗经过：<textarea type="text" class="a " style="width: 510px;height:100px;" name="treatment_process" th:text="${listleav.treatment_process}"></textarea>
 					</div><br />
 					<div class="textarea_div">
-						出院诊断：<textarea type="text" class="a " style="width: 80%;height:100%;" name="discharge_diagnosis" th:text="${listleav.discharge_diagnosis}"></textarea>
+						出院诊断：<textarea type="text" class="a " style="width: 510px;height:100px;" name="discharge_diagnosis" th:text="${listleav.discharge_diagnosis}"></textarea>
 					</div><br />
 					<div class="textarea_div">
-						出院情况：<textarea type="text" class="a " style="width: 80%;height:100%;" name="discharge_situation" th:text="${listleav.discharge_situation}"></textarea>
+						出院情况：<textarea type="text" class="a " style="width: 510px;height:100px;" name="discharge_situation" th:text="${listleav.discharge_situation}"></textarea>
 					</div><br />
 					<div class="textarea_div">
-						出院医嘱：<textarea type="text" class="a " style="width: 80%;height:100%;" name="discharge_advice" th:text="${listleav.discharge_advice}"></textarea>
+						出院医嘱：<textarea type="text" class="a " style="width: 510px;height:100px;" name="discharge_advice" th:text="${listleav.discharge_advice}"></textarea>
 					</div><br />
 					<div  style="width: 200px;">
 						医师签名：<input type="text" class="a " style="width:100px;height:30px;" name="physician_signature" th:value="${listleav.physician_signature}" onkeypress="return handleEnter(this, event)"/>
 					</div><br />
-					<!--<div>
-                        <input type="submit" class="a " style="width: 100px" id="sub_four" value="保存"/>
-                        <input type="reset" class="a " style="width: 100px" value="重置"/>
-                    </div>-->
-					<!--</form>-->
-				</div>
-			</div>
-		</div>
-
-		<!--病程记录-->
-		<div class="tab-pane fade" id="tabs-4">
-			<!--列表展示-->
-			<div  style="margin-left: 50px;">
-				<h1 class="sub-header" style="text-align: center">查房信息记录</h1>
-				<br/>
-				<br/>
-			</div>
-
-			<div id="list_show" >
-
-				<!--遍历 border: 1px red solid;-->
-				<div style="width: 65%;margin-left: 20%;height: 25%;" th:if="${not #lists.isEmpty(listchec)}" th:each="data:${listchec}">
-					<div  style="background-color:#ADD8E6;width: 100%;height: 100%;">
-						<div style="margin-left: 3%;margin-bottom: 1%;">
-							病案号：<input type="text" class="a " style="height:30px;width:120px;margin-right: 30px;margin-top: 1%;margin-left: 1%;" name="card_medical" onkeypress="return handleEnter(this, event)" th:value="${data.card_medical}"/>
-							查房人：<input type="text" class="a " style="height:30px;width:120px;margin-right: 30px;" name="Patient_rounds_doctor" onkeypress="return handleEnter(this, event)" th:value="${data.Patient_rounds_doctor}"/>
-							查房时间：<input  type="text"  style="height:30px;width:140px;margin-right: 30px;" th:value="${data.Patient_rounds_date}"/>
-							查房人签名：<input type="text" class="a " style="height:30px;width:120px;margin-right: 30px;" name="doctor_signature" onkeypress="return handleEnter(this, event)" th:value="${data.doctor_signature}"/>
-							<br/>
-							<br/>
-							查房记录：<textarea type="text" class="a " style="width: 98%; height: 50px;margin-bottom: 1%;margin-left: 1%;" name="Patient_rounds_details" th:text="${data.Patient_rounds_details}"></textarea>
-						</div>
+					<div>
+						<!--<input type="button" class="btn btn-primary" style="width: 100px" id="sub_four" value="保存"/>
+						<input type="reset" class="btn btn-primary" style="width: 100px;margin-left: 250px" value="重置"/>-->
 					</div>
-					<br/>
-					<br/>
-				</div>
+				</form>
 			</div>
 		</div>
 
-		<!--各种影像检查报告-->
+		<div class="tab-pane fade" id="tabs-4">
+			<!--<div class="addroom" style="left: 90%;top:20%;position: fixed;">
+				<input id="addroom" type="submit" value="新增"/><br>
+			</div>-->
+			<!--列表展示-->
+			<div id="list_room">
+				<br /><br /><br />
+				<li style="font-size: 50px;margin-left:100px">病程查房记录</li><br /><br /><br /><br />
+				<!-- 加遍历方法，遍历以下信息 -->
+				<div th:if="${not #lists.isEmpty(listchec)}" th:each="listchec:${listchec}">
+					<form  method="post" th:id="${listchec.id}">
+						<div hidden="hidden">
+							<input name="keyword" th:value="${listchec.keyword}"/>
+							<input name="id"     th:value="${listchec.id}"/>
+							<input name="status" th:value="${listchec.status}"/>
+							<input name="create_date" th:value="${listchec.create_date}"/>
+						</div>
+						<div>
+							查房人：<input type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor" th:value="${listchec.Patient_rounds_doctor}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							查房时间：<input class="datainp" id="datebut101" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
+										onClick="jeDate({dateCell:'#datebut101',isTime:true,format:'YYYY-MM-DD'})" name="Patient_rounds_date"th:value="${listchec.Patient_rounds_date}"/>
+						</div><br />
+						<div>
+							病案号：<input type="text" class="a " style="height:30px;width:150px;" name="card_medical" th:value="${listchec.card_medical}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<!--</div><br /><hr/>
+                            <div>-->
+							查房人签名：<input type="text" class="a " style="height:30px;width:150px;" name="doctor_signature" th:value="${listchec.doctor_signature}"onkeypress="return handleEnter(this, event)"/>
+						</div><br />
+						<div>
+							查房记录：<textarea type="text" class="a " style="width: 400px; height: 60px" name="Patient_rounds_details"th:text="${listchec.Patient_rounds_details}"></textarea>
+						</div><br />
+						<div>
+							<!--<button  type="button" class="btn btn-primary" id="button_check" style="margin-left: 60px;width: 70px" th:onclick=" 'javascript:edit_room('+${listchec.id}+')' ">保存</button>
+							&lt;!&ndash;<div style="display: none;">&ndash;&gt;
+							<button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button><br /><br />-->
+						</div>
+					</form>
+				</div>
+			</div>
+			<div id="check_room">
+
+			</div>
+		</div>
 		<div class="tab-pane fade" id="tabs-5">
-			<div  style="margin-left: 30px;">
-				<h1 class="sub-header" style="text-align: center">各种影像检查报告</h1>
-				<br/>
-				<br/>
-			</div>
-
+			<!--<div class="addroom" style="left: 90%;top:20%;position: fixed;">
+				<label><input id="addvide" type="submit" class="btn btn-primary" value="新增"></label><br>
+			</div>-->
 			<div id="bing_x">
+				<br /><br /><br />
+				<li size="9" style="font-size: 50px;margin-left:100px">各种影像检查报告</li><br /><br /><br /><br />
 				<!-- 遍历该报告 -->
-				<div th:if="${not #lists.isEmpty(listvide)}" th:each="video:${listvide}">
-					<form action="" method="post">
-						<div style="background-color:#ADD8E6;width: 92%;height: 100%; ">
-							<div style="margin-left: 2%;margin-bottom: 1%;">
-								<!--病人ID：<input type="text" class="a " style="width: 150px;height:30px;" name="patientId" th:value="${video.patientId}" onkeypress="return handleEnter(this, event)"/>-->
-								<!--申报单号：<input type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num" th:value="${video.eclarationd_num}" onkeypress="return handleEnter(this, event)"/>-->
-								影像类别：<input name="video_status"th:value="${video.video_status}" class="a " style="width: 180px;height:30px;margin-top: 1%;" id="sdf">
-								病案号：<input type="text" class="a " style="width: 155px;height:30px;" name="card_medical" th:value="${video.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								科室：<input type="text" class="a " style="width: 155px;height:30px;" name="department"th:value="${video.department}" onkeypress="return handleEnter(this, event)"/>
-								报告日期：<input  id="datebut13" type="text"   th:value="${video.report_time}" style="width: 150px;height:30px;"/>
-								检查部位：<input type="text" class="a " style="width: 155px;height:30px;" name="inspection_area"th:value="${video.inspection_area}" onkeypress="return handleEnter(this, event)"/>
-								报告医师：<input type="text" class="a " style="width: 150px;height:30px;" name="reported_doctor"th:value="${video.reported_doctor}" onkeypress="return handleEnter(this, event)"/>
-								<br/>
-								<br/>
-								影像学所见：<textarea type="text" class="a " style="width: 500px;height: 50px;margin-right: 10%;margin-bottom: 1%;" name="video_content"th:text="${video.video_content}"></textarea>
-								影像学意见：<textarea type="text" class="a " style="width: 500px;height: 50px;margin-bottom: 1%" name="video_conclusion"th:text="${video.video_conclusion}"></textarea>
-							</div>
-						</div><br /><br/>
+				<div th:each="video:${listvide}">
+					<form th:id="${video.vr_id}" method="post">
+						<div hidden="hidden">
+							<input name="keyword" th:value="${video.keyword}"/>
+							<input name="vr_id"     th:value="${video.vr_id}"/>
+							<input name="status" th:value="${video.status}"/>
+							<input name="create_time" th:value="${video.create_time}"/>
+						</div>
+						<div>
+							病人ID：<input type="text" class="a " style="width: 150px;height:30px;" name="patientId" th:value="${video.patientId}" onkeypress="return handleEnter(this, event)"/>
+							申报单号：<input type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num" th:value="${video.eclarationd_num}" onkeypress="return handleEnter(this, event)"/>
+							报告日期：<input class="datainp" id="datebut13" type="text" placeholder="请选择"  readonly=""
+										onClick="jeDate({dateCell:'#datebut13',isTime:true,format:'YYYY-MM-DD'})"
+										name="report_time" th:value="${video.report_time}" style="width: 150px;height:30px;"/>
+						</div><br />
+						<div>
+							病案号：<input type="text" class="a " style="width: 155px;height:30px;" name="card_medical" th:value="${video.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							科室：<input type="text" class="a " style="width: 155px;height:30px;" name="department" th:value="${video.department}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							床号：<input type="text" class="a " style="width: 155px;height:30px;" name="bed_no" th:value="${video.bed_no}" onkeypress="return handleEnter(this, event)"/>
+						</div><br />
+						<div style="width: 400px;">
+							检查部位：<input type="text" class="a " style="width: 155px;height:30px;" name="inspection_area" th:value="${video.inspection_area}" onkeypress="return handleEnter(this, event)"/>
+						</div><br />
+						<div style="width: 700px;">
+							影像学所见：<textarea type="text" class="a " style="width: 567px;height: 100px;" name="video_content" th:text="${video.video_content}"></textarea>
+						</div><br />
+						<div style="width: 700px;">
+							影像学意见：<textarea type="text" class="a " style="width: 567px;height: 100px;" name="video_conclusion" th:text="${video.video_conclusion}"></textarea>
+						</div> <br />
+						<div>
+							报告医师：<input type="text" class="a " style="width: 145px;height:30px;" name="reported_doctor" th:value="${video.reported_doctor}" onkeypress="return handleEnter(this, event)"/>
+							审核医师：<input type="text" class="a " style="width: 145px;height:30px;" name="check_doctor" th:value="${video.check_doctor}" onkeypress="return handleEnter(this, event)"/>
+							终审医师：<input type="text" class="a " style="width: 145px;height:30px;" name="final_check_doctor" th:value="${video.final_check_doctor}" onkeypress="return handleEnter(this, event)"/>
+						</div> <br />
+						<div style="width: 400px;">
+							影像类别：<select name="video_status" th:value="${video.video_status}" class="a " style="width: 250px;height:30px;">
+							<option>影像科MR检查报告书</option>
+							<option>影像科CT检查报告书</option>
+							<option>影像科X检查报告</option>
+							<option>冠状动脉CTA成像与钙化积分报告单</option>
+						</select>
+						</div><br />
+						<div>
+							<!--<button type="button" class="btn btn-primary" style="width: 100px;height:30px;" th:onclick=" 'javascript:edit_video('+${video.vr_id}+')' ">保存</button>
+							<input type="reset" class="btn btn-primary" style="width: 100px;height:30px;margin-left: 200px" value="重置"/><br /><br />-->
+						</div>
 					</form>
 				</div>
 			</div>
+			<div id="bing_insert">
+				<!-- 遍历该报告 -->
+			</div>
 		</div>
 
-		<!--遍历超声波-->
 		<div class="tab-pane fade" id="tabs-6">
-			<div  style="margin-left: 45px;">
-				<h1 class="sub-header" style="text-align: center">超声波检查报告</h1>
-				<br/>
-				<br/>
-			</div>
-
+			<!--<div class="addroom" style="left: 90%;top:20%;position: fixed;">
+				<label><input id="addultr" type="submit" class="btn btn-primary" value="新增"></label><br>
+			</div>-->
 			<div id="bing_ult">
+				<br /><br /><br />
+				<li style="font-size: 50px;margin-left:100px">超声波检查报告</li><br /><br /><br /><br />
 				<!-- 遍历该报告 -->
-				<div th:if="${not #lists.isEmpty(listultr)}" th:each="ultra:${listultr}">
-					<form method="post">
-						<div style="background-color:#ADD8E6;width: 90%;height: 98%; ">
-							<div style="margin-left: 3%;margin-bottom: 1%;">
-								超声波号：<input type="text" class="a " style="width: 150px;height: 30px;margin-right: 30px;margin-top: 1%;" name="ultrasonic_number;margin-top: 1%;margin-left: 1%;"th:value="${ultra.ultrasonic_number}" onkeypress="return handleEnter(this, event)"/>
-								病案号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 30px" name="card_medical" th:value="${ultra.card_medical}" onkeypress="return handleEnter(this, event)">
-								科室：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 30px" name="department"th:value="${ultra.department}" onkeypress="return handleEnter(this, event)"/>
-								检查部位：<input type="text" class="a " style="width: 200px;height: 30px;margin-right: 30px" name="inspection_area" th:value="${ultra.inspection_area}" onkeypress="return handleEnter(this, event)"/>
-								诊断医师：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 30px" name="diagnosis_doctor" th:value="${ultra.diagnosis_doctor}" onkeypress="return handleEnter(this, event)"/>
-								报告日期：<input id="datebut14" type="text" style="width: 100px;height:30px;" th:value="${ultra.report_date}"/>
-								<br />
-								<br />
-								超声所见：<textarea type="text" class="a " style="width: 500px;height: 50px;margin-right: 10%;margin-bottom: 1%;" name="ultrasonic_content"th:text="${ultra.ultrasonic_content}"></textarea>
-								超声提示：<textarea type="text" class="a " style="width: 500px;height: 50px;margin-bottom: 1%;" name="ultrasonic_tip" th:text="${ultra.ultrasonic_tip}"></textarea>
-							</div>
+				<div th:if="${not #lists.isEmpty(listultr)}" th:each="csb:${listultr}">
+					<form method="post" th:id="${csb.id}">
+						<div hidden="hidden">
+							<input name="keyword" th:value="${csb.keyword}"/>
+							<input name="id"     th:value="${csb.id}"/>
+							<input name="status" th:value="${csb.status}"/>
+							<input name="create_date" th:value="${csb.create_date}"/>
 						</div>
-						<br />
-						<br />
-						<!--<div>-->
-						<!--科&nbsp;&nbsp;&nbsp;&nbsp;室：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="department"value="${ultra.department}" onkeypress="return handleEnter(this, event)"/>-->
-						<!--&lt;!&ndash;</div><br /><hr/><br /><br />-->
-						<!--<div>&ndash;&gt;-->
-						<!--床号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="bed_no"value="${ultra.bed_no}" onkeypress="return handleEnter(this, event)"/>-->
-						<!--</div><br /><br />-->
-						<!--<div>-->
-						<!--检查设备：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="check_equipment"value="${ultra.check_equipment}" onkeypress="return handleEnter(this, event)"/>-->
-						<!--&lt;!&ndash;</div><br /><hr/><br /><br />-->
-						<!--<div>&ndash;&gt;-->
-						<!--检查部位：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="inspection_area"value="${datam.inspection_area}" onkeypress="return handleEnter(this, event)"/>-->
-						<!--</div><br /><br />-->
-						<!--<div>-->
-						<!--超声所见：<textarea type="text" class="a " style="width: 500px;height: 50px;margin-right: 10%;" name="ultrasonic_content"value="${ultra.ultrasonic_content}"></textarea>-->
-						<!--超声提示：<textarea type="text" class="a " style="width: 500px;height: 50px" name="ultrasonic_tip"value="${ultra.ultrasonic_tip}"></textarea>-->
-						<!--</div>-->
-						<!--<div>-->
-						<!--<p>超声提示：</p><textarea type="text" class="a " style="width: 600px;height: 60px" name="ultrasonic_tip"value="${ultra.ultrasonic_tip}"></textarea>-->
-						<!--</div><br /><br />-->
-						<!--<div>-->
-						<!--诊断医师：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="diagnosis_doctor"value="${ultra.diagnosis_doctor}" onkeypress="return handleEnter(this, event)"/>-->
-						<!--&lt;!&ndash;</div><br /><hr/><br /><br />-->
-						<!--<div>&ndash;&gt;-->
-						<!--会诊医师：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="consultant_doctor"value="${ultra.consultant_doctor}"  onkeypress="return handleEnter(this, event)"/>-->
-						<!--</div><br /><br />-->
-						<!--<div>-->
-						<!--报告日期：<input class="datainp" id="datebut14" type="text" placeholder="请选择"  readonly=""-->
-						<!--onClick="jeDate({dateCell:'#datebut14',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" name="report_date"value="${ultra.report_date}"/>-->
-						<!--&lt;!&ndash; </div><br /><hr/><br /><br />-->
-						<!--<div>&ndash;&gt;-->
-						<!--打印日期：<input class="datainp" id="datebut15" type="text" placeholder="请选择"  readonly=""-->
-						<!--onClick="jeDate({dateCell:'#datebut15',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" th:value="${ultra.print_date}" name="print_date"/>-->
-						<!--</div><br /><br />-->
-						<!--<div>
-                            &lt;!&ndash;<button onclick="subs()" class="btn btn-primary" id="button" style="margin-left: 60px;width: 70px">提交</button>&ndash;&gt;
-                            <button type="submit" class="btn btn-primary" style="margin-left: 60px;width: 70px" onclick="edit_chao(this)"><div hidden="hidden" th:value="datam.keyword"></div>保存</button>
-                            <button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button>
-                        </div>-->
+						<div>
+							超声波号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="ultrasonic_number" th:value="${csb.ultrasonic_number}" onkeypress="return handleEnter(this, event)"/>
+							<!--</div><br /><hr/><br /><br />
+                            <div>-->
+							病&nbsp;&nbsp;案&nbsp;&nbsp;号：<input type="text" class="a " style="width: 100px;height: 30px" name="card_medical" th:value="${csb.card_medical}" onkeypress="return handleEnter(this, event)">
+						</div><br />
+						<div>
+							科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;室：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="department" th:value="${csb.department}" onkeypress="return handleEnter(this, event)"/>
+							<!--</div><br /><hr/><br /><br />
+                            <div>-->
+							床&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="bed_no" th:value="${csb.bed_no}" onkeypress="return handleEnter(this, event)"/>
+						</div><br />
+						<div>
+							检查设备：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="check_equipment" th:value="${csb.check_equipment}" onkeypress="return handleEnter(this, event)"/>
+							<!--</div><br /><hr/><br /><br />
+                            <div>-->
+							检查部位：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="inspection_area" th:value="${csb.inspection_area}" onkeypress="return handleEnter(this, event)"/>
+						</div><br /><br />
+						<div>
+							<p>超声所见：</p><textarea type="text" class="a " style="width: 600px;height: 60px" name="ultrasonic_content" th:text="${csb.ultrasonic_content}"></textarea>
+						</div><br /><br />
+						<div>
+							<p>超声提示：</p><textarea type="text" class="a " style="width: 600px;height: 60px" name="ultrasonic_tip" th:text="${csb.ultrasonic_tip}"></textarea>
+						</div><br /><br />
+						<div>
+							诊断医师：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="diagnosis_doctor" th:value="${csb.diagnosis_doctor}" onkeypress="return handleEnter(this, event)"/>
+							<!--</div><br /><hr/><br /><br />
+                            <div>-->
+							会诊医师：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="consultant_doctor" th:value="${csb.consultant_doctor}"  onkeypress="return handleEnter(this, event)"/>
+						</div><br /><br />
+						<div>
+							报告日期：<input class="datainp" id="datebut14" type="text" placeholder="请选择"  readonly=""
+										onClick="jeDate({dateCell:'#datebut14',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" name="report_date" th:value="${csb.report_date}"/>
+							<!-- </div><br /><hr/><br /><br />
+                             <div>-->
+							打印日期：<input class="datainp" id="datebut15" type="text" placeholder="请选择"  readonly=""
+										onClick="jeDate({dateCell:'#datebut15',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" th:value="${csb.print_date}" name="print_date"/>
+						</div><br /><br />
+						<div>
+							<!--<button onclick="subs()" class="btn btn-primary" id="button" style="margin-left: 60px;width: 70px">提交</button>-->
+							<!--<button type="button" class="btn btn-primary" style="margin-left: 60px;width: 70px" th:onclick=" 'javascript:edit_chao('+${csb.id}+')' ">保存</button>
+							<button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button><br /><br />-->
+						</div>
 					</form>
 				</div>
 			</div>
+			<div id="bing_ultr">
+				<!-- 遍历该报告 -->
+			</div>
+
 		</div>
-
-
-
 		<div class="tab-pane fade" id="tabs-7">
-			<div  style="margin-left: 45px;">
-				<h1 class="sub-header" style="text-align: center">经颅多普勒超声检查报告</h1>
-				<br/>
-				<br/>
-			</div>
-
 			<div id="bing_tra">
-				<div th:if="${not #lists.isEmpty(listtran)}" th:each="listtran_data:${listtran}">
-					<form id="disea_five" method="post">
-						<div style="background-color:#ADD8E6;width: 75%;height: 98%; margin-left: 15%;">
-							<div style="margin-left: 3%;margin-bottom: 1%;">
-								科室：<input type="text" class="a "  name="department" th:value="${listtran_data.department}" style="height:30px;width:110px;margin-right: 30px;margin-top: 1%;" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								病案号：<input type="text" class="a "  name="card_medical" th:value="${listtran_data.card_medical}" style="height:30px;width:110px;margin-right: 30px;" onkeypress="return handleEnter(this, event)"/>
-								检查时间：<input  name="check_time" style="height:30px;width:110px;margin-right: 30px;" th:value="${listtran_data.check_time}" type="text"/>
-								医师签名：<input type="text" class="a " style="height:30px;width:110px;" name="physician_signature" th:value="${listtran_data.physician_signature}"onkeypress="return handleEnter(this, event)"/>
-								<br/>
-								<br/>
-								TCD描述：<textarea type="text" class="a" style="height:50px;width:450px;margin-right: 30px;" name="TCD_content" th:text="${listtran_data.TCD_content}"></textarea>
-								TCD结论：<textarea type="text" class="a" style="height:50px;width:450px;" name="TCD_conclusion" th:text="${listtran_data.TCD_conclusion}"></textarea>
-							</div>
-						</div>
-						<!--<div>-->
-						<!--<br />-->
-						<!--<br />-->
-						<!--床号：<input type="text" class="a "  name="bed_no"&nbsp; th:value="${listtran.bed_no}" style="height:30px;width:240px;" onkeypress="return handleEnter(this, event)"/>-->
-						<!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-						<!--检查号：<input type="text" class="a "  name="check_number" th:value="${listtran.check_number}" style="height:30px;width:240px;" onkeypress="return handleEnter(this, event)"/>-->
-						<!--<br />-->
-						<!--<br />-->
-						<!--</div>-->
-						<!--<div>-->
-						<!--检查时间：<input  name="check_time" th:value="${listtran.check_time}" class="datainp" id="datebut17" type="text" placeholder="请选择"  readonly=""-->
-						<!--onClick="jeDate({dateCell:'#datebut17',isTime:true,format:'YYYY-MM-DD'})"style="height:30px;width:100px;" 	/>-->
-						<!--</div>-->
-						<!--<div>-->
-						<!--<br /><br />-->
-						<!--TCD描述：<textarea type="text" class="a" style="height:100px;width:500px;" name="TCD_content" th:text="${listtran.TCD_content}"></textarea>-->
-						<!--</div><br /><br />-->
-						<!--<div>-->
-						<!--TCD结论：<textarea type="text" class="a" style="height:100px;width:500px;" name="TCD_conclusion" th:text="${listtran.TCD_conclusion}"></textarea>-->
-						<!--</div><br /><br />-->
-						<!--<div>-->
-						<!--医师签名：<input type="text" class="a " style="height:30px;width:240px;" name="physician_signature" th:value="${listtran.physician_signature}"onkeypress="return handleEnter(this, event)"/>-->
-						<!--</div><br /><br />-->
-						<!--<div>
-                            <input type="submit" class="a " style="height:30px;width: 100px" id="sub_five" value="保存"/>
-                            <input type="reset" class="a " style="height:30px;width: 100px" value="重置"/>
-                        </div>-->
-					</form>
-				</div>
+				<br /><br /><br />
+				<li style="font-size: 50px;margin-left:0px">经颅多普勒超声检查报告</li><br /><br /><br /><br />
+				<form id="disea_five" method="post">
+					<div hidden="hidden">
+						<input name="keyword" th:value="${listtran.keyword}"/>
+						<input name="id"     th:value="${listtran.id}"/>
+						<input name="status" th:value="${listtran.status}"/>
+						<input name="create_date" th:value="${listtran.create_date}"/>
+					</div>
+
+					科室：<input type="text" class="a "  name="department" th:value="${listtran.department}" style="height:30px;width:220px;" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					病案号：<input type="text" class="a "  name="card_medical" th:value="${listtran.card_medical}" style="height:30px;width:220px;" onkeypress="return handleEnter(this, event)"/>
+					<div>
+						<br />
+						<br />
+						床号：<input type="text" class="a "  name="bed_no"&nbsp; th:value="${listtran.bed_no}" style="height:30px;width:220px;" onkeypress="return handleEnter(this, event)"/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						检查号：<input type="text" class="a "  name="check_number" th:value="${listtran.check_number}" style="height:30px;width:218px;" onkeypress="return handleEnter(this, event)"/>
+						<br />
+						<br />
+					</div>
+					<div>
+						检查时间：<input  name="check_time" th:value="${listtran.check_time}" class="datainp" id="datebut17" type="text" placeholder="请选择"  readonly=""
+									 onClick="jeDate({dateCell:'#datebut17',isTime:true,format:'YYYY-MM-DD'})"style="height:30px;width:100px;" 	/>
+					</div>
+					<div>
+						<br /><br />
+						TCD描述：<textarea type="text" class="a " style="height:100px;width:500px;" name="TCD_content" th:text="${listtran.TCD_content}"></textarea>
+					</div><br /><br />
+					<div>
+						TCD结论：<textarea type="text" class="a " style="height:100px;width:500px;" name="TCD_conclusion" th:text="${listtran.TCD_conclusion}"></textarea>
+					</div><br /><br />
+					<div>
+						医师签名：<input type="text" class="a " style="height:30px;width:240px;" name="physician_signature" th:value="${listtran.physician_signature}"onkeypress="return handleEnter(this, event)"/>
+					</div><br /><br />
+					<div>
+						<!--<input type="button" class="btn btn-primary" style="height:30px;width: 70px" id="sub_five" value="保存"/>
+						<input type="reset" class="btn btn-primary" style="height:30px;width: 70px;margin-left: 200px" value="重置"/><br /><br />-->
+					</div>
+				</form>
 			</div>
 		</div>
-
-
 	</div>
 </div>
 <script>
+	//	$(function () {
+	//		//$('#myTab li:eq(0) a').tab('show');
+	//	});
 	$(function () {
-		$('#myTab li:eq(0) a').tab('show');
+		//$(document).ready(function () {
+
+		/* 查房记录 */
+		var key = 0;
+		$("#addroom").click(function () {
+			var keyword = $("#all_keyword").val();
+			var card_medical = $("#card_medical").val();
+			//alert(keyword+",测试");
+			key++;
+			$("#list_room").hide();
+			$("#check_room").append(
+					"<br /><br /><br /><li style=\"font-size: 50px;margin-left:100px\">病程查房记录" + key + "</li><br /><br />"
+					+ "<br /><br /><form  method=\"post\" id=" + key + ">"
+					+ "<div><div hidden='hidden'><input type=\"text\" name='keyword' value=" + keyword + " /></div>"
+					+ "查房人：<input type=\"text\" class=\"a \" style=\"height:30px;width:150px;\" name=\"Patient_rounds_doctor\" onkeypress=\"return handleEnter(this, event)\"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+					+ "查房时间：<input class=\"datainp\" id=\"datebut100\" type=\"text\" placeholder=\"请选择\" style=\"height:30px;width:150px;\"onClick=\"jeDate({dateCell:'#datebut100',isTime:true,format:'YYYY-MM-DD'})\" name=\"Patient_rounds_date\"/> </div><br />"
+					+ "<div>病案号：<input type=\"text\" class=\"a \" style=\"height:30px;width:150px;\" name=\"card_medical\" value=\"" + card_medical + "\" onkeypress=\"return handleEnter(this, event)\"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+					+ "查房人签名：<input type=\"text\" class=\"a \" style=\"height:30px;width:150px;\" name=\"doctor_signature\" onkeypress=\"return handleEnter(this, event)\"/> </div><br />"
+					+ "<div>查房记录：<textarea type=\"text\" class=\"a \" style=\"width: 392px; height: 60px\" name=\"Patient_rounds_details\"></textarea> </div>"
+					+ "<div><button  type=\"button\" class=\"btn btn-primary\" id=\"button\" style=\"margin-left: 60px;width: 70px\" onclick=\"add_room(this)\"><div hidden='hidden'>" + key + "</div>保存</button>"
+					+ "<button  type=\"reset\" class=\"btn btn-primary\" style=\"margin-left: 200px;width: 70px\">重置</button> </div>"
+					+ "</form>"
+			);
+		})
+	})
+	/* 查房记录修改编辑 */
+	function edit_room(id) {
+
+		alert(id);
+		//alert($checkroom.children().eq(0).text());
+		//	$checkroom = $(checkroom);
+		//var keyword = $checkroom.children().eq(0).text();
+		//var keyword = $checkroom.children();
+		//	alert(id+"，keyord");
+
+		$.ajax({
+			type: 'post',
+			url: '/update_checkRecord',
+			data: $("#" + id).serialize(),
+			cache: false,
+			dataType: 'json',
+			success: function (data) {
+				alert("修改成功！");
+				location.reload();
+			},
+			error: function () {
+				alert("FAILED");
+			}
+		});
+	}
+
+	//添加
+	function add_room(key) {
+		$key = $(key);
+		var keyword = $key.children().eq(0).text();
+		$.ajax({
+			type: 'post',
+			url: '/add_checkRecord',
+			data: $("#" + keyword).serialize(),
+			cache: false,
+			dataType: 'json',
+			success: function (data) {
+				$("#check_room").hide();
+				$("#list_room").show();
+				alert("添加成功！");
+				location.reload();
+			},
+			error: function () {
+				alert("FAILED");
+			}
+		});
+	}
+
+
+	$(function () {
+		/* 超声波报告 */
+		var key1 = 0;
+		$("#addultr").click(function () {
+			var keyword = $("#all_keyword").val();
+			var card_medical = $("#card_medical").val();
+			//alert(card_medical+"新增超声波");
+			key1++;
+			$("#bing_ult").hide();
+			$("#bing_ultr").append(
+					"<br /><br /><br /><li style=\"font-size: 50px;margin-left:100px\">超声波报告单" + key1 + "</li><br /><br />"
+					+ '<div> <form id=' + key1 + '>'
+					+ '<div><div hidden="hidden"><input type="text" name="keyword" value="' + keyword + '"/></div>'
+					+ '<div>超声波号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="ultrasonic_number"onkeypress="return handleEnter(this, event)"/>'
+					+ '病&nbsp;&nbsp;案&nbsp;&nbsp;号：<input type="text" class="a " style="width: 100px;height: 30px"  name=\"card_medical\" value="' + card_medical + '" /> </div><br /><br />'
+					+ '<div>科&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;室：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="department" tonkeypress="return handleEnter(this, event)"/>'
+					+ '床&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="bed_no" onkeypress="return handleEnter(this, event)"/> </div><br /><br />'
+					+ '<div> 检查设备：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="check_equipment" onkeypress="return handleEnter(this, event)"/>'
+					+ '检查部位：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="inspection_area" onkeypress="return handleEnter(this, event)"/> </div><br /><br />'
+					+ '<div> <p>超声所见：</p><textarea type="text" class="a " style="width: 600px;height: 60px" name="ultrasonic_content"></textarea> </div><br /><br />'
+					+ '<div> <p>超声提示：</p><textarea type="text" class="a " style="width: 600px;height: 60px" name="ultrasonic_tip"></textarea> </div><br /><br />'
+					+ '<div> 诊断医师：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="diagnosis_doctor" onkeypress="return handleEnter(this, event)"/>'
+					+ '会诊医师：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="consultant_doctor" onkeypress="return handleEnter(this, event)"/>'
+					+ '</div><br /><br /><div>'
+					+ '报告日期：<input class="datainp" id="datebut24" type="text" placeholder="请选择"  onClick="jeDate({dateCell:\'#datebut24\',isTime:true,format:\'YYYY-MM-DD\'})" style="width: 150px;height:30px;" name="report_date"/>'
+					+ '打印日期：<input class="datainp" id="datebut25" type="text" placeholder="请选择"  onClick="jeDate({dateCell:\'#datebut25\',isTime:true,format:\'YYYY-MM-DD\'})" style="width: 150px;height:30px;" name="print_date"/>'
+					+ '</div><br /><br /> <div>'
+					+ '<button type="button" class="btn btn-primary" style="margin-left: 60px;width: 70px" onclick="edit_ultr(this)"><div hidden="hidden">' + key1 + '</div>保存</button>'
+					+ '<button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button></div></form></div>'
+			);
+		})
 	});
+	//添加
+	function edit_ultr(key) {
+		$key = $(key);
+		var keyword = $key.children().eq(0).text();
+		$.ajax({
+			type: 'post',
+			url: '/add_ultrasoniciagnDosisRecord',
+			data: $("#" + keyword).serialize(),
+			cache: false,
+			dataType: 'json',
+			success: function (data) {
+				$("#bing_ultr").hide();
+				$("#bing_ult").show();
+				alert("添加成功！");
+				location.reload();
+			},
+			error: function () {
+				alert("FAILED");
+			}
+		});
+	}
+
+	//更新、修改
+	function edit_chao(id) {
+		//		$video = $(video);
+		//		var keyword = $video.children().eq(0).text();
+		$.ajax({
+			type: 'post',
+			url: '/update_ultrasoniciagnDosisRecord',
+			data: $("#" + id).serialize(),
+			cache: false,
+			dataType: 'json',
+			success: function (data) {
+				alert("修改成功！");
+				location.reload();
+			},
+			error: function () {
+				alert("FAILED");
+			}
+		});
+	}
+
+	$(function () {
+		/* 各影像报告 */
+		var key2 = 0;
+		$("#addvide").click(function () {
+			key2++;
+			var keyword = $("#all_keyword").val();
+			var card_medical = $("#card_medical").val();
+			$("#bing_x").hide();
+			$("#bing_insert").append(
+					"<br /><br /><br /><li style=\"font-size: 50px;margin-left:100px\">各种影像检查报告" + key2 + "</li><br /><br />"
+					+ '<div> <form method="post" id=' + key2 + '>'
+					+ '<div hidden="hidden"><input name="keyword" value="' + keyword + '"/></div><div>'
+					+ '病人ID：<input type="text" class="a " style="width: 150px;height:30px;" name="patientId" onkeypress="return handleEnter(this, event)"/>'
+					+ '申报单号：<input type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num" onkeypress="return handleEnter(this, event)"/>'
+					+ '报告日期：<input class="datainp" id="datebut23" type="text" placeholder="请选择"  readonly=""'
+					+ 'onClick="jeDate({dateCell:\'#datebut23\',isTime:true,format:\'YYYY-MM-DD\'})"name="report_time" style="width: 150px;height:30px;"/>'
+					+ '</div><br /><div>'
+					+ '病案号：<input type="text" class="a " style="width: 155px;height:30px;" name="card_medical" value="' + card_medical + '" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+					+ '科室：<input type="text" class="a " style="width: 155px;height:30px;" name="department" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+					+ '床号：<input type="text" class="a " style="width: 155px;height:30px;" name="bed_no" onkeypress="return handleEnter(this, event)"/>'
+					+ '</div><br /><div style="width: 400px;">'
+					+ '检查部位：<input type="text" class="a " style="width: 155px;height:30px;" name="inspection_area" onkeypress="return handleEnter(this, event)"/>'
+					+ '</div><br /> <div style="width: 700px;">'
+					+ '影像学所见：<textarea type="text" class="a " style="width: 558px;height: 100px;" name="video_content"></textarea>'
+					+ '</div><br /> <div style="width: 700px;">'
+					+ '影像学意见：<textarea type="text" class="a " style="width: 558px;height: 100px;" name="video_conclusion"></textarea>'
+					+ '</div> <br /><div>'
+					+ '报告医师：<input type="text" class="a " style="width: 145px;height:30px;" name="reported_doctor" onkeypress="return handleEnter(this, event)"/>'
+					+ '审核医师：<input type="text" class="a " style="width: 145px;height:30px;" name="check_doctor" onkeypress="return handleEnter(this, event)"/>'
+					+ '终审医师：<input type="text" class="a " style="width: 145px;height:30px;" name="final_check_doctor" onkeypress="return handleEnter(this, event)"/>'
+					+ '</div> <br />'
+					+ '<div style="width: 400px;">'
+					+ '影像类别：<select name="video_status" class="a " style="width: 250px;height:30px;">'
+					+ '<option>影像科MR检查报告书</option>'
+					+ '<option>影像科CT检查报告书</option>'
+					+ '<option>影像科X检查报告</option>'
+					+ '<option>冠状动脉CTA成像与钙化积分报告单</option>'
+					+ '</select></div><br /><div>'
+					+ '<button type="button" class="btn btn-primary" style="width: 100px;height:30px;" onclick="edit_vide(this)"><div hidden="hidden">' + key2 + '</div>保存</button>'
+					+ '<input type="reset" class="btn btn-primary" style="width: 100px;height:30px;margin-left: 200px" value="重置"/> </div> </form> </div>'
+			);
+		})
+	})
+	//修改、更新
+	function edit_video(vr_id) {
+		//$video = $(video);
+		//var keyword = $video.children().eq(0).text();
+		$.ajax({
+			type: 'post',
+			url: '/update_videoRecord',
+			data: $("#" + vr_id).serialize(),
+			cache: false,
+			dataType: 'json',
+			success: function (data) {
+				location.reload();
+				alert("修改成功！");
+			},
+			error: function () {
+				alert("FAILED");
+			}
+		});
+	}
+
+	//添加
+	function edit_vide(vide) {
+		$key = $(vide);
+		var keyword = $key.children().eq(0).text();
+		$.ajax({
+			type: 'post',
+			url: '/add_videoRecord',
+			data: $("#" + keyword).serialize(),
+			cache: false,
+			dataType: 'json',
+			success: function (data) {
+				$("#bing_insert").hide();
+				$("#bing_x").show();
+				alert("添加成功！");
+				location.reload();
+			},
+			error: function () {
+				alert("FAILED");
+			}
+		});
+	}
+
+	$(function () {
+		/* 其它各模块ajax提交 */
+		//病案首页
+		$("#sub_one").click(function () {
+			$.ajax({
+				type: 'post',
+				url: '/update_medicalRecord',
+				data: $("#disea_one").serialize(),
+				cache: false,
+				dataType: 'json',
+				success: function (data) {
+					alert("添加成功！");
+					location.reload();
+				},
+				error: function () {
+					alert("FAILED");
+				}
+			});
+		})
+		//入院记录
+		$("#sub_two").click(function () {
+			$.ajax({
+				type: 'post',
+				url: '/update_hospitalized',
+				data: $("#disea_two").serialize(),
+				cache: false,
+				dataType: 'json',
+				success: function () {
+					alert("添加成功！");
+					location.reload();
+				},
+				error: function () {
+					alert("FAILED");
+				}
+			});
+		})
+		//病程记录
+		$("#sub_three").click(function () {
+			$.ajax({
+				type: 'post',
+				url: '/update_diseaseRecord',
+				data: $("#disea_three").serialize(),
+				cache: false,
+				dataType: 'json',
+				success: function (data) {
+					alert("添加成功！");
+					location.reload();
+				},
+				error: function () {
+					alert("FAILED");
+				}
+			});
+		})
+		//出院
+		$("#sub_four").click(function () {
+			$.ajax({
+				type: 'post',
+				url: '/update_dischargeRecord',
+				data: $("#disea_four").serialize(),
+				cache: false,
+				dataType: 'json',
+				success: function (data) {
+					alert("添加成功！");
+					location.reload();
+				},
+				error: function () {
+					alert("FAILED");
+				}
+			});
+		})
+		//多普勒
+		$("#sub_five").click(function () {
+			$.ajax({
+				type: 'post',
+				url: '/update_transcranialDopplerRecord',
+				data: $("#disea_five").serialize(),
+				cache: false,
+				dataType: 'json',
+				success: function (data) {
+					alert("添加成功！");
+					location.reload();
+				},
+				error: function () {
+					alert("FAILED");
+				}
+			});
+		})
+	})
 </script>
 </body>
 </html>
