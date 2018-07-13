@@ -50,11 +50,12 @@
         #mains{
             top: 12%;
             margin-left: 301px;
-            width: 80%;
+            width: 50%;
             height: 88%;
             /*border: 1px solid black;*/
             float:left;
             position: absolute;
+            margin-left: 30%;
             /*background:  #0275d8;*/
         }
         ul li:nth-child(odd){
@@ -188,6 +189,126 @@
             margin-left: -446.5px;
             z-index: 9;
         }
+
+        #loading{
+            /*background-color: #f0c600;*/
+            /*border: 1px red solid;*/
+            height: 80%;
+            width: 80%;
+            position: fixed;
+            z-index: 1;
+            margin-top: 5%;
+            margin-left: 0%;
+            top: 5%;
+        }
+        #loading-center{
+            /*border: 1px red solid;*/
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        #loading-center-absolute {
+           /*border: 1px red solid;*/
+            position: absolute;
+            left: 20%;
+            top: 30%;
+            height: 150px;
+            width: 150px;
+            margin-top: 0%;
+            margin-left: 5%;
+            -moz-border-radius: 50% 50% 50% 50%;
+            -webkit-border-radius: 50% 50% 50% 50%;
+            border-radius: 50% 50% 50% 50%;
+
+        }
+        .object{
+            width: 20px;
+            height: 20px;
+            background-color: #FFF;
+            position: absolute;
+            -moz-border-radius: 50% 50% 50% 50%;
+            -webkit-border-radius: 50% 50% 50% 50%;
+            border-radius: 50% 50% 50% 50%;
+            -webkit-animation: animate 0.8s infinite;
+            animation: animate 0.8s infinite;
+        }
+
+        #object_one {
+            top: 19px;
+            left: 19px;
+
+        }
+        #object_two {
+            top: 0px;
+            left: 65px;
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+
+        }
+        #object_three {
+            top: 19px;
+            left: 111px;
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+
+        }
+        #object_four {
+            top: 65px;
+            left: 130px;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+        #object_five {
+            top: 111px;
+            left: 111px;
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+        }
+        #object_six {
+            top: 130px;
+            left: 65px;
+            -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+        }
+        #object_seven {
+            top: 111px;
+            left: 19px;
+            -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+        }
+        #object_eight {
+            top: 65px;
+            left: 0px;
+            -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s;
+        }
+        @-webkit-keyframes animate {
+
+            25% {
+                -ms-transform: scale(1.5);
+                -webkit-transform: scale(1.5);
+                transform: scale(1.5);
+            }
+            75% {
+                -ms-transform: scale(0);
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+        }
+
+        @keyframes animate {
+            50% {
+                -ms-transform: scale(1.5, 1.5);
+                -webkit-transform: scale(1.5, 1.5);
+                transform: scale(1.5, 1.5);
+            }
+
+            100% {
+                -ms-transform: scale(1, 1);
+                -webkit-transform: scale(1, 1);
+                transform: scale(1, 1);
+            }
+        }
     </style>
     <script type="text/javascript">
         function handleEnter (field, event) {
@@ -214,66 +335,11 @@
                 }
             });
         });
+
+        $(window).load(function() {
+            $("#loading").fadeOut(7000);
+        })
     </script>
-
-    <!-- 列表展示 -->
-    <!--<script type="text/javascript">-->
-        <!--$(document).ready(function() {-->
-            <!--var table = $('#ssss').DataTable({-->
-<!--//                ajax: "http://localhost:8080/audit_list",-->
-                <!--ajax: {-->
-<!--//						dataType: 'json',-->
-                    <!--type: "POST",-->
-                    <!--url: "/ShowAudit",-->
-                <!--},-->
-                <!--columns:[-->
-                    <!--{ data: 'card_medical'},-->
-                    <!--{ data: 'Patient_rounds_date'},-->
-                    <!--{ data: 'Patient_rounds_doctor' },-->
-                    <!--{ data: 'Patient_rounds_details' },-->
-                    <!--{ data: 'keyword'}-->
-                <!--],-->
-                <!--columnDefs: [-->
-<!--//                    {-->
-<!--//                        "targets": 0,-->
-<!--//                        "orderable": false,-->
-<!--//                        "data": "upload",-->
-<!--//                        "render": function ( data, type, full, meta ) {-->
-<!--//                            return '<input id="checkItem" type="checkbox" name="checkItem"  value=data>';-->
-<!--//                        }-->
-<!--//                    },-->
-                    <!--{-->
-                        <!--"targets": 4,-->
-                        <!--"orderable": false,-->
-                        <!--"data": "upload",-->
-                        <!--"render": function ( data, type, full, meta,row ) {-->
-                            <!--return data = '<button class="btn btn-info btn-sm" data-id=' + data + '><i class="fa fa-pencil"></i>Edit</button>'-->
-                            <!--//return '<a href="/ShowAudit?id="+data+"">查看详情</a>';-->
-                        <!--}-->
-                    <!--},-->
-                <!--],-->
-            <!--});-->
-        <!--})-->
-
-
-   <!--&lt;!&ndash;<div th:if="${not #lists.isEmpty(home_page)}" th:each="home_page:${home_page}">&ndash;&gt;-->
-       <!--&lt;!&ndash;<embed width="800" height="600" th:src="${home_page.picture_path}"></embed>&ndash;&gt;-->
-   <!--<div>-->
-       <!--&lt;!&ndash;<iframe src="/PictureShow/页面 1.pdf" width="800" height="600"></iframe>&ndash;&gt;-->
-       <!--<iframe th:src="@{'/home/cxq/program/picture'+${home_page.picture_path}}" width="800" height="600"></iframe>-->
-   <!--</div>-->
-
-<!--<ul>-->
-    <!--&lt;!&ndash;<li><a th:href="@{'file:\\\E:\program\picture123'+${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0001_pdf</a></li>&ndash;&gt;-->
-    <!--&lt;!&ndash;<hr>&ndash;&gt;-->
-    <!--<li><a th:href="@{'file:///home/cxq/program/picture'+${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0002_pdf</a></li>-->
-<!--</ul>-->
-<!--<div class="lightbox" id="lightbox"></div>-->
-<!--<div id="pop" class="pop" style="display: none;">-->
-    <!--<a href="javascript:close()" style="-->
-
-    <!--</script>-->
-
 </head>
 <body style="background-color: #ADD8E6">
 <div id="head">
@@ -295,62 +361,169 @@
         <li class="active"><a href="#tabs-0" data-toggle="tab">病案首页</a></li>
         <li><a href="#tabs-1" data-toggle="tab">入院记录</a></li>
         <li><a href="#tabs-2" data-toggle="tab">病程记录</a></li>
-        <li class="checkR"><a href="#tabs-4" data-toggle="tab">查房记录</a></li>
-        <li><a href="#tabs-3" data-toggle="tab">出院记录</a></li>
+        <li class="checkR"><a href="#tabs-3" data-toggle="tab">查房记录</a></li>
+        <li><a href="#tabs-4" data-toggle="tab">出院记录</a></li>
         <li><a href="#tabs-5" data-toggle="tab">X</a></li>
-        <li><a href="#tabs-5" data-toggle="tab">CT</a></li>
-        <li><a href="#tabs-5" data-toggle="tab">RM</a></li>
-        <li><a href="#tabs-5" data-toggle="tab">冠状动脉CTA成像</a></li>
-        <li><a href="#tabs-6" data-toggle="tab">超声波</a></li>
-        <li><a href="#tabs-7" data-toggle="tab">多普勒</a></li>
+        <li><a href="#tabs-6" data-toggle="tab">CT</a></li>
+        <li><a href="#tabs-7" data-toggle="tab">MR</a></li>
+        <li><a href="#tabs-8" data-toggle="tab">冠状动脉CTA成像</a></li>
+        <li><a href="#tabs-9" data-toggle="tab">超声波</a></li>
+        <li><a href="#tabs-10" data-toggle="tab">多普勒</a></li>
     </ul>
 </div>
 <div id="mains">
-        <iframe th:src="${home_page.picture_path}" width="800" height="600"></iframe>
-    <div id="test2">
-    <ul>
+        <!--<iframe th:src="${home_page.picture_path}" width="800" height="600"></iframe>-->
+    <!--<ul>-->
         <!--<li><a th:href="${home_page.picture_path}" target="pdfContainer" onclick="showPdf(true)">0001_pdf</a></li>-->
         <!--<li><a th:href="@{'/image'+${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0002_pdf</a></li>-->
         <!--<li><a th:href="@{'file:///E:/program/picture123/'+${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0003_pdf</a></li>-->
         <!--<li><a th:href="${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0003_pdf</a></li>-->
-    </ul>
-        <div>
-        <!--<iframe src="/PictureShow/页面 1.pdf" width="800" height="600"></iframe>-->
-        <iframe th:src="@{'/image'+${home_page.picture_path}}" width="800" height="600"></iframe>
+    <!--</ul>-->
+
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_four"></div>
+                <div class="object" id="object_five"></div>
+                <div class="object" id="object_six"></div>
+                <div class="object" id="object_seven"></div>
+                <div class="object" id="object_eight"></div>
+            </div>
         </div>
-    <div class="lightbox" id="lightbox"></div>
-    <div id="pop" class="pop" style="display: none;">
-        <a href="javascript:close()" style="
-            position: absolute;
-            right: -90px;
-            display: inline-block;
-            width: 80px;
-            height: 30px;
-        " id="close">关闭</a>
-        <iframe src="" frameborder="0" id="pdfContainer" name="pdfContainer"></iframe>
     </div>
+
+    <div id="myTabContent" class="tab-content">
+        <!--病案首页-->
+        <div class="tab-pane fade in active" id="tabs-0">
+            <div th:if="${not #lists.isEmpty(home_page)}" th:each="home_page:${home_page}">
+                <div>
+                    <!--<iframe th:src="@{'/image'+${home_page.picture_path}}" width="800" height="400"></iframe>-->
+                    <!--<embed width="800" height="600" th:src="@{'/image'+${home_page.picture_path}}"> </embed>-->
+                    <object classid="clsid:CA8A9780-280D-11CF-A24D-444553540000" width="800" height="600" border="0">
+                        <embed width="800" height="600" th:src="@{'/image'+${home_page.picture_path}}" border="0"> </embed>
+                        <!--<param name="SRC" th:value="@{'/image'+${home_page.picture_path}}">-->
+                    </object>
+                </div>
+            </div>
+        </div>
+
+        <!--入院记录-->
+        <div class="tab-pane fade in active" id="tabs-1">
+            <div th:if="${not #lists.isEmpty(enter_hospital)}" th:each="enter_hospital:${enter_hospital}">
+                <div>
+                        <embed width="800" height="600" th:src="@{'/image'+${enter_hospital.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+        <!--病程记录-->
+        <div class="tab-pane fade in active" id="tabs-2">
+            <div th:if="${not #lists.isEmpty(disease_record)}" th:each="disease_record:${disease_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${disease_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+        <!--查房记录-->
+        <div class="tab-pane fade in active" id="tabs-3">
+            <div th:if="${not #lists.isEmpty(check_record)}" th:each="check_record:${check_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${check_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+        <!--出院记录-->
+        <div class="tab-pane fade in active" id="tabs-4">
+            <div th:if="${not #lists.isEmpty(discharge_record)}" th:each="discharge_record:${discharge_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${discharge_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <!--X-->
+        <div class="tab-pane fade in active" id="tabs-5">
+            <div th:if="${not #lists.isEmpty(x_record)}" th:each="x_record:${x_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${x_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+        <!--CT-->
+        <div class="tab-pane fade in active" id="tabs-6">
+            <div th:if="${not #lists.isEmpty(ct_record)}" th:each="ct_record:${ct_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${ct_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+        <!--MR-->
+        <div class="tab-pane fade in active" id="tabs-7">
+            <div th:if="${not #lists.isEmpty(mr_record)}" th:each="mr_record:${mr_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${mr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+        <!--冠状动脉CTA成像-->
+        <div class="tab-pane fade in active" id="tabs-8">
+            <div th:if="${not #lists.isEmpty(cta_record)}" th:each="cta_record:${cta_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${cta_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+        <!--超声波-->
+        <div class="tab-pane fade in active" id="tabs-9">
+            <div th:if="${not #lists.isEmpty(ul_record)}" th:each="ul_record:${ul_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${ul_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+        <!--多普勒-->
+        <div class="tab-pane fade in active" id="tabs-10">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="600" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+    <!--<div class="lightbox" id="lightbox"></div>-->
+    <!--<div id="pop" class="pop" style="display: none;">-->
+        <!--<a href="javascript:close()" style="-->
+            <!--position: absolute;-->
+            <!--right: -90px;-->
+            <!--display: inline-block;-->
+            <!--width: 80px;-->
+            <!--height: 30px;-->
+        <!--" id="close">关闭</a>-->
+        <!--<iframe src="" frameborder="0" id="pdfContainer" name="pdfContainer"></iframe>-->
+    <!--</div>-->
 </div>
     </div>
-<script>
-    $(function () {
-        $('#myTab li:eq(0) a').tab('show');
-    });
+<!--<script>-->
+    <!--$(function () {-->
+        <!--$('#myTab li:eq(0) a').tab('show');-->
+    <!--});-->
 
-    function showPdf(isShow) {
-        var state = "";
-        if (isShow) {
-            state = "block";
-        } else {
-            state = "none";
-        }
-        var pop = document.getElementById("pop");
-        pop.style.display = state;
-        var lightbox = document.getElementById("lightbox");
-        lightbox.style.display = state;
-    }
-    function close() {
-        showPdf(false);
-    }
-</script>
+    <!--function showPdf(isShow) {-->
+        <!--var state = "";-->
+        <!--if (isShow) {-->
+            <!--state = "block";-->
+        <!--} else {-->
+            <!--state = "none";-->
+        <!--}-->
+        <!--var pop = document.getElementById("pop");-->
+        <!--pop.style.display = state;-->
+        <!--var lightbox = document.getElementById("lightbox");-->
+        <!--lightbox.style.display = state;-->
+    <!--}-->
+    <!--function close() {-->
+        <!--showPdf(false);-->
+    <!--}-->
+<!--</script>-->
 </body>
 </html>
