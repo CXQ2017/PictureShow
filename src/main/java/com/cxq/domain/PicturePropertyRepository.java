@@ -23,4 +23,7 @@ public interface PicturePropertyRepository extends JpaRepository<PictureProperty
     @Query("select p from PictureProperty p  where p.keyword=?1 and p.case_module=?2")
     List<PictureProperty> findByKeyAcase(String keyword,String case_module);
 
+    @Query("SELECT p FROM PictureProperty p WHERE p.keyword=?1 and p.status = 0")
+    List<PictureProperty>  findAllStatus(String keyword);
+
 }

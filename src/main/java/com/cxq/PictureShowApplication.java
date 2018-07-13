@@ -135,16 +135,24 @@ public class PictureShowApplication {
 		map.put("data", list);
 		return map;
 	}
-
+	int flag = 0;
 	//获取pdf列表请求
 	@RequestMapping("/pdf_list")
 	public Map<String, Object> PDFList(){
 		HashMap<String,Object> map = new HashMap<>();
         List<PictureProperty> list = picturePropertyRepository.findListKeyword();
+		List<PictureProperty> showList = new ArrayList<>();
 		if(list.isEmpty()){
 			list.add(new PictureProperty());
 		}
-		map.put("data",list);
+//		int flag = 0;
+		for(PictureProperty listOne:list){
+			List<PictureProperty> addList = picturePropertyRepository.findAllStatus(listOne.getKeyword());
+			if(addList.isEmpty()){
+				showList.add(listOne);
+			}
+		}
+		map.put("data",showList);
 		return map;
 	}
 
