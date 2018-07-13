@@ -14,9 +14,13 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
     //设置静态资源方式1
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
-        registry.addResourceHandler("/myresource/**").addResourceLocations("classpath:/myresource/");
-//        registry.addResourceHandler("/myresource/**").addResourceLocations("file:E:/myresource/");
-//        registry.addResourceHandler("/**").addResourceLocations("classpath:/myresource/", "file:E:/myresource");
+//        registry.addResourceHandler("/myresource/**").addResourceLocations("classpath:/myresource/");
+
+        //windows的地址
+        registry.addResourceHandler("//image/**").addResourceLocations("file:E:/program/picture123/");
+
+        //服务器的地址
+//        registry.addResourceHandler("//image/**").addResourceLocations("file:/home/cxq/program/picture/");
         super.addResourceHandlers(registry);
     }
 

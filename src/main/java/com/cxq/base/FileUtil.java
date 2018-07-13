@@ -33,7 +33,7 @@ public class FileUtil {
             String fileName = file.getOriginalFilename().replace("/",File.separator);
 
             String filePath = basePath + File.separator + fileName;
-            list.add(filePath);
+            list.add(File.separator + fileName);
             makeDir(filePath);
             File dest = new File(filePath);
             System.out.println(filePath);

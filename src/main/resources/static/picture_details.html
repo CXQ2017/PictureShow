@@ -309,12 +309,14 @@
         <iframe th:src="${home_page.picture_path}" width="800" height="600"></iframe>
     <div id="test2">
     <ul>
-        <li><a th:href="${home_page.picture_path}" target="pdfContainer" onclick="showPdf(true)">0001_pdf</a></li>
-        <li><a th:href="@{'file:///home/cxq/program/picture'+${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0002_pdf</a></li>
+        <!--<li><a th:href="${home_page.picture_path}" target="pdfContainer" onclick="showPdf(true)">0001_pdf</a></li>-->
+        <!--<li><a th:href="@{'/image'+${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0002_pdf</a></li>-->
+        <!--<li><a th:href="@{'file:///E:/program/picture123/'+${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0003_pdf</a></li>-->
+        <!--<li><a th:href="${home_page.picture_path}}" target="pdfContainer" onclick="showPdf(true)">0003_pdf</a></li>-->
     </ul>
         <div>
         <!--<iframe src="/PictureShow/页面 1.pdf" width="800" height="600"></iframe>-->
-        <iframe th:src="@{'/home/cxq/program/picture'+${home_page.picture_path}}" width="800" height="600"></iframe>
+        <iframe th:src="@{'/image'+${home_page.picture_path}}" width="800" height="600"></iframe>
         </div>
     <div class="lightbox" id="lightbox"></div>
     <div id="pop" class="pop" style="display: none;">
