@@ -210,6 +210,16 @@
 					}
 				});
 			});
+
+			function check(){
+				 var val=$('input:radio[name="Fruit"]:checked').val();
+
+				if(val == null || val == ""){
+					alert("请选择录入是否完成！");
+					return false;
+				}
+				return true;
+			}
 		</script>
 	</head>
 	<body style="background-color: #ADD8E6">
@@ -225,7 +235,7 @@
 		</div>
 		<!-- 确认是否通过审核 -->
 		<div id="opin">
-			<form action="/insert_submit" method="post">
+			<form action="/insert_submit" method="post" onsubmit="return check()">
 				<div hidden="hidden">
 					<input name="keyword" th:value="${listmedi.keyword}"/>
 				</div>

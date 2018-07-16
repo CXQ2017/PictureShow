@@ -210,6 +210,15 @@
 				}
 			});
 		});
+		function check(){
+			var val=$('input:radio[name="Fruit"]:checked').val();
+
+			if(val == null || val == ""){
+				alert("请选择审核意见！");
+				return false;
+			}
+			return true;
+		}
 	</script>
 </head>
 <body style="background-color: #ADD8E6">
@@ -225,7 +234,7 @@
 	</div>
 	<!-- 确认是否通过审核 -->
 	<div id="opin">
-		<form action="/search_submit" method="post">
+		<form action="/search_submit" method="post" onsubmit="return check()">
 			<div hidden="hidden">
 				<input name="keyword" th:value="${listmedi.keyword}"/>
 			</div>
