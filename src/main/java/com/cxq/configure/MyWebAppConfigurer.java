@@ -17,10 +17,10 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
 //        registry.addResourceHandler("/myresource/**").addResourceLocations("classpath:/myresource/");
 
         //windows的地址
-//        registry.addResourceHandler("//image/**").addResourceLocations("file:E:/program/picture123/");
+        registry.addResourceHandler("//image/**").addResourceLocations("file:E:/program/picture123/");
 
         //服务器的地址
-        registry.addResourceHandler("//image/**").addResourceLocations("file:/home/cxq/program/picture/");
+//        registry.addResourceHandler("//image/**").addResourceLocations("file:/home/cxq/program/picture/");
         super.addResourceHandlers(registry);
     }
 

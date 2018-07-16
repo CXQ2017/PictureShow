@@ -307,13 +307,8 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								职业：<input type="text" class="a " style="width: 150px" name="vocation" th:value="${listmedi.vocation}"onkeypress="return handleEnter(this, event)"/>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								婚姻：<select id="marry" name="marriage" th:value="${listmedi.marriage}" class="a " style="width: 66px">
-								<option>未婚</option>
-								<option>已婚</option>
-								<option>丧偶</option>
-								<option>离婚</option>
-								<option>其他</option>
-							</select><br /><br />
+								婚姻：<input id="marry" name="marriage" th:value="${listmedi.marriage}" class="a " style="width: 66px">
+							</input><br /><br />
 								现住址：<textarea type="text" class="a " style="width: 300px; height: 24px" name="present_address" th:text="${listmedi.present_address}" onkeypress="return handleEnter(this, event)"></textarea>
 								电话：<input type="text" class="a " style="width: 100px" name="phone" th:value="${listmedi.phone}" onkeypress="return handleEnter(this, event)"/>
 								邮编：<input type="text" class="a " style="width: 100px"name="address_code" th:value="${listmedi.address_code}" onkeypress="return handleEnter(this, event)"/><br /><br />
@@ -330,24 +325,14 @@
 								地址：<textarea type="text" class="a " style="width: 250px;height: 24px" name="linkman_address" th:value="${listmedi.linkman_address}"onkeypress="return handleEnter(this, event)"></textarea>
 								电话：<input type="text" class="a " style="width: 110px" name="linkman_phone" th:value="${listmedi.linkman_phone}"onkeypress="return handleEnter(this, event)"/><br /><br />
 								入院途径：
-								<select name="hospitalized_road" th:value="${listmedi.hospitalized_road}" class="a " style="width: 200px">
-									<option></option>
-									<option>急诊</option>
-									<option>门诊</option>
-									<option>其他医疗机构转入</option>
-									<option>其他</option>
-								</select>
+								<input name="hospitalized_road" th:value="${listmedi.hospitalized_road}" class="a " style="width: 200px">
+
+								</input>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								病人来源：
-								<select name="patient_source" th:value="${listmedi.patient_source}" class="a " style="width: 200px">
-									<option></option>
-									<option>医院所在县区</option>
-									<option>本市其他县区</option>
-									<option>本省其他市</option>
-									<option>外省市</option>
-									<option>港澳台地区</option>
-									<option>外国</option>
-								</select>
+								<input name="patient_source" th:value="${listmedi.patient_source}" class="a " style="width: 200px">
+
+								</input>
 							</div><br /><hr/>
 							<div>
 								入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"  readonly=""
@@ -374,19 +359,13 @@
 							</div><br /><hr/>
 							<div>
 								病例分型：
-								<select name="case_classification" th:value="${listmedi.case_classification}" class="a " style="width: 100px">
-									<option></option>
-									<option>一般</option>
-									<option>急</option>
-									<option>疑难</option>
-									<option>危重</option>
-								</select>
+								<input name="case_classification" th:value="${listmedi.case_classification}" class="a " style="width: 100px">
+
+								</input>
 								临床路径病历：
-								<select name="clinical_pathway_cases" th:value="${listmedi.clinical_pathway_cases}" class="a " style="width: 100px">
-									<option></option>
-									<option>是</option>
-									<option>否</option>
-								</select>
+								<input name="clinical_pathway_cases" th:value="${listmedi.clinical_pathway_cases}" class="a " style="width: 100px">
+
+								</input>
 								抢救次数：<input type="text" class="a " style="width: 93px" name="rescue_times" th:value="${listmedi.rescue_times}" onkeypress="return handleEnter(this, event)"/>
 								成功次数：<input type="text" class="a " style="width: 93px" name="success_times" th:value="${listmedi.success_times}" onkeypress="return handleEnter(this, event)"/>
 							</div><br /><hr/>
@@ -402,52 +381,34 @@
 							<div>
 								诊断符合情况
 								1、门诊与出院：
-								<select name="outpatient_discharge_accord" th:value="${listmedi.outpatient_discharge_accord}" class="a " style="width: 120px">
-									<option></option>
-									<option>符合</option>
-									<option>不符合</option>
-									<option>不肯定</option>
-								</select>
+								<input name="outpatient_discharge_accord" th:value="${listmedi.outpatient_discharge_accord}" class="a " style="width: 120px">
+
+								</input>
 								2、临床与病理：
-								<select name="clinical_pathological" th:value="${listmedi.clinical_pathological}" class="a " style="width: 120px">
-									<option></option>
-									<option>符合</option>
-									<option>不符合</option>
-									<option>不肯定</option>
-								</select>
+								<input name="clinical_pathological" th:value="${listmedi.clinical_pathological}" class="a " style="width: 120px">
+
+								</input>
 							</div><br /><hr/>
 							<div>
 								药物过敏：
-								<select name="drug_allergy" th:value="${listmedi.drug_allergy}" class="a " style="width: 100px">
-									<option></option>
-									<option>无</option>
-									<option>有</option>
-								</select>
+								<input name="drug_allergy" th:value="${listmedi.drug_allergy}" class="a " style="width: 100px">
+
+								</input>
 								过敏药物：<input type="text" class="a " style="width: 100px" name="drug_allergy_name" th:value="${listmedi.drug_allergy_name}" onkeypress="return handleEnter(this, event)"/>
 								死亡患者尸检：
-								<select name="autopsy" th:value="${listmedi.autopsy}" class="a " style="width: 100px">
-									<option></option>
-									<option>是</option>
-									<option>否</option>
-								</select>
+								<input name="autopsy" th:value="${listmedi.autopsy}" class="a " style="width: 100px">
+
+								</input>
 							</div><br /><hr/>
 							<div>
 								血型：
-								<select name="blood_type" th:value="${listmedi.blood_type}" class="a " style="width: 100px">
-									<option>未查</option>
-									<option>A</option>
-									<option>B</option>
-									<option>O</option>
-									<option>AB</option>
-									<option>不详</option>
-								</select>
+								<input name="blood_type" th:value="${listmedi.blood_type}" class="a " style="width: 100px">
+
+								</input>
 								Rh：
-								<select name="Rh" th:value="${listmedi.Rh}" class="a " style="width: 100px">
-									<option>未查</option>
-									<option>阴</option>
-									<option>阳</option>
-									<option>不详</option>
-								</select>
+								<input name="Rh" th:value="${listmedi.Rh}" class="a " style="width: 100px">
+
+								</input>
 							</div><br /><hr/>
 							<div>
 								科主任：<input type="text" class="a " style="width: 100px" name="head_department" th:value="${listmedi.head_department}" onkeypress="return handleEnter(this, event)"/>
@@ -463,11 +424,9 @@
 							</div><br /><hr/>
 							<div>
 								病案质量：
-								<select name="medical_record_quality" th:value="${listmedi.medical_record_quality}" class="a " style="width: 100px">
-									<option></option>
-									<option>甲</option>
-									<option>乙</option>
-								</select>
+								<input name="medical_record_quality" th:value="${listmedi.medical_record_quality}" class="a " style="width: 100px">
+
+								</input>
 								质控医师：<input type="text" class="a " style="width: 100px" name="quality_control_physician" th:value="${listmedi.quality_control_physician}" onkeypress="return handleEnter(this, event)"/>
 								质控护士：<input type="text" class="a " style="width: 100px" name="quality_control_nurse" th:value="${listmedi.quality_control_nurse}" onkeypress="return handleEnter(this, event)"/>
 								质控日期：<input class="datainp" id="datebut2" type="text" placeholder="请选择"  readonly=""
@@ -759,12 +718,9 @@
 								终审医师：<input type="text" class="a " style="width: 145px;height:30px;" name="final_check_doctor" th:value="${video.final_check_doctor}" onkeypress="return handleEnter(this, event)"/>
 							</div> <br />
 							<div style="width: 400px;">
-								影像类别：<select name="video_status" th:value="${video.video_status}" class="a " style="width: 250px;height:30px;">
-								<option>影像科MR检查报告书</option>
-								<option>影像科CT检查报告书</option>
-								<option>影像科X检查报告</option>
-								<option>冠状动脉CTA成像与钙化积分报告单</option>
-							</select>
+								影像类别：<input name="video_status" th:value="${video.video_status}" class="a " style="width: 250px;height:30px;">
+
+							</input>
 							</div><br />
 							<div></div>
 						</form>

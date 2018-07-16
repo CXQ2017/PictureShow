@@ -303,14 +303,17 @@
             //上传
             $('#button').click(function () {
                 var rows = table.rows('.selected');
+
                 if(rows.data().length == 0){
                     alert("请选择上传的视频");
                     return false;
                 }
                 var flag = 0;           //标记是否有price为填写
                 var num = 0;            //标记第几行
+                var isok =0;               //上传计数
                 rows.every(function( rowIdx, tableLoop, rowLoop ){
                     num += 1;
+//                    alert("num:"+num);
                     var d = this.data();
                     if(d['case_module']=='0'){
                         if(flag == 0){
@@ -341,10 +344,16 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {
-                            alert("上传成功");
-                            window.location.reload();
+
+                            isok+=1;
+                            if (isok==num){
+                                alert("上传成功");
+                                window.location.reload();
+                            }
+
                         }
                     });
+
                 } );
 
             });
