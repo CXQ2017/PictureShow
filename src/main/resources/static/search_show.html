@@ -290,8 +290,8 @@
 							<div class="">
 								姓名：<input type="text" class="a " style="width: 100px; height: 20px" placeholder="姓名" name="name" th:value="${listmedi.name}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								性别：<input type="text" class="a "style="width: 100px; height: 20px" placeholder="性别" name="sex" th:value="${listmedi.sex}" onkeypress="return handleEnter(this, event)" readonly="true"/>
-								出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly="" style="width: 150px; height: 20px"
-											onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="birthday" th:value="${listmedi.birthday}" readonly="true"/>
+								出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择" style="width: 150px; height: 20px"
+											 name="birthday" th:value="${listmedi.birthday}" readonly="true"/>
 								年龄（岁）：<input type="text" class="a " style="width: 50px; height: 20px" name="age" th:value="${listmedi.age}" onkeypress="return handleEnter(this, event)" readonly="true"/><br /><br />
 								国籍：<input type="text" class="a " style="width: 100px; height: 20px" name="nationality" th:value="${listmedi.nationality}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" th:value="${listmedi.volk}" onkeypress="return handleEnter(this, event)" readonly="true"/>
@@ -336,14 +336,14 @@
 								</input>
 							</div><br /><hr/>
 							<div>
-								入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"  readonly="true"
+								入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"
 											onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="hospitalized_day" th:value="${listmedi.hospitalized_day}" readonly="true"/>
 								入院科别：<input type="text" class="a " style="width: 184px" name="hospitalized_category" th:value="${listmedi.hospitalized_category}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								病房：<input type="text" class="a " style="width: 100px" name="hospitalized_ward" th:value="${listmedi.hospitalized_ward}" onkeypress="return handleEnter(this, event)" readonly="true"/><br /><br />
-								转科：<input class="datainp" id="datebut4" type="text" placeholder="请选择"  readonly=""
+								转科：<input class="datainp" id="datebut4" type="text" placeholder="请选择"
 										  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="change_time" th:value="${listmedi.change_time}" readonly="true"/>
 								转：<input type="text" class="a " style="width: 200px" name="change_ward" th:value="${listmedi.change_ward}" onkeypress="return handleEnter(this, event)" readonly="true"/><br /><br />
-								出院日期：<input class="datainp" id="datebut3" type="text" placeholder="请选择"  readonly=""
+								出院日期：<input class="datainp" id="datebut3" type="text" placeholder="请选择"
 											onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="leave_hospital_day" th:value="${listmedi.leave_hospital_day}" readonly="true"/>
 								出院科别：<input type="text" class="a " style="width: 100px" name="leave_hospital_category" th:value="${listmedi.leave_hospital_category}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								病房：<input type="text" class="a " style="width: 100px"name="leave_hospital_ward" th:value="${listmedi.leave_hospital_ward}" onkeypress="return handleEnter(this, event)" readonly="true"/>
@@ -816,7 +816,7 @@
 							<br />
 						</div>
 						<div>
-							检查时间：<input readonly="true" name="check_time" th:value="${listtran.check_time}" class="datainp" id="datebut17" type="text" placeholder="请选择"  readonly=""
+							检查时间：<input readonly="true" name="check_time" th:value="${listtran.check_time}" class="datainp" id="datebut17" type="text" placeholder="请选择"
 										 onClick="jeDate({dateCell:'#datebut17',isTime:true,format:'YYYY-MM-DD'})"style="height:30px;width:100px;" 	/>
 						</div>
 						<div>
