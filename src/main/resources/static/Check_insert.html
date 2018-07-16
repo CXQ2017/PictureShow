@@ -293,7 +293,7 @@
 								姓名：<input type="text" class="a " style="width: 100px; height: 20px" placeholder="姓名" name="name" th:value="${listmedi.name}" onkeypress="return handleEnter(this, event)"/>
 								性别：<input type="text" class="a "style="width: 100px; height: 20px" placeholder="性别" name="sex" th:value="${listmedi.sex}" onkeypress="return handleEnter(this, event)"/>
 								出生日期：<input class="datainp" id="datebut" type="text" placeholder="请选择"  readonly="" style="width: 150px; height: 20px"
-											onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="birthday" th:value="${listmedi.birthday}"/>
+											onClick="jeDate({dateCell:'#datebut',isTime:true,format:'YYYY-MM-DD'})" name="birthday" th:value="${#dates.format(listmedi.birthday,'yyyy-MM-dd')}"/>
 								年龄（岁）：<input type="text" class="a " style="width: 50px; height: 20px" name="age" th:value="${listmedi.age}" onkeypress="return handleEnter(this, event)"/><br /><br />
 								国籍：<input type="text" class="a " style="width: 100px; height: 20px" name="nationality" th:value="${listmedi.nationality}" onkeypress="return handleEnter(this, event)"/>
 								民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" th:value="${listmedi.volk}" onkeypress="return handleEnter(this, event)" />
@@ -354,14 +354,14 @@
 							</div><br /><hr/>
 							<div>
 								入院日期：<input class="datainp" id="datebut1" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="hospitalized_day" th:value="${listmedi.hospitalized_day}"/>
+											onClick="jeDate({dateCell:'#datebut1',isTime:true,format:'YYYY-MM-DD'})" name="hospitalized_day" th:value="${#dates.format(listmedi.hospitalized_day,'yyyy-MM-dd')}"/>
 								入院科别：<input type="text" class="a " style="width: 184px" name="hospitalized_category" th:value="${listmedi.hospitalized_category}" onkeypress="return handleEnter(this, event)"/>
 								病房：<input type="text" class="a " style="width: 100px" name="hospitalized_ward" th:value="${listmedi.hospitalized_ward}" onkeypress="return handleEnter(this, event)"/><br /><br />
 								转科：<input class="datainp" id="datebut4" type="text" placeholder="请选择"  readonly=""
-										  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="change_time" th:value="${listmedi.change_time}"/>
+										  onClick="jeDate({dateCell:'#datebut4',isTime:true,format:'YYYY-MM-DD'})" name="change_time" th:value="${#dates.format(listmedi.change_time,'yyyy-MM-dd')}"/>
 								转：<input type="text" class="a " style="width: 200px" name="change_ward" th:value="${listmedi.change_ward}" onkeypress="return handleEnter(this, event)"/><br /><br />
 								出院日期：<input class="datainp" id="datebut3" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="leave_hospital_day" th:value="${listmedi.leave_hospital_day}"/>
+											onClick="jeDate({dateCell:'#datebut3',isTime:true,format:'YYYY-MM-DD'})" name="leave_hospital_day" th:value="${#dates.format(listmedi.leave_hospital_day,'yyyy-MM-dd')}"/>
 								出院科别：<input type="text" class="a " style="width: 100px" name="leave_hospital_category" th:value="${listmedi.leave_hospital_category}" onkeypress="return handleEnter(this, event)"/>
 								病房：<input type="text" class="a " style="width: 100px"name="leave_hospital_ward" th:value="${listmedi.leave_hospital_ward}" onkeypress="return handleEnter(this, event)"/>
 								实际住院：<input type="text" class="a " style="width: 100px" name="real_hospitalization_day" th:value="${listmedi.real_hospitalization_day}" onkeypress="return handleEnter(this, event)"/><br /><br />
@@ -474,7 +474,7 @@
 								质控医师：<input type="text" class="a " style="width: 100px" name="quality_control_physician" th:value="${listmedi.quality_control_physician}" onkeypress="return handleEnter(this, event)"/>
 								质控护士：<input type="text" class="a " style="width: 100px" name="quality_control_nurse" th:value="${listmedi.quality_control_nurse}" onkeypress="return handleEnter(this, event)"/>
 								质控日期：<input class="datainp" id="datebut2" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut2',isTime:true,format:'YYYY-MM-DD'})" name="quality_control_date" th:value="${listmedi.quality_control_date}"/>
+											onClick="jeDate({dateCell:'#datebut2',isTime:true,format:'YYYY-MM-DD'})" name="quality_control_date" th:value="${#dates.format(listmedi.quality_control_date,'yyyy-MM-dd')}"/>
 							</div><br /><br />
 							<div id="sub">
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -499,7 +499,7 @@
 						</div>
 						<div>
 							病案号：<input type="text" class="a " style="width: 120px; height: 20px" name="card_medical" th:value="${listhosp.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							记录日期：<input  name="record_day" th:value="${listhosp.record_day}" class="datainp" id="datebut9" type="text" placeholder="请选择"  readonly="" style="width: 100px; height: 20px"
+							记录日期：<input  name="record_day" th:value="${#dates.format(listhosp.record_day,'yyyy-MM-dd')}" class="datainp" id="datebut9" type="text" placeholder="请选择"  readonly="" style="width: 100px; height: 20px"
 										 onClick="jeDate({dateCell:'#datebut9',isTime:true,format:'YYYY-MM-DD'})" 	/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							病史陈诉者：<input  name="history_statement" th:value="${listhosp.history_statement}" type="text" class="a " style="width: 100px; height: 20px" onkeypress="return handleEnter(this, event)"/>
 						</div><br /><br />
@@ -560,25 +560,25 @@
 						<div>
 							修正诊断：<textarea  name="modified_diagnosis" th:text="${listhosp.modified_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 							签名：<input  name="modified_diagnosis_name" th:value="${listhosp.modified_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
-							日期：<input  name="modified_diagnosis_day" th:value="${listhosp.modified_diagnosis_day}" class="datainp" id="datebut5" type="text" placeholder="请选择"  readonly=""
+							日期：<input  name="modified_diagnosis_day" th:value="${#dates.format(listhosp.modified_diagnosis_day,'yyyy-MM-dd')}" class="datainp" id="datebut5" type="text" placeholder="请选择"  readonly=""
 									   onClick="jeDate({dateCell:'#datebut5',isTime:true,format:'YYYY-MM-DD'})" >
 						</div><br /><hr/>
 						<div>
 							初步诊断：<textarea  name="tentative_diagnosis" th:text="${listhosp.tentative_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 							签名：<input  name="tentative_diagnosis_name" th:value="${listhosp.tentative_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
-							日期：<input  name="tentative_diagnosis_day" th:value="${listhosp.tentative_diagnosis_day}" class="datainp" id="datebut6" type="text" placeholder="请选择"  readonly=""
+							日期：<input  name="tentative_diagnosis_day" th:value="${#dates.format(listhosp.tentative_diagnosis_day,'yyyy-MM-dd')}" class="datainp" id="datebut6" type="text" placeholder="请选择"  readonly=""
 									   onClick="jeDate({dateCell:'#datebut6',isTime:true,format:'YYYY-MM-DD'})" />
 						</div><br /><hr/>
 						<div>
 							补充诊断：<textarea  name="supplementary_diagnosis" th:text="${listhosp.supplementary_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 							签名：<input  name="supplementary_diagnosis_name" th:value="${listhosp.supplementary_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
-							日期：<input  name="supplementary_diagnosis_day" th:value="${listhosp.supplementary_diagnosis_day}" class="datainp" id="datebut7" type="text" placeholder="请选择"  readonly=""
+							日期：<input  name="supplementary_diagnosis_day" th:value="${#dates.format(listhosp.supplementary_diagnosis_day,'yyyy-MM-dd')}" class="datainp" id="datebut7" type="text" placeholder="请选择"  readonly=""
 									   onClick="jeDate({dateCell:'#datebut7',isTime:true,format:'YYYY-MM-DD'})" />
 						</div><br /><hr/>
 						<div>
 							最后诊断：<textarea  name="final_diagnosis" th:text="${listhosp.final_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 							签名：<input  name="final_diagnosis_name" th:value="${listhosp.final_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
-							日期：<input  name="final_diagnosis_day" th:value="${listhosp.final_diagnosis_day}" class="datainp" id="datebut8" type="text" placeholder="请选择"  readonly=""
+							日期：<input  name="final_diagnosis_day" th:value="${#dates.format(listhosp.final_diagnosis_day,'yyyy-MM-dd')}" class="datainp" id="datebut8" type="text" placeholder="请选择"  readonly=""
 									   onClick="jeDate({dateCell:'#datebut8',isTime:true,format:'YYYY-MM-DD'})" />
 						</div><br /><hr/>
 						<div>
@@ -610,7 +610,7 @@
 								首次病程记录：<textarea type="text" class="a " style="width: 300px; height: 35px" name="first_disease_record" th:text="${listcour.first_disease_record}"></textarea>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								日期：<input class="datainp" id="datebut0" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
-										  onClick="jeDate({dateCell:'#datebut0',isTime:true,format:'YYYY-MM-DD'})" name="first_disease_record_time" th:value="${listcour.first_disease_record_time}"/>
+										  onClick="jeDate({dateCell:'#datebut0',isTime:true,format:'YYYY-MM-DD'})" name="first_disease_record_time" th:value="${#dates.format(listcour.first_disease_record_time,'yyyy-MM-dd')}"/>
 							</div><br /><br />
 							<div>
 								（一）病例特点
@@ -664,11 +664,11 @@
 						</div><br /><br />
 						<div>
 							记录日期：<input class="datainp" id="datebut10" type="text" placeholder="请选择"  readonly=""
-										onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="record_date" th:value="${listleav.record_date}" style="width: 125px;height:30px;"/>
+										onClick="jeDate({dateCell:'#datebut10',isTime:true,format:'YYYY-MM-DD'})" name="record_date" th:value="${#dates.format(listleav.record_date,'yyyy-MM-dd')}" style="width: 125px;height:30px;"/>
 							入院日期：<input class="datainp" id="datebut11" type="text" placeholder="请选择"  readonly=""
-										onClick="jeDate({dateCell:'#datebut11',isTime:true,format:'YYYY-MM-DD'})" name="admission_date" th:value="${listleav.admission_date}" style="width: 125px;height:30px;"/>
+										onClick="jeDate({dateCell:'#datebut11',isTime:true,format:'YYYY-MM-DD'})" name="admission_date" th:value="${#dates.format(listleav.admission_date,'yyyy-MM-dd')}" style="width: 125px;height:30px;"/>
 							出院日期：<input class="datainp" id="datebut12" type="text" placeholder="请选择"  readonly=""
-										onClick="jeDate({dateCell:'#datebut12',isTime:true,format:'YYYY-MM-DD'})" name="discharge_date" th:value="${listleav.discharge_date}" style="width: 125px;height:30px;"/>
+										onClick="jeDate({dateCell:'#datebut12',isTime:true,format:'YYYY-MM-DD'})" name="discharge_date" th:value="${#dates.format(listleav.discharge_date,'yyyy-MM-dd')}" style="width: 125px;height:30px;"/>
 						</div><br />
 						<div class="textarea_div">
 							入院情况：<textarea type="text" class="a " style="width: 510px;height:100px;" name="admitting_situation" th:text="${listleav.admitting_situation}"></textarea>
@@ -720,7 +720,7 @@
 							<div>
 								查房人：<input type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor" th:value="${listchec.Patient_rounds_doctor}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								查房时间：<input class="datainp" id="datebut101" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
-											onClick="jeDate({dateCell:'#datebut101',isTime:true,format:'YYYY-MM-DD'})" name="Patient_rounds_date"th:value="${listchec.Patient_rounds_date}"/>
+											onClick="jeDate({dateCell:'#datebut101',isTime:true,format:'YYYY-MM-DD'})" name="Patient_rounds_date"th:value="${#dates.format(listchec.Patient_rounds_date,'yyyy-MM-dd')}"/>
 							</div><br />
 							<div>
 								病案号：<input type="text" class="a " style="height:30px;width:150px;" name="card_medical" th:value="${listchec.card_medical}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -768,7 +768,7 @@
 								申报单号：<input type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num" th:value="${video.eclarationd_num}" onkeypress="return handleEnter(this, event)"/>
 								报告日期：<input class="datainp" id="datebut13" type="text" placeholder="请选择"  readonly=""
 											onClick="jeDate({dateCell:'#datebut13',isTime:true,format:'YYYY-MM-DD'})"
-											name="report_time" th:value="${video.report_time}" style="width: 150px;height:30px;"/>
+											name="report_time" th:value="${#dates.format(video.report_time,'yyyy-MM-dd')}" style="width: 150px;height:30px;"/>
 							</div><br />
 							<div>
 								病案号：<input type="text" class="a " style="width: 155px;height:30px;" name="card_medical" th:value="${video.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -796,6 +796,12 @@
 								<option>影像科X检查报告</option>
 								<option>冠状动脉CTA成像与钙化积分报告单</option>
 							</select>
+								<!--影像类别：<select name="video_status" th:field="${video.video_status}" th:value="${video.video_status}" class="a " lay-verify="required" style="width: 250px;height:30px;">-->
+								<!--<option th:selected="${video.video_status=='影像科MR检查报告书'}" value="影像科MR检查报告书">影像科MR检查报告书</option>-->
+								<!--<option th:selected="${video.video_status=='影像科CT检查报告书'}" value="影像科CT检查报告书">影像科CT检查报告书</option>-->
+								<!--<option th:selected="${video.video_status=='影像科X检查报告'}" value="影像科X检查报告">影像科X检查报告</option>-->
+								<!--<option th:selected="${video.video_status=='冠状动脉CTA成像与钙化积分报告单'}" value="冠状动脉CTA成像与钙化积分报告单">冠状动脉CTA成像与钙化积分报告单</option>-->
+							<!--</select>-->
 							</div><br />
 							<div>
 								<button type="button" class="btn btn-primary" style="width: 100px;height:30px;" th:onclick=" 'javascript:edit_video('+${video.vr_id}+')' ">保存</button>
@@ -862,11 +868,11 @@
 							</div><br /><br />
 							<div>
 								报告日期：<input class="datainp" id="datebut14" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut14',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" name="report_date" th:value="${csb.report_date}"/>
+											onClick="jeDate({dateCell:'#datebut14',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" name="report_date" th:value="${#dates.format(csb.report_date,'yyyy-MM-dd')}"/>
 								<!-- </div><br /><hr/><br /><br />
 								 <div>-->
 								打印日期：<input class="datainp" id="datebut15" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut15',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" th:value="${csb.print_date}" name="print_date"/>
+											onClick="jeDate({dateCell:'#datebut15',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" th:value="${#dates.format(csb.print_date,'yyyy-MM-dd')}" name="print_date"/>
 							</div><br /><br />
 							<div>
 								<!--<button onclick="subs()" class="btn btn-primary" id="button" style="margin-left: 60px;width: 70px">提交</button>-->
@@ -908,7 +914,7 @@
 							<br />
 						</div>
 						<div>
-							检查时间：<input  name="check_time" th:value="${listtran.check_time}" class="datainp" id="datebut17" type="text" placeholder="请选择"  readonly=""
+							检查时间：<input  name="check_time" th:value="${#dates.format(listtran.check_time,'yyyy-MM-dd')}" class="datainp" id="datebut17" type="text" placeholder="请选择"  readonly=""
 										 onClick="jeDate({dateCell:'#datebut17',isTime:true,format:'YYYY-MM-DD'})"style="height:30px;width:100px;" 	/>
 						</div>
 						<div>

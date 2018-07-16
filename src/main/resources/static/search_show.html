@@ -291,7 +291,7 @@
 								姓名：<input type="text" class="a " style="width: 100px; height: 20px" placeholder="姓名" name="name" th:value="${listmedi.name}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								性别：<input type="text" class="a "style="width: 100px; height: 20px" placeholder="性别" name="sex" th:value="${listmedi.sex}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								出生日期：<input class="datainp" id="datebut" type="text"  style="width: 150px; height: 20px"
-											 name="birthday" th:value="${listmedi.birthday}" readonly="true"/>
+											 name="birthday" th:value="${#dates.format(listmedi.birthday,'yyyy-MM-dd')}" readonly="true"/>
 								年龄（岁）：<input type="text" class="a " style="width: 50px; height: 20px" name="age" th:value="${listmedi.age}" onkeypress="return handleEnter(this, event)" readonly="true"/><br /><br />
 								国籍：<input type="text" class="a " style="width: 100px; height: 20px" name="nationality" th:value="${listmedi.nationality}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" th:value="${listmedi.volk}" onkeypress="return handleEnter(this, event)" readonly="true"/>
@@ -337,14 +337,14 @@
 							</div><br /><hr/>
 							<div>
 								入院日期：<input class="datainp" id="datebut1" type="text"
-											 name="hospitalized_day" th:value="${listmedi.hospitalized_day}" readonly="true"/>
+											 name="hospitalized_day" th:value="${#dates.format(listmedi.hospitalized_day,'yyyy-MM-dd')}" readonly="true"/>
 								入院科别：<input type="text" class="a " style="width: 184px" name="hospitalized_category" th:value="${listmedi.hospitalized_category}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								病房：<input type="text" class="a " style="width: 100px" name="hospitalized_ward" th:value="${listmedi.hospitalized_ward}" onkeypress="return handleEnter(this, event)" readonly="true"/><br /><br />
 								转科：<input class="datainp" id="datebut4" type="text"
-										  name="change_time" th:value="${listmedi.change_time}" readonly="true"/>
+										  name="change_time" th:value="${#dates.format(listmedi.change_time,'yyyy-MM-dd')}" readonly="true"/>
 								转：<input type="text" class="a " style="width: 200px" name="change_ward" th:value="${listmedi.change_ward}" onkeypress="return handleEnter(this, event)" readonly="true"/><br /><br />
 								出院日期：<input class="datainp" id="datebut3" type="text"
-											 name="leave_hospital_day" th:value="${listmedi.leave_hospital_day}" readonly="true"/>
+											 name="leave_hospital_day" th:value="${#dates.format(listmedi.leave_hospital_day,'yyyy-MM-dd')}" readonly="true"/>
 								出院科别：<input type="text" class="a " style="width: 100px" name="leave_hospital_category" th:value="${listmedi.leave_hospital_category}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								病房：<input type="text" class="a " style="width: 100px"name="leave_hospital_ward" th:value="${listmedi.leave_hospital_ward}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								实际住院：<input type="text" class="a " style="width: 100px" name="real_hospitalization_day" th:value="${listmedi.real_hospitalization_day}" onkeypress="return handleEnter(this, event)" readonly="true"/><br /><br />
@@ -431,7 +431,7 @@
 								质控医师：<input type="text" class="a " style="width: 100px" name="quality_control_physician" th:value="${listmedi.quality_control_physician}" onkeypress="return handleEnter(this, event)"readonly="true"/>
 								质控护士：<input type="text" class="a " style="width: 100px" name="quality_control_nurse" th:value="${listmedi.quality_control_nurse}" onkeypress="return handleEnter(this, event)"readonly="true"/>
 								质控日期：<input class="datainp" id="datebut2" type="text"
-										 name="quality_control_date" th:value="${listmedi.quality_control_date}"readonly="true"/>
+										 name="quality_control_date" th:value="${#dates.format(listmedi.quality_control_date,'yyyy-MM-dd')}"readonly="true"/>
 							</div><br /><br />
 							<div id="sub">
 							</div><br /><br />
@@ -453,7 +453,7 @@
 						</div>
 						<div>
 							病案号：<input type="text" class="a " style="width: 120px; height: 20px" name="card_medical" th:value="${listhosp.card_medical}" onkeypress="return handleEnter(this, event)"readonly="true"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							记录日期：<input  name="record_day" th:value="${listhosp.record_day}" class="datainp" id="datebut9" type="text"   style="width: 100px; height: 20px"
+							记录日期：<input  name="record_day" th:value="${#dates.format(listhosp.record_day,'yyyy-MM-dd')}" class="datainp" id="datebut9" type="text"   style="width: 100px; height: 20px"
 										  	readonly="true"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							病史陈诉者：<input  name="history_statement" th:value="${listhosp.history_statement}" type="text" class="a " style="width: 100px; height: 20px" onkeypress="return handleEnter(this, event)"readonly="true"/>
 						</div><br /><br />
@@ -514,22 +514,22 @@
 						<div>
 							修正诊断：<textarea  name="modified_diagnosis" th:text="${listhosp.modified_diagnosis}" type="text" class="a " style="height:56px; width: 250px" readonly="true"></textarea>
 							签名：<input  name="modified_diagnosis_name" th:value="${listhosp.modified_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"readonly="true"/>
-							日期：<input  name="modified_diagnosis_day" th:value="${listhosp.modified_diagnosis_day}" class="datainp" id="datebut5" type="text" readonly="true">
+							日期：<input  name="modified_diagnosis_day" th:value="${#dates.format(listhosp.modified_diagnosis_day,'yyyy-MM-dd')}" class="datainp" id="datebut5" type="text" readonly="true">
 						</div><br /><hr/>
 						<div>
 							初步诊断：<textarea  readonly="true"name="tentative_diagnosis" th:text="${listhosp.tentative_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 							签名：<input  readonly="true"name="tentative_diagnosis_name" th:value="${listhosp.tentative_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
-							日期：<input  readonly="true"name="tentative_diagnosis_day" th:value="${listhosp.tentative_diagnosis_day}" class="datainp" id="datebut6" type="text"/>
+							日期：<input  readonly="true"name="tentative_diagnosis_day" th:value="${#dates.format(listhosp.tentative_diagnosis_day,'yyyy-MM-dd')}" class="datainp" id="datebut6" type="text"/>
 						</div><br /><hr/>
 						<div>
 							补充诊断：<textarea  readonly="true"name="supplementary_diagnosis" th:text="${listhosp.supplementary_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 							签名：<input  readonly="true"name="supplementary_diagnosis_name" th:value="${listhosp.supplementary_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
-							日期：<input  readonly="true"name="supplementary_diagnosis_day" th:value="${listhosp.supplementary_diagnosis_day}" class="datainp" id="datebut7" type="text"/>
+							日期：<input  readonly="true"name="supplementary_diagnosis_day" th:value="${#dates.format(listhosp.supplementary_diagnosis_day,'yyyy-MM-dd')}" class="datainp" id="datebut7" type="text"/>
 						</div><br /><hr/>
 						<div>
 							最后诊断：<textarea  readonly="true"name="final_diagnosis" th:text="${listhosp.final_diagnosis}" type="text" class="a " style="height:56px; width: 250px" ></textarea>
 							签名：<input  readonly="true"name="final_diagnosis_name" th:value="${listhosp.final_diagnosis_name}" type="text" class="a " style="width: 100px" onkeypress="return handleEnter(this, event)"/>
-							日期：<input  readonly="true" name="final_diagnosis_day" th:value="${listhosp.final_diagnosis_day}" class="datainp" id="datebut8" type="text"  />
+							日期：<input  readonly="true" name="final_diagnosis_day" th:value="${#dates.format(listhosp.final_diagnosis_day,'yyyy-MM-dd')}" class="datainp" id="datebut8" type="text"  />
 						</div><br /><hr/>
 						<div></div>
 					</form>
@@ -556,7 +556,7 @@
 								首次病程记录：<textarea readonly="true"type="text" class="a " style="width: 300px; height: 35px" name="first_disease_record" th:text="${listcour.first_disease_record}"></textarea>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								日期：<input class="datainp" id="datebut0" type="text"  readonly="true" style="height:30px;width:150px;"
-										  name="first_disease_record_time" th:value="${listcour.first_disease_record_time}"/>
+										  name="first_disease_record_time" th:value="${#dates.format(listcour.first_disease_record_time,'yyyy-MM-dd')}"/>
 							</div><br /><br />
 							<div>
 								（一）病例特点
@@ -607,11 +607,11 @@
 						</div><br /><br />
 						<div>
 							记录日期：<input readonly="true"class="datainp" id="datebut10" type="text"
-										 name="record_date" th:value="${listleav.record_date}" style="width: 125px;height:30px;"/>
+										 name="record_date" th:value="${#dates.format(listleav.record_date,'yyyy-MM-dd')}" style="width: 125px;height:30px;"/>
 							入院日期：<input class="datainp" id="datebut11" type="text"   readonly="true"
-										 name="admission_date" th:value="${listleav.admission_date}" style="width: 125px;height:30px;"/>
+										 name="admission_date" th:value="${#dates.format(listleav.admission_date,'yyyy-MM-dd')}" style="width: 125px;height:30px;"/>
 							出院日期：<input class="datainp" id="datebut12" type="text"   readonly="true"
-										 name="discharge_date" th:value="${listleav.discharge_date}" style="width: 125px;height:30px;"/>
+										 name="discharge_date" th:value="${#dates.format(listleav.discharge_date,'yyyy-MM-dd')}" style="width: 125px;height:30px;"/>
 						</div><br />
 						<div class="textarea_div">
 							入院情况：<textarea readonly="true"type="text" class="a " style="width: 510px;height:100px;" name="admitting_situation" th:text="${listleav.admitting_situation}"></textarea>
@@ -656,7 +656,7 @@
 							<div>
 								查房人：<input readonly="true"type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor" th:value="${listchec.Patient_rounds_doctor}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								查房时间：<input class="datainp" id="datebut101" type="text"   readonly="true" style="height:30px;width:150px;"
-											 name="Patient_rounds_date"th:value="${listchec.Patient_rounds_date}"/>
+											 name="Patient_rounds_date"th:value="${#dates.format(listchec.Patient_rounds_date,'yyyy-MM-dd')}"/>
 							</div><br />
 							<div>
 								病案号：<input readonly="true"type="text" class="a " style="height:30px;width:150px;" name="card_medical" th:value="${listchec.card_medical}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -697,7 +697,7 @@
 								申报单号：<input readonly="true"type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num" th:value="${video.eclarationd_num}" onkeypress="return handleEnter(this, event)"/>
 								报告日期：<input class="datainp" id="datebut13" type="text"   readonly="true"
 
-											name="report_time" th:value="${video.report_time}" style="width: 150px;height:30px;"/>
+											name="report_time" th:value="${#dates.format(video.report_time,'yyyy-MM-dd')}" style="width: 150px;height:30px;"/>
 							</div><br />
 							<div>
 								病案号：<input readonly="true"type="text" class="a " style="width: 155px;height:30px;" name="card_medical" th:value="${video.card_medical}" onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -781,11 +781,11 @@
 							</div><br /><br />
 							<div>
 								报告日期：<input class="datainp" id="datebut14" type="text" readonly="true"
-											 style="width: 150px;height:30px;" name="report_date" th:value="${csb.report_date}"/>
+											 style="width: 150px;height:30px;" name="report_date" th:value="${#dates.format(csb.report_date,'yyyy-MM-dd')}"/>
 								<!-- </div><br /><hr/><br /><br />
 								 <div>-->
 								打印日期：<input class="datainp" id="datebut15" type="text"   readonly="true"
-											 style="width: 150px;height:30px;" th:value="${csb.print_date}" name="print_date"/>
+											 style="width: 150px;height:30px;" th:value="${#dates.format(csb.print_date,'yyyy-MM-dd')}" name="print_date"/>
 							</div><br /><br />
 							<div></div>
 						</form>
@@ -823,7 +823,7 @@
 							<br />
 						</div>
 						<div>
-							检查时间：<input readonly="true" name="check_time" th:value="${listtran.check_time}" class="datainp" id="datebut17" type="text"
+							检查时间：<input readonly="true" name="check_time" th:value="${#dates.format(listtran.check_time,'yyyy-MM-dd')}" class="datainp" id="datebut17" type="text"
 										 style="height:30px;width:100px;" 	/>
 						</div>
 						<div>

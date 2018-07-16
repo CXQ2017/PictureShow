@@ -186,14 +186,21 @@ public class newfiled_controller {
 //        System.out.println(keyword);
 
         List<MedicalRecord> listMedi = medicalRecordRepository.findByKeyword(keyword); //病案首页
-        List<Hospitalized> listHosp = hospitalizedRepository.findByKeyword(keyword);   //入院记录
-        List<DiseaseRecord> listDise = diseaseRecordRepository.findByKeyword(keyword);   //病程记录
-        List<CheckRecord> listChec = checkRecordRepository.findByKeyword(keyword);         //查房记录
-        List<DischargeRecord> listDisc = dischargeRecordRepository.findByKeyword(keyword);      //出院记录
-        List<VideoReport> listVide = videoReportRepository.findByKeyword(keyword);          //各种影像
-        List<UltrasonicDiagnosisReport> listUltr = ultrasonicDiagnosisReportRepository.findByKeyword(keyword); //超声波
-        List<TranscranialDopplerReport> listTran = transcranialDopplerReportRepository.findByKeyword(keyword);   //多普勒
+//        listMedi.get(0).setBirthday(DateString(listMedi.get(0).getBirthday()));
 
+        List<Hospitalized> listHosp = hospitalizedRepository.findByKeyword(keyword);   //入院记录
+
+        List<DiseaseRecord> listDise = diseaseRecordRepository.findByKeyword(keyword);   //病程记录
+
+        List<CheckRecord> listChec = checkRecordRepository.findByKeyword(keyword);         //查房记录
+
+        List<DischargeRecord> listDisc = dischargeRecordRepository.findByKeyword(keyword);      //出院记录
+
+        List<VideoReport> listVide = videoReportRepository.findByKeyword(keyword);          //各种影像
+
+        List<UltrasonicDiagnosisReport> listUltr = ultrasonicDiagnosisReportRepository.findByKeyword(keyword); //超声波
+
+        List<TranscranialDopplerReport> listTran = transcranialDopplerReportRepository.findByKeyword(keyword);   //多普勒
 
         if(listMedi.isEmpty()){
             System.out.println("keyword = "+keyword+"查找为空");
@@ -216,6 +223,27 @@ public class newfiled_controller {
 
        return "Check_insert";
     }
+
+
+    //去掉时间日期的时分秒
+//    public Date DateString(Date ListData){
+//        Date date = null;
+//        if (ListData == null){
+//            return date;
+//        }
+//        String ss = ListData.toString();
+//        String [] a = ss.split(" ");
+//        String sdate = a[0];
+//        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//        try{
+//            date = format.parse(sdate);
+//            System.out.println(date);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//
+//        return date;
+//    }
 
     //病例数据录入
     //病案首页,点击保存
