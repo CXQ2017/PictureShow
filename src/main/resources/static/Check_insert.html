@@ -210,6 +210,16 @@
 					}
 				});
 			});
+
+			function check(){
+				 var val=$('input:radio[name="Fruit"]:checked').val();
+
+				if(val == null || val == ""){
+					alert("请选择录入是否完成！");
+					return false;
+				}
+				return true;
+			}
 		</script>
 	</head>
 	<body style="background-color: #ADD8E6">
@@ -225,7 +235,7 @@
 		</div>
 		<!-- 确认是否通过审核 -->
 		<div id="opin">
-			<form action="/insert_submit" method="post">
+			<form action="/insert_submit" method="post" onsubmit="return check()">
 				<div hidden="hidden">
 					<input name="keyword" th:value="${listmedi.keyword}"/>
 				</div>
@@ -270,7 +280,7 @@
 						</div>
 						<div class="">
 							<div class="">
-								<br />
+								<br /><br /><br />
 								<li style="font-size: 50px;margin-left:200px">病历首页</li><br />
 								<br />
 								健康卡号：<input type="text" class="a " style="width: 200px; height: 20px" name="card_health" th:value="${listmedi.card_health}" placeholder="健康卡号"onkeypress="return handleEnter(this, event)"/>
@@ -699,6 +709,7 @@
 					<li style="font-size: 50px;margin-left:100px">病程查房记录</li><br /><br /><br /><br />
 					<!-- 加遍历方法，遍历以下信息 -->
 					<div th:if="${not #lists.isEmpty(listchec)}" th:each="listchec:${listchec}">
+						<br /><br />
 						<form  method="post" th:id="${listchec.id}">
 							<div hidden="hidden">
 								<input name="keyword" th:value="${listchec.keyword}"/>
@@ -725,6 +736,9 @@
 								<!--<div style="display: none;">-->
 								<button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button><br /><br />
 							</div>
+							<div>
+						__________________________________________________________________
+								</div>
 						</form>
 					</div>
 				</div>
@@ -741,6 +755,7 @@
 					<li size="9" style="font-size: 50px;margin-left:100px">各种影像检查报告</li><br /><br /><br /><br />
 					<!-- 遍历该报告 -->
 					<div th:each="video:${listvide}">
+						<br /><br />
 						<form th:id="${video.vr_id}" method="post">
 							<div hidden="hidden">
 								<input name="keyword" th:value="${video.keyword}"/>
@@ -793,6 +808,7 @@
 								<input type="reset" class="btn btn-primary" style="width: 100px;height:30px;margin-left: 200px" value="重置"/><br /><br />
 							</div>
 						</form>
+						<div>________________________________________________________________________________________</div><br /><br />
 					</div>
 				</div>
 				<div id="bing_insert">
@@ -809,6 +825,7 @@
 					<li style="font-size: 50px;margin-left:100px">超声波检查报告</li><br /><br /><br /><br />
 					<!-- 遍历该报告 -->
 					<div th:if="${not #lists.isEmpty(listultr)}" th:each="csb:${listultr}">
+						<br /><br />
 						<form method="post" th:id="${csb.id}">
 							<div hidden="hidden">
 								<input name="keyword" th:value="${csb.keyword}"/>
@@ -860,6 +877,7 @@
 								<button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button><br /><br />
 							</div>
 						</form>
+						<div>_________________________________________________________________________________ </div><br /><br />
 					</div>
 				</div>
 				<div id="bing_ultr">
@@ -941,6 +959,7 @@
 					+ "<div><button  type=\"button\" class=\"btn btn-primary\" id=\"button\" style=\"margin-left: 60px;width: 70px\" onclick=\"add_room(this)\"><div hidden='hidden'>" + key + "</div>保存</button>"
 					+ "<button  type=\"reset\" class=\"btn btn-primary\" style=\"margin-left: 200px;width: 70px\">重置</button> </div>"
 					+ "</form>"
+					+"<div>__________________________________________________________________ </div><br /><br />"
 			);
 		})
 	})
@@ -1022,6 +1041,7 @@
 					+ '</div><br /><br /> <div>'
 					+ '<button type="button" class="btn btn-primary" style="margin-left: 60px;width: 70px" onclick="edit_ultr(this)"><div hidden="hidden">' + key1 + '</div>保存</button>'
 					+ '<button  type="reset" class="btn btn-primary" style="margin-left: 200px;width: 70px">重置</button></div></form></div>'
+					+'<div>_________________________________________________________________________________ </div><br /><br />'
 			);
 		})
 	});
@@ -1107,6 +1127,7 @@
 					+ '</select></div><br /><div>'
 					+ '<button type="button" class="btn btn-primary" style="width: 100px;height:30px;" onclick="edit_vide(this)"><div hidden="hidden">' + key2 + '</div>保存</button>'
 					+ '<input type="reset" class="btn btn-primary" style="width: 100px;height:30px;margin-left: 200px" value="重置"/> </div> </form> </div>'
+					+'<div>________________________________________________________________________________________</div><br /><br />'
 			);
 		})
 	})
