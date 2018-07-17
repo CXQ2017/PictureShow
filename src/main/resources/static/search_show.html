@@ -219,9 +219,23 @@
 					}
 				});
 			});
+			//禁止内容复制
+			document.onkeydown = function(){
+				if( event.ctrlKey ){
+					return false;
+				}
+				if ( event.altKey ){
+					return false;
+				}
+				if ( event.shiftKey ){
+					return false;
+				}
+			}
 		</script>
 	</head>
-	<body style="background-color: #ADD8E6">
+	<body style="background-color: #ADD8E6" leftmargin=0 topmargin=0 oncontextmenu='return false' ondragstart='return false'
+		  onselectstart ='return false' onselect='document.selection.empty()' oncopy='document.selection.empty()'
+		  onbeforecopy='return false' onmouseup='document.selection.empty()'>
 	<div id="head">
 		<br />
 		<!-- 页头 -->
@@ -298,7 +312,7 @@
 								民族：<input type="text" class="a " style="width: 100px; height: 20px" name="volk" th:value="${listmedi.volk}" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								出生体重：<input type="text" class="a " style="width: 100px; height: 20px" name="" onkeypress="return handleEnter(this, event)" readonly="true"/>
 								入院体重：<input type="text" class="a " style="width: 112px"name=""  onkeypress="return handleEnter(this, event)" readonly="true"/><br /><br />
-								出生地：<textarea type="text" class="a " style="width: 300px; height: 24px" name="homeplace_province" th:text="${listmedi.homeplace_province}" onkeypress="return handleEnter(this, event)" readonly="true"></textarea>
+								出生地：<textarea type="text" class="a " style="width: 300px; height: 24px" name="homeplace_province" th:text="${listmedi.homeplace_province}" onkeypress="return handleEnter(this, event)" disabled="disabled"></textarea>
 								<!--出生市：<input type="text" class="a " style="width: 100px"  name="homeplace_city"onkeypress="return handleEnter(this, event)"/>
 								出生县：<input type="text" class="a " style="width: 100px"  name="homeplace_county"onkeypress="return handleEnter(this, event)"/>-->
 								&nbsp;&nbsp;
@@ -677,7 +691,6 @@
 					</div>
 				</div>
 				<div id="check_room">
-
 				</div>
 			</div>
 			<div class="tab-pane fade" id="tabs-5">
@@ -736,7 +749,6 @@
 					<!-- 遍历该报告 -->
 				</div>
 			</div>
-
 			<div class="tab-pane fade" id="tabs-6">
 				<div id="bing_ult">
 					<br /><br /><br />
@@ -798,7 +810,6 @@
 				<div id="bing_ultr">
 					<!-- 遍历该报告 -->
 				</div>
-
 			</div>
 			<div class="tab-pane fade" id="tabs-7">
 				<div id="bing_tra">
@@ -837,8 +848,6 @@
 						<div>
 							医师签名：<input readonly="true"type="text" class="a " style="height:30px;width:240px;" name="physician_signature" th:value="${listtran.physician_signature}"onkeypress="return handleEnter(this, event)"/>
 						</div><br /><br />
-
-
 					</form>
 				</div>
 			</div>
