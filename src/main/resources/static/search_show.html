@@ -258,6 +258,7 @@
 			<li><a href="#tabs-5" data-toggle="tab">X/CT/RM</a></li>
 			<li><a href="#tabs-6" data-toggle="tab">超声波</a></li>
 			<li><a href="#tabs-7" data-toggle="tab">多普勒</a></li>
+			<li><a href="#tabs-8" data-toggle="tab">PDF导入</a></li>
 		</ul>
 	</div>
 	<div id="mains">
@@ -836,7 +837,27 @@
 						<div>
 							医师签名：<input readonly="true"type="text" class="a " style="height:30px;width:240px;" name="physician_signature" th:value="${listtran.physician_signature}"onkeypress="return handleEnter(this, event)"/>
 						</div><br /><br />
-						<div></div>
+
+
+					</form>
+				</div>
+			</div>
+			<!--导入PDF-->
+			<div class="tab-pane fade" id="tabs-8">
+				<div id="pdf">
+					<br /><br /><br />
+					<li style="font-size: 50px;margin-left:200px">完整PDF导入</li><br /><br /><br /><br />
+					<form method="post" id="disea_six">
+						<div hidden="hidden">
+							<input name="keyword" th:value="${listmedi.keyword}"/>
+							<input name="id"     th:value="${listmedi.id}"/>
+							<input name="status" th:value="${listmedi.status}"/>
+							<input name="create_time" th:value="${listmedi.create_time}"/>
+						</div>
+						<div>
+							<!--embed标签定义嵌入的内容，比如插件-->
+							<embed width="800" height="1200px" th:if="${not #lists.isEmpty(listmedi.pdf_path)}" th:src="@{'/image_insert'+${listmedi.pdf_path}}" border="0"> </embed>
+						</div>
 					</form>
 				</div>
 			</div>

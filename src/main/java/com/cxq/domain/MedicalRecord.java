@@ -110,6 +110,9 @@ public class MedicalRecord {
     @DateTimeFormat( pattern = "yyyy-MM-dd HH:mm:ss" )
     private Date create_time; //'创建时间',
 
+    //pdf_path
+    private String pdf_path;
+
     //备注
     @Column(columnDefinition="TEXT")
     private String remarks;
@@ -119,6 +122,14 @@ public class MedicalRecord {
     public MedicalRecord(){
         this.status=0;
         this.create_time=new Date();
+    }
+
+    public String getPdf_path() {
+        return pdf_path;
+    }
+
+    public void setPdf_path(String pdf_path) {
+        this.pdf_path = pdf_path;
     }
 
     public String getRemarks() {

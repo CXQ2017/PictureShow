@@ -5,6 +5,8 @@ package com.cxq.controller;
  */
 
 import com.cxq.base.FileUtil;
+import com.cxq.domain.MedicalRecord;
+import com.cxq.domain.MedicalRecordRepository;
 import com.cxq.domain.PictureProperty;
 import com.cxq.domain.PicturePropertyRepository;
 import net.sf.json.JSONObject;
@@ -27,8 +29,14 @@ public class FileController {
     @Autowired
     private PicturePropertyRepository picturePropertyRepository;
 
+    @Autowired
+    private MedicalRecordRepository medicalRecordRepository;
+
     @Value("${configure.upload.local_path}")
     String upload_local_path;
+
+    @Value("${configure.insert.upload.local_path}")
+    String insert_upload_local_path;
 
     @RequestMapping(value = "/uploadFolder", method = RequestMethod.POST)
 
@@ -56,4 +64,29 @@ public class FileController {
         jsonObject.put("SUCCESS","上传成功");
         return jsonObject;
     }
+
+    @RequestMapping(value = "/insert_uploadFolder", method = RequestMethod.POST)
+    //接受文件的名字一定要与页面上定义的名字一致，否则文件不能传过来
+    public JSONObject InsertUploadFolder(String keyword,  MultipartFile[] folder){
+
+        JSONObject jsonObject = new JSONObject();
+        if (folder.length==0){
+            jsonObject.put("SUCCESS","上传失败");
+            return jsonObject;
+        }
+        List<String> list = FileUtil.saveMultiFile(insert_upload_local_path,folder);
+        System.out.println(list.get(0));
+        if (list.isEmpty() || list.get(0)==null){
+            jsonObject.put("SUCCESS","上传失败");
+        }else {
+            List<MedicalRecord> medicalRecord = medicalRecordRepository.findByKeyword(keyword);
+
+            medicalRecord.get(0).setPdf_path(list.get(0));
+            medicalRecordRepository.save(medicalRecord);
+            jsonObject.put("SUCCESS", "上传成功");
+        }
+        return jsonObject;
+    }
+
+
 }
