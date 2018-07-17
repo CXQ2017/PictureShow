@@ -363,12 +363,26 @@
         <li><a href="#tabs-2" data-toggle="tab">病程记录</a></li>
         <li class="checkR"><a href="#tabs-3" data-toggle="tab">查房记录</a></li>
         <li><a href="#tabs-4" data-toggle="tab">出院记录</a></li>
-        <li><a href="#tabs-5" data-toggle="tab">X</a></li>
-        <li><a href="#tabs-6" data-toggle="tab">CT</a></li>
-        <li><a href="#tabs-7" data-toggle="tab">MR</a></li>
-        <li><a href="#tabs-8" data-toggle="tab">冠状动脉CTA成像</a></li>
-        <li><a href="#tabs-9" data-toggle="tab">超声波</a></li>
-        <li><a href="#tabs-10" data-toggle="tab">多普勒</a></li>
+        <li><a href="#tabs-5" data-toggle="tab">手术系列</a></li>
+        <li><a href="#tabs-6" data-toggle="tab">疑难危重病例讨论记录</a></li>
+        <li><a href="#tabs-7" data-toggle="tab">死亡记录</a></li>
+        <li><a href="#tabs-8" data-toggle="tab">死亡病例讨论记录</a></li>
+        <li><a href="#tabs-9" data-toggle="tab">其他治疗记录表单</a></li>
+
+        <li><a href="#tabs-10" data-toggle="tab">输血治疗知情同意书</a></li>
+        <li><a href="#tabs-11" data-toggle="tab">特殊检查、特殊治疗知情同意书</a></li>
+        <li><a href="#tabs-12" data-toggle="tab">会诊清单</a></li>
+        <li><a href="#tabs-13" data-toggle="tab">病危通知书</a></li>
+        <li><a href="#tabs-14" data-toggle="tab">入院通知书</a></li>
+        <li><a href="#tabs-15" data-toggle="tab">病理资料</a></li>
+        <li><a href="#tabs-16" data-toggle="tab">辅助检查报告单</a></li>
+        <li><a href="#tabs-17" data-toggle="tab">内窥镜检查报告单</a></li>
+        <li><a href="#tabs-18" data-toggle="tab">医学影像检查报告单</a></li>
+        <li><a href="#tabs-19" data-toggle="tab">其他检查</a></li>
+        <li><a href="#tabs-20" data-toggle="tab">体温单</a></li>
+        <li><a href="#tabs-21" data-toggle="tab">医嘱单</a></li>
+        <li><a href="#tabs-22" data-toggle="tab">护理记录</a></li>
+        <li><a href="#tabs-23" data-toggle="tab">其他</a></li>
     </ul>
 </div>
 <div id="mains">
@@ -491,39 +505,113 @@
                 </div>
             </div>
         </div>
-    <!--<div class="lightbox" id="lightbox"></div>-->
-    <!--<div id="pop" class="pop" style="display: none;">-->
-        <!--<a href="javascript:close()" style="-->
-            <!--position: absolute;-->
-            <!--right: -90px;-->
-            <!--display: inline-block;-->
-            <!--width: 80px;-->
-            <!--height: 30px;-->
-        <!--" id="close">关闭</a>-->
-        <!--<iframe src="" frameborder="0" id="pdfContainer" name="pdfContainer"></iframe>-->
-    <!--</div>-->
+
+        <div class="tab-pane fade in active" id="tabs-11">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-12">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-13">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-14">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-15">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-16">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-17">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-18">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-pane fade in active" id="tabs-19">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-20">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-21">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-22">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade in active" id="tabs-23">
+            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+                <div>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                </div>
+            </div>
+        </div>
+
 </div>
     </div>
-<!--<script>-->
-    <!--$(function () {-->
-        <!--$('#myTab li:eq(0) a').tab('show');-->
-    <!--});-->
-
-    <!--function showPdf(isShow) {-->
-        <!--var state = "";-->
-        <!--if (isShow) {-->
-            <!--state = "block";-->
-        <!--} else {-->
-            <!--state = "none";-->
-        <!--}-->
-        <!--var pop = document.getElementById("pop");-->
-        <!--pop.style.display = state;-->
-        <!--var lightbox = document.getElementById("lightbox");-->
-        <!--lightbox.style.display = state;-->
-    <!--}-->
-    <!--function close() {-->
-        <!--showPdf(false);-->
-    <!--}-->
-<!--</script>-->
 </body>
 </html>

@@ -26,4 +26,7 @@ public interface PicturePropertyRepository extends JpaRepository<PictureProperty
     @Query("SELECT p FROM PictureProperty p WHERE p.keyword=?1 and p.status = 0")
     List<PictureProperty>  findAllStatus(String keyword);
 
+    @Query("select p from PictureProperty p  where p.keyword=?1")
+    List<PictureProperty>  findAllPdf(String keyword);
+
 }
