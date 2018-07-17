@@ -42,10 +42,12 @@
             top: 12%;
             margin-left:0%;
             height: 88%;
-            width: 278px;
+            width: 299px;
             /*border: 1px solid black;*/
             float:left;
-            position: absolute;
+            position: fixed;
+            overflow-y:scroll;
+            overflow-x:hidden;
         }
         #mains{
             top: 12%;
@@ -136,10 +138,11 @@
         }
         ul.nav-tabs{
             /*width: 140px;*/
-            margin-top: 20px;
+            margin-top: 10px;
             border-radius: 4px;
             border: 1px solid #ddd;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+            position: absolute;
         }
         ul.nav-tabs li{
             margin: 0;
@@ -165,7 +168,7 @@
             border-radius: 0 0 4px 4px;
         }
         ul.nav-tabs.affix{
-            top: 30px; /* Set the top position of pinned element */
+            /*top: 10%;*/ /*Set the top position of pinned element*/
         }
 
         .lightbox{
@@ -353,8 +356,8 @@
     </div>
 
 </div>
-<div id="cent" style="width: 100%;top: 11%;height: 30px;background-color:#c4e3f3;position:fixed;">
-</div>
+<!--<div id="cent" style="width: 100%;top: 11%;height: 30px;background-color:#c4e3f3;position:fixed;">
+</div>-->
 <div id="tabs" class="nav">
     <!-- 导航栏区 -->
     <ul id="myTab" class="nav nav-tabs nav-stacked">
