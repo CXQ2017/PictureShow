@@ -462,154 +462,154 @@
 
         <!--X-->
         <div class="tab-pane fade in active" id="tabs-5">
-            <div th:if="${not #lists.isEmpty(x_record)}" th:each="x_record:${x_record}">
+            <div th:if="${not #lists.isEmpty(operation_record)}" th:each="operation_record:${operation_record}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${x_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${operation_record.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
         <!--CT-->
         <div class="tab-pane fade in active" id="tabs-6">
-            <div th:if="${not #lists.isEmpty(ct_record)}" th:each="ct_record:${ct_record}">
+            <div th:if="${not #lists.isEmpty(Troubled_case)}" th:each="Troubled_case:${Troubled_case}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${ct_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Troubled_case.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
         <!--MR-->
         <div class="tab-pane fade in active" id="tabs-7">
-            <div th:if="${not #lists.isEmpty(mr_record)}" th:each="mr_record:${mr_record}">
+            <div th:if="${not #lists.isEmpty(Death_record)}" th:each="Death_record:${Death_record}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${mr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Death_record.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
         <!--冠状动脉CTA成像-->
         <div class="tab-pane fade in active" id="tabs-8">
-            <div th:if="${not #lists.isEmpty(cta_record)}" th:each="cta_record:${cta_record}">
+            <div th:if="${not #lists.isEmpty(Death_discussion)}" th:each="Death_discussion:${Death_discussion}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${cta_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Death_discussion.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
         <!--超声波-->
         <div class="tab-pane fade in active" id="tabs-9">
-            <div th:if="${not #lists.isEmpty(ul_record)}" th:each="ul_record:${ul_record}">
+            <div th:if="${not #lists.isEmpty(Other_treatment_record)}" th:each="Other_treatment_record:${Other_treatment_record}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${ul_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Other_treatment_record.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
         <!--多普勒-->
         <div class="tab-pane fade in active" id="tabs-10">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Blood_transfusion_treatment)}" th:each="Blood_transfusion_treatment:${Blood_transfusion_treatment}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Blood_transfusion_treatment.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-11">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Special_check)}" th:each="Special_check:${Special_check}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Special_check.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-12">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(consultations_list)}" th:each="consultations_list:${consultations_list}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${consultations_list.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-13">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(criticalill_Notification)}" th:each="criticalill_Notification:${criticalill_Notification}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${criticalill_Notification.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-14">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Notice_of_Admission)}" th:each="Notice_of_Admission:${Notice_of_Admission}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Notice_of_Admission.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-15">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Pathological_data)}" th:each="Pathological_data:${Pathological_data}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Pathological_data.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-16">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Auxiliary_inspection)}" th:each="Auxiliary_inspection:${Auxiliary_inspection}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Auxiliary_inspection.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-17">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Endoscopic_examination)}" th:each="Endoscopic_examination:${Endoscopic_examination}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Endoscopic_examination.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-18">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(video_record)}" th:each="video_record:${video_record}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${video_record.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
 
         <div class="tab-pane fade in active" id="tabs-19">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(other_check)}" th:each="other_check:${other_check}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${other_check.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-20">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Thermometer)}" th:each="Thermometer:${Thermometer}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Thermometer.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-21">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Medical_orders)}" th:each="Medical_orders:${Medical_orders}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Medical_orders.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-22">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(Nursing_records)}" th:each="Nursing_records:${Nursing_records}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${Nursing_records.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade in active" id="tabs-23">
-            <div th:if="${not #lists.isEmpty(tr_record)}" th:each="tr_record:${tr_record}">
+            <div th:if="${not #lists.isEmpty(others)}" th:each="others:${others}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${tr_record.picture_path}}" border="0"> </embed>
+                    <embed width="800" height="1200px" th:src="@{'/image'+${others.picture_path}}" border="0"> </embed>
                 </div>
             </div>
         </div>
