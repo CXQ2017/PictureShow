@@ -119,6 +119,17 @@ public class MedicalRecord {
     //唯一标识
     private String keyword;
 
+    //user_id
+    private Long user_id;
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
     public MedicalRecord(){
         this.status=0;
         this.create_time=new Date();

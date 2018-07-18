@@ -56,6 +56,9 @@ public class PictureProperty {
     //唯一id
     private String keyword;
 
+    //user_id
+    private Long user_id;
+
     public String getKeyword() {
         return keyword;
     }
