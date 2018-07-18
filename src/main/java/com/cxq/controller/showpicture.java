@@ -67,7 +67,7 @@ public class showpicture {
         List <PictureProperty> list1=new ArrayList<>();
         List <PictureProperty> list2=new ArrayList<>();
         List <PictureProperty> list3=new ArrayList<>();
-        List <PictureProperty> list4=new ArrayList<>();
+//        List <PictureProperty> list4=new ArrayList<>();
         List <PictureProperty> list5=new ArrayList<>();
         List <PictureProperty> list6=new ArrayList<>();
         List <PictureProperty> list7=new ArrayList<>();
@@ -100,9 +100,9 @@ public class showpicture {
             if(p.getCase_module().equals("3")){
                 list3.add(p);
             }
-            if(p.getCase_module().equals("4")){
-                list4.add(p);
-            }
+//            if(p.getCase_module().equals("4")){
+//                list4.add(p);
+//            }
             if(p.getCase_module().equals("5")){
                 list5.add(p);
             }
@@ -168,7 +168,7 @@ public class showpicture {
         model.addAttribute("home_page",list1);
         model.addAttribute("enter_hospital",list2);
         model.addAttribute("disease_record",list3);
-        model.addAttribute("check_record",list4);
+//        model.addAttribute("check_record",list4);
         model.addAttribute("discharge_record",list5);
         model.addAttribute("operation_record",list6);
         model.addAttribute("Troubled_case",list7);

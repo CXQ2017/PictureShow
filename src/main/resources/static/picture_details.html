@@ -340,7 +340,7 @@
         });
 
         $(window).load(function() {
-            $("#loading").fadeOut(7000);
+            $("#loading").fadeOut(10000);
         })
     </script>
 </head>
@@ -364,7 +364,7 @@
         <li class="active"><a href="#tabs-0" data-toggle="tab">病案首页</a></li>
         <li><a href="#tabs-1" data-toggle="tab">入院记录</a></li>
         <li><a href="#tabs-2" data-toggle="tab">病程记录</a></li>
-        <li class="checkR"><a href="#tabs-3" data-toggle="tab">查房记录</a></li>
+        <!--<li class="checkR"><a href="#tabs-3" data-toggle="tab">查房记录</a></li>-->
         <li><a href="#tabs-4" data-toggle="tab">出院记录</a></li>
         <li><a href="#tabs-5" data-toggle="tab">手术系列</a></li>
         <li><a href="#tabs-6" data-toggle="tab">疑难危重病例讨论记录</a></li>
@@ -444,13 +444,13 @@
             </div>
         </div>
         <!--查房记录-->
-        <div class="tab-pane fade in active" id="tabs-3">
-            <div th:if="${not #lists.isEmpty(check_record)}" th:each="check_record:${check_record}">
-                <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${check_record.picture_path}}" border="0"> </embed>
-                </div>
-            </div>
-        </div>
+        <!--<div class="tab-pane fade in active" id="tabs-3">-->
+            <!--<div th:if="${not #lists.isEmpty(check_record)}" th:each="check_record:${check_record}">-->
+                <!--<div>-->
+                    <!--<embed width="800" height="1200px" th:src="@{'/image'+${check_record.picture_path}}" border="0"> </embed>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
         <!--出院记录-->
         <div class="tab-pane fade in active" id="tabs-4">
             <div th:if="${not #lists.isEmpty(discharge_record)}" th:each="discharge_record:${discharge_record}">
