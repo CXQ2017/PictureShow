@@ -249,6 +249,10 @@ public class newfiled_controller {
         model.addAttribute("listvide",listVide);       //各种影像
         model.addAttribute("listultr",listUltr);   //超声波
 
+        //用户名
+        String userName=request.getSession().getAttribute("username").toString();
+        model.addAttribute("userName",userName);
+
        return "Check_insert";
     }
 

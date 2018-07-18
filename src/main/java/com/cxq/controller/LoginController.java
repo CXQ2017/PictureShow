@@ -69,7 +69,16 @@ public class LoginController {
         Long id =  Long.parseLong(userid);
         User user = userRepository.findOne(id);
         model.addAttribute("user",user);
-        System.out.println(user.getStatus());
         return "tagged_pdf";
+    }
+
+    @RequestMapping("/Access_management_ht")
+    public String Access_management_ht(Model model, HttpServletRequest request){
+
+        String userid = request.getSession().getAttribute("userId").toString();
+        Long id =  Long.parseLong(userid);
+        User user = userRepository.findOne(id);
+        model.addAttribute("user",user);
+        return "Access_management";
     }
 }

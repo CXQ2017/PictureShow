@@ -190,6 +190,11 @@ public class showpicture {
 
         model.addAttribute("Nursing_records",list23);
         model.addAttribute("others",list24);
+
+        //用户名
+        String userName=request.getSession().getAttribute("username").toString();
+        model.addAttribute("userName",userName);
+
          return "picture_details";
     }
 }
