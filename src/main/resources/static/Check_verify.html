@@ -788,10 +788,10 @@
 						</div> <br />
 						<div style="width: 400px;">
 							影像类别：<select name="video_status" th:value="${video.video_status}" class="a " style="width: 250px;height:30px;">
-							<option>影像科MR检查报告书</option>
-							<option>影像科CT检查报告书</option>
-							<option>影像科X检查报告</option>
-							<option>冠状动脉CTA成像与钙化积分报告单</option>
+							<option th:selected="${video.video_status=='影像科MR检查报告书'}" value="影像科MR检查报告书">影像科MR检查报告书</option>
+							<option th:selected="${video.video_status=='影像科CT检查报告书'}" value="影像科CT检查报告书">影像科CT检查报告书</option>
+							<option th:selected="${video.video_status=='影像科X检查报告'}" value="影像科X检查报告">影像科X检查报告</option>
+							<option th:selected="${video.video_status=='冠状动脉CTA成像与钙化积分报告单'}" value="冠状动脉CTA成像与钙化积分报告单">冠状动脉CTA成像与钙化积分报告单</option>
 						</select>
 						</div><br />
 						<div>
