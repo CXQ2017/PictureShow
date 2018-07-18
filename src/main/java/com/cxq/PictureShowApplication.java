@@ -58,9 +58,9 @@ public class PictureShowApplication {
 	public Map<String, Object> PDFMark(){
 		HashMap<String,Object> map = new HashMap<>();
 		List<PictureProperty> list = picturePropertyRepository.findNoMark();
-		if(list.isEmpty()){
-			list.add(new PictureProperty());
-		}
+//		if(list.isEmpty()){
+//			list.add(new PictureProperty());
+//		}
 		map.put("data",list);
 		return map;
 	}
