@@ -309,12 +309,12 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							职业：<input type="text" class="a " style="width: 150px" name="vocation" th:value="${listmedi.vocation}"onkeypress="return handleEnter(this, event)"/>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							婚姻：<select id="marry" name="marriage" th:value="${listmedi.marriage}" class="a " style="width: 66px">
-							<option>未婚</option>
-							<option>已婚</option>
-							<option>丧偶</option>
-							<option>离婚</option>
-							<option>其他</option>
+							婚姻：<select id="marry" name="marriage" th:value="${listmedi.marriage}" th:field="${listmedi.marriage}" class="a " style="width: 66px">
+							<option th:select="${listmedi.marriage=='未婚'}" value="未婚">未婚</option>
+							<option th:select="${listmedi.marriage=='已婚'}" value="已婚">已婚</option>
+							<option th:select="${listmedi.marriage=='丧偶'}" value="丧偶">丧偶</option>
+							<option th:select="${listmedi.marriage=='离婚'}" value="离婚">离婚</option>
+							<option th:select="${listmedi.marriage=='其他'}" value="其他">其他</option>
 						</select><br /><br />
 							现住址：<textarea type="text" class="a " style="width: 300px; height: 20px" name="present_address" th:text="${listmedi.present_address}" onkeypress="return handleEnter(this, event)"></textarea>
 							电话：<input type="text" class="a " style="width: 100px" name="phone" th:value="${listmedi.phone}" onkeypress="return handleEnter(this, event)"/>
@@ -332,23 +332,23 @@
 							地址：<textarea type="text" class="a " style="width: 250px;height: 20px" name="linkman_address" th:value="${listmedi.linkman_address}"onkeypress="return handleEnter(this, event)"></textarea>
 							电话：<input type="text" class="a " style="width: 110px" name="linkman_phone" th:value="${listmedi.linkman_phone}"onkeypress="return handleEnter(this, event)"/><br /><br />
 							入院途径：
-							<select name="hospitalized_road" th:value="${listmedi.hospitalized_road}" class="a " style="width: 200px">
-								<option></option>
-								<option>急诊</option>
-								<option>门诊</option>
-								<option>其他医疗机构转入</option>
-								<option>其他</option>
+							<select name="hospitalized_road" th:value="${listmedi.hospitalized_road}" th:field="${listmedi.hospitalized_road}" class="a " style="width: 200px">
+								<option th:select="${listmedi.hospitalized_road==''}" value=""></option>
+								<option th:select="${listmedi.hospitalized_road=='急诊'}" value="急诊">急诊</option>
+								<option th:select="${listmedi.hospitalized_road=='门诊'}" value="门诊">门诊</option>
+								<option th:select="${listmedi.hospitalized_road=='其他医疗机构转入'}" value="其他医疗机构转入">其他医疗机构转入</option>
+								<option th:select="${listmedi.hospitalized_road=='其他'}" value="其他">其他</option>
 							</select>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							病人来源：
-							<select name="patient_source" th:value="${listmedi.patient_source}" class="a " style="width: 200px">
-								<option></option>
-								<option>医院所在县区</option>
-								<option>本市其他县区</option>
-								<option>本省其他市</option>
-								<option>外省市</option>
-								<option>港澳台地区</option>
-								<option>外国</option>
+							<select name="patient_source" th:value="${listmedi.patient_source}" th:field="${listmedi.patient_source}" class="a " style="width: 200px">
+								<option th:select="${listmedi.patient_source==''}" value=""></option>
+								<option th:select="${listmedi.patient_source=='医院所在县区'}" value="医院所在县区">医院所在县区</option>
+								<option th:select="${listmedi.patient_source=='本市其他县区'}" value="本市其他县区">本市其他县区</option>
+								<option th:select="${listmedi.patient_source=='本省其他市'}" value="本省其他市">本省其他市</option>
+								<option th:select="${listmedi.patient_source=='外省市'}" value="外省市">外省市</option>
+								<option th:select="${listmedi.patient_source=='港澳台地区'}" value="港澳台地区">港澳台地区</option>
+								<option th:select="${listmedi.patient_source=='外国'}" value="外国">外国</option>
 							</select>
 						</div><br /><hr/>
 						<div>
@@ -376,18 +376,18 @@
 						</div><br /><hr/>
 						<div>
 							病例分型：
-							<select name="case_classification" th:value="${listmedi.case_classification}" class="a " style="width: 100px">
-								<option></option>
-								<option>一般</option>
-								<option>急</option>
-								<option>疑难</option>
-								<option>危重</option>
+							<select name="case_classification" th:value="${listmedi.case_classification}" th:field="${listmedi.case_classification}" class="a " style="width: 100px">
+								<option th:select="${listmedi.case_classification==''}" value=""></option>
+								<option th:select="${listmedi.case_classification=='一般'}" value="一般">一般</option>
+								<option th:select="${listmedi.case_classification=='急'}" value="急">急</option>
+								<option th:select="${listmedi.case_classification=='疑难'}" value="疑难">疑难</option>
+								<option th:select="${listmedi.case_classification=='危重'}" value="危重">危重</option>
 							</select>
 							临床路径病历：
-							<select name="clinical_pathway_cases" th:value="${listmedi.clinical_pathway_cases}" class="a " style="width: 100px">
-								<option></option>
-								<option>是</option>
-								<option>否</option>
+							<select name="clinical_pathway_cases" th:value="${listmedi.clinical_pathway_cases}" th:field="${listmedi.clinical_pathway_cases}" class="a " style="width: 100px">
+								<option th:select="${listmedi.clinical_pathway_cases==''}" value=""></option>
+								<option th:select="${listmedi.clinical_pathway_cases=='是'}" value="是">是</option>
+								<option th:select="${listmedi.clinical_pathway_cases=='否'}" value="否">否</option>
 							</select>
 							抢救次数：<input type="text" class="a " style="width: 93px" name="rescue_times" th:value="${listmedi.rescue_times}" onkeypress="return handleEnter(this, event)"/>
 							成功次数：<input type="text" class="a " style="width: 93px" name="success_times" th:value="${listmedi.success_times}" onkeypress="return handleEnter(this, event)"/>
@@ -404,51 +404,51 @@
 						<div>
 							诊断符合情况
 							1、门诊与出院：
-							<select name="outpatient_discharge_accord" th:value="${listmedi.outpatient_discharge_accord}" class="a " style="width: 120px">
-								<option></option>
-								<option>符合</option>
-								<option>不符合</option>
-								<option>不肯定</option>
+							<select name="outpatient_discharge_accord" th:value="${listmedi.outpatient_discharge_accord}"th:field="${listmedi.outpatient_discharge_accord}" class="a " style="width: 120px">
+								<option th:select="${listmedi.outpatient_discharge_accord==''}" value=""></option>
+								<option th:select="${listmedi.outpatient_discharge_accord=='符合'}" value="符合">符合</option>
+								<option th:select="${listmedi.outpatient_discharge_accord=='不符合'}" value="不符合">不符合</option>
+								<option th:select="${listmedi.outpatient_discharge_accord=='不肯定'}" value="不肯定">不肯定</option>
 							</select>
 							2、临床与病理：
-							<select name="clinical_pathological" th:value="${listmedi.clinical_pathological}" class="a " style="width: 120px">
-								<option></option>
-								<option>符合</option>
-								<option>不符合</option>
-								<option>不肯定</option>
+							<select name="clinical_pathological" th:value="${listmedi.clinical_pathological}" th:field="${listmedi.clinical_pathological}" class="a " style="width: 120px">
+								<option th:select="${listmedi.clinical_pathological==''}" value=""></option>
+								<option th:select="${listmedi.clinical_pathological=='符合'}" value="符合">符合</option>
+								<option th:select="${listmedi.clinical_pathological=='不符合'}" value="不符合">不符合</option>
+								<option th:select="${listmedi.clinical_pathological=='不肯定'}" value="不肯定">不肯定</option>
 							</select>
 						</div><br /><hr/>
 						<div>
 							药物过敏：
-							<select name="drug_allergy" th:value="${listmedi.drug_allergy}" class="a " style="width: 100px">
-								<option></option>
-								<option>无</option>
-								<option>有</option>
+							<select name="drug_allergy" th:value="${listmedi.drug_allergy}" th:field="${listmedi.drug_allergy}" class="a " style="width: 100px">
+								<option th:select="${listmedi.drug_allergy==''}" value=""></option>
+								<option th:select="${listmedi.drug_allergy=='无'}" value="无">无</option>
+								<option th:select="${listmedi.drug_allergy=='有'}" value="有">有</option>
 							</select>
 							过敏药物：<input type="text" class="a " style="width: 100px" name="drug_allergy_name" th:value="${listmedi.drug_allergy_name}" onkeypress="return handleEnter(this, event)"/>
 							死亡患者尸检：
-							<select name="autopsy" th:value="${listmedi.autopsy}" class="a " style="width: 100px">
-								<option></option>
-								<option>是</option>
-								<option>否</option>
+							<select name="autopsy" th:value="${listmedi.autopsy}" th:field="${listmedi.autopsy}" class="a " style="width: 100px">
+								<option th:select="${listmedi.autopsy==''}" value=""></option>
+								<option th:select="${listmedi.autopsy=='是'}" value="是">是</option>
+								<option th:select="${listmedi.autopsy=='否'}" value="否">否</option>
 							</select>
 						</div><br /><hr/>
 						<div>
 							血型：
-							<select name="blood_type" th:value="${listmedi.blood_type}" class="a " style="width: 100px">
-								<option>未查</option>
-								<option>A</option>
-								<option>B</option>
-								<option>O</option>
-								<option>AB</option>
-								<option>不详</option>
+							<select name="blood_type" th:value="${listmedi.blood_type}" th:field="${listmedi.blood_type}" class="a " style="width: 100px">
+								<option th:select="${listmedi.blood_type=='未查'}" value="未查">未查</option>
+								<option th:select="${listmedi.blood_type=='A'}" value="A">A</option>
+								<option th:select="${listmedi.blood_type=='B'}" value="B">B</option>
+								<option th:select="${listmedi.blood_type=='O'}" value="O">O</option>
+								<option th:select="${listmedi.blood_type=='AB'}" value="AB">AB</option>
+								<option th:select="${listmedi.blood_type=='不详'}" value="不详">不详</option>
 							</select>
 							Rh：
-							<select name="Rh" th:value="${listmedi.Rh}" class="a " style="width: 100px">
-								<option>未查</option>
-								<option>阴</option>
-								<option>阳</option>
-								<option>不详</option>
+							<select name="Rh" th:value="${listmedi.Rh}" th:field="${listmedi.Rh}" class="a " style="width: 100px">
+								<option th:select="${listmedi.Rh=='未查'}" value="未查">未查</option>
+								<option th:select="${listmedi.Rh=='阴'}" value="阴">阴</option>
+								<option th:select="${listmedi.Rh=='阳'}" value="阳">阳</option>
+								<option th:select="${listmedi.Rh=='不详'}" value="不详">不详</option>
 							</select>
 						</div><br /><hr/>
 						<div>
@@ -465,10 +465,10 @@
 						</div><br /><hr/>
 						<div>
 							病案质量：
-							<select name="medical_record_quality" th:value="${listmedi.medical_record_quality}" class="a " style="width: 100px">
-								<option></option>
-								<option>甲</option>
-								<option>乙</option>
+							<select name="medical_record_quality" th:value="${listmedi.medical_record_quality}" th:field="${listmedi.medical_record_quality}" class="a " style="width: 100px">
+								<option th:select="${listmedi.medical_record_quality==''}" value=""></option>
+								<option th:select="${listmedi.medical_record_quality=='甲'}" value="甲">甲</option>
+								<option th:select="${listmedi.medical_record_quality=='乙'}" value="乙">乙</option>
 							</select>
 							质控医师：<input type="text" class="a " style="width: 100px" name="quality_control_physician" th:value="${listmedi.quality_control_physician}" onkeypress="return handleEnter(this, event)"/>
 							质控护士：<input type="text" class="a " style="width: 100px" name="quality_control_nurse" th:value="${listmedi.quality_control_nurse}" onkeypress="return handleEnter(this, event)"/>
