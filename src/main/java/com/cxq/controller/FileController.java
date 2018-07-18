@@ -70,7 +70,7 @@ public class FileController {
     public JSONObject InsertUploadFolder(String keyword,  MultipartFile[] folder){
 
         JSONObject jsonObject = new JSONObject();
-        if (folder.length==0){
+        if (folder.length < 0 || folder==null){
             jsonObject.put("SUCCESS","上传失败");
             return jsonObject;
         }
