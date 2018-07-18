@@ -62,4 +62,14 @@ public class LoginController {
             }
             return jsonObject;
     }
+    @RequestMapping("/tagged_pdf_ht")
+    public String TaggedPdf(Model model, HttpServletRequest request){
+
+        String userid = request.getSession().getAttribute("userId").toString();
+        Long id =  Long.parseLong(userid);
+        User user = userRepository.findOne(id);
+        model.addAttribute("user",user);
+        System.out.println(user.getStatus());
+        return "tagged_pdf";
+    }
 }
