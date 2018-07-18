@@ -44,6 +44,11 @@ public class LoginController {
             Integer status = Integer.valueOf(list.get(0).getStatus()) ;
             String  sqlname = list.get(0).getUser_name();
             String  sqlpassword = list.get(0).getPassword();
+            Long userid=list.get(0).getId();
+
+            request.getSession().setAttribute("status",status);
+
+            request.getSession().setAttribute("userId",userid);
             request.getSession().setAttribute("username",sqlname);
             request.getSession().setAttribute("password",sqlpassword);
             System.out.println("#"+sqlname+"#"+sqlpassword+"#"+status);

@@ -19,6 +19,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2018/6/12/012.
  */
+
 @Controller
 public class newfiled_controller {
     @Autowired
@@ -82,6 +83,28 @@ public class newfiled_controller {
         return "newCreatedCase";
     }
 
+    @ResponseBody
+    @RequestMapping("/first_findall")
+    public Map<String,Object> first_findall(HttpServletRequest request){
+
+        String user_id=request.getSession().getAttribute("userId").toString();
+        Long userId=Long.parseLong(user_id);
+
+        int status=Integer.parseInt(request.getSession().getAttribute("status").toString());
+        List <MedicalRecord> list;
+        if(status==0){ //管理员
+            list=medicalRecordRepository.find_allmsg();
+        }else {
+            list=medicalRecordRepository.findByuserId(userId);
+        }
+
+        Map<String ,Object> map1=new HashedMap();
+        map1.put("data",list);
+
+        return map1;
+    }
+
+
     //新建病例档案
     @RequestMapping("/newfiled")
     @ResponseBody
@@ -90,6 +113,10 @@ public class newfiled_controller {
         String name=request.getParameter("name");
         Integer times_hospitalized=Integer.parseInt(request.getParameter("times_hospitalized"));
         String keyword=card_medical+"_"+times_hospitalized;
+        //获取user的id,status
+        String user_id=request.getSession().getAttribute("userId").toString();
+        Long userId=Long.parseLong(user_id);
+
         //System.out.println(keyword);
         //将新建数据插入各表
         MedicalRecord medicalRecord=new MedicalRecord();
@@ -109,6 +136,7 @@ public class newfiled_controller {
         medicalRecord.setKeyword(keyword);
         medicalRecord.setStatus(0);
         medicalRecord.setCreate_time(new Date());
+        medicalRecord.setUser_id(userId);
         medicalRecordRepository.save(medicalRecord);
 
         hospitalized.setKeyword(keyword);

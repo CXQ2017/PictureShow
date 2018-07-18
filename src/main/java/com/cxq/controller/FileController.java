@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -40,7 +41,9 @@ public class FileController {
 
     @RequestMapping(value = "/uploadFolder", method = RequestMethod.POST)
 
-    public JSONObject uploadFolder(String card_medical, String name, String times_hospitalized,String principal_diagnosis,String gender, MultipartFile[] folder) {
+    public JSONObject uploadFolder(String card_medical, String name, String times_hospitalized, String principal_diagnosis, String gender, MultipartFile[] folder, HttpServletRequest request) {
+        String user_id=request.getSession().getAttribute("userId").toString();
+        Long userId=Long.parseLong(user_id);
         JSONObject jsonObject=new JSONObject();
         List<String> list = FileUtil.saveMultiFile(upload_local_path, folder);
         System.out.println(list.size());
@@ -55,6 +58,8 @@ public class FileController {
             pictureProperty.setPrincipal_diagnosis(principal_diagnosis);
             pictureProperty.setGender(gender);
             pictureProperty.setKeyword(card_medical+"_"+times_hospitalized);
+            pictureProperty.setUser_id(userId);
+
             //导入后的status默认为0，标记后为1
             pictureProperty.setStatus(0);
             picturePropertyRepository.save(pictureProperty);

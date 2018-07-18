@@ -87,6 +87,14 @@ public class PictureProperty {
     public PictureProperty(){super();}
 
 
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
     public PictureProperty(String card_medical, String name, String times_hospitalized, String gender, String identity_card, String principal_diagnosis, String case_module, String picture_path, Date creatTime, int status, String keyword) {
         this.card_medical = card_medical;
         this.name = name;
@@ -98,8 +106,10 @@ public class PictureProperty {
         this.picture_path = picture_path;
         this.creatTime = creatTime;
         this.status = status;
+
         this.keyword = keyword;
     }
+
 
     public String getPicture_path() {
         return picture_path;

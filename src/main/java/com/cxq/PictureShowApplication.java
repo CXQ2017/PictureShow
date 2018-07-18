@@ -1,7 +1,6 @@
 package com.cxq;
 
 import com.cxq.domain.*;
-import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,9 +54,21 @@ public class PictureShowApplication {
 
     //PDF标记加载图片
 	@RequestMapping("/mark_picture")
-	public Map<String, Object> PDFMark(){
+	public Map<String, Object> PDFMark(HttpServletRequest request){
+		String user_id=request.getSession().getAttribute("userId").toString();
+		Long userId=Long.parseLong(user_id);
+
+		int status=Integer.parseInt(request.getSession().getAttribute("status").toString());
+		List <PictureProperty> list;
+
 		HashMap<String,Object> map = new HashMap<>();
-		List<PictureProperty> list = picturePropertyRepository.findNoMark();
+
+		if (status==0) {
+			list = picturePropertyRepository.findNoMark();
+		}else{
+			list=picturePropertyRepository.findByuserId(userId);
+		}
+
 //		if(list.isEmpty()){
 //			list.add(new PictureProperty());
 //		}
@@ -156,14 +167,5 @@ public class PictureShowApplication {
 		return map;
 	}
 
-
-	@RequestMapping("/first_findall")
-	public Map<String,Object> first_findall(){
-		List <MedicalRecord> list=medicalRecordRepository.find_allmsg();
-		Map<String ,Object> map1=new HashedMap();
-		map1.put("data",list);
-
-		return map1;
-	}
 
 }

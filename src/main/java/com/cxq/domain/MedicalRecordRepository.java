@@ -23,6 +23,9 @@ public interface MedicalRecordRepository extends JpaRepository<MedicalRecord,Lon
     @Query("select p from MedicalRecord p order by p.create_time desc")
     List<MedicalRecord> find_allmsg();
 
+    @Query("select p from MedicalRecord p where p.user_id=?1")
+    List<MedicalRecord> findByuserId(Long userId);
+
     List<MedicalRecord> findByKeyword(String keyword);
 
 //    Integer updateByKeyword(String keyword);
