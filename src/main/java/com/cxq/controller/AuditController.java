@@ -97,6 +97,10 @@ public class AuditController {
         model.addAttribute("listvide",listVide);
         model.addAttribute("listultr",listUltr);
 
+        //用户名
+        String userName=request.getSession().getAttribute("username").toString();
+        model.addAttribute("userName",userName);
+
         return "search_show";
     }
 
@@ -137,6 +141,11 @@ public class AuditController {
         model.addAttribute("listleav",listDisc.get(0));
         model.addAttribute("listvide",listVide);
         model.addAttribute("listultr",listUltr);
+
+        //用户名
+        String userName=request.getSession().getAttribute("username").toString();
+        model.addAttribute("userName",userName);
+
         return "Check_verify";
     }
 
