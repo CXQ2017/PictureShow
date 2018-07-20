@@ -98,7 +98,15 @@
         })
 
     })
-
+    function KeyDown()
+    {
+        if (event.keyCode == 13)
+        {
+            event.returnValue=false;
+            event.cancel = true;
+            defaultForm.sss.click();
+        }
+    }
 
 </script>
 
@@ -111,21 +119,21 @@
         <div class="form-group" style="margin-top: 50px">
             <label class="col-lg-3 control-label" ><span style="font-size: 19px">用户名</span></label>
             <div class="col-lg-5">
-                <input type="text" class="form-control" name="username" />
+                <input type="text" class="form-control" name="username" onkeydown=KeyDown() />
             </div>
         </div>
 
         <div class="form-group" style="margin-top: 50px">
             <label class="col-lg-3 control-label"><span style="font-size: 19px">密码</span></label>
             <div class="col-lg-5">
-                <input type="password" class="form-control" name="password" />
+                <input type="password" class="form-control" name="password" onkeydown=KeyDown() />
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-lg-9 col-lg-offset-3">
-                <button  class="btn btn-primary" id="login_in" style="margin-top: 50px;margin-right: 200px">登录</button>
-                <button  type="reset"  class="btn btn-primary" style="margin-top: 50px">重置</button>
+                <button  class="btn btn-primary" id="login_in" name="sss" style="margin-top: 50px;margin-right: 200px">登录</button>
+                <button  type="reset"  class="btn btn-primary"  style="margin-top: 50px">重置</button>
             </div>
 
         </div>
