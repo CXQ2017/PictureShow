@@ -49,7 +49,11 @@
 				width: 278px;
 				/*border: 1px solid black;*/
 				float:left;
+				position: fixed;
+			}
+			.lim{
 				position: absolute;
+				left: -275px;
 			}
 			#mains{
 				top: 12%;
@@ -191,7 +195,7 @@
 				border-radius: 0 0 4px 4px;
 			}
 			ul.nav-tabs.affix{
-				top: 30px; /* Set the top position of pinned element */
+				top: 12%; /* Set the top position of pinned element */
 			}
 		</style>
 		<script type="text/javascript">
@@ -875,6 +879,29 @@
 	<script>
 		$(function () {
 			$('#myTab li:eq(0) a').tab('show');
+		});
+		//导航栏设置
+		$(function(){
+			//获取导航距离页面左侧的距离
+			var toTopHeight = $("#mains").offset().left;
+			//监听页面滚动
+			$(window).scroll(function() {
+				if( $(document).scrollLeft() > toTopHeight ){
+					if ('undefined' == typeof(document.body.style.maxHeight)) {
+						//页面滚动的距离
+						var scrollleft = $(document).scrollLeft();
+						$("#tabs").css({'position':'absolute','left':-scrollleft+'px'});
+					}else{
+						$("#tabs").addClass("lim");
+					}
+				}else{
+					if ('undefined' == typeof(document.body.style.maxHeight)) {
+						$("#tabs").css({'position':'absolute','left':toTopHeight+'px'});
+					}else{
+						$("#tabs").removeClass("lim");
+					}
+				}
+			});
 		});
 	</script>
 	</body>
