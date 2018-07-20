@@ -982,29 +982,35 @@
 	//$(document).ready(function () {
 
 		$("#newfile_btn").click(function () {
-					var formData = new FormData($("#disea_six")[0]);
+			if ($("#folder").val() == '') {
+				alert("请先选择要上传的文件");
+				return;
+			}else{
+				var formData = new FormData($("#disea_six")[0]);
 //            formData.append("txt_file", $('#txt_file')[0].files[0]);
-					$.ajax({
-						type: 'post',
-						url: '/insert_uploadFolder',
+				$.ajax({
+					type: 'post',
+					url: '/insert_uploadFolder',
 //                data: $("#form1").serialize(),
-						data: formData,
-						enctype:'multipart/form-data',
-						async: false,
-						cache: false,
-						contentType: false,
-						processData: false,
+					data: formData,
+					enctype:'multipart/form-data',
+					async: false,
+					cache: false,
+					contentType: false,
+					processData: false,
 //                dataType: 'json',
 //                fileElementId:'txt_file',
-						success: function (data) {
-							alert("添加成功！");
-							location.reload();
-						},
-						error: function () {
-							alert("FAILED");
-						}
+					success: function (data) {
+						alert("添加成功！");
+						location.reload();
+					},
+					error: function () {
+						alert("FAILED");
+					}
 
-					})
+				})
+			}
+
 
 				}
 		)
