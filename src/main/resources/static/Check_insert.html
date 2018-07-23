@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="jedate/jedate.min.js"></script>
 		<script type="text/javascript" src="jedate/jedate1.js"></script>
 		<script type="text/javascript" src="jedate/jedate.js"></script>
+		<script type="text/javascript" src="layDate/laydate/laydate.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="../css/stylet.css" />
@@ -63,7 +64,7 @@
 				/*border: 1px solid black;*/
 				float:left;
 				position: absolute;
-				z-index:9999;
+				/*z-index:9999;*/
 				/*background:  #0275d8;*/
 			}
 			#myTabContent{
@@ -726,7 +727,8 @@
 							<div>
 								查房人：<input type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor" th:value="${listchec.Patient_rounds_doctor}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								查房时间：<input class="datainp" id="datebut101" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
-											onClick="jeDate({dateCell:'#datebut101',isTime:true,format:'YYYY-MM-DD'})" name="Patient_rounds_date"th:value="${#dates.format(listchec.Patient_rounds_date,'yyyy-MM-dd')}"/>
+											onClick="jeDate({dateCell:'#datebut101',isTime:true,format:'YYYY-MM-DD'})"
+											 name="Patient_rounds_date"th:value="${#dates.format(listchec.Patient_rounds_date,'yyyy-MM-dd')}"/>
 							</div><br />
 							<div>
 								病案号：<input type="text" class="a " style="height:30px;width:150px;" name="card_medical" th:value="${listchec.card_medical}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1366,6 +1368,12 @@
 			}
 		});
 	});
+	function showtime(tid){
+
+		laydate.render({
+			elem: "#" + tid
+		})
+	}
 
 	</script>
 	</body>
