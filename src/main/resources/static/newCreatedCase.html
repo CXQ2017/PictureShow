@@ -245,7 +245,7 @@
                             "orderable": false,
                             "data": 'status',
                             "render": function ( data, nRow ,meta,full,val) {
-                                if(ss == 0){
+                                if(ss==2){
                                     return '<a href="/edit?keyword='+data+'">编辑</a>'
                                 }else{
                                     return '不可编辑'
@@ -313,7 +313,7 @@
                         "orderable": false,
                         "data": 'status',
                         "render": function ( data, nRow ,meta,full,val) {
-                            if(ss == 0){
+                            if(ss == 0||ss==2){
                                 return '<a href="/edit?keyword='+data+'">编辑</a>'
                             }else{
                                 return '不可编辑'

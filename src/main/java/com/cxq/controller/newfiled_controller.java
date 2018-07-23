@@ -408,6 +408,8 @@ public class newfiled_controller {
         if(status==1){
             //录入完成，状态直接变成待审核,不可编辑
             status=3;
+        }else if(status==0) {//录入未完成
+            status=0;
         }
             //录入未完成，仍可编辑status=0;
         String remarks=request.getParameter("remarks");
