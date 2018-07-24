@@ -26,3 +26,5 @@ nbdist/
 
 ### My Windows ###
 application.properties
+
+MyWebAppConfigurer.java
