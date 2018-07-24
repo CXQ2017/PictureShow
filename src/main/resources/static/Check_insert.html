@@ -3,16 +3,21 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>中大八院病历病案首页编辑</title>
-		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 		<script type="text/javascript" src="jedate/jedate.min.js"></script>
 		<script type="text/javascript" src="jedate/jedate1.js"></script>
 		<script type="text/javascript" src="jedate/jedate.js"></script>
-		<script type="text/javascript" src="layDate/laydate/laydate.js"></script>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="data-chajian/js/jquery-1.7.2.min.js"></script>
+		<script src="data-chajian/js/manhuaDate.1.0.js"></script>
+		<!--<script type="text/javascript" src="layDate/laydate/laydate.js"></script>
+		<script type="text/javascript" src="js/jquery-latest.js"></script>-->
 
-		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="../css/stylet.css" />
-		<link href="bootstrap-3.3.7/docs/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="data-chajian/css/manhuaDate.1.0.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/stylet.css" />
+		<!--<link href="bootstrap-3.3.7/docs/dist/css/bootstrap.min.css" rel="stylesheet">-->
 		<link href="bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 		<link href="bootstrap-3.3.7/docs/examples/signin/signin.css" rel="stylesheet">
 		<script src="bootstrap-3.3.7/docs/assets/js/ie8-responsive-file-warning.js"></script>
@@ -209,13 +214,13 @@
 				else
 					return true;
 			}
-			$(document).ready(function(){
+			/*$(document).ready(function(){
 				$("#myTab").affix({
 					offset: {
 						top: 125
 					}
 				});
-			});
+			});*/
 
 			function check(){
 				 var val=$('input:radio[name="Fruit"]:checked').val();
@@ -226,6 +231,18 @@
 				}
 				return true;
 			}
+			$(function (){
+				$("input.mh_date").manhuaDate({
+					Event : "click",//可选
+					Left : 0,//弹出时间停靠的左边位置
+					Top : -16,//弹出时间停靠的顶部边位置
+					fuhao : "-",//日期连接符默认为-
+					isTime : false,//是否开启时间值默认为false
+					beginY : 1900,//年份的开始默认为1949
+					endY :2099//年份的结束默认为2049
+				});
+
+			});
 		</script>
 	</head>
 	<body style="background-color: #ADD8E6">
@@ -726,9 +743,10 @@
 							</div>
 							<div>
 								查房人：<input type="text" class="a " style="height:30px;width:150px;" name="Patient_rounds_doctor" th:value="${listchec.Patient_rounds_doctor}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								查房时间：<input class="datainp" id="datebut101" type="text" placeholder="请选择"  readonly="" style="height:30px;width:150px;"
-											onClick="jeDate({dateCell:'#datebut101',isTime:true,format:'YYYY-MM-DD'})"
+								查房时间：<input class="datainp" id="datebut101" type="date" placeholder="请选择"  style="height:30px;width:150px;"
 											 name="Patient_rounds_date"th:value="${#dates.format(listchec.Patient_rounds_date,'yyyy-MM-dd')}"/>
+								<!--测试时间所用：<input type="text" class="mh_date" readonly="true" placeholder="请选择" style="height:30px;width:150px;"
+											  name="Patient_rounds_date"th:value="${#dates.format(listchec.Patient_rounds_date,'yyyy-MM-dd')}"/>-->
 							</div><br />
 							<div>
 								病案号：<input type="text" class="a " style="height:30px;width:150px;" name="card_medical" th:value="${listchec.card_medical}"onkeypress="return handleEnter(this, event)"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -774,8 +792,7 @@
 							<div>
 								病人ID：<input type="text" class="a " style="width: 150px;height:30px;" name="patientId" th:value="${video.patientId}" onkeypress="return handleEnter(this, event)"/>
 								申报单号：<input type="text" class="a " style="width: 150px;height:30px;" name="eclarationd_num" th:value="${video.eclarationd_num}" onkeypress="return handleEnter(this, event)"/>
-								报告日期：<input class="datainp" id="datebut13" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut13',isTime:true,format:'YYYY-MM-DD'})"
+								报告日期：<input class="datainp" id="datebut13" type="date" placeholder="请选择"
 											name="report_time" th:value="${#dates.format(video.report_time,'yyyy-MM-dd')}" style="width: 150px;height:30px;"/>
 							</div><br />
 							<div>
@@ -875,12 +892,12 @@
 								会诊医师：<input type="text" class="a " style="width: 100px;height: 30px;margin-right: 50px" name="consultant_doctor" th:value="${csb.consultant_doctor}"  onkeypress="return handleEnter(this, event)"/>
 							</div><br /><br />
 							<div>
-								报告日期：<input class="datainp" id="datebut14" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut14',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" name="report_date" th:value="${#dates.format(csb.report_date,'yyyy-MM-dd')}"/>
+								报告日期：<input class="datainp" id="datebut14" type="date" placeholder="请选择"
+											style="width: 150px;height:30px;" name="report_date" th:value="${#dates.format(csb.report_date,'yyyy-MM-dd')}"/>
 								<!-- </div><br /><hr/><br /><br />
 								 <div>-->
-								打印日期：<input class="datainp" id="datebut15" type="text" placeholder="请选择"  readonly=""
-											onClick="jeDate({dateCell:'#datebut15',isTime:true,format:'YYYY-MM-DD'})" style="width: 150px;height:30px;" th:value="${#dates.format(csb.print_date,'yyyy-MM-dd')}" name="print_date"/>
+								打印日期：<input class="datainp" id="datebut15" type="date" placeholder="请选择"
+											style="width: 150px;height:30px;" th:value="${#dates.format(csb.print_date,'yyyy-MM-dd')}" name="print_date"/>
 							</div><br /><br />
 							<div>
 								<!--<button onclick="subs()" class="btn btn-primary" id="button" style="margin-left: 60px;width: 70px">提交</button>-->
@@ -1368,12 +1385,6 @@
 			}
 		});
 	});
-	function showtime(tid){
-
-		laydate.render({
-			elem: "#" + tid
-		})
-	}
 
 	</script>
 	</body>
