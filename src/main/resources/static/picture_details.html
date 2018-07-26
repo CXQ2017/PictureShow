@@ -340,8 +340,24 @@
         });
 
         $(window).load(function() {
-            $("#loading").fadeOut(10000);
+
+             $("#loading").fadeOut(22000);
+//            var name=document.getElementsByTagName("embed");
+//            if(name.complete()){
+//                $("#loading").hide();
+//            }else{
+//                $("#loading").fadeOut();
+//            }
+
         })
+
+//        function loadeTab() {
+//            var id=document.getElementById("tabs-0");
+//            if(id.readyState=="complete"){
+////            if(id!=null){
+//               $("#loading").hide();
+//            }
+//        }
     </script>
 </head>
 <body style="background-color: #ADD8E6">
@@ -419,10 +435,10 @@
                 <div>
                     <!--<iframe th:src="@{'/image'+${home_page.picture_path}}" width="800" height="400"></iframe>-->
                     <!--<embed width="800" height="600" th:src="@{'/image'+${home_page.picture_path}}"> </embed>-->
-                    <object classid="clsid:CA8A9780-280D-11CF-A24D-444553540000" width="800" height="600" border="0">
-                        <embed width="800px" height="1200px" th:src="@{'/image'+${home_page.picture_path}}" border="0"> </embed>
+                    <!--<object  classid="clsid:CA8A9780-280D-11CF-A24D-444553540000" width="800" height="1200" border="0" onload="loadeTab()">-->
+                        <embed id="embed_0" width="800px" height="1200px" th:src="@{'/image'+${home_page.picture_path}}" border="0"> </embed>
                         <!--<param name="SRC" th:value="@{'/image'+${home_page.picture_path}}">-->
-                    </object>
+                    <!--</object>-->
                 </div>
             </div>
         </div>
@@ -443,24 +459,19 @@
                 </div>
             </div>
         </div>
-        <!--查房记录-->
-        <!--<div class="tab-pane fade in active" id="tabs-3">-->
-            <!--<div th:if="${not #lists.isEmpty(check_record)}" th:each="check_record:${check_record}">-->
-                <!--<div>-->
-                    <!--<embed width="800" height="1200px" th:src="@{'/image'+${check_record.picture_path}}" border="0"> </embed>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+
         <!--出院记录-->
         <div class="tab-pane fade in active" id="tabs-4">
             <div th:if="${not #lists.isEmpty(discharge_record)}" th:each="discharge_record:${discharge_record}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${discharge_record.picture_path}}" border="0"> </embed>
+                    <!--  <iframe th:src="@{'/image'+${discharge_record.picture_path}}" width="800" height="1200px" border="0" onload="loadeTab()"></iframe>-->
+                    <!--<object  classid="clsid:CA8A9780-280D-11CF-A24D-444553540000" width="800" height="1200" border="0" onload="loadeTab()">-->
+                    <embed id="embed_4" width="800" height="1200px" th:src="@{'/image'+${discharge_record.picture_path}}" border="0"> </embed>
+                    <!--</object>-->
                 </div>
             </div>
         </div>
 
-        <!--X-->
         <div class="tab-pane fade in active" id="tabs-5">
             <div th:if="${not #lists.isEmpty(operation_record)}" th:each="operation_record:${operation_record}">
                 <div>
@@ -468,7 +479,7 @@
                 </div>
             </div>
         </div>
-        <!--CT-->
+
         <div class="tab-pane fade in active" id="tabs-6">
             <div th:if="${not #lists.isEmpty(Troubled_case)}" th:each="Troubled_case:${Troubled_case}">
                 <div>
@@ -476,7 +487,7 @@
                 </div>
             </div>
         </div>
-        <!--MR-->
+
         <div class="tab-pane fade in active" id="tabs-7">
             <div th:if="${not #lists.isEmpty(Death_record)}" th:each="Death_record:${Death_record}">
                 <div>
@@ -484,7 +495,7 @@
                 </div>
             </div>
         </div>
-        <!--冠状动脉CTA成像-->
+
         <div class="tab-pane fade in active" id="tabs-8">
             <div th:if="${not #lists.isEmpty(Death_discussion)}" th:each="Death_discussion:${Death_discussion}">
                 <div>
@@ -492,7 +503,7 @@
                 </div>
             </div>
         </div>
-        <!--超声波-->
+
         <div class="tab-pane fade in active" id="tabs-9">
             <div th:if="${not #lists.isEmpty(Other_treatment_record)}" th:each="Other_treatment_record:${Other_treatment_record}">
                 <div>
@@ -500,7 +511,7 @@
                 </div>
             </div>
         </div>
-        <!--多普勒-->
+
         <div class="tab-pane fade in active" id="tabs-10">
             <div th:if="${not #lists.isEmpty(Blood_transfusion_treatment)}" th:each="Blood_transfusion_treatment:${Blood_transfusion_treatment}">
                 <div>
@@ -609,7 +620,9 @@
         <div class="tab-pane fade in active" id="tabs-23">
             <div th:if="${not #lists.isEmpty(others)}" th:each="others:${others}">
                 <div>
-                    <embed width="800" height="1200px" th:src="@{'/image'+${others.picture_path}}" border="0"> </embed>
+                    <!--<object  classid="clsid:CA8A9780-280D-11CF-A24D-444553540000" width="800" height="1200" border="0" onload="loadeTab()">-->
+                    <embed id="embed_23" width="800" height="1200px" th:src="@{'/image'+${others.picture_path}}" border="0"> </embed>
+                    <!--</object>-->
                 </div>
             </div>
         </div>
